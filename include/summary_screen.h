@@ -41,7 +41,7 @@ struct PACKED PokemonSummaryScreen {
     /*0x84*/ void *unk84;
 };
 
-extern struct PokemonSummaryScreen *sMonSummaryScreen;
+extern struct PokemonSummaryScreen sMonSummaryScreen;
 
 void SummaryScreen_PlaceTextTile_White(u8 tile, u8 x, u8 y);
 void SummaryScreen_PrintColoredText(const u8 *text, u8 id, u8 left, u8 top);
