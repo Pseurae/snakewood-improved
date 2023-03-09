@@ -13,8 +13,6 @@
 #include "constants/move_effects.h"
 #include "constants/species.h"
 
-struct BattleStruct gBattleStruct;
-
 #define APPLY_STAT_MOD(var, mon, stat, statIndex)                                   \
 ({                                                                                   \
     (var) = (stat) * (gStatStageRatios)[(mon)->statStages[(statIndex)]][0];         \

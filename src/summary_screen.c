@@ -7,8 +7,6 @@
 #include "text.h"
 #include "constants/pokemon.h"
 
-struct PokemonSummaryScreen sMonSummaryScreen;
-
 s8 ChangeSummaryPokemonNormal(s8 delta)
 {
     struct Pokemon *mons = sMonSummaryScreen.monList.partyMons;
