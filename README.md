@@ -14,6 +14,7 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 - Repel Reuse Prompts
 - Wrapping Summary Screens
 - Bag Expansion
+- HMs Usage without sacrificing a move slot
 
 ## Bugfixes
 - Eggs show up as Disease types in the summary screen
