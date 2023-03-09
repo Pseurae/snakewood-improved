@@ -105,3 +105,4 @@ StringCopy = 0x8006ab0 | 1;
 SummaryScreen_SetTextColor = 0x80a1e58 | 1;
 SummaryScreen_CopyColoredString = 0x80a1e9c | 1;
 Menu_PrintTextPixelCoords = 0x80729d8 | 1;
+IsHMMove = 0x806f7b8 | 1;

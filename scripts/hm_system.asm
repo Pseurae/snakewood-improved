@@ -201,3 +201,14 @@ bx r7
 @@EventScript_EndUseSurf:
     s_end
 .endautoregion
+
+.org 0x809f7f2
+.area 0x2, 0x0
+mov r0, #0
+.endarea
+
+.org 0x8040a00
+.area 0x4, 0x0
+mov r0, #0
+bx lr
+.endarea

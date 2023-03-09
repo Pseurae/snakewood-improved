@@ -109,6 +109,7 @@ u8 CountAliveMons(u8 a1);
 bool8 CheckIfMonCanUseHM(struct Pokemon *mon, u16 hm);
 bool8 CheckIfPartyCanUseTM(u16 tm);
 u8 CalculatePPWithBonus(u16 move, u8 ppBonuses, u8 moveIndex);
+bool8 IsHMMove(u16 move);
 
 enum
 {
