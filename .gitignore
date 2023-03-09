@@ -1,0 +1,6 @@
+build
+.vscode
+armips
+output.*
+snakewood.*
+pokeruby.map
