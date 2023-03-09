@@ -227,7 +227,7 @@ extern const u8 gHoldEffectToType[17][2];
 extern const u8 gStatStageRatios[13][2];
 extern struct ResourceFlags gBattleFlags;
 extern u32 gBattleControllerExecFlags;
-extern struct BattleStruct *gBattleStruct;
+extern struct BattleStruct gBattleStruct;
 extern u8 gMoveResultFlags;
 extern u8 gActiveBattler;
 extern u8 gBattlerTarget;

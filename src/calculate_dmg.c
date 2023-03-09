@@ -13,7 +13,7 @@
 #include "constants/move_effects.h"
 #include "constants/species.h"
 
-struct BattleStruct *gBattleStruct = ((struct BattleStruct *)(0x2000000 + 0x0));
+struct BattleStruct gBattleStruct;
 
 #define APPLY_STAT_MOD(var, mon, stat, statIndex)                                   \
 ({                                                                                   \
