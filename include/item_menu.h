@@ -2,7 +2,7 @@
 
 #include "types.h"
 
-struct ItemSlot
+struct PACKED ItemSlot
 {
     u16 itemId;
     u16 quantity;

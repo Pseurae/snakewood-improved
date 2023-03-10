@@ -1,0 +1,2 @@
+No movement animation on Birch or the Zombie on the Route 101 encounter
+Broken Heart comes up as Water Bottle

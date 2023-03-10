@@ -49,7 +49,7 @@ sPokeMenuOptionsNo = 0x202ffa9;
 sPokeMenuOptionsOrder = 0x202ffaa;
 gLastFieldPokeMenuOpened = 0x3005ce0;
 sPokeMenuFieldMoves = 0x839f554;
-gExpandedItemPockets = 0x202541d;
+gExpandedItemPockets = 0x2025420;
 
 gStringVar1 = 0x20231cc;
 gStringVar2 = 0x20232cc;
