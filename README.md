@@ -19,6 +19,7 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 ## Bugfixes
 - Eggs show up as Disease types in the summary screen
 - Tile corruption in Littleroot Town on spawn
+- Darkening of tiles after a screen fade in
 
 ## WIP
 - Fixing improper item names

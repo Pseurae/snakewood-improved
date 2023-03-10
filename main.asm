@@ -23,6 +23,7 @@
 .include "scripts/common.asm"
 
 .include "scripts/bugfixes/diseased_egg.asm"
+.include "scripts/bugfixes/fadescreen_shade.asm"
 .include "scripts/bugfixes/item_names.asm"
 .include "scripts/bugfixes/littleroot_tiles.asm"
 
