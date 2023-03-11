@@ -25,6 +25,7 @@
 .include "scripts/bugfixes/bright_text.asm"
 .include "scripts/bugfixes/diseased_egg.asm"
 .include "scripts/bugfixes/fadescreen_shade.asm"
+.include "scripts/bugfixes/item_desc.asm"
 .include "scripts/bugfixes/item_names.asm"
 .include "scripts/bugfixes/littleroot_tiles.asm"
 
