@@ -1,9 +1,9 @@
 #include "types.h"
+#include "item_menu.h"
 #include "item.h"
+#include "menu.h"
 #include "string_util.h"
 #include "text.h"
-#include "menu.h"
-#include "item_menu.h"
 #include "constants/items.h"
 
 void Menu_PrintTMHM(u16 taskId, int topItemOffset, int bottomItemOffset, int d)
@@ -38,7 +38,10 @@ void Menu_PrintTMHM(u16 taskId, int topItemOffset, int bottomItemOffset, int d)
             text[1] = 0x13;
             text[2] = 8;
             text += 3;
-            text = ConvertIntToDecimalStringN(text, gCurrentBagPocketItemSlots[slot].itemId - (ITEM_TM01_FOCUS_PUNCH - 1), STR_CONV_MODE_LEADING_ZEROS, 2);
+            text = ConvertIntToDecimalStringN(text,
+                gCurrentBagPocketItemSlots[slot].itemId - (ITEM_TM01_FOCUS_PUNCH - 1),
+                STR_CONV_MODE_LEADING_ZEROS,
+                2);
             text[0] = EXT_CTRL_CODE_BEGIN;
             text[1] = 0x13;
             text[2] = 0x18;

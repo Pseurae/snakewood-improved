@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 
 struct MapLayout
 {
@@ -7,7 +7,7 @@ struct MapLayout
 
 struct MapHeader
 {
-    /* 0x00 */ struct MapLayout *mapLayout;
+    struct MapLayout *mapLayout;
     u8 data[0x17];
 };
 

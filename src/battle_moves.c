@@ -5,8 +5,7 @@
 #include "constants/moves.h"
 
 // 0x81fb144
-const u8 gBattleMoveSplit[NUM_MOVES] =
-{
+const u8 gBattleMoveSplit[NUM_MOVES] = {
     [MOVE_NONE] = CATEGORY_PHYSICAL,
     [MOVE_POUND] = CATEGORY_PHYSICAL,
     [MOVE_KARATE_CHOP] = CATEGORY_PHYSICAL,
@@ -361,5 +360,5 @@ const u8 gBattleMoveSplit[NUM_MOVES] =
     [MOVE_SHOCK_WAVE] = CATEGORY_SPECIAL,
     [MOVE_WATER_PULSE] = CATEGORY_SPECIAL,
     [MOVE_PULSAR] = CATEGORY_SPECIAL,
-    [MOVE_CURSE_CLAW] = CATEGORY_SPECIAL
+    [MOVE_CURSE_CLAW] = CATEGORY_SPECIAL,
 };

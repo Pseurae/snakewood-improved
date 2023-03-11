@@ -1,33 +1,34 @@
 #pragma once
 #include "types.h"
 
-#define PARTY_SIZE 6
-#define POKEMON_NAME_LENGTH 10
+#define PARTY_SIZE             6
+#define POKEMON_NAME_LENGTH    10
 
-#define TYPE_NORMAL   0x00
-#define TYPE_FIGHTING 0x01
-#define TYPE_FLYING   0x02
-#define TYPE_POISON   0x03
-#define TYPE_GROUND   0x04
-#define TYPE_ROCK     0x05
-#define TYPE_BUG      0x06
-#define TYPE_GHOST    0x07
-#define TYPE_STEEL    0x08
-#define TYPE_MYSTERY  0x09
-#define TYPE_FIRE     0x0a
-#define TYPE_WATER    0x0b
-#define TYPE_GRASS    0x0c
-#define TYPE_ELECTRIC 0x0d
-#define TYPE_PSYCHIC  0x0e
-#define TYPE_ICE      0x0f
-#define TYPE_DRAGON   0x10
-#define TYPE_DARK     0x11
+#define TYPE_NORMAL            0x00
+#define TYPE_FIGHTING          0x01
+#define TYPE_FLYING            0x02
+#define TYPE_POISON            0x03
+#define TYPE_GROUND            0x04
+#define TYPE_ROCK              0x05
+#define TYPE_BUG               0x06
+#define TYPE_GHOST             0x07
+#define TYPE_STEEL             0x08
+#define TYPE_MYSTERY           0x09
+#define TYPE_FIRE              0x0a
+#define TYPE_WATER             0x0b
+#define TYPE_GRASS             0x0c
+#define TYPE_ELECTRIC          0x0d
+#define TYPE_PSYCHIC           0x0e
+#define TYPE_ICE               0x0f
+#define TYPE_DRAGON            0x10
+#define TYPE_DARK              0x11
 
-#define IS_MOVE_PHYSICAL(move)(gBattleMoveSplit[move] == CATEGORY_PHYSICAL)
-#define IS_MOVE_SPECIAL(move)(gBattleMoveSplit[move] == CATEGORY_SPECIAL)
-#define IS_MOVE_STATUS(move)(gBattleMoveSplit[move] == CATEGORY_STATUS)
+#define IS_MOVE_PHYSICAL(move) (gBattleMoveSplit[move] == CATEGORY_PHYSICAL)
+#define IS_MOVE_SPECIAL(move)  (gBattleMoveSplit[move] == CATEGORY_SPECIAL)
+#define IS_MOVE_STATUS(move)   (gBattleMoveSplit[move] == CATEGORY_STATUS)
 
-enum {
+enum
+{
     CATEGORY_PHYSICAL,
     CATEGORY_SPECIAL,
     CATEGORY_STATUS
@@ -54,7 +55,8 @@ struct ContestMove
     u8 comboMoves[4];
 };
 
-struct PACKED Pokemon {
+struct PACKED Pokemon
+{
     u8 unk0[100];
 };
 
@@ -113,12 +115,12 @@ bool8 IsHMMove(u16 move);
 
 enum
 {
-    STAT_STAGE_HP,       // 0
-    STAT_STAGE_ATK,      // 1
-    STAT_STAGE_DEF,      // 2
-    STAT_STAGE_SPEED,    // 3
-    STAT_STAGE_SPATK,    // 4
-    STAT_STAGE_SPDEF,    // 5
-    STAT_STAGE_ACC,      // 6
-    STAT_STAGE_EVASION,  // 7
+    STAT_STAGE_HP,      // 0
+    STAT_STAGE_ATK,     // 1
+    STAT_STAGE_DEF,     // 2
+    STAT_STAGE_SPEED,   // 3
+    STAT_STAGE_SPATK,   // 4
+    STAT_STAGE_SPDEF,   // 5
+    STAT_STAGE_ACC,     // 6
+    STAT_STAGE_EVASION, // 7
 };

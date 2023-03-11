@@ -1,7 +1,7 @@
 #include "types.h"
+#include "pokemon.h"
 #include "battle.h"
 #include "item.h"
-#include "pokemon.h"
 #include "script_menu.h"
 #include "constants/items.h"
 #include "constants/pokemon.h"
@@ -13,7 +13,7 @@ bool8 CheckIfMonCanUseHM(struct Pokemon *mon, u16 hm)
     if (!species || species == SPECIES_EGG)
         return FALSE;
 
-    if ((CheckBagHasItem(hm, 1) && CanMonLearnTMHM(mon, hm - ITEM_TM01_FOCUS_PUNCH)) || 
+    if ((CheckBagHasItem(hm, 1) && CanMonLearnTMHM(mon, hm - ITEM_TM01_FOCUS_PUNCH)) ||
         (MonKnowsMove(mon, ItemIdToBattleMoveId(hm)) == TRUE))
         return TRUE;
 
@@ -39,7 +39,7 @@ bool8 CheckIfPartyCanUseHM(void)
         if (!species || species == SPECIES_EGG)
             return FALSE;
 
-        if ((CanMonLearnTMHM(&gPlayerParty[i], tm - ITEM_TM01_FOCUS_PUNCH)) || 
+        if ((CanMonLearnTMHM(&gPlayerParty[i], tm - ITEM_TM01_FOCUS_PUNCH)) ||
             (MonKnowsMove(&gPlayerParty[i], ItemIdToBattleMoveId(tm)) == TRUE))
         {
             gSpecialVar_Result = i;

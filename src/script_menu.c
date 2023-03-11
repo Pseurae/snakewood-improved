@@ -1,10 +1,10 @@
 #include "types.h"
-#include "item.h"
 #include "script_menu.h"
+#include "item.h"
 #include "vars.h"
 #include "constants/items.h"
 
-static const u16 sRepelItems[3] = { ITEM_REPEL, ITEM_SUPER_REPEL, ITEM_MAX_REPEL };
+static const u16 sRepelItems[3] = {ITEM_REPEL, ITEM_SUPER_REPEL, ITEM_MAX_REPEL};
 
 #define VAR_REPEL_STEP_COUNT 0x4021
 

@@ -5,14 +5,16 @@
 
 enum PokemonSummaryScreenPage
 {
-	PSS_PAGE_INFO,
-	PSS_PAGE_SKILLS,
-	PSS_PAGE_BATTLE_MOVES,
-	PSS_PAGE_CONTEST_MOVES,
+    PSS_PAGE_INFO,
+    PSS_PAGE_SKILLS,
+    PSS_PAGE_BATTLE_MOVES,
+    PSS_PAGE_CONTEST_MOVES,
 };
 
-struct PACKED PokemonSummaryScreen {
-    /*0x00*/ union {
+struct PACKED PokemonSummaryScreen
+{
+    /*0x00*/ union
+    {
         struct Pokemon *partyMons;
         struct BoxPokemon *boxMons;
     } monList;
@@ -35,7 +37,7 @@ struct PACKED PokemonSummaryScreen {
     /*0x7A*/ u8 switchMoveIndex;
     /*0x7B*/ bool8 disableMoveOrderEditing;
     /*0x7C*/ u16 moveToLearn;
-    /*0x7E*/ u8 headerTextId; // used as index into sPageHeaderTexts
+    /*0x7E*/ u8 headerTextId;       // used as index into sPageHeaderTexts
     /*0x7F*/ u8 headerActionTextId; // used as index into sPageHeaderTexts
     /*0x80*/ u8 bgToggle;
     /*0x84*/ void *unk84;
@@ -52,4 +54,3 @@ u8 *SummaryScreen_CopyColoredString(u8 *dest, const u8 *src, u8 id);
 u16 GetMonMove(struct Pokemon *, u8);
 u16 GetMonMovePP(struct Pokemon *mon, u8 moveId);
 void SummaryScreen_SetSpriteInvisibility(u8 a, u8 invisible);
-

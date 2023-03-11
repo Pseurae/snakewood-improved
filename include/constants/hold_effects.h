@@ -1,15 +1,15 @@
 #pragma once
 
-#define HOLD_EFFECT_NONE            0
-#define HOLD_EFFECT_RESTORE_HP      1
-#define HOLD_EFFECT_CURE_PAR        2
-#define HOLD_EFFECT_CURE_SLP        3
-#define HOLD_EFFECT_CURE_PSN        4
-#define HOLD_EFFECT_CURE_BRN        5
-#define HOLD_EFFECT_CURE_FRZ        6
-#define HOLD_EFFECT_RESTORE_PP      7
-#define HOLD_EFFECT_CURE_CONFUSION  8
-#define HOLD_EFFECT_CURE_STATUS     9
+#define HOLD_EFFECT_NONE           0
+#define HOLD_EFFECT_RESTORE_HP     1
+#define HOLD_EFFECT_CURE_PAR       2
+#define HOLD_EFFECT_CURE_SLP       3
+#define HOLD_EFFECT_CURE_PSN       4
+#define HOLD_EFFECT_CURE_BRN       5
+#define HOLD_EFFECT_CURE_FRZ       6
+#define HOLD_EFFECT_RESTORE_PP     7
+#define HOLD_EFFECT_CURE_CONFUSION 8
+#define HOLD_EFFECT_CURE_STATUS    9
 #define HOLD_EFFECT_CONFUSE_SPICY  10
 #define HOLD_EFFECT_CONFUSE_DRY    11
 #define HOLD_EFFECT_CONFUSE_SWEET  12
@@ -67,4 +67,3 @@
 #define HOLD_EFFECT_METAL_POWDER   64
 #define HOLD_EFFECT_THICK_CLUB     65
 #define HOLD_EFFECT_STICK          66
-

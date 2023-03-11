@@ -9,30 +9,30 @@
 
 enum
 {
-    POKEMENU_SUMMARY,           // 0
-    POKEMENU_SWITCH,            // 1
-    POKEMENU_ITEM,              // 2
-    POKEMENU_CANCEL,            // 3
-    POKEMENU_GIVE_ITEM,         // 4
-    POKEMENU_TAKE_ITEM,         // 5
-    POKEMENU_TAKE_MAIL,         // 6
-    POKEMENU_MAIL,              // 7
-    POKEMENU_READ_MAIL,         // 8
-    POKEMENU_CANCEL_SUBMENU,    // 9
-    POKEMENU_CUT,               // 10
-	POKEMENU_FLASH,             // 11
-	POKEMENU_ROCK_SMASH,        // 12
-	POKEMENU_STRENGTH,          // 13
-	POKEMENU_SURF,              // 14
-	POKEMENU_FLY,               // 15
-	POKEMENU_DIVE,              // 16
-	POKEMENU_WATERFALL,         // 17
-	POKEMENU_TELEPORT,          // 18
-	POKEMENU_DIG,               // 19
-	POKEMENU_SECRET_POWER,      // 20
-	POKEMENU_MILK_DRINK,        // 21
-	POKEMENU_SOFT_BOILED,       // 22
-	POKEMENU_SWEET_SCENT,       // 23
+    POKEMENU_SUMMARY,        // 0
+    POKEMENU_SWITCH,         // 1
+    POKEMENU_ITEM,           // 2
+    POKEMENU_CANCEL,         // 3
+    POKEMENU_GIVE_ITEM,      // 4
+    POKEMENU_TAKE_ITEM,      // 5
+    POKEMENU_TAKE_MAIL,      // 6
+    POKEMENU_MAIL,           // 7
+    POKEMENU_READ_MAIL,      // 8
+    POKEMENU_CANCEL_SUBMENU, // 9
+    POKEMENU_CUT,            // 10
+    POKEMENU_FLASH,          // 11
+    POKEMENU_ROCK_SMASH,     // 12
+    POKEMENU_STRENGTH,       // 13
+    POKEMENU_SURF,           // 14
+    POKEMENU_FLY,            // 15
+    POKEMENU_DIVE,           // 16
+    POKEMENU_WATERFALL,      // 17
+    POKEMENU_TELEPORT,       // 18
+    POKEMENU_DIG,            // 19
+    POKEMENU_SECRET_POWER,   // 20
+    POKEMENU_MILK_DRINK,     // 21
+    POKEMENU_SOFT_BOILED,    // 22
+    POKEMENU_SWEET_SCENT     // 23
 };
 
 #define sFieldMovesTerminator 0xFF
@@ -66,7 +66,8 @@ void OpenPokemonContextMenu(void)
         {
             for (tableID = 8; sPokeMenuFieldMoves[tableID] != sFieldMovesTerminator; tableID++)
             {
-                if (GetMonData(&gPlayerParty[gLastFieldPokeMenuOpened], MON_DATA_MOVE1 + moveID) == sPokeMenuFieldMoves[tableID])
+                u16 move = GetMonData(&gPlayerParty[gLastFieldPokeMenuOpened], MON_DATA_MOVE1 + moveID);
+                if (move == sPokeMenuFieldMoves[tableID])
                 {
                     u8 fieldID = tableID + POKEMENU_FIRST_FIELD_MOVE_ID;
                     AppendToList(sPokeMenuOptionsOrder, &sPokeMenuOptionsNo, fieldID);

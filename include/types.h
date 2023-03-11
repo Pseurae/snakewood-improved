@@ -15,11 +15,11 @@ typedef u16 bool16;
 typedef u32 bool32;
 
 #define PACKED __attribute__((packed))
-#define NAKED __attribute__((naked))
+#define NAKED  __attribute__((naked))
 
 typedef void (*MainCallback)(void);
 
-#define TRUE 1
+#define TRUE  1
 #define FALSE 0
 
-#define NULL 0x0
+#define NULL  0x0

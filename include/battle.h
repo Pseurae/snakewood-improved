@@ -1,12 +1,12 @@
 #pragma once
 
 #include "types.h"
-#include "pokemon.h"
 #include "berry.h"
+#include "pokemon.h"
 #include "constants/moves.h"
 
 #define MAX_BATTLERS_COUNT 4
-#define MAX_MON_MOVES 4
+#define MAX_MON_MOVES      4
 
 struct ResourceFlags
 {
@@ -30,8 +30,8 @@ struct BattleStruct /* 0x2000000 */
     /*0x16010*/ u8 moveTarget[MAX_BATTLERS_COUNT];
     /*0x16014*/ u32 painSplitHP;
     /*0x16018*/ u8 expGetterMonId;
-    /*0x16019*/ u8 unk16019; // unused
-    /*0x1601A*/ u8 atk5A_StateTracker; //also atk5B, statetracker
+    /*0x16019*/ u8 unk16019;           // unused
+    /*0x1601A*/ u8 atk5A_StateTracker; // also atk5B, statetracker
     /*0x1601B*/ u8 wildVictorySong;
     /*0x1601C*/ u8 dynamicMoveType;
     /*0x1601D*/ u8 focusPunchBattler;
@@ -121,7 +121,7 @@ struct BattleStruct /* 0x2000000 */
     /*0x160FD*/ u8 unk160FD;
     /*0x160FE*/ u8 unk160FE;
     /*0x160FF*/ u8 unk160FF;
-	/*0x16100*/ u16 lastTakenMoveFrom[2 * 4];
+    /*0x16100*/ u16 lastTakenMoveFrom[2 * 4];
     /*0x16110*/ u8 wishPerishSongState;
     /*0x16111*/ u8 wishPerishSongBattlerId;
     /*0x16112*/ u8 multihitMoveEffect;
@@ -152,9 +152,9 @@ struct PACKED ProtectStruct
     u32 flag2Unknown:1;
     u32 flinchImmobility:1;
     u32 notFirstStrike:1;
-    u32 free : 4;
+    u32 free:4;
     /*field3*/
-    u32 field3 : 8;
+    u32 field3:8;
     s32 physicalDmg;
     s32 specialDmg;
     u8 physicalBattlerId;
@@ -166,7 +166,7 @@ struct PACKED SpecialStatus
 {
     u32 statLowered:1;
     u32 lightningRodRedirected:1;
-    u32 restoredBattlerSprite: 1;
+    u32 restoredBattlerSprite:1;
     u32 intimidatedMon:1;
     u32 traced:1;
     u32 ppNotAffectedByPressure:1;
@@ -189,28 +189,28 @@ struct PACKED DisableStruct
     /*0x08*/ u8 protectUses;
     /*0x09*/ u8 stockpileCounter;
     /*0x0A*/ u8 substituteHP;
-    /*0x0B*/ u8 disableTimer1 : 4;
-    /*0x0B*/ u8 disableTimer2 : 4;
+    /*0x0B*/ u8 disableTimer1:4;
+    /*0x0B*/ u8 disableTimer2:4;
     /*0x0C*/ u8 encoredMovePos;
     /*0x0D*/ u8 unkD;
-    /*0x0E*/ u8 encoreTimer1 : 4;
-    /*0x0E*/ u8 encoreTimer2 : 4;
-    /*0x0F*/ u8 perishSongTimer1 : 4;
-    /*0x0F*/ u8 perishSongTimer2 : 4;
+    /*0x0E*/ u8 encoreTimer1:4;
+    /*0x0E*/ u8 encoreTimer2:4;
+    /*0x0F*/ u8 perishSongTimer1:4;
+    /*0x0F*/ u8 perishSongTimer2:4;
     /*0x10*/ u8 furyCutterCounter;
-    /*0x11*/ u8 rolloutTimer1 : 4;
-    /*0x11*/ u8 rolloutTimer2 : 4;
-    /*0x12*/ u8 chargeTimer1 : 4;
-    /*0x12*/ u8 chargeTimer2 : 4;
+    /*0x11*/ u8 rolloutTimer1:4;
+    /*0x11*/ u8 rolloutTimer2:4;
+    /*0x12*/ u8 chargeTimer1:4;
+    /*0x12*/ u8 chargeTimer2:4;
     /*0x13*/ u8 tauntTimer1:4;
     /*0x13*/ u8 tauntTimer2:4;
     /*0x14*/ u8 bankPreventingEscape;
     /*0x15*/ u8 battlerWithSureHit;
     /*0x16*/ u8 isFirstTurn;
     /*0x17*/ u8 unk17;
-    /*0x18*/ u8 truantCounter : 1;
-    /*0x18*/ u8 unk18_a : 3;
-    /*0x18*/ u8 mimickedMoves : 4;
+    /*0x18*/ u8 truantCounter:1;
+    /*0x18*/ u8 unk18_a:3;
+    /*0x18*/ u8 mimickedMoves:4;
     /*0x19*/ u8 rechargeCounter;
     /*0x1A*/ u8 unk1A[2];
 };
@@ -235,7 +235,7 @@ extern u8 gBattlerAttacker;
 extern struct ProtectStruct gProtectStructs[MAX_BATTLERS_COUNT];
 extern struct SpecialStatus gSpecialStatuses[MAX_BATTLERS_COUNT];
 extern struct DisableStruct gDisableStructs[MAX_BATTLERS_COUNT];
-extern const u8* gBattlescriptCurrInstr;
+extern const u8 *gBattlescriptCurrInstr;
 extern s32 gBattleMoveDamage;
 extern u32 gHitMarker;
 extern s32 gHpDealt;
@@ -250,5 +250,5 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 move);
 u8 GetBattlerForBattleScript(u8 bankValue);
 void BattleScriptPushCursor(void);
 
-void BtlController_EmitSetMonData(u8 a, u8 request, u8 c, u8 bytes, void *data);  //0x2
+void BtlController_EmitSetMonData(u8 a, u8 request, u8 c, u8 bytes, void *data); // 0x2
 void MarkBattlerForControllerExec(u8);

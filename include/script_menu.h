@@ -6,8 +6,8 @@ typedef bool8 (*MenuFunc)();
 
 struct MenuAction
 {
-   const u8 *text;
-   MenuFunc func;
+    const u8 *text;
+    MenuFunc func;
 };
 
 extern u16 gSpecialVar_0x8004;

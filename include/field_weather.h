@@ -1,5 +1,7 @@
 #pragma once
 
+#include "types.h"
+
 struct Weather
 {
     union
@@ -100,12 +102,12 @@ struct Weather
     u8 blendUpdateCounter;
     u8 blendFrameCounter;
     u8 blendDelay;
-    u8 filler_73B[0x3C-0x3B];
+    u8 filler_73B[0x3C - 0x3B];
     s16 unknown_73C;
     s16 unknown_73E;
     s16 unknown_740;
     s16 unknown_742;
-    u8 filler_744[0xD-4];
+    u8 filler_744[0xD - 4];
     s8 loadDroughtPalsIndex;
     u8 loadDroughtPalsOffset;
 };

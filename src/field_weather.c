@@ -1,13 +1,11 @@
 #include "types.h"
-#include "bios.h"
 #include "field_weather.h"
+#include "bios.h"
 #include "fieldmap.h"
 #include "palette.h"
 #include "task.h"
 #include "constants/field_weather.h"
 #include "constants/weather.h"
-
-void InitMapView(void);
 
 void FadeScreen(u8 mode, u8 delay)
 {
