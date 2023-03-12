@@ -22,6 +22,7 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 - Darkening of tiles after a screen fade in
 - Readable text colors
 - Fix the palette issue for Meteor's portrait
+- Replace Golbat's sprite
 
 ## WIP
 - Fixing improper item names
