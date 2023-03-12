@@ -25,9 +25,13 @@
 .include "scripts/bugfixes/bright_text.asm"
 .include "scripts/bugfixes/diseased_egg.asm"
 .include "scripts/bugfixes/fadescreen_shade.asm"
+.include "scripts/bugfixes/field_mon_sprite.asm"
 .include "scripts/bugfixes/item_desc.asm"
 .include "scripts/bugfixes/item_names.asm"
 .include "scripts/bugfixes/littleroot_tiles.asm"
+.include "scripts/bugfixes/meteor_portrait.asm"
+.include "scripts/bugfixes/route101_movement.asm"
+.include "scripts/bugfixes/verdanturf_ruins_movement.asm"
 
 .include "scripts/bag_expansion.asm"
 .include "scripts/hm_system.asm"

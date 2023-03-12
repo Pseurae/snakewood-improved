@@ -21,6 +21,7 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 - Tile corruption in Littleroot Town on spawn
 - Darkening of tiles after a screen fade in
 - Readable text colors
+- Fix the palette issue for Meteor's portrait
 
 ## WIP
 - Fixing improper item names

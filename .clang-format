@@ -1,6 +1,6 @@
 AlignTrailingComments: true
 AlignAfterOpenBracket: false
-Cpp11BracedListStyle: true
+Cpp11BracedListStyle: false
 BinPackArguments: false
 AllowShortFunctionsOnASingleLine: false
 AllowShortIfStatementsOnASingleLine: false

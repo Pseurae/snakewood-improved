@@ -1,6 +1,11 @@
 FALSE equ 0
 TRUE equ 1
 
+.macro map, map_id
+.byte map_id >> 8    ; map group
+.byte map_id & 0xFF  ; map num
+.endmacro
+
 .macro s_nop
 .byte 0x00
 .endmacro
@@ -454,50 +459,50 @@ map map
 .halfword decoration
 .endmacro
 
-.macro s_applymovement, index, movements, map
-    .ifb map
-        .byte 0x4f
-        .halfword index
-        .word movements
-    .else
-        .byte 0x50
-        .halfword index
-        .word movements
-        map map
-    .endif
+.macro s_applymovement, index, movements
+.byte 0x4f
+.halfword index
+.word movements
 .endmacro
 
-.macro s_waitmovement, index, map
-    .ifb map
-        .byte 0x51
-        .halfword index
-    .else
-        .byte 0x52
-        .halfword index
-        map map
-    .endif
+.macro s_applymovement_at, index, movements, map
+.byte 0x50
+.halfword index
+.word movements
+map map
 .endmacro
 
-.macro s_removeobject, index, map
-    .ifb map
-        .byte 0x53
-        .halfword index
-    .else
-        .byte 0x54
-        .halfword index
-        map map
-    .endif
+.macro s_waitmovement, index
+.byte 0x51
+.halfword index
 .endmacro
 
-.macro s_addobject, index, map
-    .ifb map
-        .byte 0x55
-        .halfword index
-    .else
-        .byte 0x56
-        .halfword index
-        map map
-    .endif
+.macro s_waitmovement_at, index, map
+.byte 0x52
+.halfword index
+map map
+.endmacro
+
+.macro s_removeobject, index
+.byte 0x53
+.halfword index
+.endmacro
+
+.macro s_removeobjectat, index, map
+.byte 0x54
+.halfword index
+map map
+.endmacro
+
+.macro s_addobject, index
+.byte 0x55
+.halfword index
+.endmacro
+
+.macro s_addobjectat, index, map
+.byte 0x56
+.halfword index
+map map
 .endmacro
 
 .macro s_setobjectxy, index, x, y

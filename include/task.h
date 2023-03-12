@@ -1,5 +1,7 @@
 #pragma once
 
+#define NUM_TASKS 16
+
 typedef void (*TaskFunc)(u8 taskId);
 
 struct Task
@@ -12,5 +14,9 @@ struct Task
     /*0x08*/ s16 data[16];
 };
 
+extern struct Task gTasks[NUM_TASKS];
+
 u8 CreateTask(TaskFunc func, u8 priority);
 bool8 FuncIsActiveTask(TaskFunc func);
+u8 FindTaskIdByFunc(TaskFunc func);
+u8 DestroyTask(u8 taskId);

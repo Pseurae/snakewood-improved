@@ -121,5 +121,6 @@ struct WeatherCallbacks
 };
 
 void Weather_SetBlendCoeffs(u8, u8);
+void PreservePaletteInWeather(u8 preservedPalIndex);
 
 extern struct Weather *const gWeatherPtr;
