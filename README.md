@@ -26,6 +26,9 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 ## WIP
 - Fixing improper item names
 - Fixing item description overflows
+- Fixed some cutscene event movement issues
+  - In Route 101, the first zombie cutscene uses the slide movements
+  - In Verdanturf Ruins, both Alicia and Pestilence have their exit movements stop at the edge of the screen
 
 ## How to use (Mac and Linux)
 1. Install devkitPro with instructions [here](https://devkitpro.org/wiki/Getting_Started).
