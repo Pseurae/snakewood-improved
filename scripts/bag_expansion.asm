@@ -1,5 +1,6 @@
 ; Just affects the Items pocket, the other ones don't need to be changed.
 
+.if BAG_EXPANSION
 ; Repoint Item pocket storage to free space in the 2nd Saveblock
 .org 0x83c1618
 .word gExpandedItemPockets
@@ -20,3 +21,4 @@ set_nop 0x80a64d2
 set_nop 0x80a5f40
 set_nop 0x80a5386
 set_nop 0x80a6ccc
+.endif

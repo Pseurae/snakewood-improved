@@ -6,6 +6,7 @@
 .endarea
 .endmacro
 
+.if ENABLE_BUGFIXES
 fix_item_desc ITEM_TM31_ICE_PUNCH, @@IcePunch_Desc
 
 ; Description Strings
@@ -13,3 +14,4 @@ fix_item_desc ITEM_TM31_ICE_PUNCH, @@IcePunch_Desc
 @@IcePunch_Desc:
 .string "A freezing punch\nthat can leave the\nfoe frozen solid."
 .endautoregion
+.endif

@@ -5,12 +5,14 @@
 
 .loadtable "charmap.tbl"
 
-.include "include/script_fldeff.asm"
-.include "include/script_items.asm"
-.include "include/script_macros.asm"
-.include "include/script_moves.asm"
-.include "include/script_species.asm"
-.include "include/script_vars_flags.asm"
+.include "config.asm"
+
+.include "scripts/include/fldeff.asm"
+.include "scripts/include/items.asm"
+.include "scripts/include/macros.asm"
+.include "scripts/include/moves.asm"
+.include "scripts/include/species.asm"
+.include "scripts/include/vars_flags.asm"
 
 .org 0x886D1F0
 .region 0x9850

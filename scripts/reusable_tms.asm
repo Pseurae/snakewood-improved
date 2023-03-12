@@ -1,3 +1,4 @@
+.if REUSABLE_TMS
 ; Mark TMs as important
 .org 0x80a9a08
 .area 0x1C, 0xFE
@@ -16,4 +17,4 @@ ldr r3, =Menu_PrintTMHM | 1
 bx r3
 .pool
 .endarea
-
+.endif

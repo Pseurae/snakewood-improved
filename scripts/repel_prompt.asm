@@ -3,6 +3,7 @@
 ; 0x081C33EF -> "REPEL's effect wore off..."
 @EffectWoreOff equ 0x081C33EF
 
+.if REPEL_PROMPT
 .autoregion
 @RepelMain:
 s_lock
@@ -44,3 +45,4 @@ s_end
 // Call the new Repel script instead
 .org 0x808558c
 .word @RepelMain
+.endif

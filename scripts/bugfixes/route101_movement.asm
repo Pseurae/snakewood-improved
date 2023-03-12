@@ -1,5 +1,6 @@
 ; All Slide Movements to Walk Fast
 
+.if ENABLE_BUGFIXES
 .org 0x88003F1
 .byte 0x16
 .byte 0x16
@@ -21,3 +22,4 @@
 .byte 0x15
 .byte 0x15
 .byte 0x15
+.endif

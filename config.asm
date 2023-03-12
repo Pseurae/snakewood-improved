@@ -1,0 +1,9 @@
+.definelabel PS_SPLIT, 1
+.definelabel BAG_EXPANSION, 1
+.definelabel GOLBAT_SPRITE_REVERT, 1
+.definelabel REPEL_PROMPT, 1
+.definelabel ENABLE_BUGFIXES, 1
+.definelabel REUSABLE_TMS, 1
+.definelabel NEW_HM_SYSTEM, 1
+.definelabel SOFTER_TEXT_COLORS, 1
+.definelabel WRAPPING_SUMMARY, 1

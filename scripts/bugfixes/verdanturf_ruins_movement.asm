@@ -1,3 +1,4 @@
+.if ENABLE_BUGFIXES
 .autoregion
 @ExitMovement:
 .byte 0xB ; Step Right (Normal)
@@ -20,3 +21,4 @@
 
 .org 0x883710d
 .word @ExitMovement
+.endif

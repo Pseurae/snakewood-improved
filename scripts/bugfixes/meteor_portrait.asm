@@ -1,16 +1,17 @@
+.if ENABLE_BUGFIXES
 .autoregion
 @ShowDragonPortrait:
-push {r0, r1, r2, lr}
+push {r0-r2, lr}
 mov r0, #0x9
 mov r1, #0xa
 mov r2, #0x3
 bl ScriptMenu_ShowTrainerPic
-pop {r0, r1, r2, lr}
+pop {r0-r2, pc}
 
 @HideDragonPortrait:
-push {lr}
+push lr
 bl CloseTrainerPicBox
-pop {lr}
+pop pc
 .endautoregion
 
 .org 0x880EE51
@@ -126,3 +127,4 @@ s_setvar 0x5003, 0x5
 s_releaseall
 s_end
 .endarea
+.endif

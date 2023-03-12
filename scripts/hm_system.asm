@@ -1,3 +1,34 @@
+
+@CannotUseCut equ 0x81B0E32
+@DoTreeCutMovement equ 0x81B0E21
+@UsedCutRockSmashText equ 0x81B0E82
+@UseCutPromptText equ 0x81B0E3F
+@Cut_ChoseNo equ 0x81B0E3C
+@CannotUseRockSmash equ 0x81B0F3E
+@RockSmash_ChoseNo equ 0x81B0F48
+@UseRockSmashPromptText equ 0x81B0F4B
+@CannotUseRockSmashText equ 0x81B0F90
+@DoRockSmashMovement equ 0x81B0F0C
+@AlreadyUsedStrength equ 0x81B1030
+@Strength_ChoseNo equ 0x81B103A
+@CannotUseStrength equ 0x81B1026
+@UsedStrength equ 0x81B1019
+@UseStrengthPromptText equ 0x81B103D
+@Waterfall_NoMonKnows equ 0x81B1195
+@Waterfall_Done equ 0x81B119D
+@UseWaterfallPromptText equ 0x81B11D4
+@UsedWaterfallText equ 0x81B120D
+@UnderwaterCannotUseDive equ 0x81B12A7
+@UnderwaterDive_Done equ 0x81B12BE
+@CannotUseDiveText equ 0x81B12C0
+@UseDivePromptText equ 0x81B1303
+@UsedDiveText equ 0x81B1335
+@UnderwaterUseDivePromptText equ 0x81B138E
+@EventScript_EndUseSurf equ 0x81a014d
+@gText_WantToUseSurf equ 0x81a1344
+@gText_PlayerUsedSurf equ 0x81a137d
+
+.if NEW_HM_SYSTEM
 ; Replace Party Context Menu function
 .org 0x8089a8c
 ldr r3, =OpenPokemonContextMenu | 1
@@ -31,35 +62,6 @@ bx r7
 
 .org 0x8068728
 .word @EventScript_UseSurf
-
-@CannotUseCut equ 0x81B0E32
-@DoTreeCutMovement equ 0x81B0E21
-@UsedCutRockSmashText equ 0x81B0E82
-@UseCutPromptText equ 0x81B0E3F
-@Cut_ChoseNo equ 0x81B0E3C
-@CannotUseRockSmash equ 0x81B0F3E
-@RockSmash_ChoseNo equ 0x81B0F48
-@UseRockSmashPromptText equ 0x81B0F4B
-@CannotUseRockSmashText equ 0x81B0F90
-@DoRockSmashMovement equ 0x81B0F0C
-@AlreadyUsedStrength equ 0x81B1030
-@Strength_ChoseNo equ 0x81B103A
-@CannotUseStrength equ 0x81B1026
-@UsedStrength equ 0x81B1019
-@UseStrengthPromptText equ 0x81B103D
-@Waterfall_NoMonKnows equ 0x81B1195
-@Waterfall_Done equ 0x81B119D
-@UseWaterfallPromptText equ 0x81B11D4
-@UsedWaterfallText equ 0x81B120D
-@UnderwaterCannotUseDive equ 0x81B12A7
-@UnderwaterDive_Done equ 0x81B12BE
-@CannotUseDiveText equ 0x81B12C0
-@UseDivePromptText equ 0x81B1303
-@UsedDiveText equ 0x81B1335
-@UnderwaterUseDivePromptText equ 0x81B138E
-@EventScript_EndUseSurf equ 0x81a014d
-@gText_WantToUseSurf equ 0x81a1344
-@gText_PlayerUsedSurf equ 0x81a137d
 
 .autoregion
 @EventScript_CutTree:
@@ -212,3 +214,4 @@ mov r0, #0
 mov r0, #0
 bx lr
 .endarea
+.endif 
