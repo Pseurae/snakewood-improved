@@ -1,5 +1,7 @@
 #pragma once
 
+#include "types.h"
+
 void CpuFastSet(const void *src, void *dest, u32 control);
 
 #define CPU_FAST_SET_SRC_FIXED       0x01000000

@@ -54,7 +54,7 @@ void FadeScreen(u8 mode, u8 delay)
     if (fadeOut)
     {
         if (useWeatherPal)
-            CpuFastCopy(gPlttBufferFaded, gPlttBufferUnfaded, 0x200);
+            CpuFastCopy(gPlttBufferFaded, gPlttBufferUnfaded, 0x200 << 1);
 
         BeginNormalPaletteFade(0xFFFFFFFF, delay, 0, 16, fadeColor);
         gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_SCREEN_FADING_OUT;
@@ -66,6 +66,7 @@ void FadeScreen(u8 mode, u8 delay)
         if (useWeatherPal)
         {
             LoadMapTilesetPalettes(gMapHeader.mapLayout);
+            CpuFastFill(0x0, gPlttBufferFaded, 0x200 << 1);
             gWeatherPtr->fadeScreenCounter = 0;
         }
         else

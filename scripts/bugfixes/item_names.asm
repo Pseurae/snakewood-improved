@@ -10,4 +10,6 @@
 fix_item_name ITEM_AFRO_BALL, "AFRO BALL"
 fix_item_name ITEM_RIESEN, "RIESEN"
 fix_item_name ITEM_POKEPHONE, "POKéPHONE"
+fix_item_name ITEM_GATEAU, "GATEAU"
+fix_item_name ITEM_SPANNER, "SPANNER"
 .endif
