@@ -35,6 +35,7 @@
 .include "scripts/bugfixes/mauville_movement.asm"
 .include "scripts/bugfixes/meteor_portrait.asm"
 .include "scripts/bugfixes/route101_movement.asm"
+.include "scripts/bugfixes/senex_lilycove.asm"
 .include "scripts/bugfixes/shop_frame_tiles.asm"
 .include "scripts/bugfixes/ss_cangrejo.asm"
 .include "scripts/bugfixes/verdanturf_ruins_movement.asm"

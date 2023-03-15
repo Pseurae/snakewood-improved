@@ -1,6 +1,16 @@
 FALSE equ 0
 TRUE equ 1
 
+TRAINER_BATTLE_SINGLE equ 0
+TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC equ 1
+TRAINER_BATTLE_CONTINUE_SCRIPT equ 2
+TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT equ 3
+TRAINER_BATTLE_DOUBLE equ 4
+TRAINER_BATTLE_REMATCH equ 5
+TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE equ 6
+TRAINER_BATTLE_REMATCH_DOUBLE equ 7
+TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC equ 8
+
 .macro map, map_id
 .byte map_id >> 8    ; map group
 .byte map_id & 0xFF  ; map num
@@ -540,56 +550,72 @@ map map
 .halfword trainer
 .halfword local_id
 .if type == TRAINER_BATTLE_SINGLE
-    .word pointer1     .word pointer2 
+    .word pointer1     
+    .word pointer2 
 .elseif type == TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC
-    .word pointer1     .word pointer2     .word pointer3 
+    .word pointer1     
+    .word pointer2     
+    .word pointer3 
 .elseif type == TRAINER_BATTLE_CONTINUE_SCRIPT
-    .word pointer1     .word pointer2     .word pointer3 
+    .word pointer1     
+    .word pointer2     
+    .word pointer3 
 .elseif type == TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT
     .word pointer1 
 .elseif type == TRAINER_BATTLE_DOUBLE
-    .word pointer1     .word pointer2     .word pointer3 
+    .word pointer1     
+    .word pointer2     
+    .word pointer3 
 .elseif type == TRAINER_BATTLE_REMATCH
-    .word pointer1     .word pointer2 
+    .word pointer1     
+    .word pointer2 
 .elseif type == TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE
-    .word pointer1     .word pointer2     .word pointer3     .word pointer4 
+    .word pointer1     
+    .word pointer2     
+    .word pointer3     
+    .word pointer4 
 .elseif type == TRAINER_BATTLE_REMATCH_DOUBLE
-    .word pointer1     .word pointer2     .word pointer3 
+    .word pointer1     
+    .word pointer2     
+    .word pointer3 
 .elseif type == TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC
-    .word pointer1     .word pointer2     .word pointer3     .word pointer4 
+    .word pointer1     
+    .word pointer2     
+    .word pointer3     
+    .word pointer4 
 .endif
 .endmacro
 
 .macro s_trainerbattle_single, trainer, intro_text, lose_text, event_script, music
 .if event_script == FALSE
-trainerbattle TRAINER_BATTLE_SINGLE, trainer, 0, intro_text, lose_text
+s_trainerbattle TRAINER_BATTLE_SINGLE, trainer, 0, intro_text, lose_text, 0, 0
 .elseif music == TRUE
-trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT, trainer, 0, intro_text, lose_text, event_script
+s_trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT, trainer, 0, intro_text, lose_text, event_script, 0
 .else
-trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, trainer, 0, intro_text, lose_text, event_script
+s_trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, trainer, 0, intro_text, lose_text, event_script, 0
 .endif
 .endmacro
 
 .macro s_trainerbattle_double, trainer, intro_text, lose_text, not_enough_pkmn_text, event_script, music
 .if event_script == FALSE
-trainerbattle TRAINER_BATTLE_DOUBLE, trainer, 0, intro_text, lose_text, not_enough_pkmn_text
+s_trainerbattle TRAINER_BATTLE_DOUBLE, trainer, 0, intro_text, lose_text, not_enough_pkmn_text, 0
 .elseif music == TRUE
-trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE, trainer, 0, intro_text, lose_text, not_enough_pkmn_text, event_script
+s_trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE, trainer, 0, intro_text, lose_text, not_enough_pkmn_text, event_script
 .else
-trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC, trainer, 0, intro_text, lose_text, not_enough_pkmn_text, event_script
+s_trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC, trainer, 0, intro_text, lose_text, not_enough_pkmn_text, event_script
 .endif
 .endmacro
 
 .macro s_trainerbattle_rematch, trainer, intro_text, lose_text
-trainerbattle TRAINER_BATTLE_REMATCH, trainer, 0, intro_text, lose_text
+s_trainerbattle TRAINER_BATTLE_REMATCH, trainer, 0, intro_text, lose_text, 0, 0
 .endmacro
 
 .macro s_trainerbattle_rematch_double, trainer, intro_text, lose_text, not_enough_pkmn_text
-trainerbattle TRAINER_BATTLE_REMATCH_DOUBLE, trainer, 0, intro_text, lose_text, not_enough_pkmn_text
+s_trainerbattle TRAINER_BATTLE_REMATCH_DOUBLE, trainer, 0, intro_text, lose_text, not_enough_pkmn_text, 0
 .endmacro
 
 .macro s_trainerbattle_no_intro, trainer, lose_text
-trainerbattle TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT, trainer, 0, lose_text
+s_trainerbattle TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT, trainer, 0, lose_text, 0, 0, 0
 .endmacro
 
 .macro s_trainerbattlebegin

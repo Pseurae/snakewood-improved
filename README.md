@@ -25,6 +25,7 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 - Replace Golbat's sprite
 - Fix Shop's window tile corruption
 - Use any Electric moves for SS Cangrejo's elevator event
+- Avoid softlock after losing the Senex battle
 
 ## WIP
 - Fixing improper item names
