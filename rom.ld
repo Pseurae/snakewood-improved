@@ -63,6 +63,10 @@ gMonPaletteTable = 0x81ea5b4;
 gTasks = 0x3004b20;
 gSprites = 0x2020004;
 gScriptContext1 = 0x3007440;
+gMartInfo = 0x3000708;
+gMenuWindowPtr = 0x202e9c8;
+gMenuTextTileOffset = 0x202e9ce;
+gDecorations = 0x83eb6c4;
 
 gStringVar1 = 0x20231cc;
 gStringVar2 = 0x20232cc;
@@ -72,6 +76,7 @@ gStringVar4 = 0x20234cc;
 gOtherText_CancelNoTerminator = 0x840e645;
 gOtherText_OneDash = 0x840e680;
 gOtherText_TwoDashes = 0x840e682;
+gOtherText_QuitShopping = 0x840eca1;
 
 gSpecialVar_0x8004 = 0x202e8cc;
 gSpecialVar_Result = 0x202e8dc;
@@ -145,3 +150,6 @@ DestroyTask = 0x807ab74 | 1;
 Menu_DrawStdWindowFrame = 0x8071f08 | 1;
 CreateTrainerSprite = 0x80859bc | 1;
 SetupNativeScript = 0x80653dc | 1;
+Menu_BlankWindowRect = 0x8071ebc | 1;
+PrintStringWithNewlines = 0x8004fd0 | 1;
+ItemId_GetDescription = 0x80a9984 | 1;

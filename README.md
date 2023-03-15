@@ -23,6 +23,7 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 - Readable text colors
 - Fix the palette issue for Meteor's portrait
 - Replace Golbat's sprite
+- Fix Shop's window tile corruption
 
 ## WIP
 - Fixing improper item names
