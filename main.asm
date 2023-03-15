@@ -32,6 +32,7 @@
 .include "scripts/bugfixes/item_desc.asm"
 .include "scripts/bugfixes/item_names.asm"
 .include "scripts/bugfixes/littleroot_tiles.asm"
+.include "scripts/bugfixes/mauville_movement.asm"
 .include "scripts/bugfixes/meteor_portrait.asm"
 .include "scripts/bugfixes/route101_movement.asm"
 .include "scripts/bugfixes/shop_frame_tiles.asm"
