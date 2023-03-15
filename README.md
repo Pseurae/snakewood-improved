@@ -24,6 +24,7 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 - Fix the palette issue for Meteor's portrait
 - Replace Golbat's sprite
 - Fix Shop's window tile corruption
+- Use any Electric moves for SS Cangrejo's elevator event
 
 ## WIP
 - Fixing improper item names

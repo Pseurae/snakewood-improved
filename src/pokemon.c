@@ -61,3 +61,30 @@ bool8 PartyHasMonWithSurf(void)
     else
         return TRUE;
 }
+
+void CheckIfPartyHasMoveForElevator(void)
+{
+    u8 i, j;
+    gSpecialVar_Result = 6;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
+        if (!species)
+            break;
+
+        if (GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG))
+            continue;
+
+        for (j = 0; j < 4; j++)
+        {
+            u16 moveId = GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + j);
+            if (gBattleMoves[moveId].type == TYPE_ELECTRIC)
+            {
+                gSpecialVar_0x8004 = moveId;
+                gSpecialVar_Result = i;
+                break;
+            }
+        }
+    }
+}
