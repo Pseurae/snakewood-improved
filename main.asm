@@ -24,7 +24,10 @@
 
 .include "scripts/common.asm"
 
-.include "scripts/bugfixes/bright_text.asm"
+.include "scripts/bugfixes/movement/birch_chase.asm"
+.include "scripts/bugfixes/movement/chloe_entry.asm"
+.include "scripts/bugfixes/movement/pestilence_exit.asm"
+
 .include "scripts/bugfixes/diseased_egg.asm"
 .include "scripts/bugfixes/fadescreen_shade.asm"
 .include "scripts/bugfixes/field_mon_sprite.asm"
@@ -32,13 +35,11 @@
 .include "scripts/bugfixes/item_desc.asm"
 .include "scripts/bugfixes/item_names.asm"
 .include "scripts/bugfixes/littleroot_tiles.asm"
-.include "scripts/bugfixes/mauville_movement.asm"
 .include "scripts/bugfixes/meteor_portrait.asm"
-.include "scripts/bugfixes/route101_movement.asm"
 .include "scripts/bugfixes/senex_lilycove.asm"
 .include "scripts/bugfixes/shop_frame_tiles.asm"
 .include "scripts/bugfixes/ss_cangrejo.asm"
-.include "scripts/bugfixes/verdanturf_ruins_movement.asm"
+.include "scripts/bugfixes/text_colors.asm"
 
 .include "scripts/bag_expansion.asm"
 .include "scripts/hm_system.asm"
@@ -46,8 +47,5 @@
 .include "scripts/repel_prompt.asm"
 .include "scripts/reusable_tms.asm"
 .include "scripts/summary_screen.asm"
-
-// .org 0x84062f0
-// .hword 84, 20
 
 .close

@@ -1,6 +1,6 @@
 ; Nop out all the setmetatile calls for the Truck sequence
 
-.if ENABLE_BUGFIXES
+.if LITTLEROOT_TILES
 set_nop_bl 0x80c7668
 set_nop_bl 0x80c7674
 set_nop_bl 0x80c7680

@@ -1,4 +1,4 @@
-.if ENABLE_BUGFIXES
+.if EVENT_MOVEMENTS
 .autoregion
 @ExitMovement:
 .byte 0xB ; Step Right (Normal)

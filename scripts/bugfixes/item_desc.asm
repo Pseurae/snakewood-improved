@@ -6,7 +6,7 @@
 .endarea
 .endmacro
 
-.if ENABLE_BUGFIXES
+.if ITEM_DESCRIPTIONS
 fix_item_desc ITEM_TM31_ICE_PUNCH, @@IcePunch_Desc
 
 ; Description Strings

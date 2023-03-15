@@ -1,5 +1,7 @@
-.if ENABLE_BUGFIXES
+.if SHOW_METEOR_PORTRAIT
 .autoregion
+.align 2
+
 @ShowDragonPortrait:
 push {r0-r2, lr}
 mov r0, #0x9

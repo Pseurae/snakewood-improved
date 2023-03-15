@@ -1,4 +1,4 @@
-.if ENABLE_BUGFIXES
+.if ALLOW_SENEX_REMATCH
 ; Avoid softlocking the game when you lose to Senex 
 .org 0x884cb6b
 .area 0x884cc15 - 0x884cb6b, 0x0

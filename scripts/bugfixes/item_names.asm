@@ -6,7 +6,7 @@
 .endarea
 .endmacro
 
-.if ENABLE_BUGFIXES
+.if ITEM_NAMES
 fix_item_name ITEM_AFRO_BALL, "AFRO BALL"
 fix_item_name ITEM_RIESEN, "RIESEN"
 fix_item_name ITEM_POKEPHONE, "POKéPHONE"

@@ -3,7 +3,7 @@
 @UsedMove equ 0x883427D
 @StepBack equ 0x883412E
 
-.if ENABLE_BUGFIXES
+.if SS_CANGREJO_ELEVATOR
 .org 0x884FBDC
 s_releaseall
 s_end
