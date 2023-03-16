@@ -50,7 +50,7 @@ s_goto @EventScript_StrengthBoulder
 .org 0x8068798
 .word @EventScript_Dive
 
-.org 0x80687c8
+.org 0x80687d8
 .word @EventScript_DiveUnderwater
 
 .org 0x80598e0
