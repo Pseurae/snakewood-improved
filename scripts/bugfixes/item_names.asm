@@ -13,4 +13,6 @@ fix_item_name ITEM_POKEPHONE, "POKéPHONE"
 fix_item_name ITEM_GATEAU, "GATEAU"
 fix_item_name ITEM_SPANNER, "SPANNER"
 fix_item_name ITEM_SOMA, "SOMA"
+fix_item_name ITEM_COLOGNE, "COLOGNE"
+fix_item_name ITEM_SPARK_TOKEN, "SPARK TOKEN"
 .endif
