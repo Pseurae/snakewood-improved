@@ -33,6 +33,9 @@
 ; Modifies the script to prompt the use of the move, and removes the Ditto key script.
 .definelabel SS_CANGREJO_ELEVATOR, 1
 
+; Field Moves have colored options like Emerald and FRLG.
+.definelabel COLORED_FIELD_MOVES, 1
+
 ; Bugfixes
 ; --------
 
