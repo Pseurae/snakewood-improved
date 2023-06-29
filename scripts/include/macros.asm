@@ -329,70 +329,70 @@ STD_REGISTER_MATCH_CALL equ 8
 .byte speed
 .endmacro
 
-.macro s_warp, map, warp, X, Y
+.macro s_warp, map_, warp, X, Y
 .byte 0x39
-map map
+map map_
 .byte warp
 .halfword X
 .halfword Y
 .endmacro
 
-.macro s_warpsilent, map, warp, X, Y
+.macro s_warpsilent, map_, warp, X, Y
 .byte 0x3a
-map map
+map map_
 .byte warp
 .halfword X
 .halfword Y
 .endmacro
 
-.macro s_warpdoor, map, warp, X, Y
+.macro s_warpdoor, map_, warp, X, Y
 .byte 0x3b
-map map
+map map_
 .byte warp
 .halfword X
 .halfword Y
 .endmacro
 
-.macro s_warphole, map
+.macro s_warphole, map_
 .byte 0x3c
-map map
+map map_
 .endmacro
 
-.macro s_warpteleport, map, warp, X, Y
+.macro s_warpteleport, map_, warp, X, Y
 .byte 0x3d
-map map
+map map_
 .byte warp
 .halfword X
 .halfword Y
 .endmacro
 
-.macro s_setwarp, map, warp, X, Y
+.macro s_setwarp, map_, warp, X, Y
 .byte 0x3e
-map map
+map map_
 .byte warp
 .halfword X
 .halfword Y
 .endmacro
 
-.macro s_setdynamicwarp, map, warp, X, Y
+.macro s_setdynamicwarp, map_, warp, X, Y
 .byte 0x3f
-map map
+map map_
 .byte warp
 .halfword X
 .halfword Y
 .endmacro
 
-.macro s_setdivewarp, map, warp, X, Y
+.macro s_setdivewarp, map_, warp, X, Y
 .byte 0x40
-map map
+map map_
 .byte warp
 .halfword X
 .halfword Y
 .endmacro
 
-.macro s_setholewarp, map, warp, X, Y
+.macro s_setholewarp, map_, warp, X, Y
 .byte 0x41
-map map
+map map_
 .byte warp
 .halfword X
 .halfword Y
@@ -1030,17 +1030,17 @@ s_trainerbattle TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT, trainer, 0, lose_text, 0, 0
 .halfword index
 .endmacro
 
-.macro s_setobjectpriority, index, map, priority
+.macro s_setobjectpriority, index, map_, priority
 .byte 0xa8
 .halfword index
-map map
+map map_
 .byte priority
 .endmacro
 
-.macro s_resetobjectpriority, index, map
+.macro s_resetobjectpriority, index, map_
 .byte 0xa9
 .halfword index
-map map
+map map_
 .endmacro
 
 .macro s_createvobject, sprite, byte2, x, y, elevation, direction
@@ -1187,9 +1187,9 @@ map map
 .byte stat
 .endmacro
 
-.macro s_setescapewarp, map, warp, x, y
+.macro s_setescapewarp, map_, warp, x, y
 .byte 0xc4
-map map
+map map_
 .byte warp
 .halfword x
 .halfword y

@@ -37,6 +37,7 @@
 .include "scripts/bugfixes/item_names.asm"
 .include "scripts/bugfixes/littleroot_tiles.asm"
 .include "scripts/bugfixes/meteor_portrait.asm"
+.include "scripts/bugfixes/necropolis_respawn.asm"
 .include "scripts/bugfixes/senex_lilycove.asm"
 .include "scripts/bugfixes/shop_frame_tiles.asm"
 .include "scripts/bugfixes/ss_cangrejo.asm"

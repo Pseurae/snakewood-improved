@@ -69,7 +69,7 @@
 .definelabel ALLOW_SENEX_REMATCH, 1
 
 ; Shop menus opened outside the PokeMart have the border tiles of the money box get erased on scrolling.
-; Enabling this fixes the issue.
+; Enable this to fix the issue.
 .definelabel SHOP_MONEYBOX_FIX, 1
 
 ; Fix event movements.
@@ -77,3 +77,8 @@
 
 ; Enable this to display the Meteor battle sprite instead of the gross glitched out Charizard in Granite Caves.
 .definelabel SHOW_METEOR_PORTRAIT, 1
+
+; If you are defeated in battle in Necropolis and hadn't used the Center in the Sootopolis before heading out,
+; you're forced to make your way back as you use Fly to get there.
+; Enable this to explicitly set a respawn point in Sootopolis City when heading off to Sootopolis Heights.
+.definelabel NECROPOLIS_RESPAWN, 1 

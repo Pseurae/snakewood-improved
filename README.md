@@ -29,6 +29,7 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 - Disease type removal
 - Type icons reverted to default Ruby ones
 - Emerald style Save Prompt
+- Set respawn point in Sootopolis City before heading to Sootopolis Heights
 
 ## WIP
 - Fixing improper item names
