@@ -5,6 +5,8 @@
 .endarea
 .endmacro
 
+@OptionColor equ 0x4
+
 .if COLORED_FIELD_MOVES
 set_pokemenu_action_string 10, @Cut
 set_pokemenu_action_string 11, @Flash
@@ -23,59 +25,59 @@ set_pokemenu_action_string 23, @SweetScent
 
 .autoregion
 @Cut:
-.byte 0xFC, 0x01, 0x06
+.byte 0xFC, 0x01, @OptionColor
 .string "CUT"
 
 @Flash:
-.byte 0xFC, 0x01, 0x06
+.byte 0xFC, 0x01, @OptionColor
 .string "FLASH"
 
 @RockSmash:
-.byte 0xFC, 0x01, 0x06
+.byte 0xFC, 0x01, @OptionColor
 .string "ROCK SMASH"
 
 @Strength:
-.byte 0xFC, 0x01, 0x06
+.byte 0xFC, 0x01, @OptionColor
 .string "STRENGTH"
 
 @Surf:
-.byte 0xFC, 0x01, 0x06
+.byte 0xFC, 0x01, @OptionColor
 .string "SURF"
 
 @Fly:
-.byte 0xFC, 0x01, 0x06
+.byte 0xFC, 0x01, @OptionColor
 .string "FLY"
 
 @Dive:
-.byte 0xFC, 0x01, 0x06
+.byte 0xFC, 0x01, @OptionColor
 .string "DIVE"
 
 @Waterfall:
-.byte 0xFC, 0x01, 0x06
+.byte 0xFC, 0x01, @OptionColor
 .string "WATERFALL"
 
 @Teleport:
-.byte 0xFC, 0x01, 0x06
+.byte 0xFC, 0x01, @OptionColor
 .string "TELEPORT"
 
 @Dig:
-.byte 0xFC, 0x01, 0x06
+.byte 0xFC, 0x01, @OptionColor
 .string "DIG"
 
 @SecretPower:
-.byte 0xFC, 0x01, 0x06
+.byte 0xFC, 0x01, @OptionColor
 .string "SECRET POWER"
 
 @MilkDrink:
-.byte 0xFC, 0x01, 0x06
+.byte 0xFC, 0x01, @OptionColor
 .string "MILK DRINK"
 
 @SoftBoiled:
-.byte 0xFC, 0x01, 0x06
+.byte 0xFC, 0x01, @OptionColor
 .string "SOFTBOILED"
 
 @SweetScent:
-.byte 0xFC, 0x01, 0x06
+.byte 0xFC, 0x01, @OptionColor
 .string "SWEET SCENT"
 .endautoregion
 
