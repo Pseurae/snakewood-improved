@@ -14,7 +14,7 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 - Repel Reuse Prompts
 - Wrapping Summary Screens
 - Bag Expansion
-- HMs Usage without sacrificing a move slot
+- HM Usage without sacrificing move slots
 
 > The following lists may contain spoilers.
 
@@ -64,3 +64,7 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 4. Run `make`.
 
 A `output.gba` will be created as your patched file.
+
+## Credits
+Cutlerine and the Snakewood Team for creating Pokemon Snakewood.  
+PRET for their [decompilation of Pokemon Ruby](https://github.com/pret/pokeruby).
