@@ -17,7 +17,6 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 - HMs Usage without sacrificing a move slot
 
 ## Bugfixes / Changes
-- Eggs show up as Disease types in the summary screen
 - Tile corruption in Littleroot Town on spawn
 - Darkening of tiles after a screen fade in
 - Readable text colors
@@ -27,6 +26,8 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 - Use any Electric moves for SS Cangrejo's elevator event
 - Avoid softlock after losing the Senex battle
 - Field Moves have colored text in the Party Menu
+- Disease type removal
+- Type icons reverted to default Ruby ones
 
 ## WIP
 - Fixing improper item names

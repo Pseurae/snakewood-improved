@@ -11,6 +11,7 @@
 #include "constants/items.h"
 #include "constants/move_effects.h"
 #include "constants/moves.h"
+#include "constants/pokemon.h"
 #include "constants/species.h"
 
 #define APPLY_STAT_MOD(var, mon, stat, statIndex)                                                                      \

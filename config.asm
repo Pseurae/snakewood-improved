@@ -56,9 +56,9 @@
 ; Fix the overflowing of Item descriptions in the description box.
 .definelabel ITEM_DESCRIPTIONS, 1
 
-; Eggs are show to be "Disease" type than "???".
-; This disables the type icon to be printed for eggs.
-.definelabel DISEASE_TYPE_EGGS, 1
+; Replace the fucked up type icons with default ones and
+; remove the "Disease" type.
+.definelabel FIX_POKEMON_TYPES, 1
 
 ; When you lose your first match with Senex in the Dept. Store, the game gets
 ; softlocked as you lose the chance to retrieve HM08 (Dive).

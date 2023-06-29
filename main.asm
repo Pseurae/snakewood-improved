@@ -12,6 +12,7 @@
 .include "scripts/include/macros.asm"
 .include "scripts/include/moves.asm"
 .include "scripts/include/species.asm"
+.include "scripts/include/types.asm"
 .include "scripts/include/vars_flags.asm"
 
 .org 0x886D1F0
@@ -28,9 +29,9 @@
 .include "scripts/bugfixes/movement/chloe_entry.asm"
 .include "scripts/bugfixes/movement/pestilence_exit.asm"
 
-.include "scripts/bugfixes/diseased_egg.asm"
 .include "scripts/bugfixes/fadescreen_shade.asm"
 .include "scripts/bugfixes/field_mon_sprite.asm"
+.include "scripts/bugfixes/fix_poke_types.asm"
 .include "scripts/bugfixes/golbat_gfx.asm"
 .include "scripts/bugfixes/item_desc.asm"
 .include "scripts/bugfixes/item_names.asm"

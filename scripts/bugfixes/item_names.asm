@@ -15,4 +15,5 @@ fix_item_name ITEM_SPANNER, "SPANNER"
 fix_item_name ITEM_SOMA, "SOMA"
 fix_item_name ITEM_COLOGNE, "COLOGNE"
 fix_item_name ITEM_SPARK_TOKEN, "SPARK TOKEN"
+fix_item_name ITEM_ELECTRICHONEY, "E.HONEY"
 .endif

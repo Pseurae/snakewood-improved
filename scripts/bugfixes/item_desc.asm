@@ -16,8 +16,13 @@
 @TM31_IcePunch_DescEnd equ 0x83c4fdb
 @TM31_IcePunch_Size equ (@TM31_IcePunch_DescEnd - @TM31_IcePunch_Desc)
 
+@Chikuwa_Desc equ 0x83c268f
+@Chikuwa_DescEnd equ 0x83c26c1
+@Chikuwa_Size equ (@Chikuwa_DescEnd - @Chikuwa_Desc)
+
 .if ITEM_DESCRIPTIONS
 replace_item_desc @TM31_IcePunch_Desc, @TM31_IcePunch_Size, "A freezing punch\nthat can leave the\nfoe frozen solid."
+replace_item_desc @Chikuwa_Desc, @Chikuwa_Size, "A tubular snack\nthat heals all\nstatus problems."
 repoint_item_desc ITEM_MAGIC_STARS, @MagicStars_Desc
 
 .autoregion
