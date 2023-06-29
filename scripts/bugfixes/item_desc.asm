@@ -18,10 +18,10 @@
 
 .if ITEM_DESCRIPTIONS
 replace_item_desc @TM31_IcePunch_Desc, @TM31_IcePunch_Size, "A freezing punch\nthat can leave the\nfoe frozen solid."
-repoint_item_desc ITEM_MAGIC_STARS, @@MagicStars_Desc
+repoint_item_desc ITEM_MAGIC_STARS, @MagicStars_Desc
 
 .autoregion
-@@MagicStars_Desc:
+@MagicStars_Desc:
 .string "Chocolate stars\nwith faces. Raise\nSPEED."
 .endautoregion
 .endif
