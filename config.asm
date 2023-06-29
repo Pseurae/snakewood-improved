@@ -36,6 +36,9 @@
 ; Field Moves have colored options like Emerald and FRLG.
 .definelabel COLORED_FIELD_MOVES, 1
 
+; Implement an Emerald Style Save Prompt with colored fields.
+.definelabel EMERALD_SAVE_PROMPT, 1
+
 ; Bugfixes
 ; --------
 

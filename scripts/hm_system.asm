@@ -1,4 +1,3 @@
-
 @CannotUseCut equ 0x81B0E32
 @DoTreeCutMovement equ 0x81B0E21
 @UsedCutRockSmashText equ 0x81B0E82

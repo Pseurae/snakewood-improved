@@ -28,6 +28,7 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 - Field Moves have colored text in the Party Menu
 - Disease type removal
 - Type icons reverted to default Ruby ones
+- Emerald style Save Prompt
 
 ## WIP
 - Fixing improper item names

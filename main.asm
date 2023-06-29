@@ -44,6 +44,7 @@
 
 .include "scripts/bag_expansion.asm"
 .include "scripts/colored_field_moves.asm"
+.include "scripts/emerald_save_prompt.asm"
 .include "scripts/hm_system.asm"
 .include "scripts/ps_split.asm"
 .include "scripts/repel_prompt.asm"

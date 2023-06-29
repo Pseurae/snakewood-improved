@@ -40,11 +40,11 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     u16 attack, defense;
     u16 spAttack, spDefense;
     u8 defenderHoldEffect;
-    u8 defenderHoldEffectParam;
+    // u8 defenderHoldEffectParam;
     u8 attackerHoldEffect;
     u8 attackerHoldEffectParam;
 
-    (void)defenderHoldEffectParam;
+    // (void)defenderHoldEffectParam;
 
     if (!powerOverride)
         gBattleMovePower = gBattleMoves[move].power;
@@ -75,12 +75,12 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     if (defender->item == ITEM_ENIGMA_BERRY)
     {
         defenderHoldEffect = gEnigmaBerries[bankDef].holdEffect;
-        defenderHoldEffectParam = gEnigmaBerries[bankDef].holdEffectParam;
+        // defenderHoldEffectParam = gEnigmaBerries[bankDef].holdEffectParam;
     }
     else
     {
         defenderHoldEffect = ItemId_GetHoldEffect(defender->item);
-        defenderHoldEffectParam = ItemId_GetHoldEffectParam(defender->item);
+        // defenderHoldEffectParam = ItemId_GetHoldEffectParam(defender->item);
     }
 
     if (attacker->ability == ABILITY_HUGE_POWER || attacker->ability == ABILITY_PURE_POWER)
@@ -176,18 +176,15 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
                 damage /= 2;
         }
 
-        if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && gBattleMoves[move].target == 8 && CountAliveMons(2) == 2)
-            damage /= 2;
-
         // moves always do at least 1 damage.
         if (damage == 0)
             damage = 1;
     }
 
-    if (IS_MOVE_STATUS(move))
+    else if (IS_MOVE_STATUS(move))
         damage = 0; // is ??? type. does 0 damage.
 
-    if (IS_MOVE_SPECIAL(move))
+    else if (IS_MOVE_SPECIAL(move))
     {
         if (gCritMultiplier == 2)
         {
@@ -222,10 +219,10 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
             else
                 damage /= 2;
         }
-
-        if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && gBattleMoves[move].target == 8 && CountAliveMons(2) == 2)
-            damage /= 2;
     }
+
+    if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && gBattleMoves[move].target == 8 && CountAliveMons(2) == 2)
+        damage /= 2;
 
     // are effects of weather negated with cloud nine or air lock
     if (!AbilityBattleEffects(ABILITYEFFECT_FIELD_SPORT, 0, ABILITY_CLOUD_NINE, 0, 0) &&

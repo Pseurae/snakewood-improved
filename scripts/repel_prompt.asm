@@ -42,7 +42,7 @@ s_end
 .string "[player] used\n[buffer1]."
 .endautoregion
 
-// Call the new Repel script instead
+; Call the new Repel script instead
 .org 0x808558c
 .word @RepelMain
 .endif
