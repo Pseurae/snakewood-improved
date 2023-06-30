@@ -25,9 +25,4 @@ bx r7
 .org 0x81D9C46
 .byte 0x3
 .word FldEff_Shadow_ | 1 
-
-.org 0x806425c
-ldr r7, =(FilterOutDisabledCoveringGroundEffects | 1)
-bx r7
-.pool
 .endif

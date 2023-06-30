@@ -127,21 +127,3 @@ void GetAllGroundEffectFlags_OnFinishStep(struct ObjectEvent *objEvent, u32 *fla
     GetGroundEffectFlags_JumpLanding(objEvent, flags);
     GetGroundEffectFlags_Shadow(objEvent, flags);
 }
-
-void FilterOutDisabledCoveringGroundEffects(struct ObjectEvent *objEvent, u32 *flags)
-{
-    if (objEvent->disableCoveringGroundEffects)
-    {
-        objEvent->inShortGrass = 0;
-        objEvent->inSandPile = 0;
-        objEvent->inShallowFlowingWater = 0;
-        objEvent->inHotSprings = 0;
-        objEvent->hasShadow = 0;
-        *flags &= ~(GROUND_EFFECT_FLAG_HOT_SPRINGS
-                  | GROUND_EFFECT_FLAG_SHORT_GRASS
-                  | GROUND_EFFECT_FLAG_SAND_PILE
-                  | GROUND_EFFECT_FLAG_SHALLOW_FLOWING_WATER
-                  | GROUND_EFFECT_FLAG_TALL_GRASS_ON_MOVE
-                  | GROUND_EFFECT_FLAG_SHADOW);
-    }
-}
