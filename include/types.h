@@ -22,6 +22,18 @@ typedef u8 bool8;
 typedef u16 bool16;
 typedef u32 bool32;
 
+struct Coords16
+{
+    s16 x;
+    s16 y;
+};
+
+struct UCoords16
+{
+    u16 x;
+    u16 y;
+};
+
 #define PACKED __attribute__((packed))
 #define NAKED  __attribute__((naked))
 
@@ -31,3 +43,5 @@ typedef void (*MainCallback)(void);
 #define FALSE 0
 
 #define NULL  0x0
+
+#define ARRAY_COUNT(array) (sizeof(array) / sizeof((array)[0]))

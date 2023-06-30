@@ -15,6 +15,7 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 - Wrapping Summary Screens
 - Bag Expansion
 - HM Usage without sacrificing move slots
+- Alpha-Blended Shadows like HGSS
 
 > The following lists may contain spoilers.
 

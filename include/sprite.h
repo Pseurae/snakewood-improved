@@ -1,5 +1,7 @@
 #pragma once
 
+#define MAX_SPRITES 64
+
 struct SpriteTemplate
 {
     u16 tileTag;
@@ -88,5 +90,6 @@ extern struct SpriteTemplate gCreatingSpriteTemplate;
 
 u8 IndexOfSpritePaletteTag(u16 tag);
 u8 CreateSprite(const void *template, s16 x, s16 y, u8 subpriority);
+u8 CreateSpriteAtEnd(const void *template, s16 x, s16 y, u8 subpriority);
 void SpriteCallbackDummy(struct Sprite *sprite);
 void FreeResourcesAndDestroySprite(struct Sprite *sprite);

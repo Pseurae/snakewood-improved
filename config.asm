@@ -82,3 +82,6 @@
 ; you're forced to make your way back as you use Fly to get there.
 ; Enable this to explicitly set a respawn point in Sootopolis City when heading off to Sootopolis Heights.
 .definelabel NECROPOLIS_RESPAWN, 1 
+
+; Enable this to have shadows on NPCs like in HGSS.
+.definelabel OW_EVENT_SHADOWS, 1
