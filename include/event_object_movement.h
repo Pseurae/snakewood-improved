@@ -46,6 +46,15 @@ u8 GetObjectEventIdByLocalIdAndMap(u8, u8, u8);
 const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u8);
 bool8 TryGetObjectEventIdByLocalIdAndMap(u8, u8, u8, u8 *);
 void DoShadowFieldEffect(struct ObjectEvent *);
+bool8 ObjectEventIsMovementOverridden(struct ObjectEvent *);
+u8 ObjectEventClearHeldMovementIfFinished(struct ObjectEvent *);
+void CameraObjectReset2(void);
+void SetSurfBlob_BobState(u8, u8);
+u8 GetPlayerAvatarGraphicsIdByStateId(u8);
+void ObjectEventSetGraphicsId(struct ObjectEvent *, u8);
+void ObjectEventTurn(struct ObjectEvent *, u8);
+void ObjectEventGetLocalIdAndMap(struct ObjectEvent *, void *, void *, void *);
+void ObjectEventClearHeldMovementIfActive(struct ObjectEvent *);
 
 #define GROUND_EFFECT_FLAG_TALL_GRASS_ON_SPAWN   (1 << 0)
 #define GROUND_EFFECT_FLAG_TALL_GRASS_ON_MOVE    (1 << 1)

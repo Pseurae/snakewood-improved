@@ -4,6 +4,7 @@
 #include "sprite.h"
 #include "field_weather.h"
 #include "metatile_behavior.h"
+#include "field_effect_helpers.h"
 #include "constants/field_effects.h"
 #include "constants/weather.h"
 #include "constants/gba.h"
@@ -41,6 +42,7 @@ static bool8 IsSuitableWeatherForShadow(void)
         case WEATHER_NONE:
         case WEATHER_SUNNY:
         case WEATHER_SHADE:
+        case WEATHER_CLOUDS:
             return TRUE;
     }
 
@@ -74,8 +76,9 @@ static void GetGroundEffectFlags_Shadow(struct ObjectEvent *objEvent, u32 *flags
 void GroundEffect_Shadow(struct ObjectEvent *objEvent, struct Sprite *sprite)
 {
     (void)sprite;
-    StartFieldEffectForObjectEvent(FLDEFF_SHADOW, objEvent);
-    REG_BLDALPHA = BLDALPHA_BLEND(7, 13);
+    // StartFieldEffectForObjectEvent(FLDEFF_SHADOW, objEvent);
+    ObjectEventGetLocalIdAndMap(objEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    FldEff_Shadow_();
 }
 
 void StartTriggeredGroundEffects(struct ObjectEvent *objEvent, struct Sprite *sprite, u32 flags)

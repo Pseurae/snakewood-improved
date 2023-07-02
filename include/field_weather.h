@@ -121,6 +121,9 @@ struct WeatherCallbacks
 };
 
 void Weather_SetBlendCoeffs(u8, u8);
+void SetRainStrengthFromSoundEffect(u16 soundEffect);
 void PreservePaletteInWeather(u8 preservedPalIndex);
 
+extern const struct WeatherCallbacks gWeatherFuncs[];
 extern struct Weather *const gWeatherPtr;
+extern void (*const gWeatherPalStateFuncs[4])(void);

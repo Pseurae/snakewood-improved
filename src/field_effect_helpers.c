@@ -6,7 +6,19 @@
 #include "fieldmap.h"
 #include "constants/field_effects.h"
 
-void UpdateShadowFieldEffect(struct Sprite *sprite);
+// TODO: Replace this function with a proper one
+void UpdateShadowFieldEffect_(struct Sprite *sprite)
+{
+    u8 objectEventId;
+    UpdateShadowFieldEffect(sprite);
+
+    if (!TryGetObjectEventIdByLocalIdAndMap(sprite->data[0], sprite->data[1], sprite->data[2], &objectEventId))
+    {
+        struct ObjectEvent *objectEvent = &gObjectEvents[objectEventId];
+        struct Sprite *linkedSprite = &gSprites[objectEvent->spriteId];
+        sprite->invisible = linkedSprite->invisible;
+    }
+}
 
 u32 FldEff_Shadow_(void)
 {

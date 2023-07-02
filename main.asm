@@ -15,7 +15,11 @@
 .include "scripts/include/types.asm"
 .include "scripts/include/vars_flags.asm"
 
-.org 0x886D1F0
+.org 0x8729e20
+.region 0xaca0
+.endregion
+
+.org 0x886d1f0
 .region 0x9850
 .endregion
 
