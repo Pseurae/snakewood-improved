@@ -91,7 +91,7 @@ gOtherText_Badges = 0x842c98a;
 gOtherText_Pokedex = 0x842c992;
 gOtherText_PlayTime = 0x842c99a;
 gWeatherFuncs = 0x8396fc8;
-gWeatherPalStateFuncs = 0x83970b8 | 1;
+gWeatherPalStateFuncs = 0x83970b8;
 
 gSpecialVar_0x8004 = 0x202e8cc;
 gSpecialVar_Result = 0x202e8dc;
