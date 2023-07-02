@@ -38,6 +38,7 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 - Use any Electric moves for SS Cangrejo's elevator event
 - Avoid softlock after losing the Senex battle
 - Set respawn point in Sootopolis City before heading to Sootopolis Heights
+- Hard Disk Solo is obtained without having to catch Roclobster
 
 </details>
 

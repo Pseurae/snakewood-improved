@@ -39,6 +39,9 @@
 ; Implement an Emerald Style Save Prompt with colored fields.
 .definelabel EMERALD_SAVE_PROMPT, 1
 
+; Enable this to have shadows on NPCs like in HGSS.
+.definelabel OW_EVENT_SHADOWS, 1
+
 ; Bugfixes
 ; --------
 
@@ -83,5 +86,7 @@
 ; Enable this to explicitly set a respawn point in Sootopolis City when heading off to Sootopolis Heights.
 .definelabel NECROPOLIS_RESPAWN, 1 
 
-; Enable this to have shadows on NPCs like in HGSS.
-.definelabel OW_EVENT_SHADOWS, 1
+; If you don't catch Roclobster from the dive spot in Dewford, you can't
+; legally obtain the "Hard Disk Solo" and thus, cannot visit the Gym Island.
+; Enable this to receive the item after the Roclobster battle.
+.definelabel NEW_ROCLOBSTER_SCRIPT, 1
