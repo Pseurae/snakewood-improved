@@ -1,4 +1,4 @@
-.macro set_pokemenu_action_string, i, p
+.macro @set_pokemenu_action_string, i, p
 .org 0x839f494 + (8 * i)
 .area 0x4, 0x0
 .word p
@@ -8,20 +8,20 @@
 @OptionColor equ 0x4
 
 .if COLORED_FIELD_MOVES
-set_pokemenu_action_string 10, @Cut
-set_pokemenu_action_string 11, @Flash
-set_pokemenu_action_string 12, @RockSmash
-set_pokemenu_action_string 13, @Surf
-set_pokemenu_action_string 14, @Strength
-set_pokemenu_action_string 15, @Fly
-set_pokemenu_action_string 16, @Dive
-set_pokemenu_action_string 17, @Waterfall
-set_pokemenu_action_string 18, @Teleport
-set_pokemenu_action_string 19, @Dig
-set_pokemenu_action_string 20, @SecretPower
-set_pokemenu_action_string 21, @MilkDrink
-set_pokemenu_action_string 22, @SoftBoiled
-set_pokemenu_action_string 23, @SweetScent
+@set_pokemenu_action_string 10, @Cut
+@set_pokemenu_action_string 11, @Flash
+@set_pokemenu_action_string 12, @RockSmash
+@set_pokemenu_action_string 13, @Surf
+@set_pokemenu_action_string 14, @Strength
+@set_pokemenu_action_string 15, @Fly
+@set_pokemenu_action_string 16, @Dive
+@set_pokemenu_action_string 17, @Waterfall
+@set_pokemenu_action_string 18, @Teleport
+@set_pokemenu_action_string 19, @Dig
+@set_pokemenu_action_string 20, @SecretPower
+@set_pokemenu_action_string 21, @MilkDrink
+@set_pokemenu_action_string 22, @SoftBoiled
+@set_pokemenu_action_string 23, @SweetScent
 
 .autoregion
 @Cut:

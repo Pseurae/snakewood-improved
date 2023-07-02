@@ -1,5 +1,7 @@
 #pragma once
 
+#include "sprite.h"
+
 extern const u16 gShadowVerticalOffsets[4];
 extern const void *const gFieldEffectObjectTemplatePointers[];
 extern const u8 gShadowEffectTemplateIds[];

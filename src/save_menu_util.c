@@ -1,8 +1,8 @@
 #include "types.h"
-#include "menu.h"
-#include "string_util.h"
-#include "save_time_util.h"
 #include "fieldmap.h"
+#include "menu.h"
+#include "save_time_util.h"
+#include "string_util.h"
 #include "text.h"
 
 void PrintSavePlayerName(s16 x, s16 y)

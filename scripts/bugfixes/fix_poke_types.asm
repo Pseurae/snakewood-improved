@@ -1,10 +1,3 @@
-.macro replace_poke_types, i, t1, t2
-.org 0x81fec18 + (0x1c * i) + 6
-.area 0x2, 0x0
-.byte t1, t2
-.endarea
-.endmacro
-
 .if FIX_POKEMON_TYPES
 
 ; Replace type icons with default ones.

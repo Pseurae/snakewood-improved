@@ -24,8 +24,8 @@
     ({                                                                                                                 \
         if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_BATTLE_TOWER | BATTLE_TYPE_EREADER_TRAINER)))         \
         {                                                                                                              \
-            if ((gBattleTypeFlags & BATTLE_TYPE_TRAINER) && gTrainerBattleOpponent != SECRET_BASE_OPPONENT &&          \
-                FlagGet(FLAG_BADGE0##badge##_GET) && GetBattlerSide(bank) == B_SIDE_PLAYER)                            \
+            if ((gBattleTypeFlags & BATTLE_TYPE_TRAINER) && gTrainerBattleOpponent != SECRET_BASE_OPPONENT             \
+                && FlagGet(FLAG_BADGE0##badge##_GET) && GetBattlerSide(bank) == B_SIDE_PLAYER)                         \
                 (stat) = (110 * (stat)) / 100;                                                                         \
         }                                                                                                              \
     })
@@ -107,8 +107,8 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         spAttack *= 2;
     if (defenderHoldEffect == HOLD_EFFECT_METAL_POWDER && defender->species == SPECIES_DITTO)
         defense *= 2;
-    if (attackerHoldEffect == HOLD_EFFECT_THICK_CLUB &&
-        (attacker->species == SPECIES_CUBONE || attacker->species == SPECIES_MAROWAK))
+    if (attackerHoldEffect == HOLD_EFFECT_THICK_CLUB
+        && (attacker->species == SPECIES_CUBONE || attacker->species == SPECIES_MAROWAK))
         attack *= 2;
     if (defender->ability == ABILITY_THICK_FAT && (type == TYPE_FIRE || type == TYPE_ICE))
         gBattleMovePower /= 2;
@@ -225,8 +225,8 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         damage /= 2;
 
     // are effects of weather negated with cloud nine or air lock
-    if (!AbilityBattleEffects(ABILITYEFFECT_FIELD_SPORT, 0, ABILITY_CLOUD_NINE, 0, 0) &&
-        !AbilityBattleEffects(ABILITYEFFECT_FIELD_SPORT, 0, ABILITY_AIR_LOCK, 0, 0))
+    if (!AbilityBattleEffects(ABILITYEFFECT_FIELD_SPORT, 0, ABILITY_CLOUD_NINE, 0, 0)
+        && !AbilityBattleEffects(ABILITYEFFECT_FIELD_SPORT, 0, ABILITY_AIR_LOCK, 0, 0))
     {
         if (gBattleWeather & WEATHER_RAIN_TEMPORARY)
         {
@@ -242,8 +242,8 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         }
 
         // any weather except sun weakens solar beam
-        if ((gBattleWeather & (WEATHER_RAIN_ANY | WEATHER_SANDSTORM_ANY | WEATHER_HAIL)) &&
-            gCurrentMove == MOVE_SOLAR_BEAM)
+        if ((gBattleWeather & (WEATHER_RAIN_ANY | WEATHER_SANDSTORM_ANY | WEATHER_HAIL))
+            && gCurrentMove == MOVE_SOLAR_BEAM)
             damage /= 2;
 
         // sunny

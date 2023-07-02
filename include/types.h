@@ -39,9 +39,9 @@ struct UCoords16
 
 typedef void (*MainCallback)(void);
 
-#define TRUE  1
-#define FALSE 0
+#define TRUE               1
+#define FALSE              0
 
-#define NULL  0x0
+#define NULL               0x0
 
 #define ARRAY_COUNT(array) (sizeof(array) / sizeof((array)[0]))

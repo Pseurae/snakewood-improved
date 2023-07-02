@@ -13,8 +13,8 @@ bool8 CheckIfMonCanUseHM(struct Pokemon *mon, u16 hm)
     if (!species || species == SPECIES_EGG)
         return FALSE;
 
-    if ((CheckBagHasItem(hm, 1) && CanMonLearnTMHM(mon, hm - ITEM_TM01_FOCUS_PUNCH)) ||
-        (MonKnowsMove(mon, ItemIdToBattleMoveId(hm)) == TRUE))
+    if ((CheckBagHasItem(hm, 1) && CanMonLearnTMHM(mon, hm - ITEM_TM01_FOCUS_PUNCH))
+        || (MonKnowsMove(mon, ItemIdToBattleMoveId(hm)) == TRUE))
         return TRUE;
 
     return FALSE;
@@ -39,8 +39,8 @@ bool8 CheckIfPartyCanUseHM(void)
         if (!species || species == SPECIES_EGG)
             return FALSE;
 
-        if ((CanMonLearnTMHM(&gPlayerParty[i], tm - ITEM_TM01_FOCUS_PUNCH)) ||
-            (MonKnowsMove(&gPlayerParty[i], ItemIdToBattleMoveId(tm)) == TRUE))
+        if ((CanMonLearnTMHM(&gPlayerParty[i], tm - ITEM_TM01_FOCUS_PUNCH))
+            || (MonKnowsMove(&gPlayerParty[i], ItemIdToBattleMoveId(tm)) == TRUE))
         {
             gSpecialVar_Result = i;
             gSpecialVar_0x8004 = species;

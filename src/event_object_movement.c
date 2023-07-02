@@ -1,13 +1,13 @@
 #include "types.h"
 #include "event_object_movement.h"
-#include "fieldmap.h"
-#include "sprite.h"
-#include "field_weather.h"
-#include "metatile_behavior.h"
 #include "field_effect_helpers.h"
+#include "field_weather.h"
+#include "fieldmap.h"
+#include "metatile_behavior.h"
+#include "sprite.h"
 #include "constants/field_effects.h"
-#include "constants/weather.h"
 #include "constants/gba.h"
+#include "constants/weather.h"
 
 static bool8 IsSuitableWeatherForShadow(void);
 
@@ -32,18 +32,18 @@ void (*const sGroundEffectFuncs[])(struct ObjectEvent *objEvent, struct Sprite *
     GroundEffect_ShortGrass,
     GroundEffect_HotSprings,
     GroundEffect_Seaweed,
-    GroundEffect_Shadow
+    GroundEffect_Shadow,
 };
 
 static bool8 IsSuitableWeatherForShadow(void)
 {
     switch (gWeatherPtr->currWeather)
     {
-        case WEATHER_NONE:
-        case WEATHER_SUNNY:
-        case WEATHER_SHADE:
-        case WEATHER_CLOUDS:
-            return TRUE;
+    case WEATHER_NONE:
+    case WEATHER_SUNNY:
+    case WEATHER_SHADE:
+    case WEATHER_CLOUDS:
+        return TRUE;
     }
 
     return FALSE;
@@ -51,15 +51,13 @@ static bool8 IsSuitableWeatherForShadow(void)
 
 static void GetGroundEffectFlags_Shadow(struct ObjectEvent *objEvent, u32 *flags)
 {
-    if (!IsSuitableWeatherForShadow() 
-        || MetatileBehavior_IsPokeGrass(objEvent->currentMetatileBehavior) 
+    if (!IsSuitableWeatherForShadow() || MetatileBehavior_IsPokeGrass(objEvent->currentMetatileBehavior)
         || MetatileBehavior_IsSurfableWaterOrUnderwater(objEvent->currentMetatileBehavior)
         || MetatileBehavior_IsSurfableWaterOrUnderwater(objEvent->previousMetatileBehavior)
         || MetatileBehavior_IsReflective(objEvent->currentMetatileBehavior)
         || MetatileBehavior_IsReflective(objEvent->previousMetatileBehavior)
-        || MetatileBehavior_IsPuddle(objEvent->currentMetatileBehavior)
-        || objEvent->inSandPile || objEvent->inHotSprings || objEvent->inShallowFlowingWater
-        || objEvent->inanimate)
+        || MetatileBehavior_IsPuddle(objEvent->currentMetatileBehavior) || objEvent->inSandPile
+        || objEvent->inHotSprings || objEvent->inShallowFlowingWater || objEvent->inanimate)
     {
         objEvent->hasShadow = FALSE;
     }
@@ -77,7 +75,8 @@ void GroundEffect_Shadow(struct ObjectEvent *objEvent, struct Sprite *sprite)
 {
     (void)sprite;
     // StartFieldEffectForObjectEvent(FLDEFF_SHADOW, objEvent);
-    ObjectEventGetLocalIdAndMap(objEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    ObjectEventGetLocalIdAndMap(
+        objEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
     FldEff_Shadow_();
 }
 

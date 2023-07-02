@@ -1,7 +1,3 @@
-.macro gba_color, rv, gv, bv
-.halfword (rv | (gv << 5) | (bv << 10))
-.endmacro
-
 .if SOFTER_TEXT_COLORS
 .org 0x81e66b2
 .area 0x20

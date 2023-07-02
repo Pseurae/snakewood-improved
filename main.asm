@@ -9,8 +9,8 @@
 
 .include "scripts/include/fldeff.asm"
 .include "scripts/include/items.asm"
-.include "scripts/include/macros.asm"
 .include "scripts/include/moves.asm"
+.include "scripts/include/scripts.asm"
 .include "scripts/include/species.asm"
 .include "scripts/include/types.asm"
 .include "scripts/include/vars_flags.asm"
@@ -27,7 +27,9 @@
 .importobj "build/linked.o"
 .endautoregion
 
-.include "scripts/common.asm"
+.include "scripts/predefs/common.asm"
+.include "scripts/predefs/gba.asm"
+.include "scripts/predefs/pokemon_data.asm"
 
 .include "scripts/bugfixes/movement/birch_chase.asm"
 .include "scripts/bugfixes/movement/chloe_entry.asm"

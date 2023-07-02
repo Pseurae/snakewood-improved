@@ -2,7 +2,5 @@
 
 .if SHOP_MONEYBOX_FIX
 .org 0x80b3a70
-ldr r7, =Shop_PrintItemDescText | 1
-bx r7
-.pool
+set_function_hook r7, Shop_PrintItemDescText
 .endif

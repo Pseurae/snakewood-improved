@@ -1,6 +1,6 @@
 #include "types.h"
-#include "event_object_movement.h"
 #include "field_effect.h"
+#include "event_object_movement.h"
 #include "field_player_avatar.h"
 #include "task.h"
 

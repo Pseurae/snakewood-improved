@@ -392,42 +392,42 @@
 #define REG_BLDY        (*(vu16 *)REG_ADDR_BLDY)
 
 #define REG_SOUND1CNT_L (*(vu16 *)REG_ADDR_SOUND1CNT_L)
-#define REG_NR10        (*(vu8  *)REG_ADDR_NR10)
+#define REG_NR10        (*(vu8 *)REG_ADDR_NR10)
 #define REG_SOUND1CNT_H (*(vu16 *)REG_ADDR_SOUND1CNT_H)
-#define REG_NR11        (*(vu8  *)REG_ADDR_NR11)
-#define REG_NR12        (*(vu8  *)REG_ADDR_NR12)
+#define REG_NR11        (*(vu8 *)REG_ADDR_NR11)
+#define REG_NR12        (*(vu8 *)REG_ADDR_NR12)
 #define REG_SOUND1CNT_X (*(vu16 *)REG_ADDR_SOUND1CNT_X)
-#define REG_NR13        (*(vu8  *)REG_ADDR_NR13)
-#define REG_NR14        (*(vu8  *)REG_ADDR_NR14)
+#define REG_NR13        (*(vu8 *)REG_ADDR_NR13)
+#define REG_NR14        (*(vu8 *)REG_ADDR_NR14)
 #define REG_SOUND2CNT_L (*(vu16 *)REG_ADDR_SOUND2CNT_L)
-#define REG_NR21        (*(vu8  *)REG_ADDR_NR21)
-#define REG_NR22        (*(vu8  *)REG_ADDR_NR22)
+#define REG_NR21        (*(vu8 *)REG_ADDR_NR21)
+#define REG_NR22        (*(vu8 *)REG_ADDR_NR22)
 #define REG_SOUND2CNT_H (*(vu16 *)REG_ADDR_SOUND2CNT_H)
-#define REG_NR23        (*(vu8  *)REG_ADDR_NR23)
-#define REG_NR24        (*(vu8  *)REG_ADDR_NR24)
+#define REG_NR23        (*(vu8 *)REG_ADDR_NR23)
+#define REG_NR24        (*(vu8 *)REG_ADDR_NR24)
 #define REG_SOUND3CNT_L (*(vu16 *)REG_ADDR_SOUND3CNT_L)
-#define REG_NR30        (*(vu8  *)REG_ADDR_NR30)
+#define REG_NR30        (*(vu8 *)REG_ADDR_NR30)
 #define REG_SOUND3CNT_H (*(vu16 *)REG_ADDR_SOUND3CNT_H)
-#define REG_NR31        (*(vu8  *)REG_ADDR_NR31)
-#define REG_NR32        (*(vu8  *)REG_ADDR_NR32)
+#define REG_NR31        (*(vu8 *)REG_ADDR_NR31)
+#define REG_NR32        (*(vu8 *)REG_ADDR_NR32)
 #define REG_SOUND3CNT_X (*(vu16 *)REG_ADDR_SOUND3CNT_X)
-#define REG_NR33        (*(vu8  *)REG_ADDR_NR33)
-#define REG_NR34        (*(vu8  *)REG_ADDR_NR34)
+#define REG_NR33        (*(vu8 *)REG_ADDR_NR33)
+#define REG_NR34        (*(vu8 *)REG_ADDR_NR34)
 #define REG_SOUND4CNT_L (*(vu16 *)REG_ADDR_SOUND4CNT_L)
-#define REG_NR41        (*(vu8  *)REG_ADDR_NR41)
-#define REG_NR42        (*(vu8  *)REG_ADDR_NR42)
+#define REG_NR41        (*(vu8 *)REG_ADDR_NR41)
+#define REG_NR42        (*(vu8 *)REG_ADDR_NR42)
 #define REG_SOUND4CNT_H (*(vu16 *)REG_ADDR_SOUND4CNT_H)
-#define REG_NR43        (*(vu8  *)REG_ADDR_NR43)
-#define REG_NR44        (*(vu8  *)REG_ADDR_NR44)
+#define REG_NR43        (*(vu8 *)REG_ADDR_NR43)
+#define REG_NR44        (*(vu8 *)REG_ADDR_NR44)
 #define REG_SOUNDCNT_L  (*(vu16 *)REG_ADDR_SOUNDCNT_L)
-#define REG_NR50        (*(vu8  *)REG_ADDR_NR50)
-#define REG_NR51        (*(vu8  *)REG_ADDR_NR51)
+#define REG_NR50        (*(vu8 *)REG_ADDR_NR50)
+#define REG_NR51        (*(vu8 *)REG_ADDR_NR51)
 #define REG_SOUNDCNT_H  (*(vu16 *)REG_ADDR_SOUNDCNT_H)
 #define REG_SOUNDCNT_X  (*(vu16 *)REG_ADDR_SOUNDCNT_X)
-#define REG_NR52        (*(vu8  *)REG_ADDR_NR52)
+#define REG_NR52        (*(vu8 *)REG_ADDR_NR52)
 #define REG_SOUNDBIAS   (*(vu16 *)REG_ADDR_SOUNDBIAS)
-#define REG_SOUNDBIAS_L (*(vu8  *)REG_ADDR_SOUNDBIAS_L)
-#define REG_SOUNDBIAS_H (*(vu8  *)REG_ADDR_SOUNDBIAS_H)
+#define REG_SOUNDBIAS_L (*(vu8 *)REG_ADDR_SOUNDBIAS_L)
+#define REG_SOUNDBIAS_H (*(vu8 *)REG_ADDR_SOUNDBIAS_H)
 #define REG_WAVE_RAM0   (*(vu32 *)REG_ADDR_WAVE_RAM0)
 #define REG_WAVE_RAM1   (*(vu32 *)REG_ADDR_WAVE_RAM1)
 #define REG_WAVE_RAM2   (*(vu32 *)REG_ADDR_WAVE_RAM2)
@@ -459,7 +459,7 @@
 #define REG_DMA3CNT_L   (*(vu16 *)REG_ADDR_DMA3CNT_L)
 #define REG_DMA3CNT_H   (*(vu16 *)REG_ADDR_DMA3CNT_H)
 
-#define REG_TMCNT(n)    (*(vu16 *)(REG_ADDR_TMCNT + ((n) * 4)))
+#define REG_TMCNT(n)    (*(vu16 *)(REG_ADDR_TMCNT + ((n)*4)))
 #define REG_TM0CNT      (*(vu32 *)REG_ADDR_TM0CNT)
 #define REG_TM0CNT_L    (*(vu16 *)REG_ADDR_TM0CNT_L)
 #define REG_TM0CNT_H    (*(vu16 *)REG_ADDR_TM0CNT_H)
@@ -524,78 +524,80 @@
 #define DISPSTAT_VCOUNT_INTR 0x0020 // V-Count interrupt enabled
 
 // BGCNT
-#define BGCNT_PRIORITY(n)          (n) // Values 0 - 3. Lower priority BGs will be drawn on top of higher priority BGs.
+#define BGCNT_PRIORITY(n)   (n)        // Values 0 - 3. Lower priority BGs will be drawn on top of higher priority BGs.
 #define BGCNT_CHARBASE(n)   ((n) << 2) // Values 0 - 3. Base block for tile pixel data.
-#define BGCNT_MOSAIC            0x0040
-#define BGCNT_16COLOR           0x0000 // 4 bits per pixel
-#define BGCNT_256COLOR          0x0080 // 8 bits per pixel
+#define BGCNT_MOSAIC        0x0040
+#define BGCNT_16COLOR       0x0000     // 4 bits per pixel
+#define BGCNT_256COLOR      0x0080     // 8 bits per pixel
 #define BGCNT_SCREENBASE(n) ((n) << 8) // Values 0 - 31. Base block for tile map.
-#define BGCNT_WRAP              0x2000 // Only affects affine BGs. Text BGs wrap by default.
-#define BGCNT_TXT256x256        0x0000 // Internal screen size size of text mode BG in pixels.
-#define BGCNT_TXT512x256        0x4000
-#define BGCNT_TXT256x512        0x8000
-#define BGCNT_TXT512x512        0xC000
-#define BGCNT_AFF128x128        0x0000 // Internal screen size size of affine mode BG in pixels.
-#define BGCNT_AFF256x256        0x4000
-#define BGCNT_AFF512x512        0x8000
-#define BGCNT_AFF1024x1024      0xC000
+#define BGCNT_WRAP          0x2000     // Only affects affine BGs. Text BGs wrap by default.
+#define BGCNT_TXT256x256    0x0000     // Internal screen size size of text mode BG in pixels.
+#define BGCNT_TXT512x256    0x4000
+#define BGCNT_TXT256x512    0x8000
+#define BGCNT_TXT512x512    0xC000
+#define BGCNT_AFF128x128    0x0000 // Internal screen size size of affine mode BG in pixels.
+#define BGCNT_AFF256x256    0x4000
+#define BGCNT_AFF512x512    0x8000
+#define BGCNT_AFF1024x1024  0xC000
 
 // WININ/OUT
-#define WININ_WIN0_BG0      (1 << 0)
-#define WININ_WIN0_BG1      (1 << 1)
-#define WININ_WIN0_BG2      (1 << 2)
-#define WININ_WIN0_BG3      (1 << 3)
-#define WININ_WIN0_BG_ALL   (WININ_WIN0_BG0 | WININ_WIN0_BG1 | WININ_WIN0_BG2 | WININ_WIN0_BG3)
-#define WININ_WIN0_OBJ      (1 << 4)
-#define WININ_WIN0_CLR      (1 << 5)
-#define WININ_WIN1_BG0      (1 << 8)
-#define WININ_WIN1_BG1      (1 << 9)
-#define WININ_WIN1_BG2      (1 << 10)
-#define WININ_WIN1_BG3      (1 << 11)
-#define WININ_WIN1_BG_ALL   (WININ_WIN1_BG0 | WININ_WIN1_BG1 | WININ_WIN1_BG2 | WININ_WIN1_BG3)
-#define WININ_WIN1_OBJ      (1 << 12)
-#define WININ_WIN1_CLR      (1 << 13)
+#define WININ_WIN0_BG0       (1 << 0)
+#define WININ_WIN0_BG1       (1 << 1)
+#define WININ_WIN0_BG2       (1 << 2)
+#define WININ_WIN0_BG3       (1 << 3)
+#define WININ_WIN0_BG_ALL    (WININ_WIN0_BG0 | WININ_WIN0_BG1 | WININ_WIN0_BG2 | WININ_WIN0_BG3)
+#define WININ_WIN0_OBJ       (1 << 4)
+#define WININ_WIN0_CLR       (1 << 5)
+#define WININ_WIN1_BG0       (1 << 8)
+#define WININ_WIN1_BG1       (1 << 9)
+#define WININ_WIN1_BG2       (1 << 10)
+#define WININ_WIN1_BG3       (1 << 11)
+#define WININ_WIN1_BG_ALL    (WININ_WIN1_BG0 | WININ_WIN1_BG1 | WININ_WIN1_BG2 | WININ_WIN1_BG3)
+#define WININ_WIN1_OBJ       (1 << 12)
+#define WININ_WIN1_CLR       (1 << 13)
 
-#define WINOUT_WIN01_BG0    (1 << 0)
-#define WINOUT_WIN01_BG1    (1 << 1)
-#define WINOUT_WIN01_BG2    (1 << 2)
-#define WINOUT_WIN01_BG3    (1 << 3)
-#define WINOUT_WIN01_BG_ALL (WINOUT_WIN01_BG0 | WINOUT_WIN01_BG1 | WINOUT_WIN01_BG2 | WINOUT_WIN01_BG3)
-#define WINOUT_WIN01_OBJ    (1 << 4)
-#define WINOUT_WIN01_CLR    (1 << 5)
-#define WINOUT_WINOBJ_BG0   (1 << 8)
-#define WINOUT_WINOBJ_BG1   (1 << 9)
-#define WINOUT_WINOBJ_BG2   (1 << 10)
-#define WINOUT_WINOBJ_BG3   (1 << 11)
+#define WINOUT_WIN01_BG0     (1 << 0)
+#define WINOUT_WIN01_BG1     (1 << 1)
+#define WINOUT_WIN01_BG2     (1 << 2)
+#define WINOUT_WIN01_BG3     (1 << 3)
+#define WINOUT_WIN01_BG_ALL  (WINOUT_WIN01_BG0 | WINOUT_WIN01_BG1 | WINOUT_WIN01_BG2 | WINOUT_WIN01_BG3)
+#define WINOUT_WIN01_OBJ     (1 << 4)
+#define WINOUT_WIN01_CLR     (1 << 5)
+#define WINOUT_WINOBJ_BG0    (1 << 8)
+#define WINOUT_WINOBJ_BG1    (1 << 9)
+#define WINOUT_WINOBJ_BG2    (1 << 10)
+#define WINOUT_WINOBJ_BG3    (1 << 11)
 #define WINOUT_WINOBJ_BG_ALL (WINOUT_WINOBJ_BG0 | WINOUT_WINOBJ_BG1 | WINOUT_WINOBJ_BG2 | WINOUT_WINOBJ_BG3)
-#define WINOUT_WINOBJ_OBJ   (1 << 12)
-#define WINOUT_WINOBJ_CLR   (1 << 13)
+#define WINOUT_WINOBJ_OBJ    (1 << 12)
+#define WINOUT_WINOBJ_CLR    (1 << 13)
 
-#define WIN_RANGE(a, b) (((a) << 8) | (b))
-#define WIN_RANGE2(a, b) ((b) | ((a) << 8))
+#define WIN_RANGE(a, b)      (((a) << 8) | (b))
+#define WIN_RANGE2(a, b)     ((b) | ((a) << 8))
 
 // BLDCNT
 // Bits 0-5 select layers for the 1st target
-#define BLDCNT_TGT1_BG0      (1 << 0)
-#define BLDCNT_TGT1_BG1      (1 << 1)
-#define BLDCNT_TGT1_BG2      (1 << 2)
-#define BLDCNT_TGT1_BG3      (1 << 3)
-#define BLDCNT_TGT1_OBJ      (1 << 4)
-#define BLDCNT_TGT1_BD       (1 << 5)
-#define BLDCNT_TGT1_ALL      (BLDCNT_TGT1_BG0 | BLDCNT_TGT1_BG1 | BLDCNT_TGT1_BG2 | BLDCNT_TGT1_BG3 | BLDCNT_TGT1_OBJ | BLDCNT_TGT1_BD)
+#define BLDCNT_TGT1_BG0 (1 << 0)
+#define BLDCNT_TGT1_BG1 (1 << 1)
+#define BLDCNT_TGT1_BG2 (1 << 2)
+#define BLDCNT_TGT1_BG3 (1 << 3)
+#define BLDCNT_TGT1_OBJ (1 << 4)
+#define BLDCNT_TGT1_BD  (1 << 5)
+#define BLDCNT_TGT1_ALL                                                                                                \
+    (BLDCNT_TGT1_BG0 | BLDCNT_TGT1_BG1 | BLDCNT_TGT1_BG2 | BLDCNT_TGT1_BG3 | BLDCNT_TGT1_OBJ | BLDCNT_TGT1_BD)
 // Bits 6-7 select the special effect
-#define BLDCNT_EFFECT_NONE      (0 << 6)   // no special effect
-#define BLDCNT_EFFECT_BLEND     (1 << 6)   // 1st+2nd targets mixed (controlled by BLDALPHA)
-#define BLDCNT_EFFECT_LIGHTEN   (2 << 6)   // 1st target becomes whiter (controlled by BLDY)
-#define BLDCNT_EFFECT_DARKEN    (3 << 6)   // 1st target becomes blacker (controlled by BLDY)
+#define BLDCNT_EFFECT_NONE    (0 << 6) // no special effect
+#define BLDCNT_EFFECT_BLEND   (1 << 6) // 1st+2nd targets mixed (controlled by BLDALPHA)
+#define BLDCNT_EFFECT_LIGHTEN (2 << 6) // 1st target becomes whiter (controlled by BLDY)
+#define BLDCNT_EFFECT_DARKEN  (3 << 6) // 1st target becomes blacker (controlled by BLDY)
 // Bits 8-13 select layers for the 2nd target
-#define BLDCNT_TGT2_BG0      (1 << 8)
-#define BLDCNT_TGT2_BG1      (1 << 9)
-#define BLDCNT_TGT2_BG2      (1 << 10)
-#define BLDCNT_TGT2_BG3      (1 << 11)
-#define BLDCNT_TGT2_OBJ      (1 << 12)
-#define BLDCNT_TGT2_BD       (1 << 13)
-#define BLDCNT_TGT2_ALL      (BLDCNT_TGT2_BG0 | BLDCNT_TGT2_BG1 | BLDCNT_TGT2_BG2 | BLDCNT_TGT2_BG3 | BLDCNT_TGT2_OBJ | BLDCNT_TGT2_BD)
+#define BLDCNT_TGT2_BG0 (1 << 8)
+#define BLDCNT_TGT2_BG1 (1 << 9)
+#define BLDCNT_TGT2_BG2 (1 << 10)
+#define BLDCNT_TGT2_BG3 (1 << 11)
+#define BLDCNT_TGT2_OBJ (1 << 12)
+#define BLDCNT_TGT2_BD  (1 << 13)
+#define BLDCNT_TGT2_ALL                                                                                                \
+    (BLDCNT_TGT2_BG0 | BLDCNT_TGT2_BG1 | BLDCNT_TGT2_BG2 | BLDCNT_TGT2_BG3 | BLDCNT_TGT2_OBJ | BLDCNT_TGT2_BD)
 
 // BLDALPHA
 #define BLDALPHA_BLEND(target1, target2) (((target2) << 8) | (target1))
@@ -702,16 +704,16 @@
 #define JOY_EXCL_DPAD   0x030F
 
 // interrupt flags
-#define INTR_FLAG_VBLANK  (1 <<  0)
-#define INTR_FLAG_HBLANK  (1 <<  1)
-#define INTR_FLAG_VCOUNT  (1 <<  2)
-#define INTR_FLAG_TIMER0  (1 <<  3)
-#define INTR_FLAG_TIMER1  (1 <<  4)
-#define INTR_FLAG_TIMER2  (1 <<  5)
-#define INTR_FLAG_TIMER3  (1 <<  6)
-#define INTR_FLAG_SERIAL  (1 <<  7)
-#define INTR_FLAG_DMA0    (1 <<  8)
-#define INTR_FLAG_DMA1    (1 <<  9)
+#define INTR_FLAG_VBLANK  (1 << 0)
+#define INTR_FLAG_HBLANK  (1 << 1)
+#define INTR_FLAG_VCOUNT  (1 << 2)
+#define INTR_FLAG_TIMER0  (1 << 3)
+#define INTR_FLAG_TIMER1  (1 << 4)
+#define INTR_FLAG_TIMER2  (1 << 5)
+#define INTR_FLAG_TIMER3  (1 << 6)
+#define INTR_FLAG_SERIAL  (1 << 7)
+#define INTR_FLAG_DMA0    (1 << 8)
+#define INTR_FLAG_DMA1    (1 << 9)
 #define INTR_FLAG_DMA2    (1 << 10)
 #define INTR_FLAG_DMA3    (1 << 11)
 #define INTR_FLAG_KEYPAD  (1 << 12)
@@ -759,7 +761,7 @@
 
 #define WAITCNT_PREFETCH_ENABLE (1 << 14)
 
-#define WAITCNT_AGB (0 << 15)
-#define WAITCNT_CGB (1 << 15)
+#define WAITCNT_AGB             (0 << 15)
+#define WAITCNT_CGB             (1 << 15)
 
 #endif // GUARD_GBA_IO_REG_H

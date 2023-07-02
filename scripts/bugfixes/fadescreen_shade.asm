@@ -2,7 +2,5 @@
 
 .if SHADE_FADESCREEN
 .org 0x807d644
-ldr r3, =FadeScreen | 1
-bx r3
-.pool
+set_function_hook r3, FadeScreen
 .endif

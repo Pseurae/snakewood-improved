@@ -10,28 +10,24 @@ nop
 
 .if OW_EVENT_SHADOWS
 .org 0x80635f0 ; GetAllGroundEffectFlags_OnSpawn
-ldr r7, =(GetAllGroundEffectFlags_OnSpawn | 1)
-bx r7
-.pool
+set_function_hook r7, GetAllGroundEffectFlags_OnSpawn
 
 .org 0x8063638 ; GetAllGroundEffectFlags_OnBeginStep
-ldr r7, =(GetAllGroundEffectFlags_OnBeginStep | 1)
-bx r7
-.pool
+set_function_hook r7, GetAllGroundEffectFlags_OnBeginStep
+
 
 .org 0x8063690 ; GetAllGroundEffectFlags_OnFinishStep
-ldr r7, =(GetAllGroundEffectFlags_OnFinishStep | 1)
-bx r7
-.pool
+set_function_hook r7, GetAllGroundEffectFlags_OnFinishStep
 
 .org 0x8064218 ; StartTriggeredGroundEffects
-ldr r7, =(StartTriggeredGroundEffects | 1)
-bx r7
-.pool
+set_function_hook r7, StartTriggeredGroundEffects
 
+; Update field effect script to use new FldEff_Shadow.
 .org 0x81D9C46
 .byte 0x3
 .word (FldEff_Shadow_ | 1 )
+
+; Nop out all assignments to objEvent->hasShadow by jumping movements.
 
 ; Jump 2
 @NopShadowFlagSetting 0x80613d4
@@ -51,7 +47,7 @@ bx r7
 @NopShadowFlagSetting 0x80623cc
 @NopShadowFlagSetting 0x8062424
 
-; Mixed JumpInPlace
+; Mixed direction JumpInPlace
 @NopShadowFlagSetting 0x806247c
 @NopShadowFlagSetting 0x80624d4
 @NopShadowFlagSetting 0x806252c
@@ -75,9 +71,11 @@ bx r7
 @NopShadowFlagSetting 0x8062f6c
 @NopShadowFlagSetting 0x8062fc4
 
+; Disable shadows till player sprite reaches the ground.
 .org 0x839F454
 .word (FlyInFieldEffect_BirdSwoopDown | 1)
 
+; Update all 4 sprite callbacks.
 .org 0x08374560 + 0x14
 .word (UpdateShadowFieldEffect_ | 1)
 
@@ -90,20 +88,15 @@ bx r7
 .org 0x083745a8 + 0x14
 .word (UpdateShadowFieldEffect_ | 1)
 
+; Patch weather functions to use Weather_SetBlendCoeff.
 .org 0x807cae8
-ldr r7, = (None_InitVars | 1)
-bx r7
-.pool
+set_function_hook r7, None_InitVars
 
 .org 0x807df9c
-ldr r0, = (Sunny_InitVars | 1)
-bx r0
-.pool
+set_function_hook r0, Sunny_InitVars
 
 .org 0x8080430
-ldr r7, =(Shade_InitVars | 1)
-bx r7
-.pool
+set_function_hook r7, Shade_InitVars
 
 .org 0x807df24
 mov r0, #0x8

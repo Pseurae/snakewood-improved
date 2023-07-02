@@ -31,9 +31,7 @@
 .if NEW_HM_SYSTEM
 ; Replace Party Context Menu function
 .org 0x8089a8c
-ldr r3, =OpenPokemonContextMenu | 1
-bx r3
-.pool
+set_function_hook r3, OpenPokemonContextMenu
 
 .org 0x81b0dcc
 s_goto @EventScript_CutTree
@@ -55,9 +53,7 @@ s_goto @EventScript_StrengthBoulder
 
 .org 0x80598e0
 .area 0x8059930 - 0x80598e0, 0xFE
-ldr r7, =PartyHasMonWithSurf | 1
-bx r7
-.pool
+set_function_hook r7, PartyHasMonWithSurf
 .endarea
 
 .org 0x8068728

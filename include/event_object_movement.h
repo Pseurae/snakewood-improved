@@ -78,6 +78,6 @@ void ObjectEventClearHeldMovementIfActive(struct ObjectEvent *);
 #define GROUND_EFFECT_FLAG_SEAWEED               (1 << 19)
 #define GROUND_EFFECT_FLAG_SHADOW                (1 << 20)
 
-#define OBJECT_EVENTS_COUNT 16
+#define OBJECT_EVENTS_COUNT                      16
 
 extern struct ObjectEvent gObjectEvents[OBJECT_EVENTS_COUNT];
