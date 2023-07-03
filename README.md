@@ -29,6 +29,8 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 - Disease type removal
 - Type icons reverted to default Ruby ones
 - Emerald style Save Prompt
+- Colored stat values based on nature
+- Repeated item usage
 
 <details>
 

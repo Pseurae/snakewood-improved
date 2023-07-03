@@ -52,10 +52,12 @@
 
 .include "scripts/bag_expansion.asm"
 .include "scripts/colored_field_moves.asm"
+.include "scripts/colored_stats.asm"
 .include "scripts/emerald_save_prompt.asm"
 .include "scripts/hm_system.asm"
 .include "scripts/ow_shadows.asm"
 .include "scripts/ps_split.asm"
+.include "scripts/repeated_item.asm"
 .include "scripts/repel_prompt.asm"
 .include "scripts/reusable_tms.asm"
 .include "scripts/summary_screen.asm"

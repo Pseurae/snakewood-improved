@@ -9,7 +9,7 @@ include $(DEVKITARM)/base_tools
 SRC_FILES ?= $(wildcard src/*.c)
 OBJ_FILES ?= $(SRC_FILES:src/%.c=build/src/%.o)
 
-CFLAGS = -Iinclude -mlong-calls -Wall -Wextra -mthumb -mno-thumb-interwork -fno-inline -fno-builtin -std=gnu11 -mabi=apcs-gnu -mcpu=arm7tdmi -march=armv4t -mtune=arm7tdmi -x c -c -MMD -g -mthumb-interwork -Wimplicit -Wparentheses -Wunused -Werror -fno-toplevel-reorder -fno-aggressive-loop-optimizations -Wno-pointer-to-int-cast -Wno-stringop-overflow $(EXTRA_CFLAGS)
+CFLAGS = -Iinclude -mlong-calls -Wall -Wextra -mthumb -mno-thumb-interwork -fno-inline -fno-builtin -std=gnu11 -mabi=apcs-gnu -mcpu=arm7tdmi -march=armv4t -mtune=arm7tdmi -x c -c -MMD -g -mthumb-interwork -Wimplicit -Wparentheses -Wno-unused -Werror -fno-toplevel-reorder -fno-aggressive-loop-optimizations -Wno-pointer-to-int-cast -Wno-stringop-overflow $(EXTRA_CFLAGS)
 
 LD = $(PREFIX)ld
 LDFLAGS = --relocatable -T rom.ld $(EXTRA_LDFLAGS)

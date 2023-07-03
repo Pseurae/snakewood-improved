@@ -93,6 +93,7 @@ bool8 CheckIfMonCanUseHM(struct Pokemon *mon, u16 hm);
 bool8 CheckIfPartyCanUseTM(u16 tm);
 u8 CalculatePPWithBonus(u16 move, u8 ppBonuses, u8 moveIndex);
 bool8 IsHMMove(u16 move);
+u8 GetNature(struct Pokemon *mon);
 
 enum
 {
@@ -105,3 +106,5 @@ enum
     STAT_STAGE_ACC,     // 6
     STAT_STAGE_EVASION, // 7
 };
+
+extern const s8 gNatureStatTable[25][5];

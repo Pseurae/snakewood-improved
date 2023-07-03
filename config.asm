@@ -42,6 +42,13 @@
 ; Enable this to have shadows on NPCs like in HGSS.
 .definelabel OW_EVENT_SHADOWS, 1
 
+; Nature based colored stats in the Summary Screen.
+.definelabel COLORED_STATS, 1
+
+; WIP
+; Use items repeatedly without going back to the bag each time.
+.definelabel REPEATED_ITEM, 1
+
 ; Bugfixes
 ; --------
 

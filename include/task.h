@@ -20,3 +20,4 @@ u8 CreateTask(TaskFunc func, u8 priority);
 bool8 FuncIsActiveTask(TaskFunc func);
 u8 FindTaskIdByFunc(TaskFunc func);
 u8 DestroyTask(u8 taskId);
+void TaskDummy(u8 taskId);
