@@ -49,6 +49,11 @@
 ; Use items repeatedly without going back to the bag each time.
 .definelabel REPEATED_ITEM, 1
 
+; On some emulators, the game just crashes on a white screen when the wrong
+; save file type is selected.
+; Enable this to show an error screen when loaded with the wrong save file type.
+.definelabel WRONG_SAVE_TYPE_ERROR, 1
+
 ; Bugfixes
 ; --------
 

@@ -37,8 +37,6 @@ struct UCoords16
 #define PACKED __attribute__((packed))
 #define NAKED  __attribute__((naked))
 
-typedef void (*MainCallback)(void);
-
 #define TRUE               1
 #define FALSE              0
 

@@ -21,7 +21,7 @@ ARMIPS := armips
 .PHONY: all clean
 
 all: test.gba
-	$(ARMIPS) main.asm
+	$(ARMIPS) main.asm -sym2 output.map
 
 test.gba: snakewood.gba build/linked.o
 

@@ -3,11 +3,14 @@ __umodsi3 = 0x81e0f08 | 1;
 __divsi3 = 0x81e0868 | 1;
 __udivsi3 = 0x81e0e90 | 1;
 CpuFastSet = 0x81e07e8 | 1;
+LZ77UnCompVram = 0x81e07f0 | 1;
 
 memset = 0x815bb08 | 1;
 memcpy = 0x815b890 | 1;
 
+gWindowTemplate_81E6C3C = 0x81E6C3C;
 gBattleMoves = 0x81fb12c;
+gMain = 0x3001770;
 gItems = 0x83c5564;
 gSpecialVar_ItemId = 0x203855e;
 gNatureStatTable = 0x81fd070;
@@ -81,6 +84,8 @@ gDecorations = 0x83eb6c4;
 gShadowVerticalOffsets = 0x8401e36;
 gFieldEffectObjectTemplatePointers = 0x836dfc0;
 gShadowEffectTemplateIds = 0x8401e32;
+gFontDefaultPalette = 0x81e66b2;
+gMenuTextWindowTemplate = 0x81e6ce4;
 
 gStringVar1 = 0x20231cc;
 gStringVar2 = 0x20232cc;
@@ -272,3 +277,10 @@ HandleItemUsePartyMenu = 0x808B0C0 | 1;
 GetItemEffectType = 0x8070e48 | 1;
 PartyMenuEraseMsgBoxAndFrame = 0x806d5a4 | 1;
 GetNature = 0x803f464 | 1;
+Text_LoadWindowTemplate = 0x8002a34 | 1;
+TextWindow_LoadStdFrameGraphicsOverrideStyle = 0x8064f6c | 1;
+LoadPalette = 0x8073a58 | 1;
+LoadFontDefaultPalette = 0x8002a1c | 1;
+TransferPlttBuffer = 0x8073ae0 | 1;
+InitMenuWindow = 0x8071c4c | 1;
+CB2_ShowDiploma = 0x8145d88 | 1;

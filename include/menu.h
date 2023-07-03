@@ -1,10 +1,12 @@
 #pragma once
 
 #include "types.h"
+#include "text.h"
 
 extern void *gMenuWindowPtr;
 extern u16 gMenuTextTileOffset;
 
+void InitMenuWindow(const struct WindowTemplate *);
 u8 *AlignStringInMenuWindow(u8 *, const u8 *, u8, u8);
 void Menu_PrintText(const u8 *str, u8 left, u8 top);
 u8 Menu_PrintTextPixelCoords(const u8 *text, u8 left, u16 top, u8 a4);

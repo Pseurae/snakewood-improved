@@ -128,3 +128,33 @@ extern u8 gStringVar1[0x100];
 extern u8 gStringVar2[0x100];
 extern u8 gStringVar3[0x100];
 extern u8 gStringVar4[0x100];
+
+struct WindowTemplate
+{
+    u8 bgNum;
+    u8 charBaseBlock;
+    u8 screenBaseBlock;
+    u8 priority;
+    u8 paletteNum;
+    u8 foregroundColor;
+    u8 backgroundColor;
+    u8 shadowColor;
+    u8 fontNum;
+    u8 textMode;
+    u8 spacing;
+    u8 tilemapLeft;
+    u8 tilemapTop;
+    u8 width;
+    u8 height;
+    u8 *tileData;
+    u16 *tilemap;
+    u32 maybeUnused;
+};
+
+extern const struct WindowTemplate gWindowTemplate_81E6C3C;
+extern const struct WindowTemplate gMenuTextWindowTemplate;
+
+void Text_LoadWindowTemplate(const struct WindowTemplate *winConfig);
+void LoadFontDefaultPalette(const struct WindowTemplate *winTemplate);
+
+extern const u8 gFontDefaultPalette[];

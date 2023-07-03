@@ -1,5 +1,6 @@
 #pragma once
 
+#include "main.h"
 #include "types.h"
 #include "berry.h"
 #include "pokemon.h"

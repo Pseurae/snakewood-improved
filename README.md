@@ -31,6 +31,7 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 - Emerald style Save Prompt
 - Colored stat values based on nature
 - Repeated item usage
+- Error screen for wrong save file type
 
 <details>
 

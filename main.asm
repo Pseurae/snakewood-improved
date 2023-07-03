@@ -60,6 +60,7 @@
 .include "scripts/repeated_item.asm"
 .include "scripts/repel_prompt.asm"
 .include "scripts/reusable_tms.asm"
+.include "scripts/save_flash_failed.asm"
 .include "scripts/summary_screen.asm"
 
 .close
