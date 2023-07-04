@@ -57,7 +57,7 @@ static void GetGroundEffectFlags_Shadow(struct ObjectEvent *objEvent, u32 *flags
         || MetatileBehavior_IsReflective(objEvent->currentMetatileBehavior)
         || MetatileBehavior_IsReflective(objEvent->previousMetatileBehavior)
         || MetatileBehavior_IsPuddle(objEvent->currentMetatileBehavior) || objEvent->inSandPile
-        || objEvent->inHotSprings || objEvent->inShallowFlowingWater || objEvent->inanimate)
+        || objEvent->inHotSprings || objEvent->inShallowFlowingWater || objEvent->inanimate || objEvent->invisible)
     {
         objEvent->hasShadow = FALSE;
     }

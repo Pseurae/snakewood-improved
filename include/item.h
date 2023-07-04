@@ -48,5 +48,6 @@ const u8 *ItemId_GetName(u16 itemId);
 const u8 *ItemId_GetDescription(u16 itemId);
 bool8 RemoveBagItem(u16 itemId, u16 count);
 bool8 ItemIsMail(u16);
+ItemUseFunc ItemId_GetFieldFunc(u16 itemId);
 
 extern const struct Item gItems[];

@@ -44,3 +44,5 @@ struct PlayerAvatar /* 0x202E858 */
 extern struct PlayerAvatar gPlayerAvatar;
 
 void SetPlayerAvatarStateMask(u8 a);
+void StopPlayerAvatar(void);
+void PlayerFreeze(void);

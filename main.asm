@@ -57,6 +57,7 @@
 .include "scripts/hm_system.asm"
 .include "scripts/ow_shadows.asm"
 .include "scripts/ps_split.asm"
+.include "scripts/registered_item_list.asm"
 .include "scripts/repeated_item.asm"
 .include "scripts/repel_prompt.asm"
 .include "scripts/reusable_tms.asm"

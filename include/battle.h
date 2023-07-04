@@ -1,8 +1,8 @@
 #pragma once
 
-#include "main.h"
 #include "types.h"
 #include "berry.h"
+#include "main.h"
 #include "pokemon.h"
 #include "constants/moves.h"
 

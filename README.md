@@ -32,6 +32,7 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 - Colored stat values based on nature
 - Repeated item usage
 - Error screen for wrong save file type
+- Multiple Registered Key Items
 
 <details>
 

@@ -1,8 +1,6 @@
 .if WRONG_SAVE_TYPE_ERROR
 .org 0x800028c
-ldr r7, =(@NoFlashMemoryCallback | 1)
-bx r7
-.pool
+set_function_hook r7, @NoFlashMemoryCallback
 
 .autoregion
 .align 2

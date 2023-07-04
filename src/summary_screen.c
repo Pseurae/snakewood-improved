@@ -35,13 +35,13 @@ void PrintStatText(struct Pokemon *mon, u8 stat, u8 nature, u8 left, u8 top, u16
 
     switch (mod)
     {
-    case 0: // Neutral
+    case 0:                // Neutral
         *(buffer++) = 0xF; // Black
         break;
-    case 1: // Increased
+    case 1:                // Increased
         *(buffer++) = 0x9; // Red
         break;
-    case -1: // Decreased
+    case -1:               // Decreased
         *(buffer++) = 0x2; // Light Blue
         break;
     }

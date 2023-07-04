@@ -1,15 +1,18 @@
 #pragma once
 
+#include "pokemon.h"
+#include "task.h"
+
 extern u8 gPartyMenuUseExitCallback;
 
-#define pmStatGrowths      data
-#define pmSetupState       data[0]
-#define pmMonIndex         data[1]
-#define pmUnk268           data[2]
-#define pmUnk272           data[7]
-#define pmUnk27E           data[13]
-#define pmUnk280           data[14]
-#define pmUnk282           data[15]
+#define pmStatGrowths data
+#define pmSetupState  data[0]
+#define pmMonIndex    data[1]
+#define pmUnk268      data[2]
+#define pmUnk272      data[7]
+#define pmUnk27E      data[13]
+#define pmUnk280      data[14]
+#define pmUnk282      data[15]
 
 struct Unk201B000
 {
@@ -59,4 +62,3 @@ void ReturnToBagFromPartyMenu(u8 taskId);
 void HandleItemUsePartyMenu(u8 taskID);
 u8 GetItemEffectType(u16 item);
 void PartyMenuEraseMsgBoxAndFrame(void);
-

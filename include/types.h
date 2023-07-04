@@ -34,8 +34,8 @@ struct UCoords16
     u16 y;
 };
 
-#define PACKED __attribute__((packed))
-#define NAKED  __attribute__((naked))
+#define PACKED             __attribute__((packed))
+#define NAKED              __attribute__((naked))
 
 #define TRUE               1
 #define FALSE              0

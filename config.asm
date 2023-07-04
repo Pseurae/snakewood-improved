@@ -54,6 +54,9 @@
 ; Enable this to show an error screen when loaded with the wrong save file type.
 .definelabel WRONG_SAVE_TYPE_ERROR, 1
 
+; Allows for multiple key items to be registered and used from a list.
+.definelabel MULTIPLE_REGISTERED_ITEMS, 1
+
 ; Bugfixes
 ; --------
 

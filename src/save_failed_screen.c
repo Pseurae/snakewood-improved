@@ -1,10 +1,10 @@
 #include "types.h"
-#include "constants/gba.h"
+#include "bios.h"
 #include "main.h"
 #include "menu.h"
 #include "palette.h"
 #include "text.h"
-#include "bios.h"
+#include "constants/gba.h"
 
 void FlashNotDetectedScreen(const u8 *message)
 {
@@ -47,7 +47,7 @@ void FlashNotDetectedScreen(const u8 *message)
     REG_DISPCNT = DISPCNT_MODE_0 | DISPCNT_OBJ_1D_MAP | DISPCNT_BG0_ON | DISPCNT_BG3_ON | DISPCNT_OBJ_ON;
 
     TransferPlttBuffer();
-    *(u16*)PLTT = RGB(17, 18, 31);
+    *(u16 *)PLTT = RGB(17, 18, 31);
     REG_SOUNDCNT_X = 0;
     REG_SOUNDBIAS = 0;
 }
