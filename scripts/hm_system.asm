@@ -64,7 +64,7 @@ set_function_hook r7, PartyHasMonWithSurf
 	s_lockall
 	s_goto_if_unset FLAG_BADGE01_GET, @CannotUseCut
 	s_setvar VAR_0x8004, ITEM_HM01_CUT
-	s_callnative CheckIfPartyCanUseHM + 1
+	s_callnative (CheckIfPartyCanUseHM | 1)
 	s_compare VAR_RESULT, 6
 	s_goto_if_eq @CannotUseCut
 	s_setfieldeffectargument 0, VAR_RESULT
@@ -86,7 +86,7 @@ set_function_hook r7, PartyHasMonWithSurf
 	s_lockall
 	s_goto_if_unset FLAG_BADGE03_GET, @CannotUseRockSmash
 	s_setvar VAR_0x8004, ITEM_HM06_ROCK_SMASH
-	s_callnative CheckIfPartyCanUseHM + 1
+	s_callnative (CheckIfPartyCanUseHM | 1)
 	s_compare VAR_RESULT, 6
 	s_goto_if_eq @CannotUseRockSmash
 	s_setfieldeffectargument 0, VAR_RESULT
@@ -109,7 +109,7 @@ set_function_hook r7, PartyHasMonWithSurf
 	s_goto_if_unset FLAG_BADGE04_GET, @CannotUseStrength
 	s_goto_if_set FLAG_SYS_USE_STRENGTH, @AlreadyUsedStrength
 	s_setvar VAR_0x8004, ITEM_HM04_STRENGTH
-	s_callnative CheckIfPartyCanUseHM + 1
+	s_callnative (CheckIfPartyCanUseHM | 1)
 	s_compare VAR_RESULT, 6
 	s_goto_if_eq @CannotUseStrength
 	s_setfieldeffectargument 0, VAR_RESULT
@@ -127,7 +127,7 @@ set_function_hook r7, PartyHasMonWithSurf
 @EventScript_Waterfall:
 	s_lockall
 	s_setvar VAR_0x8004, ITEM_HM07_WATERFALL
-	s_callnative CheckIfPartyCanUseHM + 1
+	s_callnative (CheckIfPartyCanUseHM | 1)
 	s_compare VAR_RESULT, 6
 	s_goto_if_eq @Waterfall_NoMonKnows
 	s_bufferpartymonnick 0, VAR_RESULT
@@ -144,7 +144,7 @@ set_function_hook r7, PartyHasMonWithSurf
 @EventScript_Dive:
 	s_lockall
 	s_setvar VAR_0x8004, ITEM_HM08_DIVE
-	s_callnative CheckIfPartyCanUseHM + 1
+	s_callnative (CheckIfPartyCanUseHM | 1)
 	s_compare VAR_RESULT, 6
 	s_goto_if_eq @@CannotUseDive
 	s_bufferpartymonnick 0, VAR_RESULT
@@ -166,7 +166,7 @@ set_function_hook r7, PartyHasMonWithSurf
 @EventScript_DiveUnderwater:
 	s_lockall
 	s_setvar VAR_0x8004, ITEM_HM08_DIVE
-	s_callnative CheckIfPartyCanUseHM + 1
+	s_callnative (CheckIfPartyCanUseHM | 1)
 	s_compare VAR_RESULT, 6
 	s_goto_if_eq @UnderwaterCannotUseDive
 	s_bufferpartymonnick 0, VAR_RESULT
@@ -183,7 +183,7 @@ set_function_hook r7, PartyHasMonWithSurf
 .autoregion
 @EventScript_UseSurf:
 	s_setvar VAR_0x8004, ITEM_HM03_SURF
-	s_callnative CheckIfPartyCanUseHM + 1
+	s_callnative (CheckIfPartyCanUseHM | 1)
 	s_compare VAR_RESULT, 6
 	s_goto_if_eq @@EventScript_EndUseSurf
 	s_bufferpartymonnick 0, VAR_RESULT

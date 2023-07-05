@@ -8,7 +8,7 @@ s_goto @EventScript_RockLobster
 	s_lock
 	s_goto_if_unset FLAG_BADGE03_GET, 0x81B0F3E
 	s_setvar VAR_0x8004, ITEM_HM06_ROCK_SMASH
-	s_callnative CheckIfPartyCanUseHM + 1
+	s_callnative (CheckIfPartyCanUseHM | 1)
 	s_compare VAR_RESULT, 6
 	s_goto_if_eq 0x81B0F3E
 	s_msgbox 0x88259F7, MSGBOX_AUTOCLOSE
