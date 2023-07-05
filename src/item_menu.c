@@ -284,9 +284,14 @@ bool8 UseRegisteredKeyItemFromField(const u8 *script, const u8 *message)
     if (numRegisteredItems)
     {
         if (numRegisteredItems == 1)
+        {
             UseRegisteredKeyItem(gRegisteredItems[0]);
+        }
         else
+        {
+            ShowFieldMessageInstant(message);
             ScriptContext1_SetupScript(script);
+        }
     }
     else
     {

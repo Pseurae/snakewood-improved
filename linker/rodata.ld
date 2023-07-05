@@ -12,6 +12,7 @@ gBattleMoves = 0x81fb12c;
 gNatureStatTable = 0x81fd070;
 gHoldEffectToType = 0x8208263;
 gFieldEffectObjectTemplatePointers = 0x836dfc0;
+gGroundEffectFuncs = 0x83760a0;
 gWeatherPtr = 0x8396fc4;
 gWeatherFuncs = 0x8396fc8;
 gWeatherPalStateFuncs = 0x83970b8;

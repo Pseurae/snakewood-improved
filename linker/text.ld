@@ -6,10 +6,12 @@ AllocSpritePalette = 0x8002690 | 1;
 IndexOfSpritePaletteTag = 0x80026c0 | 1;
 LoadFontDefaultPalette = 0x8002a1c | 1;
 Text_LoadWindowTemplate = 0x8002a34 | 1;
+Text_InitWindowAndPrintText = 0x8003460 | 1;
 PrintStringWithNewlines = 0x8004fd0 | 1;
 StringCopy = 0x8006ab0 | 1;
 ConvertIntToDecimalStringN = 0x8006bc4 | 1;
 ConvertIntToDecimalString = 0x8006ddc | 1;
+StringExpandPlaceholders = 0x8006e44 | 1;
 BtlController_EmitSetMonData = 0x800c664 | 1;
 LoadCompressedObjectPalette = 0x800d2a4 | 1;
 DecompressPicFromTable_2 = 0x800d308 | 1;
@@ -85,7 +87,12 @@ StartFieldEffectForObjectEvent = 0x80649f4 | 1;
 DoShadowFieldEffect = 0x8064a1c | 1;
 ShowFieldMessage = 0x8064b68 | 1;
 HideFieldMessageBox = 0x8064c58 | 1;
+
 TextWindow_LoadStdFrameGraphicsOverrideStyle = 0x8064f6c | 1;
+TextWindow_LoadDialogueFrameTiles = 0x8065348 | 1;
+TextWindow_DrawDialogueFrame = 0x8065330 | 1;
+TextWindow_EraseDialogueFrame = 0x806536c | 1;
+
 SetupNativeScript = 0x80653dc | 1;
 ScriptContext2_Enable = 0x8065530 | 1;
 ScriptContext2_IsEnabled = 0x8065548 | 1;

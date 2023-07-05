@@ -65,11 +65,10 @@ bx r4
 
 @EventScript_UseRegisteredItem:
 s_lockall
-s_message @UseWhichRegisteredItem
-s_waitmessage
 s_callnative (DrawRegisteredItemsMultichoice | 1)
 s_waitstate
 s_callnative (UseSelectedRegisteredItem | 1)
+s_callnative (HideFieldMessageBoxInstant | 1)
 s_releaseall
 s_return
 

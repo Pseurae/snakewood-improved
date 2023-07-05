@@ -155,6 +155,7 @@ extern const struct WindowTemplate gWindowTemplate_81E6C3C;
 extern const struct WindowTemplate gMenuTextWindowTemplate;
 
 void Text_LoadWindowTemplate(const struct WindowTemplate *winConfig);
+u8 Text_InitWindowAndPrintText(void *win, const u8 *text, u16 tileDataStartOffset, u8 left, u8 top);
 void LoadFontDefaultPalette(const struct WindowTemplate *winTemplate);
 
 extern const u8 gFontDefaultPalette[];

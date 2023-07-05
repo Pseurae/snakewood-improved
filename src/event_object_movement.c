@@ -11,29 +11,43 @@
 
 static bool8 IsSuitableWeatherForShadow(void);
 
-void (*const sGroundEffectFuncs[])(struct ObjectEvent *objEvent, struct Sprite *sprite) = {
-    GroundEffect_SpawnOnTallGrass,
-    GroundEffect_MoveOnTallGrass,
-    GroundEffect_SpawnOnLongGrass,
-    GroundEffect_MoveOnLongGrass,
-    GroundEffect_WaterReflection,
-    GroundEffect_IceReflection,
-    GroundEffect_FlowingWater,
-    GroundEffect_SandTracks,
-    GroundEffect_DeepSandTracks,
-    GroundEffect_Ripple,
-    GroundEffect_StepOnPuddle,
-    GroundEffect_SandPile,
-    GroundEffect_JumpOnTallGrass,
-    GroundEffect_JumpOnLongGrass,
-    GroundEffect_JumpOnShallowWater,
-    GroundEffect_JumpOnWater,
-    GroundEffect_JumpLandingDust,
-    GroundEffect_ShortGrass,
-    GroundEffect_HotSprings,
-    GroundEffect_Seaweed,
-    GroundEffect_Shadow,
-};
+void GroundEffect_SpawnOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_MoveOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_SpawnOnLongGrass(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_MoveOnLongGrass(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_WaterReflection(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_IceReflection(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_FlowingWater(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_SandTracks(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_DeepSandTracks(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_Ripple(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_StepOnPuddle(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_SandPile(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_JumpOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_JumpOnLongGrass(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_JumpOnShallowWater(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_JumpOnWater(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_JumpLandingDust(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_ShortGrass(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_HotSprings(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_Seaweed(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_Shadow(struct ObjectEvent *objEvent, struct Sprite *sprite);
+
+void GetGroundEffectFlags_Shadow(struct ObjectEvent *objEvent, u32 *flags);
+void GetGroundEffectFlags_Reflection(struct ObjectEvent *, u32 *);
+void GetGroundEffectFlags_TallGrassOnSpawn(struct ObjectEvent *, u32 *);
+void GetGroundEffectFlags_TallGrassOnBeginStep(struct ObjectEvent *, u32 *);
+void GetGroundEffectFlags_LongGrassOnSpawn(struct ObjectEvent *, u32 *);
+void GetGroundEffectFlags_LongGrassOnBeginStep(struct ObjectEvent *, u32 *);
+void GetGroundEffectFlags_Tracks(struct ObjectEvent *, u32 *);
+void GetGroundEffectFlags_SandPile(struct ObjectEvent *, u32 *);
+void GetGroundEffectFlags_ShallowFlowingWater(struct ObjectEvent *, u32 *);
+void GetGroundEffectFlags_Puddle(struct ObjectEvent *, u32 *);
+void GetGroundEffectFlags_Ripple(struct ObjectEvent *, u32 *);
+void GetGroundEffectFlags_ShortGrass(struct ObjectEvent *, u32 *);
+void GetGroundEffectFlags_HotSprings(struct ObjectEvent *, u32 *);
+void GetGroundEffectFlags_Seaweed(struct ObjectEvent *, u32 *);
+void GetGroundEffectFlags_JumpLanding(struct ObjectEvent *, u32 *);
 
 static bool8 IsSuitableWeatherForShadow(void)
 {
@@ -49,7 +63,7 @@ static bool8 IsSuitableWeatherForShadow(void)
     return FALSE;
 }
 
-static void GetGroundEffectFlags_Shadow(struct ObjectEvent *objEvent, u32 *flags)
+void GetGroundEffectFlags_Shadow(struct ObjectEvent *objEvent, u32 *flags)
 {
     if (!IsSuitableWeatherForShadow() || MetatileBehavior_IsPokeGrass(objEvent->currentMetatileBehavior)
         || MetatileBehavior_IsSurfableWaterOrUnderwater(objEvent->currentMetatileBehavior)
@@ -80,12 +94,20 @@ void GroundEffect_Shadow(struct ObjectEvent *objEvent, struct Sprite *sprite)
     FldEff_Shadow_();
 }
 
+static void (*const sNewGroundEffectFuncs[])(struct ObjectEvent *objEvent, struct Sprite *sprite) = {
+    GroundEffect_Shadow,
+};
+
 void StartTriggeredGroundEffects(struct ObjectEvent *objEvent, struct Sprite *sprite, u32 flags)
 {
     u8 i;
-    for (i = 0; i < ARRAY_COUNT(sGroundEffectFuncs); i++, flags >>= 1)
+    for (i = 0; i < 20; ++i, flags >>= 1)
         if (flags & 1)
-            sGroundEffectFuncs[i](objEvent, sprite);
+            gGroundEffectFuncs[i](objEvent, sprite);
+
+    for (i = 0; i < ARRAY_COUNT(sNewGroundEffectFuncs); ++i, flags >>= 1)
+        if (flags & 1)
+            sNewGroundEffectFuncs[i](objEvent, sprite);
 }
 
 void GetAllGroundEffectFlags_OnSpawn(struct ObjectEvent *objEvent, u32 *flags)

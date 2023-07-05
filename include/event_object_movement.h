@@ -3,44 +3,8 @@
 #include "fieldmap.h"
 #include "sprite.h"
 
-void GroundEffect_SpawnOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_MoveOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_SpawnOnLongGrass(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_MoveOnLongGrass(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_WaterReflection(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_IceReflection(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_FlowingWater(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_SandTracks(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_DeepSandTracks(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_Ripple(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_StepOnPuddle(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_SandPile(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_JumpOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_JumpOnLongGrass(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_JumpOnShallowWater(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_JumpOnWater(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_JumpLandingDust(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_ShortGrass(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_HotSprings(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_Seaweed(struct ObjectEvent *objEvent, struct Sprite *sprite);
-void GroundEffect_Shadow(struct ObjectEvent *objEvent, struct Sprite *sprite);
-
 void ObjectEventUpdateMetatileBehaviors(struct ObjectEvent *);
 u32 StartFieldEffectForObjectEvent(u8, struct ObjectEvent *);
-void GetGroundEffectFlags_Reflection(struct ObjectEvent *, u32 *);
-void GetGroundEffectFlags_TallGrassOnSpawn(struct ObjectEvent *, u32 *);
-void GetGroundEffectFlags_TallGrassOnBeginStep(struct ObjectEvent *, u32 *);
-void GetGroundEffectFlags_LongGrassOnSpawn(struct ObjectEvent *, u32 *);
-void GetGroundEffectFlags_LongGrassOnBeginStep(struct ObjectEvent *, u32 *);
-void GetGroundEffectFlags_Tracks(struct ObjectEvent *, u32 *);
-void GetGroundEffectFlags_SandPile(struct ObjectEvent *, u32 *);
-void GetGroundEffectFlags_ShallowFlowingWater(struct ObjectEvent *, u32 *);
-void GetGroundEffectFlags_Puddle(struct ObjectEvent *, u32 *);
-void GetGroundEffectFlags_Ripple(struct ObjectEvent *, u32 *);
-void GetGroundEffectFlags_ShortGrass(struct ObjectEvent *, u32 *);
-void GetGroundEffectFlags_HotSprings(struct ObjectEvent *, u32 *);
-void GetGroundEffectFlags_Seaweed(struct ObjectEvent *, u32 *);
-void GetGroundEffectFlags_JumpLanding(struct ObjectEvent *, u32 *);
 
 u8 GetObjectEventIdByLocalIdAndMap(u8, u8, u8);
 const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u8);
@@ -82,3 +46,4 @@ void FreezeObjectEvents(void);
 #define OBJECT_EVENTS_COUNT                      16
 
 extern struct ObjectEvent gObjectEvents[OBJECT_EVENTS_COUNT];
+extern void (*const gGroundEffectFuncs[20])(struct ObjectEvent *objEvent, struct Sprite *sprite);
