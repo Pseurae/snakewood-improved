@@ -1,7 +1,5 @@
 #pragma once
 
-#include "types.h"
-
 extern const u8 gOtherText_Player[];
 extern const u8 gOtherText_Badges[];
 extern const u8 gOtherText_Pokedex[];

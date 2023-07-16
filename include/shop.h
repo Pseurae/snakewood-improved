@@ -1,7 +1,5 @@
 #pragma once
 
-#include "types.h"
-
 struct MartInfo
 {
     /* 0x0 */ void (*callback)(void);

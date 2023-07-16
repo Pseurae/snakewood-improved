@@ -1,7 +1,5 @@
 #pragma once
 
-#include "types.h"
-
 struct Decoration
 {
     /*0x00*/ u8 id;

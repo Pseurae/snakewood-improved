@@ -1,7 +1,5 @@
 #pragma once
 
-#include "types.h"
-
 enum StringConvertMode
 {
     STR_CONV_MODE_LEFT_ALIGN,

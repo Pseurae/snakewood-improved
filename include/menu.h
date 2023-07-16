@@ -1,6 +1,5 @@
 #pragma once
 
-#include "types.h"
 #include "text.h"
 
 extern void *gMenuWindowPtr;

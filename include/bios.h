@@ -1,7 +1,5 @@
 #pragma once
 
-#include "types.h"
-
 void CpuSet(const void *src, void *dest, u32 control);
 void CpuFastSet(const void *src, void *dest, u32 control);
 void LZ77UnCompVram(const void *src, void *dest);

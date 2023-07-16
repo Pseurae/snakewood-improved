@@ -1,7 +1,5 @@
 #pragma once
 
-#include "types.h"
-
 typedef bool8 (*MenuFunc)();
 
 struct MenuAction

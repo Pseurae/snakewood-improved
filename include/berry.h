@@ -1,7 +1,5 @@
 #pragma once
 
-#include "types.h"
-
 struct BattleEnigmaBerry
 {
     /*0x00*/ u8 name[7];

@@ -1,7 +1,5 @@
 #pragma once
 
-#include "types.h"
-
 enum
 {
     POCKET_ITEMS = 1,

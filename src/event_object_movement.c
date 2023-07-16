@@ -89,8 +89,12 @@ void GroundEffect_Shadow(struct ObjectEvent *objEvent, struct Sprite *sprite)
 {
     (void)sprite;
     // StartFieldEffectForObjectEvent(FLDEFF_SHADOW, objEvent);
-    ObjectEventGetLocalIdAndMap(
-        objEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    // ObjectEventGetLocalIdAndMap(
+    //     objEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    gFieldEffectArguments[0] = objEvent->localId;
+    gFieldEffectArguments[1] = objEvent->mapNum;
+    gFieldEffectArguments[2] = objEvent->mapGroup;
+
     FldEff_Shadow_();
 }
 

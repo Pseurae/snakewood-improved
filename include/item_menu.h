@@ -1,7 +1,5 @@
 #pragma once
 
-#include "types.h"
-
 struct PACKED ItemSlot
 {
     u16 itemId;
