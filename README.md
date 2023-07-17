@@ -75,3 +75,4 @@ A `output.gba` will be created as your patched file.
 ## Credits
 Cutlerine and the Snakewood Team for creating Pokemon Snakewood.  
 PRET for their [decompilation of Pokemon Ruby](https://github.com/pret/pokeruby).
+Super Versekr Dark for their Exp Points on capturing routine.
