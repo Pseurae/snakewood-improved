@@ -57,6 +57,9 @@
 ; Allows for multiple key items to be registered and used from a list.
 .definelabel MULTIPLE_REGISTERED_ITEMS, 1
 
+; Give Exp Points on capturing a Pokemon.
+.definelabel EXP_ON_CAPTURE, 1
+
 ; Bugfixes
 ; --------
 

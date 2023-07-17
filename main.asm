@@ -54,6 +54,7 @@
 .include "scripts/colored_field_moves.asm"
 .include "scripts/colored_stats.asm"
 .include "scripts/emerald_save_prompt.asm"
+.include "scripts/exp_on_capture.asm"
 .include "scripts/hm_system.asm"
 .include "scripts/ow_shadows.asm"
 .include "scripts/ps_split.asm"

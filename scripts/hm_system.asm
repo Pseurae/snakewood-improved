@@ -79,9 +79,7 @@ set_function_hook r7, PartyHasMonWithSurf
 	s_waitstate
 	s_goto @DoTreeCutMovement
 	s_end
-.endautoregion
 
-.autoregion
 @EventScript_RockSmash:
 	s_lockall
 	s_goto_if_unset FLAG_BADGE03_GET, @CannotUseRockSmash
@@ -101,9 +99,7 @@ set_function_hook r7, PartyHasMonWithSurf
 	s_waitstate
 	s_goto @DoRockSmashMovement
 	s_end
-.endautoregion
 
-.autoregion
 @EventScript_StrengthBoulder:
 	s_lockall
 	s_goto_if_unset FLAG_BADGE04_GET, @CannotUseStrength
@@ -121,9 +117,7 @@ set_function_hook r7, PartyHasMonWithSurf
 	s_waitstate
 	s_goto @UsedStrength
 	s_end
-.endautoregion
 
-.autoregion
 @EventScript_Waterfall:
 	s_lockall
 	s_setvar VAR_0x8004, ITEM_HM07_WATERFALL
@@ -138,9 +132,7 @@ set_function_hook r7, PartyHasMonWithSurf
 	s_msgbox @UsedWaterfallText, MSGBOX_DEFAULT
 	s_dofieldeffect FLDEFF_USE_WATERFALL
 	s_goto @Waterfall_Done
-.endautoregion
 
-.autoregion
 @EventScript_Dive:
 	s_lockall
 	s_setvar VAR_0x8004, ITEM_HM08_DIVE
@@ -178,9 +170,7 @@ set_function_hook r7, PartyHasMonWithSurf
 	s_msgbox @UsedDiveText, MSGBOX_DEFAULT
 	s_dofieldeffect FLDEFF_USE_DIVE
 	s_goto @UnderwaterDive_Done
-.endautoregion
 
-.autoregion
 @EventScript_UseSurf:
 	s_setvar VAR_0x8004, ITEM_HM03_SURF
 	s_callnative (CheckIfPartyCanUseHM | 1)
@@ -200,6 +190,7 @@ set_function_hook r7, PartyHasMonWithSurf
     s_end
 .endautoregion
 
+; Make HMs forgettable
 .org 0x809f7f2
 .area 0x2, 0x0
 mov r0, #0

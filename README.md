@@ -33,6 +33,7 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 - Repeated item usage
 - Error screen for wrong save file type
 - Multiple Registered Key Items
+- Exp Points on capture
 
 <details>
 
