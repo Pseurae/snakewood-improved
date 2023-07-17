@@ -261,7 +261,7 @@ void UseRegisteredKeyItem(u16 item)
     gSpecialVar_ItemId = item;
     taskId = CreateTask(ItemId_GetFieldFunc(item), 8);
 
-    if (taskId != 0xff)
+    if (taskId != TASK_NONE)
         gTasks[taskId].data[2] = 1;
 }
 

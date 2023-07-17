@@ -1,6 +1,7 @@
 #pragma once
 
 #define NUM_TASKS 16
+#define TASK_NONE 0xFF
 
 typedef void (*TaskFunc)(u8 taskId);
 

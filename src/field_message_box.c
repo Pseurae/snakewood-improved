@@ -68,7 +68,7 @@ static void Task_FieldMessageBoxInstant(u8 taskId)
 void HideFieldMessageBoxInstant(void)
 {
     u8 taskId = FindTaskIdByFunc(Task_FieldMessageBoxInstant);
-    if (taskId != 0xFF)
+    if (taskId != TASK_NONE)
         DestroyTask(taskId);
 
     TextWindow_EraseDialogueFrame(&gFieldMessageBoxWindow);

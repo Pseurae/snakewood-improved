@@ -87,7 +87,7 @@ bool8 ScriptMenu_ShowTrainerPic(u16 trainerId, u8 x, u8 y)
     u8 taskId;
     u8 spriteId;
 
-    if (FindTaskIdByFunc(Task_TrainerPicWindow) != 0xFF)
+    if (FindTaskIdByFunc(Task_TrainerPicWindow) != TASK_NONE)
     {
         return FALSE;
     }
@@ -113,7 +113,7 @@ bool8 (*ScriptMenu_GetTrainerPicboxWaitFunc(void))(void)
 {
     u8 taskId = FindTaskIdByFunc(Task_TrainerPicWindow);
 
-    if (taskId == 0xFF)
+    if (taskId == TASK_NONE)
         return NULL;
     gTasks[taskId].tState++;
     return IsPicboxClosed;
@@ -130,7 +130,7 @@ void CloseTrainerPicBox(void)
 
 static bool8 IsPicboxClosed(void)
 {
-    if (FindTaskIdByFunc(Task_TrainerPicWindow) == 0xFF)
+    if (FindTaskIdByFunc(Task_TrainerPicWindow) == TASK_NONE)
         return TRUE;
     else
         return FALSE;
