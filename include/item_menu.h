@@ -32,5 +32,6 @@ void MoveSelectIcon(u8 itemPos);
 void EraseSelectIcon(u8 itemPos);
 
 void ItemListMenu_InitMenu(void);
+bool8 UseRegisteredKeyItemFromField(void);
 
 extern const u8 Event_NoRegisteredItem[];

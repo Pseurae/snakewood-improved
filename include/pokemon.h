@@ -14,7 +14,7 @@ enum
     CATEGORY_STATUS
 };
 
-struct BattleMove
+struct PACKED BattleMove
 {
     u8 effect;
     u8 power;

@@ -1,5 +1,4 @@
-#ifndef GUARD_CONSTANTS_SONGS_H
-#define GUARD_CONSTANTS_SONGS_H
+#pragma once
 
 // Original JP names listed on right, along with any additional notes
 
@@ -375,5 +374,3 @@
 #define MUS_GSC_RADIO_TOWER_TAKEOVER 467
 
 #define MUS_ROUTE_118                0x7FFF // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
-
-#endif // GUARD_CONSTANTS_SONGS_H

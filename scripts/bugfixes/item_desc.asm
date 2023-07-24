@@ -24,9 +24,13 @@
 replace_item_desc @TM31_IcePunch_Desc, @TM31_IcePunch_Size, "A freezing punch\nthat can leave the\nfoe frozen solid."
 replace_item_desc @Chikuwa_Desc, @Chikuwa_Size, "A tubular snack\nthat heals all\nstatus problems."
 repoint_item_desc ITEM_MAGIC_STARS, @MagicStars_Desc
+repoint_item_desc ITEM_NECRO_BALL, @NecroBall_Desc
 
 .autoregion
 @MagicStars_Desc:
 .string "Chocolate stars\nwith faces. Raise\nSPEED."
+
+@NecroBall_Desc:
+.string "An ancient BALL\nforged in hellfire\n1000 years ago."
 .endautoregion
 .endif

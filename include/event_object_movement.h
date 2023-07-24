@@ -19,6 +19,7 @@ void ObjectEventSetGraphicsId(struct ObjectEvent *, u8);
 void ObjectEventTurn(struct ObjectEvent *, u8);
 void ObjectEventGetLocalIdAndMap(struct ObjectEvent *, void *, void *, void *);
 void ObjectEventClearHeldMovementIfActive(struct ObjectEvent *);
+void ObjectEventClearHeldMovement(struct ObjectEvent *);
 void FreezeObjectEvents(void);
 
 #define GROUND_EFFECT_FLAG_TALL_GRASS_ON_SPAWN   (1 << 0)

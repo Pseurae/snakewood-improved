@@ -149,11 +149,51 @@ struct WindowTemplate
     u32 maybeUnused;
 };
 
+struct Window
+{
+    /*0x00*/ u8 textMode;
+    /*0x01*/ u8 fontNum;
+    /*0x02*/ u8 language;
+    /*0x03*/ u8 foregroundColor;
+    /*0x04*/ u8 backgroundColor;
+    /*0x05*/ u8 shadowColor;
+    /*0x06*/ u8 paletteNum;
+    /*0x07*/ u8 tilemapLeft;
+    /*0x08*/ u8 tilemapTop;
+    /*0x09*/ u8 width;
+    /*0x0A*/ u8 height;
+    /*0x0B*/ u8 win_field_B;
+    /*0x0C*/ u8 win_field_C;
+    /*0x0D*/ u8 delayCounter;
+    /*0x0E*/ u8 spacing;
+    /*0x0F*/ u8 win_field_F;
+    /*0x10*/ u8 cursorX;
+    /*0x11*/ u8 cursorY;
+    /*0x12*/ u8 left;
+    /*0x14*/ u16 top; // padded to 0x14
+    /*0x16*/ u16 state;
+    /*0x18*/ u16 downArrowCounter;
+    /*0x1A*/ u16 tileDataStartOffset;
+    /*0x1C*/ u16 tileDataOffset;
+    /*0x1E*/ u16 textIndex;
+    /*0x20*/ const u8 *text;
+    /*0x24*/ u8 *tileData;
+    /*0x28*/ u16 *tilemap;
+    /*0x2C*/ const struct WindowTemplate *template;
+};
+
 extern const struct WindowTemplate gWindowTemplate_81E6C3C;
 extern const struct WindowTemplate gMenuTextWindowTemplate;
 
 void Text_LoadWindowTemplate(const struct WindowTemplate *winConfig);
+void Text_InitWindowPixel(struct Window *win, const u8 *text, u16 tileDataStartOffset, u8 left, u16 top, u32 a6);
+void Text_InitWindow(struct Window *win, const u8 *text, u16 tileDataStartOffset, u8 left, u8 top);
 u8 Text_InitWindowAndPrintText(void *win, const u8 *text, u16 tileDataStartOffset, u8 left, u8 top);
+u8 Text_InitWindowAndPrintTextPixel(
+    struct Window *win, const u8 *text, u16 tileDataStartOffset, u8 left, u16 top, u32 a6);
+u8 Text_PrintWindow(struct Window *win);
+u8 Text_InitWindow_RightAligned(struct Window *win, const u8 *text, u16 tileDataStartOffset, u8 right, u8 top);
+void Text_FillWindowRect(struct Window *win, u16 tilemapEntry, u8 left, u8 top, u8 right, u8 bottom);
 void LoadFontDefaultPalette(const struct WindowTemplate *winTemplate);
 
 extern const u8 gFontDefaultPalette[];

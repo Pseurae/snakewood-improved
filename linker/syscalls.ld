@@ -7,3 +7,7 @@ __divsi3 = 0x81e0868 | 1;
 __modsi3 = 0x81e0978 | 1;
 __udivsi3 = 0x81e0e90 | 1;
 __umodsi3 = 0x81e0f08 | 1;
+
+__aeabi_idiv = 0x81e0868 | 1;
+__aeabi_uidiv = 0x81e0e90 | 1;
+__aeabi_idivmod = 0x81e0f08 | 1;

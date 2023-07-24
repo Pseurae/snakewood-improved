@@ -24,7 +24,7 @@
 .endregion
 
 .autoregion
-.importobj "build/linked.o"
+.importobj "build/linked_processed.o"
 .endautoregion
 
 .include "scripts/predefs/common.asm"
@@ -50,6 +50,7 @@
 .include "scripts/bugfixes/ss_cangrejo.asm"
 .include "scripts/bugfixes/text_colors.asm"
 
+.include "scripts/autorun.asm"
 .include "scripts/bag_expansion.asm"
 .include "scripts/colored_field_moves.asm"
 .include "scripts/colored_stats.asm"

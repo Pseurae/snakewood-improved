@@ -1,5 +1,4 @@
-#ifndef GUARD_CONSTANTS_POKEMON_H
-#define GUARD_CONSTANTS_POKEMON_H
+#pragma once
 
 #define MON_DATA_PERSONALITY                  0
 #define MON_DATA_OT_ID                        1
@@ -148,5 +147,3 @@
 #define PLAYER_HAS_TWO_USABLE_MONS            0
 #define PLAYER_HAS_ONE_MON                    1
 #define PLAYER_HAS_ONE_USABLE_MON             2
-
-#endif // GUARD_CONSTANTS_POKEMON_H

@@ -43,3 +43,5 @@ struct Main
 };
 
 extern struct Main gMain;
+
+void SetMainCallback2(MainCallback callback);

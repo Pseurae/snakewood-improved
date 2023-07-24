@@ -1,7 +1,10 @@
 .if PS_SPLIT
-; Hook new function
-.org 0x803ba2c
-.area 0x803c348 - 0x803ba2c, 0xFE
-set_function_hook r4, CalculateBaseDamage
-.endarea
+.org 0x803c122
+b 0x803c25c
+
+.org 0x803c12a
+b 0x803c25c
+
+.org 0x803bfbc
+set_function_hook r1, PS_Split_Hook
 .endif

@@ -34,6 +34,7 @@ struct UCoords16
     u16 y;
 };
 
+#define EWRAM_DATA         __attribute__((section(".ewram")))
 #define PACKED             __attribute__((packed))
 #define NAKED              __attribute__((naked))
 
@@ -43,3 +44,5 @@ struct UCoords16
 #define NULL               0x0
 
 #define ARRAY_COUNT(array) (sizeof(array) / sizeof((array)[0]))
+
+#define _(s)               (s)

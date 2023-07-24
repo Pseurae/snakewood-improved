@@ -60,6 +60,9 @@
 ; Give Exp Points on capturing a Pokemon.
 .definelabel EXP_ON_CAPTURE, 1
 
+; Autorunning shoes like in HGSS.
+.definelabel AUTORUN, 1
+
 ; Bugfixes
 ; --------
 

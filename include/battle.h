@@ -215,6 +215,16 @@ struct PACKED DisableStruct
     /*0x1A*/ u8 unk1A[2];
 };
 
+struct PACKED ChooseMoveStruct
+{
+    u16 moves[4];
+    u8 currentPp[4];
+    u8 maxPp[4];
+    u16 species;
+    u8 monType1;
+    u8 monType2;
+};
+
 extern u16 gBattleTypeFlags;
 extern struct BattlePokemon gBattleMons[4];
 extern u16 gCurrentMove;
@@ -242,6 +252,7 @@ extern s32 gHpDealt;
 extern s32 gTakenDmg[4];
 extern u8 gTakenDmgByBattler[4];
 extern u8 BattleScript_SubstituteFade[];
+extern u8 gBattleBufferA[][0x200];
 
 extern const u8 gBattleMoveSplit[NUM_MOVES];
 

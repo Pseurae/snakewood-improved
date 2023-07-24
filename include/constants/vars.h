@@ -1,5 +1,4 @@
-#ifndef GUARD_CONSTANTS_VARS_H
-#define GUARD_CONSTANTS_VARS_H
+#pragma once
 
 #define VARS_START 0x4000
 
@@ -195,5 +194,3 @@
 #define VAR_CONTEST_CATEGORY 0x8011
 
 #define SPECIAL_VARS_END     0x8015
-
-#endif // GUARD_CONSTANTS_VARS_H

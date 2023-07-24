@@ -10,5 +10,6 @@ enum StringConvertMode
 u8 *ConvertIntToDecimalString(u8 *dest, s32 value);
 u8 *ConvertIntToDecimalStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 n);
 u8 *StringCopy(u8 *dest, const u8 *src);
+u8 *StringAppend(u8 *dest, const u8 *src);
 u8 *StringExpandPlaceholders(u8 *dest, const u8 *src);
 u16 StringLength(const u8 *str);

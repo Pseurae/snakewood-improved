@@ -13,4 +13,5 @@ struct CompressedSpriteSheet
     u16 tag;
 };
 
+void LoadCompressedObjectPic(const struct CompressedSpriteSheet *src);
 void DecompressPicFromTable_2(const void *src, u8 coords, u8 y_offset, void *d, void *dest, s32 species);

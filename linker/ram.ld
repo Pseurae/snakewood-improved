@@ -34,8 +34,14 @@ gCreatingSpriteTemplate = 0x2024e8c;
 gPlayerName = 0x2024ea4;
 gPlayTimeHours = 0x2024eb2;
 gPlayTimeMinutes = 0x2024eb4;
+gDisplayedStringBattle = 0x20238cc;
+gBattleBufferA = 0x2023a60;
+
+/* Free SaveBlock space */
+gAutorunEnabled = 0x2024f34;
 gExpandedItemPockets = 0x2025420;
 gRegisteredItems = 0x2025520;
+
 gMapHeader = 0x202e828;
 gPlayerAvatar = 0x202e858;
 gFieldMessageBoxWindow = 0x0202e87c;
@@ -54,8 +60,11 @@ sPokeMenuOptionsOrder = 0x202ffaa;
 gUnknown_02038558 = 0x2038558;
 sCurrentBagPocket = 0x2038559;
 gSpecialVar_ItemId = 0x203855e;
-gRepelMenuChoices = 0x203a400;
-gLastUsedRegisteredItem = 0x203a404;
+gWeather = 0x202f7e8;
+gMoveSelectionCursor = 0x2024e64;
+
+/* gRepelMenuChoices = 0x203a400; */
+/* gLastUsedRegisteredItem = 0x203a404; */
 
 gMartInfo = 0x3000708;
 gMain = 0x3001770;
@@ -67,3 +76,4 @@ gBagPocketScrollStates = 0x3005d10;
 gCurrentBagPocketItemSlots = 0x3005d24;
 gScriptContext1 = 0x3007440;
 sMessageBoxMode = 0x30074b8;
+gWindowTemplate_Contest_MoveDescription = 0x3004210;

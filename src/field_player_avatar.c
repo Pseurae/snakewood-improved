@@ -1,2 +1,7 @@
 #include "types.h"
 #include "field_player_avatar.h"
+#include "event_object_movement.h"
+#include "field_control_avatar.h"
+#include "flags.h"
+#include "constants/flags.h"
+#include "constants/gba.h"

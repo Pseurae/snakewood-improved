@@ -89,8 +89,8 @@ extern struct Sprite gSprites[MAX_SPRITES];
 extern struct SpriteTemplate gCreatingSpriteTemplate;
 
 u8 IndexOfSpritePaletteTag(u16 tag);
-u8 CreateSprite(const void *template, s16 x, s16 y, u8 subpriority);
-u8 CreateSpriteAtEnd(const void *template, s16 x, s16 y, u8 subpriority);
+u8 CreateSprite(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority);
+u8 CreateSpriteAtEnd(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority);
 void SpriteCallbackDummy(struct Sprite *sprite);
 void FreeResourcesAndDestroySprite(struct Sprite *sprite);
 void StartSpriteAnim(struct Sprite *sprite, u8 animNum);

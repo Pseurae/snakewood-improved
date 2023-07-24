@@ -2,7 +2,10 @@
 #include "bios.h"
 #include "item_menu.h"
 
-void ClearRegisteredItems(void)
+extern void *__savegame_start;
+extern void *__savegame_end;
+
+void ClearSavefileSpace(void)
 {
-    CpuFastFill16(0x1, gRegisteredItems, sizeof(gRegisteredItems));
+    CpuFastFill16(0x0, __savegame_start, (int)(__savegame_end - __savegame_start));
 }

@@ -11,7 +11,9 @@ bl ScriptMenu_ShowTrainerPic
 pop {r0-r2, pc}
 
 @HideDragonPortrait:
-b CloseTrainerPicBox
+push {r0-r7, lr}
+bl CloseTrainerPicBox
+pop {r0-r7, pc}
 .endautoregion
 
 .org 0x880EE51

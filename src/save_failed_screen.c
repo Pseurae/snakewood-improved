@@ -6,7 +6,18 @@
 #include "text.h"
 #include "constants/gba.h"
 
-void FlashNotDetectedScreen(const u8 *message)
+static const u8 sText_ErrorText[] = _("{COLOR RED}ERROR\n{COLOR DARK_GREY}Flash memory not detected.\n\nSet your "
+                                      "emulator's save type\nsetting to Flash 1MB / 128K\nand reload the rom.");
+
+void FlashNotDetectedScreen(void);
+
+void CB2_FlashNotDetectedScreen(void)
+{
+    FlashNotDetectedScreen();
+    SetMainCallback2(NULL);
+}
+
+void FlashNotDetectedScreen(void)
 {
     u32 savedIme;
 
@@ -32,7 +43,7 @@ void FlashNotDetectedScreen(const u8 *message)
     InitMenuWindow(&gMenuTextWindowTemplate);
 
     Menu_DrawStdWindowFrame(3, 3, 26, 16);
-    Menu_PrintText(message, 5, 4);
+    Menu_PrintText(sText_ErrorText, 5, 4);
 
     savedIme = REG_IME;
     REG_IME = 0;

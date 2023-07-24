@@ -15,7 +15,6 @@ set_function_hook r7, GetAllGroundEffectFlags_OnSpawn
 .org 0x8063638 ; GetAllGroundEffectFlags_OnBeginStep
 set_function_hook r7, GetAllGroundEffectFlags_OnBeginStep
 
-
 .org 0x8063690 ; GetAllGroundEffectFlags_OnFinishStep
 set_function_hook r7, GetAllGroundEffectFlags_OnFinishStep
 
@@ -75,19 +74,6 @@ set_function_hook r7, StartTriggeredGroundEffects
 .org 0x839F454
 .word (FlyInFieldEffect_BirdSwoopDown | 1)
 
-; Update all 4 sprite callbacks.
-.org 0x08374560 + 0x14
-.word (UpdateShadowFieldEffect_ | 1)
-
-.org 0x08374578 + 0x14
-.word (UpdateShadowFieldEffect_ | 1)
-
-.org 0x08374590 + 0x14
-.word (UpdateShadowFieldEffect_ | 1)
-
-.org 0x083745a8 + 0x14
-.word (UpdateShadowFieldEffect_ | 1)
-
 ; Patch weather functions to use Weather_SetBlendCoeff.
 .org 0x807cae8
 set_function_hook r7, None_InitVars
@@ -103,5 +89,8 @@ mov r0, #0x8
 mov r1, #0xc
 
 set_nop_bl 0x807dea8
+
+.org 0x8126d70
+set_function_hook r3, UpdateShadowFieldEffect_Hook
 
 .endif

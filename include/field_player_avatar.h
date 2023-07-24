@@ -43,6 +43,27 @@ struct PlayerAvatar /* 0x202E858 */
 
 extern struct PlayerAvatar gPlayerAvatar;
 
+u8 CheckForPlayerAvatarCollision(u8 direction);
 void SetPlayerAvatarStateMask(u8 a);
 void StopPlayerAvatar(void);
 void PlayerFreeze(void);
+void PlayerGoSpeed1(u8 a);
+void PlayerGoSpeed2(u8 a);
+void PlayerRideWaterCurrent(u8 a);
+void PlayerGoSpeed4(u8 a);
+void PlayerOnBikeCollide(u8);
+void PlayerNotOnBikeCollide(u8);
+void PlayerFaceDirection(u8 a);
+void PlayerTurnInPlace(u8 a);
+void PlayerJumpLedge(u8 a);
+void PlayerRun(u8 a);
+bool8 IsRunningDisallowed(u8 tile);
+
+#define PLAYER_AVATAR_FLAG_ON_FOOT    (1 << 0)
+#define PLAYER_AVATAR_FLAG_MACH_BIKE  (1 << 1)
+#define PLAYER_AVATAR_FLAG_ACRO_BIKE  (1 << 2)
+#define PLAYER_AVATAR_FLAG_SURFING    (1 << 3)
+#define PLAYER_AVATAR_FLAG_UNDERWATER (1 << 4)
+#define PLAYER_AVATAR_FLAG_5          (1 << 5)
+#define PLAYER_AVATAR_FLAG_6          (1 << 6)
+#define PLAYER_AVATAR_FLAG_DASH       (1 << 7)

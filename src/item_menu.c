@@ -24,6 +24,11 @@ void HandleRegisterItem(u16 itemId);
 
 void RedrawSelectIconForRegisteredItems(void);
 
+static const u8 sText_UseWhichItem[] = _("Use which item?");
+extern u8 gUnknown_02038558;
+extern const u8 EventScript_UseRegisteredItem[];
+EWRAM_DATA u8 gLastUsedRegisteredItem = 0;
+
 void Menu_PrintTMHM(u16 taskId, int topItemOffset, int bottomItemOffset, int d)
 {
     u8 i;
@@ -89,8 +94,6 @@ void Menu_PrintTMHM(u16 taskId, int topItemOffset, int bottomItemOffset, int d)
         Menu_PrintText(gStringVar1, 14, y);
     }
 }
-
-extern u8 gUnknown_02038558;
 
 void Menu_PrintKeyItem(u16 taskId, int topItemOffset, int bottomItemOffset, int d)
 {
@@ -265,7 +268,7 @@ void UseRegisteredKeyItem(u16 item)
         gTasks[taskId].data[2] = 1;
 }
 
-bool8 UseRegisteredKeyItemFromField(const u8 *script, const u8 *message)
+bool8 UseRegisteredKeyItemFromField(void)
 {
     u8 i, numRegisteredItems;
     bool8 compatItems = FALSE;
@@ -289,15 +292,15 @@ bool8 UseRegisteredKeyItemFromField(const u8 *script, const u8 *message)
         }
         else
         {
-            ShowFieldMessageInstant(message);
-            ScriptContext1_SetupScript(script);
+            ShowFieldMessageInstant(sText_UseWhichItem);
+            ScriptContext1_SetupScript(EventScript_UseRegisteredItem);
         }
     }
     else
     {
         ScriptContext1_SetupScript(Event_NoRegisteredItem);
     }
-    return FALSE;
+    return TRUE;
 }
 
 void DrawRegisteredItemsMultichoice(void)
