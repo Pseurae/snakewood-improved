@@ -1,7 +1,7 @@
 .gba
 .thumb
 
-.open "snakewood.gba", "output.gba", 0x8000000
+.open INPUT_FILE, OUTPUT_FILE, 0x8000000
 
 .loadtable "charmap.tbl"
 

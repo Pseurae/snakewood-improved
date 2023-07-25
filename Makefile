@@ -1,5 +1,8 @@
 #!/usr/bin/env make
 
+INPUT := snakewood.gba
+OUTPUT := output.gba
+
 ifeq ($(strip $(DEVKITARM)),)
 $(error "Please set DEVKITARM in your environment. export DEVKITARM=<path to>devkitARM")
 endif
@@ -29,9 +32,12 @@ LD = $(PREFIX)ld
 LDFLAGS = -i rom.ld -T linker.ld
 
 ARMIPS := armips
+ARMIPSFLAGS := -strequ INPUT_FILE $(INPUT) -strequ OUTPUT_FILE $(OUTPUT)
+
 ELFEDIT := tools/elfedit/elfedit$(EXE)
 PREPROC := tools/preproc/preproc$(EXE)
 SCANINC := tools/scaninc/scaninc$(EXE)
+MAKEIPS := tools/makeips/makeips$(EXE)
 
 .DEFAULT_GOAL = all
 
@@ -41,18 +47,24 @@ ifeq (,$(filter-out all,$(MAKECMDGOALS)))
 $(shell $(MAKE) tools > /dev/null)
 endif
 
-all: test.gba
-	$(ARMIPS) main.asm -sym2 output.map
+all: $(OUTPUT)
+	@$(ARMIPS) $(ARMIPSFLAGS) main.asm -sym2 output.map
+	@echo "$(ARMIPS) <flags> main.asm -sym2 output.map"
 
-test.gba: snakewood.gba build/linked_processed.o
+patch: all
+	$(MAKEIPS) $(OUTPUT) $(INPUT) patch.ips
+
+$(OUTPUT): $(INPUT) build/linked_processed.o
 
 tools:
 	@$(MAKE) -C tools/elfedit
+	@$(MAKE) -C tools/makeips
 	@$(MAKE) -C tools/preproc
 	@$(MAKE) -C tools/scaninc
 
 clean_tools:
 	@$(MAKE) -C tools/elfedit clean
+	@$(MAKE) -C tools/makeips clean
 	@$(MAKE) -C tools/preproc clean
 	@$(MAKE) -C tools/scaninc clean
 
