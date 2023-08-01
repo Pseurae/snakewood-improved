@@ -115,5 +115,5 @@ struct PACKED ObjectEventGraphicsInfo
 
 extern struct MapHeader gMapHeader;
 
-void LoadMapTilesetPalettes(struct MapLayout *mapLayout);
-const u8 *CopyMapName(u8 *dest, u16 b);
+void LONG_CALL LoadMapTilesetPalettes(struct MapLayout *mapLayout);
+const u8 LONG_CALL *CopyMapName(u8 *dest, u16 b);

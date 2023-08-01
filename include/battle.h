@@ -256,10 +256,10 @@ extern u8 gBattleBufferA[][0x200];
 
 extern const u8 gBattleMoveSplit[NUM_MOVES];
 
-u8 GetBattlerSide(u8);
-u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 move);
-u8 GetBattlerForBattleScript(u8 bankValue);
-void BattleScriptPushCursor(void);
+u8 LONG_CALL GetBattlerSide(u8);
+u8 LONG_CALL AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 move);
+u8 LONG_CALL GetBattlerForBattleScript(u8 bankValue);
+void LONG_CALL BattleScriptPushCursor(void);
 
-void BtlController_EmitSetMonData(u8 a, u8 request, u8 c, u8 bytes, void *data); // 0x2
-void MarkBattlerForControllerExec(u8);
+void LONG_CALL BtlController_EmitSetMonData(u8 a, u8 request, u8 c, u8 bytes, void *data); // 0x2
+void LONG_CALL MarkBattlerForControllerExec(u8);

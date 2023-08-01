@@ -12,6 +12,10 @@
 EWRAM_DATA u8 gRepelMenuChoices[3] = { 0 };
 static const u16 sRepelItems[3] = { ITEM_REPEL, ITEM_SUPER_REPEL, ITEM_MAX_REPEL };
 
+static void Task_TrainerPicWindow(u8 taskId);
+static bool8 (*ScriptMenu_GetTrainerPicboxWaitFunc(void))(void);
+static bool8 IsPicboxClosed(void);
+
 void HasRepelItem(void)
 {
     for (u8 i = 0; i < 3; i++)
@@ -108,9 +112,7 @@ bool8 ScriptMenu_ShowTrainerPic(u16 trainerId, u8 x, u8 y)
     }
 }
 
-static bool8 IsPicboxClosed(void);
-
-bool8 (*ScriptMenu_GetTrainerPicboxWaitFunc(void))(void)
+static bool8 (*ScriptMenu_GetTrainerPicboxWaitFunc(void))(void)
 {
     u8 taskId = FindTaskIdByFunc(Task_TrainerPicWindow);
 

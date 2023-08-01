@@ -1,3 +1,3 @@
 #pragma once
 
-void PlaySE(u16 songNum);
+void LONG_CALL PlaySE(u16 songNum);

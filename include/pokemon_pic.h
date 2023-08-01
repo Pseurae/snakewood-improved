@@ -14,4 +14,4 @@ extern const struct CompressedSpriteSheet gMonFrontPicTable[];
 extern u8 *const gMonSpriteGfx_Sprite_ptr[];
 extern const struct CompressedSpritePalette gMonPaletteTable[];
 
-void SetMonSpriteTemplate(u16, u8);
+void LONG_CALL SetMonSpriteTemplate(u16, u8);

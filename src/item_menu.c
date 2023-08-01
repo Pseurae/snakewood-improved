@@ -16,13 +16,15 @@
 #include "constants/items.h"
 #include "constants/songs.h"
 
-bool8 IsItemRegistered(u16 itemId);
-void CompactRegisterItems(void);
-void RegisterItem(u16 itemId);
-void UnregisterItem(u16 itemId);
-void HandleRegisterItem(u16 itemId);
-
-void RedrawSelectIconForRegisteredItems(void);
+static bool8 IsItemRegistered(u16 itemId);
+static void CompactRegisterItems(void);
+static void RegisterItem(u16 itemId);
+static void UnregisterItem(u16 itemId);
+static void HandleRegisterItem(u16 itemId);
+static void EnsureRegisteredItemsInBag(void);
+static void UseRegisteredKeyItem(u16 item);
+static void Task_UseSelectedRegisteredItem(u8 taskId);
+static void RedrawSelectIconForRegisteredItems(void);
 
 static const u8 sText_UseWhichItem[] = _("Use which item?");
 extern u8 gUnknown_02038558;
@@ -122,11 +124,11 @@ void Menu_PrintKeyItem(u16 taskId, int topItemOffset, int bottomItemOffset, int 
     }
 }
 
-void sub_80A7528(u8 a);
-void sub_80A41D4(u8 taskId);
-void sub_80A37C0(u8 taskId);
+void LONG_CALL sub_80A7528(u8 a);
+void LONG_CALL sub_80A41D4(u8 taskId);
+void LONG_CALL sub_80A37C0(u8 taskId);
 
-void RedrawSelectIconForRegisteredItems(void)
+static void RedrawSelectIconForRegisteredItems(void)
 {
     u8 i;
 
@@ -153,7 +155,7 @@ void HandlePopupMenuAction_Register(u8 taskId)
 
 // Multiple Registered Items
 
-bool8 IsItemRegistered(u16 itemId)
+static bool8 IsItemRegistered(u16 itemId)
 {
     u8 i;
 
@@ -166,7 +168,7 @@ bool8 IsItemRegistered(u16 itemId)
     return FALSE;
 }
 
-void CompactRegisterItems(void)
+static void CompactRegisterItems(void)
 {
     u16 i;
     u16 j;
@@ -185,7 +187,7 @@ void CompactRegisterItems(void)
     }
 }
 
-void RegisterItem(u16 itemId)
+static void RegisterItem(u16 itemId)
 {
     u8 i;
 
@@ -199,7 +201,7 @@ void RegisterItem(u16 itemId)
     }
 }
 
-void UnregisterItem(u16 itemId)
+static void UnregisterItem(u16 itemId)
 {
     u8 i;
 
@@ -214,7 +216,7 @@ void UnregisterItem(u16 itemId)
     }
 }
 
-void HandleRegisterItem(u16 itemId)
+static void HandleRegisterItem(u16 itemId)
 {
     if (IsItemRegistered(itemId))
     {
@@ -238,7 +240,7 @@ void TryRemoveRegisteredItem(u16 itemId)
     RedrawSelectIconForRegisteredItems();
 }
 
-void EnsureRegisteredItemsInBag(void)
+static void EnsureRegisteredItemsInBag(void)
 {
     u8 i;
 
@@ -253,7 +255,7 @@ void EnsureRegisteredItemsInBag(void)
     CompactRegisterItems();
 }
 
-void UseRegisteredKeyItem(u16 item)
+static void UseRegisteredKeyItem(u16 item)
 {
     u8 taskId;
 

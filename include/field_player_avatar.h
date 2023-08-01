@@ -43,21 +43,21 @@ struct PlayerAvatar /* 0x202E858 */
 
 extern struct PlayerAvatar gPlayerAvatar;
 
-u8 CheckForPlayerAvatarCollision(u8 direction);
-void SetPlayerAvatarStateMask(u8 a);
-void StopPlayerAvatar(void);
-void PlayerFreeze(void);
-void PlayerGoSpeed1(u8 a);
-void PlayerGoSpeed2(u8 a);
-void PlayerRideWaterCurrent(u8 a);
-void PlayerGoSpeed4(u8 a);
-void PlayerOnBikeCollide(u8);
-void PlayerNotOnBikeCollide(u8);
-void PlayerFaceDirection(u8 a);
-void PlayerTurnInPlace(u8 a);
-void PlayerJumpLedge(u8 a);
-void PlayerRun(u8 a);
-bool8 IsRunningDisallowed(u8 tile);
+u8 LONG_CALL CheckForPlayerAvatarCollision(u8 direction);
+void LONG_CALL SetPlayerAvatarStateMask(u8 a);
+void LONG_CALL StopPlayerAvatar(void);
+void LONG_CALL PlayerFreeze(void);
+void LONG_CALL PlayerGoSpeed1(u8 a);
+void LONG_CALL PlayerGoSpeed2(u8 a);
+void LONG_CALL PlayerRideWaterCurrent(u8 a);
+void LONG_CALL PlayerGoSpeed4(u8 a);
+void LONG_CALL PlayerOnBikeCollide(u8);
+void LONG_CALL PlayerNotOnBikeCollide(u8);
+void LONG_CALL PlayerFaceDirection(u8 a);
+void LONG_CALL PlayerTurnInPlace(u8 a);
+void LONG_CALL PlayerJumpLedge(u8 a);
+void LONG_CALL PlayerRun(u8 a);
+bool8 LONG_CALL IsRunningDisallowed(u8 tile);
 
 #define PLAYER_AVATAR_FLAG_ON_FOOT    (1 << 0)
 #define PLAYER_AVATAR_FLAG_MACH_BIKE  (1 << 1)

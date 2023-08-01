@@ -1,11 +1,11 @@
 #pragma once
 
-bool8 ShowFieldMessage(const u8 *message);
-void HideFieldMessageBox(void);
+bool8 LONG_CALL ShowFieldMessage(const u8 *message);
+void LONG_CALL HideFieldMessageBox(void);
 
-void TextWindow_LoadDialogueFrameTiles(void *win);
-void TextWindow_DrawDialogueFrame(void *win);
-void TextWindow_EraseDialogueFrame(void *win);
+void LONG_CALL TextWindow_LoadDialogueFrameTiles(void *win);
+void LONG_CALL TextWindow_DrawDialogueFrame(void *win);
+void LONG_CALL TextWindow_EraseDialogueFrame(void *win);
 
 enum
 {

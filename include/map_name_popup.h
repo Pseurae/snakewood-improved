@@ -1,3 +1,3 @@
 #pragma once
 
-void HideMapNamePopup();
+void LONG_CALL HideMapNamePopup();

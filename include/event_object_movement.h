@@ -3,24 +3,24 @@
 #include "fieldmap.h"
 #include "sprite.h"
 
-void ObjectEventUpdateMetatileBehaviors(struct ObjectEvent *);
-u32 StartFieldEffectForObjectEvent(u8, struct ObjectEvent *);
+void LONG_CALL ObjectEventUpdateMetatileBehaviors(struct ObjectEvent *);
+u32 LONG_CALL StartFieldEffectForObjectEvent(u8, struct ObjectEvent *);
 
-u8 GetObjectEventIdByLocalIdAndMap(u8, u8, u8);
-const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u8);
-bool8 TryGetObjectEventIdByLocalIdAndMap(u8, u8, u8, u8 *);
-void DoShadowFieldEffect(struct ObjectEvent *);
-bool8 ObjectEventIsMovementOverridden(struct ObjectEvent *);
-u8 ObjectEventClearHeldMovementIfFinished(struct ObjectEvent *);
-void CameraObjectReset2(void);
-void SetSurfBlob_BobState(u8, u8);
-u8 GetPlayerAvatarGraphicsIdByStateId(u8);
-void ObjectEventSetGraphicsId(struct ObjectEvent *, u8);
-void ObjectEventTurn(struct ObjectEvent *, u8);
-void ObjectEventGetLocalIdAndMap(struct ObjectEvent *, void *, void *, void *);
-void ObjectEventClearHeldMovementIfActive(struct ObjectEvent *);
-void ObjectEventClearHeldMovement(struct ObjectEvent *);
-void FreezeObjectEvents(void);
+u8 LONG_CALL GetObjectEventIdByLocalIdAndMap(u8, u8, u8);
+const struct ObjectEventGraphicsInfo LONG_CALL *GetObjectEventGraphicsInfo(u8);
+bool8 LONG_CALL TryGetObjectEventIdByLocalIdAndMap(u8, u8, u8, u8 *);
+void LONG_CALL DoShadowFieldEffect(struct ObjectEvent *);
+bool8 LONG_CALL ObjectEventIsMovementOverridden(struct ObjectEvent *);
+u8 LONG_CALL ObjectEventClearHeldMovementIfFinished(struct ObjectEvent *);
+void LONG_CALL CameraObjectReset2(void);
+void LONG_CALL SetSurfBlob_BobState(u8, u8);
+u8 LONG_CALL GetPlayerAvatarGraphicsIdByStateId(u8);
+void LONG_CALL ObjectEventSetGraphicsId(struct ObjectEvent *, u8);
+void LONG_CALL ObjectEventTurn(struct ObjectEvent *, u8);
+void LONG_CALL ObjectEventGetLocalIdAndMap(struct ObjectEvent *, void *, void *, void *);
+void LONG_CALL ObjectEventClearHeldMovementIfActive(struct ObjectEvent *);
+void LONG_CALL ObjectEventClearHeldMovement(struct ObjectEvent *);
+void LONG_CALL FreezeObjectEvents(void);
 
 #define GROUND_EFFECT_FLAG_TALL_GRASS_ON_SPAWN   (1 << 0)
 #define GROUND_EFFECT_FLAG_TALL_GRASS_ON_MOVE    (1 << 1)

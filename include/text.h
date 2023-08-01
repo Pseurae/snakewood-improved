@@ -185,15 +185,17 @@ struct Window
 extern const struct WindowTemplate gWindowTemplate_81E6C3C;
 extern const struct WindowTemplate gMenuTextWindowTemplate;
 
-void Text_LoadWindowTemplate(const struct WindowTemplate *winConfig);
-void Text_InitWindowPixel(struct Window *win, const u8 *text, u16 tileDataStartOffset, u8 left, u16 top, u32 a6);
-void Text_InitWindow(struct Window *win, const u8 *text, u16 tileDataStartOffset, u8 left, u8 top);
-u8 Text_InitWindowAndPrintText(void *win, const u8 *text, u16 tileDataStartOffset, u8 left, u8 top);
-u8 Text_InitWindowAndPrintTextPixel(
+void LONG_CALL Text_LoadWindowTemplate(const struct WindowTemplate *winConfig);
+void LONG_CALL Text_InitWindowPixel(
     struct Window *win, const u8 *text, u16 tileDataStartOffset, u8 left, u16 top, u32 a6);
-u8 Text_PrintWindow(struct Window *win);
-u8 Text_InitWindow_RightAligned(struct Window *win, const u8 *text, u16 tileDataStartOffset, u8 right, u8 top);
-void Text_FillWindowRect(struct Window *win, u16 tilemapEntry, u8 left, u8 top, u8 right, u8 bottom);
-void LoadFontDefaultPalette(const struct WindowTemplate *winTemplate);
+void LONG_CALL Text_InitWindow(struct Window *win, const u8 *text, u16 tileDataStartOffset, u8 left, u8 top);
+u8 LONG_CALL Text_InitWindowAndPrintText(void *win, const u8 *text, u16 tileDataStartOffset, u8 left, u8 top);
+u8 LONG_CALL Text_InitWindowAndPrintTextPixel(
+    struct Window *win, const u8 *text, u16 tileDataStartOffset, u8 left, u16 top, u32 a6);
+u8 LONG_CALL Text_PrintWindow(struct Window *win);
+u8 LONG_CALL Text_InitWindow_RightAligned(
+    struct Window *win, const u8 *text, u16 tileDataStartOffset, u8 right, u8 top);
+void LONG_CALL Text_FillWindowRect(struct Window *win, u16 tilemapEntry, u8 left, u8 top, u8 right, u8 bottom);
+void LONG_CALL LoadFontDefaultPalette(const struct WindowTemplate *winTemplate);
 
 extern const u8 gFontDefaultPalette[];

@@ -84,15 +84,15 @@ extern struct Pokemon gPlayerParty[PARTY_SIZE];
 extern const struct ContestMove gContestMoves[];
 extern const struct BattleMove gBattleMoves[];
 
-u32 CanMonLearnTMHM(struct Pokemon *mon, u8 tm);
-bool8 MonKnowsMove(struct Pokemon *mon, u16 move);
-u32 GetMonData(struct Pokemon *mon, s32 field);
-u8 CountAliveMons(u8 a1);
+u32 LONG_CALL CanMonLearnTMHM(struct Pokemon *mon, u8 tm);
+bool8 LONG_CALL MonKnowsMove(struct Pokemon *mon, u16 move);
+u32 LONG_CALL GetMonData(struct Pokemon *mon, s32 field);
+u8 LONG_CALL CountAliveMons(u8 a1);
 bool8 CheckIfMonCanUseHM(struct Pokemon *mon, u16 hm);
-bool8 CheckIfPartyCanUseTM(u16 tm);
-u8 CalculatePPWithBonus(u16 move, u8 ppBonuses, u8 moveIndex);
-bool8 IsHMMove(u16 move);
-u8 GetNature(struct Pokemon *mon);
+bool8 LONG_CALL CheckIfPartyCanUseTM(u16 tm);
+u8 LONG_CALL CalculatePPWithBonus(u16 move, u8 ppBonuses, u8 moveIndex);
+bool8 LONG_CALL IsHMMove(u16 move);
+u8 LONG_CALL GetNature(struct Pokemon *mon);
 
 enum
 {

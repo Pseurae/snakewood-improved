@@ -1,8 +1,8 @@
 #pragma once
 
-void CpuSet(const void *src, void *dest, u32 control);
-void CpuFastSet(const void *src, void *dest, u32 control);
-void LZ77UnCompVram(const void *src, void *dest);
+void LONG_CALL CpuSet(const void *src, void *dest, u32 control);
+void LONG_CALL CpuFastSet(const void *src, void *dest, u32 control);
+void LONG_CALL LZ77UnCompVram(const void *src, void *dest);
 
 #define CPU_FILL(value, dest, size, bit)                                                                               \
     {                                                                                                                  \

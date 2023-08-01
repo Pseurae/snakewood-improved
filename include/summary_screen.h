@@ -44,12 +44,12 @@ struct PACKED PokemonSummaryScreen
 
 extern struct PokemonSummaryScreen sMonSummaryScreen;
 
-void SummaryScreen_PlaceTextTile_White(u8 tile, u8 x, u8 y);
-void SummaryScreen_PrintColoredText(const u8 *text, u8 id, u8 left, u8 top);
-void SummaryScreen_DrawTypeIcon(u8, u8, u8, u8);
-u8 *SummaryScreen_SetTextColor(u8 *text, u8 id);
-u8 *SummaryScreen_CopyColoredString(u8 *dest, const u8 *src, u8 id);
+void LONG_CALL SummaryScreen_PlaceTextTile_White(u8 tile, u8 x, u8 y);
+void LONG_CALL SummaryScreen_PrintColoredText(const u8 *text, u8 id, u8 left, u8 top);
+void LONG_CALL SummaryScreen_DrawTypeIcon(u8, u8, u8, u8);
+u8 LONG_CALL *SummaryScreen_SetTextColor(u8 *text, u8 id);
+u8 LONG_CALL *SummaryScreen_CopyColoredString(u8 *dest, const u8 *src, u8 id);
 
-u16 GetMonMove(struct Pokemon *, u8);
-u16 GetMonMovePP(struct Pokemon *mon, u8 moveId);
-void SummaryScreen_SetSpriteInvisibility(u8 a, u8 invisible);
+u16 LONG_CALL GetMonMove(struct Pokemon *, u8);
+u16 LONG_CALL GetMonMovePP(struct Pokemon *mon, u8 moveId);
+void LONG_CALL SummaryScreen_SetSpriteInvisibility(u8 a, u8 invisible);

@@ -118,9 +118,9 @@ struct WeatherCallbacks
     bool8 (*finish)(void);
 };
 
-void Weather_SetBlendCoeffs(u8, u8);
-void SetRainStrengthFromSoundEffect(u16 soundEffect);
-void PreservePaletteInWeather(u8 preservedPalIndex);
+void LONG_CALL Weather_SetBlendCoeffs(u8, u8);
+void LONG_CALL SetRainStrengthFromSoundEffect(u16 soundEffect);
+void LONG_CALL PreservePaletteInWeather(u8 preservedPalIndex);
 
 extern const struct WeatherCallbacks gWeatherFuncs[];
 extern struct Weather *const gWeatherPtr;

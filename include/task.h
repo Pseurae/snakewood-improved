@@ -17,8 +17,8 @@ struct Task
 
 extern struct Task gTasks[NUM_TASKS];
 
-u8 CreateTask(TaskFunc func, u8 priority);
-bool8 FuncIsActiveTask(TaskFunc func);
-u8 FindTaskIdByFunc(TaskFunc func);
-u8 DestroyTask(u8 taskId);
-void TaskDummy(u8 taskId);
+u8 LONG_CALL CreateTask(TaskFunc func, u8 priority);
+bool8 LONG_CALL FuncIsActiveTask(TaskFunc func);
+u8 LONG_CALL FindTaskIdByFunc(TaskFunc func);
+u8 LONG_CALL DestroyTask(u8 taskId);
+void LONG_CALL TaskDummy(u8 taskId);

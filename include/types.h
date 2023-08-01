@@ -36,7 +36,8 @@ struct UCoords16
 
 #define EWRAM_DATA         __attribute__((section(".ewram")))
 #define PACKED             __attribute__((packed))
-#define NAKED              __attribute__((naked))
+#define LONG_CALL          __attribute__((long_call))
+#define INLINE             __attribute__((__always_inline__))
 
 #define TRUE               1
 #define FALSE              0

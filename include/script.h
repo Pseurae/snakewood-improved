@@ -19,8 +19,8 @@ struct ScriptContext
 
 extern struct ScriptContext gScriptContext1;
 
-void SetupNativeScript(struct ScriptContext *ctx, bool8 (*ptr)(void));
-void ScriptContext1_SetupScript(const u8 *ptr);
-void ScriptContext2_Enable(void);
-void ScriptContext1_Stop(void);
-bool8 ScriptContext2_IsEnabled(void);
+void LONG_CALL SetupNativeScript(struct ScriptContext *ctx, bool8 (*ptr)(void));
+void LONG_CALL ScriptContext1_SetupScript(const u8 *ptr);
+void LONG_CALL ScriptContext2_Enable(void);
+void LONG_CALL ScriptContext1_Stop(void);
+bool8 LONG_CALL ScriptContext2_IsEnabled(void);

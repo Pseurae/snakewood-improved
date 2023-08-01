@@ -9,7 +9,7 @@
 static const u8 sText_ErrorText[] = _("{COLOR RED}ERROR\n{COLOR DARK_GREY}Flash memory not detected.\n\nSet your "
                                       "emulator's save type\nsetting to Flash 1MB / 128K\nand reload the rom.");
 
-void FlashNotDetectedScreen(void);
+static void FlashNotDetectedScreen(void);
 
 void CB2_FlashNotDetectedScreen(void)
 {
@@ -17,7 +17,7 @@ void CB2_FlashNotDetectedScreen(void)
     SetMainCallback2(NULL);
 }
 
-void FlashNotDetectedScreen(void)
+static void FlashNotDetectedScreen(void)
 {
     u32 savedIme;
 

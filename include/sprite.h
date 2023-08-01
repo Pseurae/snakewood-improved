@@ -2,17 +2,6 @@
 
 #define MAX_SPRITES 64
 
-struct SpriteTemplate
-{
-    u16 tileTag;
-    u16 paletteTag;
-    const void *oam;
-    const void *const *anims;
-    const void *images;
-    const void *const *affineAnims;
-    void (*callback)(void *);
-};
-
 struct PACKED OamData
 {
     /*0x00*/ u32 y:8;
@@ -34,6 +23,17 @@ struct PACKED OamData
 
 struct PACKED Sprite;
 typedef void (*SpriteCallback)(struct Sprite *);
+
+struct SpriteTemplate
+{
+    u16 tileTag;
+    u16 paletteTag;
+    const void *oam;
+    const void *const *anims;
+    const void *images;
+    const void *const *affineAnims;
+    SpriteCallback callback;
+};
 
 struct PACKED Sprite
 {
@@ -88,9 +88,10 @@ struct PACKED Sprite
 extern struct Sprite gSprites[MAX_SPRITES];
 extern struct SpriteTemplate gCreatingSpriteTemplate;
 
-u8 IndexOfSpritePaletteTag(u16 tag);
-u8 CreateSprite(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority);
-u8 CreateSpriteAtEnd(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority);
-void SpriteCallbackDummy(struct Sprite *sprite);
-void FreeResourcesAndDestroySprite(struct Sprite *sprite);
-void StartSpriteAnim(struct Sprite *sprite, u8 animNum);
+u8 LONG_CALL IndexOfSpritePaletteTag(u16 tag);
+u8 LONG_CALL CreateSprite(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority);
+u8 LONG_CALL CreateSpriteAtEnd(const struct SpriteTemplate *template, s16 x, s16 y, u8 subpriority);
+void LONG_CALL SpriteCallbackDummy(struct Sprite *sprite);
+void LONG_CALL FreeResourcesAndDestroySprite(struct Sprite *sprite);
+void LONG_CALL StartSpriteAnim(struct Sprite *sprite, u8 animNum);
+u8 LONG_CALL AllocSpritePalette(u16 tag);

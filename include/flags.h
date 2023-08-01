@@ -1,3 +1,3 @@
 #pragma once
 
-bool8 FlagGet(u16 id);
+bool8 LONG_CALL FlagGet(u16 id);

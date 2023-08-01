@@ -9,6 +9,6 @@ extern const u8 gPlayerName[8];
 extern const u16 gPlayTimeHours;
 extern const u8 gPlayTimeMinutes;
 
-void FormatPlayTime(u8 *playtime, u16 hours, u16 minutes, bool16 colon);
-u8 GetBadgeCount(void);
-u16 GetPokedexSeenCount(void);
+void LONG_CALL FormatPlayTime(u8 *playtime, u16 hours, u16 minutes, bool16 colon);
+u8 LONG_CALL GetBadgeCount(void);
+u16 LONG_CALL GetPokedexSeenCount(void);

@@ -50,7 +50,6 @@ PlayerGoSpeed4 = 0x80593f4 | 1;
 PlayerOnBikeCollide = 0x8059424 | 1;
 PlayerTurnInPlace = 0x805946c | 1;
 IsRunningDisallowed = 0x80e5dec | 1;
-PlayerTurnInPlace = 0x8059484 | 1;
 PlayerJumpLedge = 0x805949c | 1;
 PlayerNotOnBikeCollide = 0x8059448 | 1;
 PlayerRun = 0x805940c | 1;

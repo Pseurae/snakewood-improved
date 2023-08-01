@@ -12,5 +12,6 @@ extern u16 gSpecialVar_0x8004;
 extern u16 gSpecialVar_Result;
 extern u8 gRepelMenuChoices[3];
 
-void DrawMultichoiceMenu(u8 left, u8 top, u8 count, const struct MenuAction *list, u8 ignoreBPress, u8 cursorPos);
-u8 CreateTrainerSprite(u8 trainerSpriteID, s16 x, s16 y, u8 subpriority, u8 *buffer);
+void LONG_CALL DrawMultichoiceMenu(
+    u8 left, u8 top, u8 count, const struct MenuAction *list, u8 ignoreBPress, u8 cursorPos);
+u8 LONG_CALL CreateTrainerSprite(u8 trainerSpriteID, s16 x, s16 y, u8 subpriority, u8 *buffer);

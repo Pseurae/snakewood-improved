@@ -37,15 +37,15 @@ struct Item
     u8 secondaryId;
 };
 
-u16 SanitizeItemId(u16 itemId);
-u16 ItemIdToBattleMoveId(u16 itemId);
-u8 ItemId_GetHoldEffect(u16 itemId);
-u8 ItemId_GetHoldEffectParam(u16 itemId);
-bool8 CheckBagHasItem(u16 itemId, u16 count);
-const u8 *ItemId_GetName(u16 itemId);
-const u8 *ItemId_GetDescription(u16 itemId);
-bool8 RemoveBagItem(u16 itemId, u16 count);
-bool8 ItemIsMail(u16);
-ItemUseFunc ItemId_GetFieldFunc(u16 itemId);
+u16 LONG_CALL SanitizeItemId(u16 itemId);
+u16 LONG_CALL ItemIdToBattleMoveId(u16 itemId);
+u8 LONG_CALL ItemId_GetHoldEffect(u16 itemId);
+u8 LONG_CALL ItemId_GetHoldEffectParam(u16 itemId);
+bool8 LONG_CALL CheckBagHasItem(u16 itemId, u16 count);
+const u8 LONG_CALL *ItemId_GetName(u16 itemId);
+const u8 LONG_CALL *ItemId_GetDescription(u16 itemId);
+bool8 LONG_CALL RemoveBagItem(u16 itemId, u16 count);
+bool8 LONG_CALL ItemIsMail(u16);
+ItemUseFunc LONG_CALL ItemId_GetFieldFunc(u16 itemId);
 
 extern const struct Item gItems[];
