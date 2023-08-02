@@ -37,7 +37,6 @@ ARMIPSFLAGS := -strequ INPUT_FILE $(INPUT) -strequ OUTPUT_FILE $(OUTPUT)
 ELFEDIT := tools/elfedit/elfedit$(EXE)
 PREPROC := tools/preproc/preproc$(EXE)
 SCANINC := tools/scaninc/scaninc$(EXE)
-MAKEIPS := tools/makeips/makeips$(EXE)
 
 .DEFAULT_GOAL = all
 
@@ -51,20 +50,15 @@ all: $(OUTPUT)
 	@$(ARMIPS) $(ARMIPSFLAGS) main.asm -sym2 output.map
 	@echo "$(ARMIPS) <flags> main.asm -sym2 output.map"
 
-patch: all
-	$(MAKEIPS) $(OUTPUT) $(INPUT) patch.ips
-
 $(OUTPUT): $(INPUT) build/linked_processed.o
 
 tools:
 	@$(MAKE) -C tools/elfedit
-	@$(MAKE) -C tools/makeips
 	@$(MAKE) -C tools/preproc
 	@$(MAKE) -C tools/scaninc
 
 clean_tools:
 	@$(MAKE) -C tools/elfedit clean
-	@$(MAKE) -C tools/makeips clean
 	@$(MAKE) -C tools/preproc clean
 	@$(MAKE) -C tools/scaninc clean
 
