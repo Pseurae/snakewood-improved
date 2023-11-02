@@ -31,7 +31,7 @@ ASFLAGS  := -mthumb -I assembly -I include
 LD = $(PREFIX)ld
 LDFLAGS = -i rom.ld -T linker.ld
 
-ARMIPS := armips
+ARMIPS := ./armips
 ARMIPSFLAGS := -strequ INPUT_FILE $(INPUT) -strequ OUTPUT_FILE $(OUTPUT)
 
 ELFEDIT := tools/elfedit/elfedit$(EXE)

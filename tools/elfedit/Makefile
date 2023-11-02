@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Werror -std=c99 -O2
+CFLAGS = -Wall -Werror -std=gnu99 -O2
 
 SRCS = elfedit.c
 

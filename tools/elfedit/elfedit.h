@@ -25,12 +25,9 @@
 
 #include "elf.h"
 #include "vector.h"
-#include <fcntl.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
-#include <sys/mman.h>
-#include <unistd.h>
 
 #define MAGIC_NUMBER "\177ELF"
 

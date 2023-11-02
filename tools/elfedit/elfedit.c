@@ -22,6 +22,12 @@
 
 #include "elfedit.h"
 
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/mman.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+
 static int check_file(t_elf *const elf)
 {
     if (elf->len < sizeof(Elf32_Ehdr) || memcmp(elf->ehdr, MAGIC_NUMBER, sizeof(MAGIC_NUMBER) - 1))
