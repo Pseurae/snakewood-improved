@@ -35,6 +35,7 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 - Multiple Registered Key Items
 - Exp Points on capture
 - Autorunning shoes
+- Fix Female Player sprite issues
 
 <details>
 

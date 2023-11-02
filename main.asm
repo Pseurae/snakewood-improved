@@ -38,6 +38,7 @@
 .include "scripts/bugfixes/fadescreen_shade.asm"
 .include "scripts/bugfixes/field_mon_sprite.asm"
 .include "scripts/bugfixes/fix_poke_types.asm"
+.include "scripts/bugfixes/fix_protag_sprite.asm"
 .include "scripts/bugfixes/golbat_gfx.asm"
 .include "scripts/bugfixes/item_desc.asm"
 .include "scripts/bugfixes/item_names.asm"

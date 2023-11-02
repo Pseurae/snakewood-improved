@@ -111,3 +111,6 @@
 ; legally obtain the "Hard Disk Solo" and thus, cannot visit the Gym Island.
 ; Enable this to receive the item after the Roclobster battle.
 .definelabel NEW_ROCLOBSTER_SCRIPT, 1
+
+; Fix the female trainer OW sprites.
+.definelabel FIX_FEMALE_MC_OW_SPRITES, 1
