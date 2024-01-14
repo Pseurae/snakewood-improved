@@ -1,3 +1,7 @@
+; The command to show a Pokemon's portrait is bugged by
+; default in Ruby. The sprites load with the wrong palette
+; attached.
+
 .if SHOW_METEOR_PORTRAIT
 .autoregion
 .align 2

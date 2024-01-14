@@ -7,6 +7,8 @@ s_msgbox 0x884C25B, MSGBOX_DEFAULT
 s_msgbox 0x884C26F, MSGBOX_AUTOCLOSE
 s_playse 0x83
 s_fadescreen 0x3
+; This is the reason why the softlock occurs
+; removeobject sets the flag associated with the object event internally
 s_removeobject 0x7
 s_fadescreen 0x2
 s_msgbox 0x884C27D, 0x6

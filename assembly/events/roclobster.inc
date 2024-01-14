@@ -21,6 +21,10 @@ EventScript_RockLobster:
 	dowildbattle
 	setflag 0x3D44
 	removeobject LOCALID_ROCLOBSTER
+	msgbox Test_HardDiskSoloFound, MSGBOX_AUTOCLOSE
     finditem ITEM_HARDDISKSOLO, 1
 	release
 	end
+
+Test_HardDiskSoloFound:
+	.string "{PLAYER}: Hey, what's this?"
