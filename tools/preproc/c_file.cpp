@@ -23,55 +23,67 @@
 #include <stdexcept>
 #include <string>
 #include <memory>
-#include <iostream>
-#include <iterator>
 #include <cstring>
+#include <cerrno>
 #include "preproc.h"
 #include "c_file.h"
 #include "char_util.h"
 #include "utf8.h"
 #include "string_parser.h"
 
-CFile::CFile(std::string filename) : m_filename(filename)
+CFile::CFile(const char * filenameCStr, bool isStdin)
 {
-    if (filename == "-") {
-        std::string s, b;
+    FILE *fp;
 
-        while (!std::cin.eof()) {
-            std::getline(std::cin, b);
-            s += b + "\n";
-        }
-        m_size = s.size();
-        m_buffer = new char[m_size + 1];
-        memcpy(m_buffer, s.c_str(), m_size);
-        m_buffer[m_size] = 0;
+    if (isStdin) {
+        fp = stdin;
+        m_filename = std::string{"<stdin>/"}.append(filenameCStr);
     } else {
-        FILE *fp = std::fopen(filename.c_str(), "rb");
-
-        if (fp == NULL)
-            FATAL_ERROR("Failed to open \"%s\" for reading.\n", filename.c_str());
-
-        std::fseek(fp, 0, SEEK_END);
-
-        m_size = std::ftell(fp);
-
-        if (m_size < 0)
-            FATAL_ERROR("File size of \"%s\" is less than zero.\n", filename.c_str());
-
-        m_buffer = new char[m_size + 1];
-
-        std::rewind(fp);
-
-        if (std::fread(m_buffer, m_size, 1, fp) != 1)
-            FATAL_ERROR("Failed to read \"%s\".\n", filename.c_str());
-
-        m_buffer[m_size] = 0;
-
-        std::fclose(fp);
+        fp = std::fopen(filenameCStr, "rb");
+        m_filename = std::string(filenameCStr);
     }
+
+    std::string& filename = m_filename;
+
+    if (fp == NULL)
+        FATAL_ERROR("Failed to open \"%s\" for reading.\n", filename.c_str());
+
+    m_size = 0;
+    m_buffer = (char *)malloc(CHUNK_SIZE + 1);
+    if (m_buffer == NULL) {
+        FATAL_ERROR("Failed to allocate memory to process file \"%s\"!", filename.c_str());
+    }
+
+    std::size_t numAllocatedBytes = CHUNK_SIZE + 1;
+    std::size_t bufferOffset = 0;
+    std::size_t count;
+
+    while ((count = std::fread(m_buffer + bufferOffset, 1, CHUNK_SIZE, fp)) != 0) {
+        if (!std::ferror(fp)) {
+            m_size += count;
+
+            if (std::feof(fp)) {
+                break;
+            }
+
+            numAllocatedBytes += CHUNK_SIZE;
+            bufferOffset += CHUNK_SIZE;
+            m_buffer = (char *)realloc(m_buffer, numAllocatedBytes);
+            if (m_buffer == NULL) {
+                FATAL_ERROR("Failed to allocate memory to process file \"%s\"!", filename.c_str());
+            }
+        } else {
+            FATAL_ERROR("Failed to read \"%s\". (error: %s)", filename.c_str(), std::strerror(errno));
+        }
+    }
+
+    m_buffer[m_size] = 0;
+
+    std::fclose(fp);
 
     m_pos = 0;
     m_lineNum = 1;
+    m_isStdin = isStdin;
 }
 
 CFile::CFile(CFile&& other) : m_filename(std::move(other.m_filename))
@@ -80,13 +92,14 @@ CFile::CFile(CFile&& other) : m_filename(std::move(other.m_filename))
     m_pos = other.m_pos;
     m_size = other.m_size;
     m_lineNum = other.m_lineNum;
+    m_isStdin = other.m_isStdin;
 
-    other.m_buffer = nullptr;
+    other.m_buffer = NULL;
 }
 
 CFile::~CFile()
 {
-    delete[] m_buffer;
+    free(m_buffer);
 }
 
 void CFile::Preproc()
@@ -370,7 +383,7 @@ void CFile::TryConvertIncbin()
 
             if (m_buffer[m_pos] == '\\')
                 RaiseError("unexpected escape in path string");
-            
+
             m_pos++;
         }
 
@@ -405,7 +418,7 @@ void CFile::TryConvertIncbin()
 
         m_pos++;
     }
-    
+
     if (m_buffer[m_pos] != ')')
         RaiseError("expected ')'");
 

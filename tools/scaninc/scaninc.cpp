@@ -18,15 +18,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#include <cstdio>
-#include <cstdlib>
+#include <stdio.h>
+#include <stdlib.h>
 #include <list>
 #include <queue>
 #include <set>
 #include <string>
+#include <fstream>
 #include "scaninc.h"
-#include "asm_file.h"
-#include "c_file.h"
+#include "source_file.h"
 
 bool CanOpenFile(std::string path)
 {
@@ -39,14 +39,15 @@ bool CanOpenFile(std::string path)
     return true;
 }
 
-const char *const USAGE = "Usage: scaninc [-I INCLUDE_PATH] FILE_PATH\n";
+const char *const USAGE = "Usage: scaninc [-I INCLUDE_PATH] [-M OUTPUT_FILE_PATH OBJECT_FILE_PATH] FILE_PATH\n";
 
 int main(int argc, char **argv)
 {
     std::queue<std::string> filesToProcess;
     std::set<std::string> dependencies;
 
-    std::list<std::string> includeDirs;
+    std::vector<std::string> includeDirs;
+    std::string outputPath, objPath;
 
     argc--;
     argv++;
@@ -63,11 +64,24 @@ int main(int argc, char **argv)
                 argv++;
                 includeDir = std::string(argv[0]);
             }
-            if (includeDir.back() != '/')
+            if (!includeDir.empty() && includeDir.back() != '/')
             {
                 includeDir += '/';
             }
             includeDirs.push_back(includeDir);
+        }
+        else if (arg.substr(0, 2) == "-M")
+        {
+            if (outputPath.empty())
+            {
+                argc -= 2;
+                outputPath = std::string(*(++argv));
+                objPath = std::string(*(++argv));
+            }
+            else
+            {
+                FATAL_ERROR("More than one output file specified.\n");
+            }
         }
         else
         {
@@ -83,83 +97,62 @@ int main(int argc, char **argv)
 
     std::string initialPath(argv[0]);
 
-    std::size_t pos = initialPath.find_last_of('.');
+    filesToProcess.push(initialPath);
 
-    if (pos == std::string::npos)
-        FATAL_ERROR("no file extension in path \"%s\"\n", initialPath.c_str());
-
-    std::string extension = initialPath.substr(pos + 1);
-
-    std::string srcDir("");
-    std::size_t slash = initialPath.rfind('/');
-    if (slash != std::string::npos)
+    while (!filesToProcess.empty())
     {
-        srcDir = initialPath.substr(0, slash + 1);
-    }
-    includeDirs.push_back(srcDir);
+        std::string filePath = filesToProcess.front();
+        SourceFile file(filePath);
+        filesToProcess.pop();
 
-    if (extension == "c" || extension == "h")
-    {
-        filesToProcess.push(initialPath);
-
-        while (!filesToProcess.empty())
+        includeDirs.push_back(file.GetSrcDir());
+        for (auto incbin : file.GetIncbins())
         {
-            CFile file(filesToProcess.front());
-            filesToProcess.pop();
-
-            file.FindIncbins();
-            for (auto incbin : file.GetIncbins())
+            dependencies.insert(incbin);
+        }
+        for (auto include : file.GetIncludes())
+        {
+            bool exists = false;
+            std::string path("");
+            for (auto includeDir : includeDirs)
             {
-                dependencies.insert(incbin);
-            }
-            for (auto include : file.GetIncludes())
-            {
-                for (auto includeDir : includeDirs)
+                path = includeDir + include;
+                if (CanOpenFile(path))
                 {
-                    std::string path(includeDir + include);
-                    if (CanOpenFile(path))
-                    {
-                        bool inserted = dependencies.insert(path).second;
-                        if (inserted)
-                        {
-                            filesToProcess.push(path);
-                        }
-                        break;
-                    }
+                    exists = true;
+                    break;
                 }
             }
-        }
-    }
-    else if (extension == "s" || extension == "inc")
-    {
-        filesToProcess.push(initialPath);
-
-        while (!filesToProcess.empty())
-        {
-            AsmFile file(filesToProcess.front());
-
-            filesToProcess.pop();
-
-            IncDirectiveType incDirectiveType;
-            std::string path;
-
-            while ((incDirectiveType = file.ReadUntilIncDirective(path)) != IncDirectiveType::None)
+            if (!exists && (file.FileType() == SourceFileType::Asm || file.FileType() == SourceFileType::Inc))
             {
-                bool inserted = dependencies.insert(path).second;
-                if (inserted
-                    && incDirectiveType == IncDirectiveType::Include
-                    && CanOpenFile(path))
-                    filesToProcess.push(path);
+                path = include;
             }
+            bool inserted = dependencies.insert(path).second;
+            if (inserted && exists)
+            {
+                filesToProcess.push(path);
+            }
+        }
+        includeDirs.pop_back();
+    }
+
+    if (outputPath.empty())
+    {
+        for (const std::string &path : dependencies)
+        {
+            std::printf("%s\n", path.c_str());
         }
     }
     else
     {
-        FATAL_ERROR("unknown extension \"%s\"\n", extension.c_str());
-    }
+        std::ofstream f(outputPath);
 
-    for (const std::string &path : dependencies)
-    {
-        std::printf("%s\n", path.c_str());
+        f << objPath << " : ";
+        for (const std::string &path : dependencies)
+            f << path << " ";
+        
+        f << std::endl;
+
+        f.close();
     }
 }

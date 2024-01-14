@@ -283,13 +283,19 @@ int AsmFile::ReadString(unsigned char* s)
 
         while (length < padLength)
         {
-            s[length++] = 0;
+            s[length++] = 0x0;
         }
     }
 
     ExpectEmptyRestOfLine();
 
     return length;
+}
+
+void AsmFile::VerifyStringLength(int length)
+{
+    if (length == kMaxStringLength)
+        RaiseError("mapped string longer than %d bytes", kMaxStringLength);
 }
 
 int AsmFile::ReadBraille(unsigned char* s)
@@ -337,13 +343,12 @@ int AsmFile::ReadBraille(unsigned char* s)
 
     m_pos++;
 
+    bool inNumber = false;
     while (m_buffer[m_pos] != '"')
     {
-        if (length == kMaxStringLength)
-            RaiseError("mapped string longer than %d bytes", kMaxStringLength);
-
         if (m_buffer[m_pos] == '\\' && m_buffer[m_pos + 1] == 'n')
         {
+            VerifyStringLength(length);
             s[length++] = 0xFE;
             m_pos += 2;
         }
@@ -359,6 +364,21 @@ int AsmFile::ReadBraille(unsigned char* s)
                     RaiseError("character '\\x%02X' not valid in braille string", m_buffer[m_pos]);
             }
 
+            if (!inNumber && c >= '0' && c <= '9' )
+            {
+                // Output number indicator at start of a number
+                inNumber = true;
+                VerifyStringLength(length);
+                s[length++] = 0x3A;
+            }
+            else if (inNumber && encoding[c] == 0x0)
+            {
+                // Number ends at a space.
+                // Non-number characters encountered before a space will simply be output as is.
+                inNumber = false;
+            }
+
+            VerifyStringLength(length);
             s[length++] = encoding[c];
             m_pos++;
         }

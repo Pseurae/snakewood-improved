@@ -40,10 +40,21 @@ SCANINC := tools/scaninc/scaninc$(EXE)
 
 .DEFAULT_GOAL = all
 
+MAKEFLAGS += --no-print-directory
+
+.SUFFIXES:
+
+.SECONDARY:
+
+.DELETE_ON_ERROR:
+
+.SECONDEXPANSION:
+
 .PHONY: all clean tools clean_tools
 
 ifeq (,$(filter-out all,$(MAKECMDGOALS)))
 $(shell $(MAKE) tools > /dev/null)
+include $(OBJ_FILES:%.o=%.d)
 endif
 
 all: $(OUTPUT)
@@ -65,22 +76,22 @@ clean_tools:
 clean: clean_tools
 	rm -rf build
 
-build/assembly/%.o: assembly/%.s Makefile
-	@mkdir -p $(dir build/assembly/$*.d)
+build/assembly/%.d: assembly/%.s
+	@mkdir -p $(dir $@)
+	@echo "build/assembly/$*.o : \\" > $@
+	@$(SCANINC) $< | awk '{print $$0 " \\"}' >> $@
+
+build/assembly/%.o: assembly/%.s build/assembly/%.d
 	@echo "$(AS) <flags> -o $@ $<"
-
-	@echo "$@ : \\" > build/assembly/$*.d
-	@$(SCANINC) $< | awk '{print $$0 " \\"}' >> build/assembly/$*.d
-
 	@$(PREPROC) $< charmap.txt | $(CC) -w -E - | $(AS) $(ASFLAGS) -o $@
 
-build/src/%.o: src/%.c Makefile
-	@mkdir -p $(dir build/src/$*.d)
+build/src/%.d: src/%.c
+	@mkdir -p $(dir $@)
+	@echo "build/src/$*.o : \\" > $@
+	@$(SCANINC) -I include $< | awk '{print $$0 " \\"}' >> $@
+
+build/src/%.o: src/%.c build/src/%.d
 	@echo "$(CC) <flags> -c $< -o $@"
-
-	@echo "$@ : \\" > build/src/$*.d
-	@$(SCANINC) -I include $< | awk '{print $$0 " \\"}' >> build/src/$*.d
-
 	@$(PREPROC) $< charmap.txt | $(CC) $(CFLAGS) -o $@ -
 
 build/linked.o: $(OBJ_FILES) linker.ld rom.ld linker/**.ld
@@ -90,5 +101,3 @@ build/linked.o: $(OBJ_FILES) linker.ld rom.ld linker/**.ld
 
 build/linked_processed.o: build/linked.o
 	@$(ELFEDIT) $< $@ savemap.txt
-
--include $(OBJ_FILES:%.o=%.d)

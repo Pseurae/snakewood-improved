@@ -1,4 +1,4 @@
-// Copyright(c) 2016 YamaArashi
+// Copyright(c) 2019 Phlosioneer
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -18,56 +18,55 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#ifndef ASM_FILE_H
-#define ASM_FILE_H
+#ifndef SOURCE_FILE_H
+#define SOURCE_FILE_H
 
-#include <cstdarg>
-#include <cstdint>
 #include <string>
-#include "preproc.h"
+#include "scaninc.h"
+#include "asm_file.h"
+#include "c_file.h"
 
-enum class Directive
+enum class SourceFileType
 {
-    Include,
-    String,
-    Braille,
-    Unknown
+    Cpp,
+    Header,
+    Asm,
+    Inc
 };
 
-class AsmFile
+SourceFileType GetFileType(std::string& path);
+
+class SourceFile
 {
 public:
-    AsmFile(std::string filename);
-    AsmFile(AsmFile&& other);
-    AsmFile(const AsmFile&) = delete;
-    ~AsmFile();
-    Directive GetDirective();
-    std::string GetGlobalLabel();
-    std::string ReadPath();
-    int ReadString(unsigned char* s);
-    int ReadBraille(unsigned char* s);
-    bool IsAtEnd();
-    void OutputLine();
-    void OutputLocation();
+
+    SourceFile(std::string path);
+    ~SourceFile();
+    SourceFile(SourceFile const&) = delete;
+    SourceFile(SourceFile&&) = delete;
+    SourceFile& operator =(SourceFile const&) = delete;
+    SourceFile& operator =(SourceFile&&) = delete;
+    bool HasIncbins();
+    const std::set<std::string>& GetIncbins();
+    const std::set<std::string>& GetIncludes();
+    std::string& GetSrcDir();
+    SourceFileType FileType();
 
 private:
-    char* m_buffer;
-    long m_pos;
-    long m_size;
-    long m_lineNum;
-    long m_lineStart;
-    std::string m_filename;
+    union InnerUnion {
+        CFile c_file;
+        struct AsmWrapper {
+            std::set<std::string> asm_incbins;
+            std::set<std::string> asm_includes;
+        } asm_wrapper;
 
-    bool ConsumeComma();
-    int ReadPadLength();
-    void RemoveComments();
-    bool CheckForDirective(std::string name);
-    void SkipWhitespace();
-    void ExpectEmptyRestOfLine();
-    void ReportDiagnostic(const char* type, const char* format, std::va_list args);
-    void RaiseError(const char* format, ...);
-    void RaiseWarning(const char* format, ...);
-    void VerifyStringLength(int length);
+        // Construction and destruction handled by SourceFile.
+        InnerUnion() {};
+        ~InnerUnion() {};
+    } m_source_file;
+    SourceFileType m_file_type;
+    std::string m_src_dir;
 };
 
-#endif // ASM_FILE_H
+#endif // SOURCE_FILE_H
+
