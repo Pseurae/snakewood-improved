@@ -47,4 +47,16 @@
 ; .org 0x80b6e76
 ; bl #0x8059854
 
+; Fix reflections
+.org 0x837387C
+.hword 0x110B
+
+.org 0x8373880
+.word 0x8373894
+
+.org 0x8368508
+.area 0x20, 0x0
+.import "assets/jericho_refl.gbapal"
+.endarea
+
 .endif
