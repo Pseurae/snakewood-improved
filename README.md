@@ -36,6 +36,7 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 - Exp Points on capture
 - Autorunning shoes
 - Fix Female Player sprite issues
+- More exp. points on winning battles
 
 <details>
 

@@ -63,6 +63,9 @@
 ; Autorunning shoes like in HGSS.
 .definelabel AUTORUN, 1
 
+; Doubles Exp. Points gained after battles.
+.definelabel MORE_EXP, 1
+
 ; Bugfixes
 ; --------
 
