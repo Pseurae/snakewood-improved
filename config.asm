@@ -66,6 +66,9 @@
 ; Doubles Exp. Points gained after battles.
 .definelabel MORE_EXP, 1
 
+; New "Snakewood" logo
+.definelabel NEW_TITLE_SCREEN, 1
+
 ; Bugfixes
 ; --------
 

@@ -59,6 +59,7 @@
 .include "scripts/exp_on_capture.asm"
 .include "scripts/hm_system.asm"
 .include "scripts/more_exp.asm"
+.include "scripts/new_title_screen.asm"
 .include "scripts/ow_shadows.asm"
 .include "scripts/ps_split.asm"
 .include "scripts/registered_item_list.asm"
