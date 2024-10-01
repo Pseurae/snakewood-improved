@@ -31,10 +31,10 @@
 .include "scripts/predefs/gba.asm"
 .include "scripts/predefs/pokemon_data.asm"
 
-.include "scripts/bugfixes/movement/birch_chase.asm"
 .include "scripts/bugfixes/movement/chloe_entry.asm"
 .include "scripts/bugfixes/movement/pestilence_exit.asm"
 
+.include "scripts/bugfixes/birch_chase.asm"
 .include "scripts/bugfixes/fadescreen_shade.asm"
 .include "scripts/bugfixes/field_mon_sprite.asm"
 .include "scripts/bugfixes/fix_poke_types.asm"

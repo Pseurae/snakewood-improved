@@ -1,5 +1,27 @@
 ; All Slide Movements to Walk Fast
 
+.if REPLACE_BIRCH_CHASE_SCRIPT
+.org 0x880035A
+s_goto 0x814E948
+
+.org 0x814E967
+.word 0x88003F1
+
+.org 0x814EA1C
+.byte 0x15
+
+.org 0x814EA4C
+.byte 0x15
+
+.org 0x814E94F
+.word 0x88003AC
+
+.org 0x814E9AA
+.word 0x88003CB
+
+.endif
+
+; Old movement fix
 .if EVENT_MOVEMENTS
 .org 0x88003F1
 .byte 0x16
@@ -8,6 +30,7 @@
 .byte 0x16
 .byte 0x17
 .byte 0x17
+.byte 0xfe
 
 .org 0x88003FC
 .byte 0x15

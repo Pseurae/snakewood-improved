@@ -117,3 +117,6 @@
 
 ; Fix the female trainer OW sprites.
 .definelabel FIX_FEMALE_MC_OW_SPRITES, 1
+
+; Change Birch chase script with the default Ruby one.
+.definelabel REPLACE_BIRCH_CHASE_SCRIPT, 1
