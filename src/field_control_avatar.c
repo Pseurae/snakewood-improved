@@ -1,6 +1,8 @@
 #include "types.h"
+#include "event_object_movement.h"
 #include "field_control_avatar.h"
 #include "field_message_box.h"
+#include "field_player_avatar.h"
 #include "flags.h"
 #include "item_menu.h"
 #include "main.h"
@@ -24,22 +26,27 @@ int ProcessPlayerFieldInput_Rest(struct FieldInput *input)
     return FALSE;
 }
 
+#include "save_time_util.h"
+
+static const u8 sText_DisabledAutorun[] = _("Autorun {COLOR RED}disabled{COLOR DARK_GREY}.");
+static const u8 sText_EnabledAutorun[] =_("Autorun {COLOR GREEN}enabled{COLOR DARK_GREY}.");
+
 static bool8 EnableAutoRun(void)
 {
     if (!FlagGet(FLAG_SYS_B_DASH))
         return FALSE;
 
     PlaySE(SE_SELECT);
-    if (gAutorunEnabled)
-    {
-        gAutorunEnabled = FALSE;
-        ScriptContext1_SetupScript(EventScript_DisableAutoRun);
-    }
-    else
-    {
-        gAutorunEnabled = TRUE;
-        ScriptContext1_SetupScript(EventScript_EnableAutoRun);
-    }
+
+    ScriptContext2_Enable();
+    FreezeObjectEvents();
+    PlayerFreeze();
+    StopPlayerAvatar();
+
+    gAutorunEnabled = !gAutorunEnabled;
+
+    ShowFieldMessageInstant(gAutorunEnabled ? sText_EnabledAutorun : sText_DisabledAutorun);
+    ScriptContext1_SetupScript(EventScript_CloseAutorunMessage);
 
     return TRUE;
 }

@@ -22,6 +22,5 @@ struct FieldInput
     u8 input_field_3;
 };
 
-extern const u8 EventScript_DisableAutoRun[];
-extern const u8 EventScript_EnableAutoRun[];
+extern const u8 EventScript_CloseAutorunMessage[];
 extern bool8 gAutorunEnabled;

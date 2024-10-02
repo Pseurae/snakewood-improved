@@ -69,6 +69,9 @@
 ; New "Snakewood" logo
 .definelabel NEW_TITLE_SCREEN, 1
 
+; New Game speech uses the dialogue box instead of the normal menu box.
+.definelabel BIRCH_SPEECH_DBOX, 1
+
 ; Bugfixes
 ; --------
 

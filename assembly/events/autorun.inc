@@ -1,20 +1,15 @@
-.global EventScript_DisableAutoRun
-.global EventScript_EnableAutoRun
+.global EventScript_CloseAutorunMessage
 
-EventScript_DisableAutoRun:
-    lockall
-    msgbox Text_DisableAutoRun, MSGBOX_AUTOCLOSE
-    releaseall
+EventScript_CloseAutorunMessage:
+	lockall
+	waitmessage
+	waitbuttonpress
+    callnative HideFieldMessageBoxInstant
+	releaseall
     end
 
-EventScript_EnableAutoRun:
-    lockall
-    msgbox Text_EnableAutoRun, MSGBOX_AUTOCLOSE
-    releaseall
-    end
-
-Text_DisableAutoRun:
+Text_DisabledAutoRun:
     .string "Autorun {COLOR RED}disabled{COLOR DARK_GREY}.$"
 
-Text_EnableAutoRun:
+Text_EnabledAutoRun:
     .string "Autorun {COLOR GREEN}enabled{COLOR DARK_GREY}.$"

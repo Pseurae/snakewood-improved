@@ -144,6 +144,7 @@ Menu_PrintText = 0x8071e50 | 1;
 Menu_EraseWindowRect = 0x8071e84 | 1;
 Menu_BlankWindowRect = 0x8071ebc | 1;
 Menu_DrawStdWindowFrame = 0x8071f08 | 1;
+Menu_DisplayDialogueFrame = 0x8071ffc | 1;
 Menu_PrintTextPixelCoords = 0x80729d8 | 1;
 MenuPrint_RightAligned = 0x8072b4c | 1;
 MenuPrint_Centered = 0x8072bd8 | 1;

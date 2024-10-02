@@ -52,6 +52,7 @@
 .include "scripts/bugfixes/text_colors.asm"
 
 .include "scripts/autorun.asm"
+.include "scripts/birch_speech.asm"
 .include "scripts/bag_expansion.asm"
 .include "scripts/colored_field_moves.asm"
 .include "scripts/colored_stats.asm"
