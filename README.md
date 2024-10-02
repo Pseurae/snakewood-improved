@@ -20,6 +20,7 @@ This patch is mostly compatible with vanilla saves. The bag expansion patch **wi
 A `output.gba` will be created as your patched file.
 
 ## Credits
-Cutlerine and the Snakewood Team for creating Pokemon Snakewood.  
-PRET for their [decompilation of Pokemon Ruby](https://github.com/pret/pokeruby).  
-Super Versekr Dark for their Exp Points on capturing routine.
+- Cutlerine and the Snakewood Team for creating Pokemon Snakewood.  
+- PRET for their [decompilation of Pokemon Ruby](https://github.com/pret/pokeruby).  
+- Super Versekr Dark for their Exp Points on capturing routine.  
+- merpp for pokeemerald's overworld shadow feature.
