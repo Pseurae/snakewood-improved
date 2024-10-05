@@ -220,6 +220,14 @@ static void StartListMenuTask(const struct MenuAction *list, u8 left, u8 top, u8
         gTasks[taskId].tDoWrap = TRUE;
     else
         gTasks[taskId].tDoWrap = FALSE;
+
+    if (totalCount > displayCount)
+    {
+        ClearVerticalScrollIndicatorPalettes();
+        CreateVerticalScrollIndicators(TOP_ARROW, (left + right + 1) << 2, top << 3);
+        CreateVerticalScrollIndicators(BOTTOM_ARROW, (left + right + 1) << 2, bottom << 3);
+        SetVerticalScrollIndicators(TOP_ARROW, INVISIBLE);
+    }
 }
 
 static void Task_HandleListMenuInput(u8 taskId)
@@ -234,6 +242,8 @@ static void Task_HandleListMenuInput(u8 taskId)
         Menu_EraseWindowRect(gTasks[taskId].tLeft, gTasks[taskId].tTop, gTasks[taskId].tRight, gTasks[taskId].tBottom);
         DestroyTask(taskId);
         EnableBothScriptContexts();
+        DestroyVerticalScrollIndicator(TOP_ARROW);
+        DestroyVerticalScrollIndicator(BOTTOM_ARROW);
     } else if (gMain.newKeys & B_BUTTON) {
         if (tIgnoreBPress) return;
 
@@ -242,6 +252,8 @@ static void Task_HandleListMenuInput(u8 taskId)
         Menu_EraseWindowRect(gTasks[taskId].tLeft, gTasks[taskId].tTop, gTasks[taskId].tRight, gTasks[taskId].tBottom);
         DestroyTask(taskId);
         EnableBothScriptContexts();
+        DestroyVerticalScrollIndicator(TOP_ARROW);
+        DestroyVerticalScrollIndicator(BOTTOM_ARROW);
     } else if ((gMain.newAndRepeatedKeys & DPAD_ANY) == DPAD_DOWN) {
         if (tCursor == tDisplayCount - 1) {
             if (tCursor + tScrollOffset == tTotalCount - 1) return;
@@ -265,4 +277,14 @@ static void Task_HandleListMenuInput(u8 taskId)
             tCursor = Menu_MoveCursor(-1);
         }
     }
+
+    if (tScrollOffset == 0)
+        SetVerticalScrollIndicators(TOP_ARROW, INVISIBLE);
+    else
+        SetVerticalScrollIndicators(TOP_ARROW, VISIBLE);
+
+    if (tScrollOffset + tDisplayCount == tTotalCount)
+        SetVerticalScrollIndicators(BOTTOM_ARROW, INVISIBLE);
+    else
+        SetVerticalScrollIndicators(BOTTOM_ARROW, VISIBLE);
 }

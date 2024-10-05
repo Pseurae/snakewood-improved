@@ -23,3 +23,23 @@ void LONG_CALL Menu_PrintItems(u8, u8, u8, const void *);
 void LONG_CALL Menu_DestroyCursor(void);
 u8 LONG_CALL InitMenu(u8, u8, u8, u8, u8, u8);
 u8 LONG_CALL Menu_MoveCursor(s8);
+
+enum
+{
+    TOP_ARROW,
+    BOTTOM_ARROW,
+    LEFT_ARROW, // Bag arrows
+    RIGHT_ARROW
+};
+
+enum
+{
+    VISIBLE,
+    INVISIBLE
+};
+
+void LONG_CALL CreateVerticalScrollIndicators(u8, u16, u16);
+void LONG_CALL SetVerticalScrollIndicators(u8, bool8);
+void LONG_CALL DestroyVerticalScrollIndicator(u8);
+void LONG_CALL LoadScrollIndicatorPalette(void);
+void LONG_CALL ClearVerticalScrollIndicatorPalettes(void);
