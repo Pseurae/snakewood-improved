@@ -5,6 +5,7 @@
 #include "random.h"
 #include "script_menu.h"
 #include "string_util.h"
+#include "constants/abilities.h"
 #include "constants/items.h"
 #include "constants/pokemon.h"
 
@@ -167,11 +168,27 @@ void ChangePartyMonNature(void)
     u8 partyMonIndex = gSpecialVar_0x8004;
 
     struct Pokemon *mon = &gPlayerParty[partyMonIndex];
-    // DecryptBoxMon(&mon->box);
 
     mon->box.nature = nature + 1;
-    // mon->box.checksum = CalculateBoxMonChecksum(&mon->box);
 
-    // EncryptBoxMon(&mon->box);
     CalculateMonStats(mon);
+}
+
+void CheckIfSpeciesHasAlternateAbility(void)
+{
+    gSpecialVar_Result = gBaseStats[gSpecialVar_Result].ability2 != ABILITY_NONE;
+}
+
+void ChangePartyMonAbility(void)
+{
+    struct Pokemon *mon = &gPlayerParty[gSpecialVar_0x8004];
+    u8 altAbility = !GetMonData(mon, MON_DATA_ALT_ABILITY);
+    SetMonData(mon, MON_DATA_ALT_ABILITY, &altAbility);
+    CalculateMonStats(mon);
+}
+
+void BufferAlternateAbilityName(void)
+{
+    struct Pokemon *mon = &gPlayerParty[gSpecialVar_0x8004];
+    StringCopy(gStringVar1, gAbilityNames[GetAbilityBySpecies(GetMonData(mon, MON_DATA_SPECIES), !GetMonData(mon, MON_DATA_ALT_ABILITY))]);
 }

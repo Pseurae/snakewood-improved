@@ -19,6 +19,8 @@
 .section .script_data, "aw", %progbits
 
 .include "assembly/events/predefs.inc"
+
+.include "assembly/events/ability_changer.inc"
 .include "assembly/events/autorun.inc"
 .include "assembly/events/elevator_fixing.inc"
 .include "assembly/events/field_moves.inc"

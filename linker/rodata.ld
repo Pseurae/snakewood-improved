@@ -46,3 +46,5 @@ gOtherText_PlayTime = 0x842c99a;
 
 gStatStageRatios = 0x8208244;
 gNatureNames = 0x83c1004;
+gBaseStats = 0x81fec18;
+gAbilityNames = 0x81fa248;

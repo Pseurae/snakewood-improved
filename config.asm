@@ -75,6 +75,9 @@
 ; Adds a Nature Changer NPC to Verdanturf's Endless Plains.
 .definelabel NATURE_CHANGER, 1
 
+; Adds a Ability Changer NPC to Slateport's Market area.
+.definelabel ABILITY_CHANGER, 1
+
 ; Bugfixes
 ; --------
 
