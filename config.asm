@@ -72,6 +72,9 @@
 ; New Game speech uses the dialogue box instead of the normal menu box.
 .definelabel BIRCH_SPEECH_DBOX, 1
 
+; Adds a Nature Changer NPC to Verdanturf's Endless Plains.
+.definelabel NATURE_CHANGER, 1
+
 ; Bugfixes
 ; --------
 

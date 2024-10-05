@@ -267,6 +267,12 @@
 	.2byte SPECIAL_\function
 	.endm
 
+	.macro specialvar_ output:req, function:req
+	.byte 0x26
+	.2byte \output
+	.2byte \function
+	.endm
+
 	@ Blocks script execution until a command or ASM code manually unblocks it. Generally used with specific commands and specials. If this command runs, and a subsequent command or piece of ASM does not unblock state, the script will remain blocked indefinitely (essentially a hang).
 	.macro waitstate
 	.byte 0x27

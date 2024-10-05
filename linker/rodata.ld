@@ -45,3 +45,4 @@ gOtherText_Pokedex = 0x842c992;
 gOtherText_PlayTime = 0x842c99a;
 
 gStatStageRatios = 0x8208244;
+gNatureNames = 0x83c1004;

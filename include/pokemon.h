@@ -35,9 +35,38 @@ struct ContestMove
     u8 comboMoves[4];
 };
 
+struct PACKED BoxPokemon
+{
+    u32 personality;
+    u32 otId;
+    u8 nickname[POKEMON_NAME_LENGTH];
+    u8 language;
+    u8 isBadEgg:1;
+    u8 hasSpecies:1;
+    u8 isEgg:1;
+    u8 blockBoxRS:1; // Unused, but Pokémon Box Ruby & Sapphire will refuse to deposit a Pokémon with this flag set
+    u8 otName[7];
+    u8 markings;
+    u16 checksum;
+    u16 nature:5;
+    u16 unk0:11;
+
+    u8 unk1[80 - 32];
+};
+
 struct PACKED Pokemon
 {
-    u8 unk0[100];
+    /*0x00*/ struct BoxPokemon box;
+    /*0x50*/ u32 status;
+    /*0x54*/ u8 level;
+    /*0x55*/ u8 mail;
+    /*0x56*/ u16 hp;
+    /*0x58*/ u16 maxHP;
+    /*0x5A*/ u16 attack;
+    /*0x5C*/ u16 defense;
+    /*0x5E*/ u16 speed;
+    /*0x60*/ u16 spAttack;
+    /*0x62*/ u16 spDefense;
 };
 
 #define BATTLE_STATS_NO 8
@@ -87,12 +116,19 @@ extern const struct BattleMove gBattleMoves[];
 u32 LONG_CALL CanMonLearnTMHM(struct Pokemon *mon, u8 tm);
 bool8 LONG_CALL MonKnowsMove(struct Pokemon *mon, u16 move);
 u32 LONG_CALL GetMonData(struct Pokemon *mon, s32 field);
+void LONG_CALL SetMonData(struct Pokemon *mon, s32 field, u32 dataArg);
 u8 LONG_CALL CountAliveMons(u8 a1);
 bool8 CheckIfMonCanUseHM(struct Pokemon *mon, u16 hm);
 bool8 LONG_CALL CheckIfPartyCanUseTM(u16 tm);
 u8 LONG_CALL CalculatePPWithBonus(u16 move, u8 ppBonuses, u8 moveIndex);
 bool8 LONG_CALL IsHMMove(u16 move);
 u8 LONG_CALL GetNature(struct Pokemon *mon);
+u8 LONG_CALL GetNatureFromPersonality(u32 personality);
+u16 LONG_CALL CalculateBoxMonChecksum(struct BoxPokemon *boxMon);
+void LONG_CALL EncryptBoxMon(struct BoxPokemon *boxMon);
+void LONG_CALL DecryptBoxMon(struct BoxPokemon *boxMon);
+void LONG_CALL SetBoxMonData(struct BoxPokemon *boxMon, s32 field, u32 dataArg);
+void LONG_CALL CalculateMonStats(struct Pokemon *mon);
 
 enum
 {
@@ -107,3 +143,4 @@ enum
 };
 
 extern const s8 gNatureStatTable[25][5];
+extern const u8 *const gNatureNames[25];

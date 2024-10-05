@@ -19,3 +19,7 @@ void LONG_CALL Menu_EraseWindowRect(u8, u8, u8, u8);
 void LONG_CALL Menu_BlankWindowRect(u8 left, u8 top, u8 right, u8 bottom);
 u8 LONG_CALL PrintStringWithNewlines(
     void *win, u8 *dest, const u8 *src, u16 tileDataStartOffset, u8 left, u16 top, u8 width, u32 a8);
+void LONG_CALL Menu_PrintItems(u8, u8, u8, const void *);
+void LONG_CALL Menu_DestroyCursor(void);
+u8 LONG_CALL InitMenu(u8, u8, u8, u8, u8, u8);
+u8 LONG_CALL Menu_MoveCursor(s8);

@@ -23,6 +23,7 @@
 .include "assembly/events/elevator_fixing.inc"
 .include "assembly/events/field_moves.inc"
 .include "assembly/events/movement_repl.inc"
+.include "assembly/events/nature_changer.inc"
 .include "assembly/events/registered_item.inc"
 .include "assembly/events/repel_script.inc"
 .include "assembly/events/roclobster.inc"

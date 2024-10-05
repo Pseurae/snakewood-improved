@@ -23,6 +23,11 @@ SECTIONS {
     ALIGN(4)
     {
         *(.rodata);
+    } > rom = 0xff
+
+    .script_data :
+    ALIGN(4)
+    {
         *(.script_data);
     } > rom = 0xff
 

@@ -88,3 +88,9 @@ void CheckIfPartyHasMoveForElevator(void)
         }
     }
 }
+
+u8 GetNature_(struct Pokemon *mon)
+{
+    if (mon->box.nature == 0) return GetNatureFromPersonality(GetMonData(mon, MON_DATA_PERSONALITY));
+    return mon->box.nature - 1;
+}
