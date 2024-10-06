@@ -62,6 +62,7 @@
 .include "scripts/hm_system.asm"
 .include "scripts/more_exp.asm"
 .include "scripts/nature_changer.asm"
+.include "scripts/new_moves.asm"
 .include "scripts/new_title_screen.asm"
 .include "scripts/ow_shadows.asm"
 .include "scripts/ps_split.asm"

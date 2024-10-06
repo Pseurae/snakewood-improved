@@ -3,7 +3,24 @@
 #define CHAR_SPACE                           0x00
 #define CHAR_LV                              0x34
 #define CHAR_SONG_WORD_SEPARATOR             0x37 // separates words in the bard song. Not sure if it's used for anything else
+
+#define CHAR_PERCENT                         0x5B
+#define CHAR_LEFT_PAREN                      0x5C
+#define CHAR_RIGHT_PAREN                     0x5D
+
+#define CHAR_LESS_THAN                       0x85
+#define CHAR_GREATER_THAN                    0x86
+
 #define CHAR_0                               0xA1
+#define CHAR_1                               0xA2
+#define CHAR_2                               0xA3
+#define CHAR_3                               0xA4
+#define CHAR_4                               0xA5
+#define CHAR_5                               0xA6
+#define CHAR_6                               0xA7
+#define CHAR_7                               0xA8
+#define CHAR_8                               0xA9
+#define CHAR_9                               0xAA
 #define CHAR_EXCL_MARK                       0xAB
 #define CHAR_QUESTION_MARK                   0xAC
 #define CHAR_PERIOD                          0xAD
@@ -120,7 +137,6 @@
 #define EXT_CTRL_CODE_ENG                    0x16
 
 extern u16 gBGTilemapBuffers[4][0x400];
-extern const u8 gMoveNames[][13];
 
 extern u8 gStringVar1[0x100];
 extern u8 gStringVar2[0x100];

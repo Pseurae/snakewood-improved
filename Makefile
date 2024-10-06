@@ -15,15 +15,15 @@ else
 EXE :=
 endif
 
-SRC_FILES ?= $(wildcard src/*.c)
-ASM_FILES ?= $(wildcard assembly/*.s assembly/*/*.s)
+SRC_FILES := $(shell find src -name "*.c")
+ASM_FILES := $(shell find assembly -name "*.s")
 
 SRC_OBJS := $(SRC_FILES:src/%.c=build/src/%.o)
 ASM_OBJS := $(ASM_FILES:assembly/%.s=build/assembly/%.o)
 
 OBJ_FILES ?= $(SRC_OBJS) $(ASM_OBJS)
 
-CFLAGS = -Wall -std=c99 -O2 -Iinclude -g -mthumb -mno-thumb-interwork -march=armv4t -mcpu=arm7tdmi -mtune=arm7tdmi -x c -c -Wparentheses -Wno-unused -Werror
+CFLAGS = -Wall -std=c99 -O2 -Iinclude -g -mlong-calls -mthumb -mno-thumb-interwork -march=armv4t -mcpu=arm7tdmi -mtune=arm7tdmi -x c -c -Wparentheses -Wno-unused -Werror
 
 AS := $(PREFIX)as
 ASFLAGS  := -mthumb -I assembly -I include

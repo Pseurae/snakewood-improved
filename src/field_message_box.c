@@ -74,8 +74,3 @@ void HideFieldMessageBoxInstant(void)
     TextWindow_EraseDialogueFrame(&gFieldMessageBoxWindow);
     sMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
 }
-
-void ShowFieldMessageInstantBuffer(void)
-{
-    ShowFieldMessageInstant(gStringVar1);
-}

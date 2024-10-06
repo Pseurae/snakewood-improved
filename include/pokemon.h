@@ -25,6 +25,7 @@ struct PACKED BattleMove
     u8 target;
     s8 priority;
     u8 flags;
+    u8 unk0[3];
 };
 
 struct ContestMove
@@ -144,7 +145,6 @@ struct BattlePokemon
 
 extern struct Pokemon gPlayerParty[PARTY_SIZE];
 extern const struct ContestMove gContestMoves[];
-extern const struct BattleMove gBattleMoves[];
 
 u32 LONG_CALL CanMonLearnTMHM(struct Pokemon *mon, u8 tm);
 bool8 LONG_CALL MonKnowsMove(struct Pokemon *mon, u16 move);
@@ -180,3 +180,8 @@ extern const s8 gNatureStatTable[25][5];
 extern const u8 *const gNatureNames[25];
 extern const struct BaseStats gBaseStats[];
 extern const u8 gAbilityNames[][13];
+
+extern const u8 gMoveNames[][13];
+extern const u8 *const gMoveDescriptions[];
+extern const u8 gBattleMoveSplit[];
+extern const struct BattleMove gBattleMoves[];

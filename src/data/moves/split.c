@@ -1,7 +1,5 @@
 #include "types.h"
 #include "pokemon.h"
-#include "constants/battle.h"
-#include "constants/move_effects.h"
 #include "constants/moves.h"
 
 // 0x81fb144

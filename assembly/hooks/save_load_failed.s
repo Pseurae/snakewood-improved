@@ -1,5 +1,8 @@
 .global NoFlashMemoryCallback
 NoFlashMemoryCallback:
+push {r0}
+bl MgbaOpen
+pop {r0}
 cmp r0, #1
 beq return_to_main
 

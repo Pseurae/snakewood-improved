@@ -7,6 +7,7 @@
 #include "item_use.h"
 #include "map_name_popup.h"
 #include "menu.h"
+#include "pokemon.h"
 #include "script.h"
 #include "script_menu.h"
 #include "sound.h"

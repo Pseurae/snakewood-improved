@@ -1,4 +1,5 @@
 #include "types.h"
+#include "debug.h"
 #include "field_effect_helpers.h"
 #include "event_object_movement.h"
 #include "fieldmap.h"
