@@ -27,6 +27,11 @@
 - Autorunning shoes
 - Fix Female Player sprite issues
 - More exp. points on winning battles
+- "Snakewood" logo
+- Use the dialogue box for Birch starting speech
+- Nature Changer in Verdanturf's Endless Plains
+- Ability Changer in New Mauville
+- Revert to original Birch chase script 
 
 <details>
 
