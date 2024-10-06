@@ -133,6 +133,12 @@
 .org 0x81339a0 :: .word gBattleMoves
 .org 0x81339c4 :: .word gBattleMoves
 
+.org 0x800fb18 :: .word gBattleMoves + 4
+.org 0x800fcc8 :: .word gBattleMoves + 4
+.org 0x803b638 :: .word gBattleMoves + 4
+.org 0x803b6e0 :: .word gBattleMoves + 4
+.org 0x803dc9c :: .word gBattleMoves + 4
+
 .org 0x802e18c :: .word gMoveNames
 .org 0x804a3ec :: .word gMoveNames
 .org 0x8067500 :: .word gMoveNames
@@ -186,4 +192,5 @@
 
 .org 0x8207bc8 + SPECIES_ZIGZAGOON * 4
 .word gZigzagoonLevelUpLearnset
+
 .endif

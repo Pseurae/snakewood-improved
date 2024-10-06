@@ -194,13 +194,3 @@ void BufferAlternateAbilityName(void)
     StringCopy(gStringVar1,
         gAbilityNames[GetAbilityBySpecies(GetMonData(mon, MON_DATA_SPECIES), !GetMonData(mon, MON_DATA_ALT_ABILITY))]);
 }
-
-void CheckDivision(void)
-{
-    gSpecialVar_Result = gSpecialVar_0x8004 / gSpecialVar_0x8005;
-}
-
-void CheckModulus(void)
-{
-    gSpecialVar_Result = gSpecialVar_0x8004 % gSpecialVar_0x8005;
-}

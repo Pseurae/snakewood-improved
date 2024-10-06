@@ -5,7 +5,7 @@
 #include "constants/moves.h"
 #include "constants/pokemon.h"
 
-ALIGNED(2) const struct BattleMove gBattleMoves[] = {
+const struct BattleMove gBattleMoves[] = {
     [MOVE_NONE] = {
         .effect = EFFECT_HIT,
         .power = 0,
