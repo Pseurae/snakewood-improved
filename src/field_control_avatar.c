@@ -1,6 +1,6 @@
 #include "types.h"
-#include "event_object_movement.h"
 #include "field_control_avatar.h"
+#include "event_object_movement.h"
 #include "field_message_box.h"
 #include "field_player_avatar.h"
 #include "flags.h"
@@ -29,7 +29,7 @@ int ProcessPlayerFieldInput_Rest(struct FieldInput *input)
 #include "save_time_util.h"
 
 static const u8 sText_DisabledAutorun[] = _("Autorun {COLOR RED}disabled{COLOR DARK_GREY}.");
-static const u8 sText_EnabledAutorun[] =_("Autorun {COLOR GREEN}enabled{COLOR DARK_GREY}.");
+static const u8 sText_EnabledAutorun[] = _("Autorun {COLOR GREEN}enabled{COLOR DARK_GREY}.");
 
 static bool8 EnableAutoRun(void)
 {

@@ -36,7 +36,7 @@ static void PrintFieldMessageInstant(const u8 *message)
     lo = (u16 *)(&gTasks[taskId].data[2]);
 
     *hi = (u32)(message) >> 16;
-    *lo = (u32)(message)&0xffff;
+    *lo = (u32)(message) & 0xffff;
 }
 
 static void Task_FieldMessageBoxInstant(u8 taskId)

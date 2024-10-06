@@ -456,7 +456,7 @@
 #define REG_DMA3CNT_L   (*(vu16 *)REG_ADDR_DMA3CNT_L)
 #define REG_DMA3CNT_H   (*(vu16 *)REG_ADDR_DMA3CNT_H)
 
-#define REG_TMCNT(n)    (*(vu16 *)(REG_ADDR_TMCNT + ((n)*4)))
+#define REG_TMCNT(n)    (*(vu16 *)(REG_ADDR_TMCNT + ((n) * 4)))
 #define REG_TM0CNT      (*(vu32 *)REG_ADDR_TM0CNT)
 #define REG_TM0CNT_L    (*(vu16 *)REG_ADDR_TM0CNT_L)
 #define REG_TM0CNT_H    (*(vu16 *)REG_ADDR_TM0CNT_H)
@@ -805,7 +805,7 @@
 #define PLTT_SIZE_4BPP       PLTT_SIZEOF(16)
 #define PLTT_SIZE_8BPP       PLTT_SIZEOF(256)
 
-#define PLTT_OFFSET_4BPP(n)  ((n)*PLTT_SIZE_4BPP)
+#define PLTT_OFFSET_4BPP(n)  ((n) * PLTT_SIZE_4BPP)
 
 #define RGB(r, g, b)         ((r) | ((g) << 5) | ((b) << 10))
 

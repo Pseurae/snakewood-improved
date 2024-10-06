@@ -65,7 +65,7 @@ struct PACKED BaseStats
     /*0x17*/ u8 ability2;
     /*0x18*/ u8 safariZoneFleeRate;
     /*0x19*/ u8 bodyColor:7;
-             u8 noFlip:1;
+    u8 noFlip:1;
 };
 
 struct PACKED BoxPokemon

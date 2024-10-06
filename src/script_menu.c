@@ -4,8 +4,8 @@
 #include "main.h"
 #include "menu.h"
 #include "palette.h"
-#include "sound.h"
 #include "script.h"
+#include "sound.h"
 #include "sprite.h"
 #include "task.h"
 #include "vars.h"
@@ -20,7 +20,8 @@ static const u16 sRepelItems[3] = { ITEM_REPEL, ITEM_SUPER_REPEL, ITEM_MAX_REPEL
 static void Task_TrainerPicWindow(u8 taskId);
 static bool8 (*ScriptMenu_GetTrainerPicboxWaitFunc(void))(void);
 static bool8 IsPicboxClosed(void);
-static void StartListMenuTask(const struct MenuAction *list, u8 left, u8 top, u8 right, u8 bottom, u8 ignoreBPress, u8 displayCount, u8 totalCount);
+static void StartListMenuTask(const struct MenuAction *list, u8 left, u8 top, u8 right, u8 bottom, u8 ignoreBPress,
+    u8 displayCount, u8 totalCount);
 static void Task_HandleListMenuInput(u8 taskId);
 
 u16 LONG_CALL GetStringWidthInTilesForScriptMenu(const u8 *str);
@@ -154,7 +155,8 @@ static bool8 IsPicboxClosed(void)
 #undef tWindowX
 #undef tWindowY
 
-void DrawListMenu(u8 left, u8 top, u8 displayCount, u8 totalCount, const struct MenuAction *list, u8 ignoreBPress, u8 cursorPos)
+void DrawListMenu(
+    u8 left, u8 top, u8 displayCount, u8 totalCount, const struct MenuAction *list, u8 ignoreBPress, u8 cursorPos)
 {
     u16 width = GetStringWidthInTilesForScriptMenu(list[0].text);
     u16 newWidth;
@@ -199,13 +201,14 @@ void DrawListMenu(u8 left, u8 top, u8 displayCount, u8 totalCount, const struct 
 #define tDisplayCount data[10]
 #define tTotalCount   data[11]
 
-static void StartListMenuTask(const struct MenuAction *list, u8 left, u8 top, u8 right, u8 bottom, u8 ignoreBPress, u8 displayCount, u8 totalCount)
+static void StartListMenuTask(const struct MenuAction *list, u8 left, u8 top, u8 right, u8 bottom, u8 ignoreBPress,
+    u8 displayCount, u8 totalCount)
 {
     u8 taskId = CreateTask(Task_HandleListMenuInput, 80);
 
     gTasks[taskId].tListPtrHi = (u32)list >> 16;
     gTasks[taskId].tListPtrLo = (u32)list;
- 
+
     gTasks[taskId].tLeft = left;
     gTasks[taskId].tTop = top;
     gTasks[taskId].tRight = right;
@@ -235,8 +238,10 @@ static void Task_HandleListMenuInput(u8 taskId)
     s16 *data = gTasks[taskId].data;
     struct MenuAction *list = (struct MenuAction *)((u16)tListPtrHi << 16 | (u16)tListPtrLo);
 
-    if (gPaletteFade.active) return;
-    if (gMain.newKeys & A_BUTTON) {
+    if (gPaletteFade.active)
+        return;
+    if (gMain.newKeys & A_BUTTON)
+    {
         gSpecialVar_Result = tCursor + tScrollOffset;
         Menu_DestroyCursor();
         Menu_EraseWindowRect(gTasks[taskId].tLeft, gTasks[taskId].tTop, gTasks[taskId].tRight, gTasks[taskId].tBottom);
@@ -244,8 +249,11 @@ static void Task_HandleListMenuInput(u8 taskId)
         EnableBothScriptContexts();
         DestroyVerticalScrollIndicator(TOP_ARROW);
         DestroyVerticalScrollIndicator(BOTTOM_ARROW);
-    } else if (gMain.newKeys & B_BUTTON) {
-        if (tIgnoreBPress) return;
+    }
+    else if (gMain.newKeys & B_BUTTON)
+    {
+        if (tIgnoreBPress)
+            return;
 
         gSpecialVar_Result = 127;
         Menu_DestroyCursor();
@@ -254,25 +262,37 @@ static void Task_HandleListMenuInput(u8 taskId)
         EnableBothScriptContexts();
         DestroyVerticalScrollIndicator(TOP_ARROW);
         DestroyVerticalScrollIndicator(BOTTOM_ARROW);
-    } else if ((gMain.newAndRepeatedKeys & DPAD_ANY) == DPAD_DOWN) {
-        if (tCursor == tDisplayCount - 1) {
-            if (tCursor + tScrollOffset == tTotalCount - 1) return;
+    }
+    else if ((gMain.newAndRepeatedKeys & DPAD_ANY) == DPAD_DOWN)
+    {
+        if (tCursor == tDisplayCount - 1)
+        {
+            if (tCursor + tScrollOffset == tTotalCount - 1)
+                return;
             PlaySE(SE_SELECT);
             tScrollOffset++;
             Menu_BlankWindowRect(tLeft + 1, tTop + 1, tRight - 1, tBottom - 1);
             Menu_PrintItems(tLeft + 1, tTop + 1, tDisplayCount, list + tScrollOffset);
-        } else {
+        }
+        else
+        {
             PlaySE(SE_SELECT);
             tCursor = Menu_MoveCursor(1);
         }
-    } else if ((gMain.newAndRepeatedKeys & DPAD_ANY) == DPAD_UP) {
-        if (tCursor == 0) {
-            if (tScrollOffset == 0) return;
+    }
+    else if ((gMain.newAndRepeatedKeys & DPAD_ANY) == DPAD_UP)
+    {
+        if (tCursor == 0)
+        {
+            if (tScrollOffset == 0)
+                return;
             PlaySE(SE_SELECT);
             tScrollOffset--;
             Menu_BlankWindowRect(tLeft + 1, tTop + 1, tRight - 1, tBottom - 1);
             Menu_PrintItems(tLeft + 1, tTop + 1, tDisplayCount, list + tScrollOffset);
-        } else {
+        }
+        else
+        {
             PlaySE(SE_SELECT);
             tCursor = Menu_MoveCursor(-1);
         }

@@ -94,61 +94,61 @@ void OpenPokemonContextMenu(void)
     }
 }
 
-static const u8 sNatureName_Hardy[]   = _("HARDY");
-static const u8 sNatureName_Lonely[]  = _("LONELY");
-static const u8 sNatureName_Brave[]   = _("BRAVE");
+static const u8 sNatureName_Hardy[] = _("HARDY");
+static const u8 sNatureName_Lonely[] = _("LONELY");
+static const u8 sNatureName_Brave[] = _("BRAVE");
 static const u8 sNatureName_Adamant[] = _("ADAMANT");
 static const u8 sNatureName_Naughty[] = _("NAUGHTY");
-static const u8 sNatureName_Bold[]    = _("BOLD");
-static const u8 sNatureName_Docile[]  = _("DOCILE");
+static const u8 sNatureName_Bold[] = _("BOLD");
+static const u8 sNatureName_Docile[] = _("DOCILE");
 static const u8 sNatureName_Relaxed[] = _("RELAXED");
-static const u8 sNatureName_Impish[]  = _("IMPISH");
-static const u8 sNatureName_Lax[]     = _("LAX");
-static const u8 sNatureName_Timid[]   = _("TIMID");
-static const u8 sNatureName_Hasty[]   = _("HASTY");
+static const u8 sNatureName_Impish[] = _("IMPISH");
+static const u8 sNatureName_Lax[] = _("LAX");
+static const u8 sNatureName_Timid[] = _("TIMID");
+static const u8 sNatureName_Hasty[] = _("HASTY");
 static const u8 sNatureName_Serious[] = _("SERIOUS");
-static const u8 sNatureName_Jolly[]   = _("JOLLY");
-static const u8 sNatureName_Naive[]   = _("NAIVE");
-static const u8 sNatureName_Modest[]  = _("MODEST");
-static const u8 sNatureName_Mild[]    = _("MILD");
-static const u8 sNatureName_Quiet[]   = _("QUIET");
+static const u8 sNatureName_Jolly[] = _("JOLLY");
+static const u8 sNatureName_Naive[] = _("NAIVE");
+static const u8 sNatureName_Modest[] = _("MODEST");
+static const u8 sNatureName_Mild[] = _("MILD");
+static const u8 sNatureName_Quiet[] = _("QUIET");
 static const u8 sNatureName_Bashful[] = _("BASHFUL");
-static const u8 sNatureName_Rash[]    = _("RASH");
-static const u8 sNatureName_Calm[]    = _("CALM");
-static const u8 sNatureName_Gentle[]  = _("GENTLE");
-static const u8 sNatureName_Sassy[]   = _("SASSY");
+static const u8 sNatureName_Rash[] = _("RASH");
+static const u8 sNatureName_Calm[] = _("CALM");
+static const u8 sNatureName_Gentle[] = _("GENTLE");
+static const u8 sNatureName_Sassy[] = _("SASSY");
 static const u8 sNatureName_Careful[] = _("CAREFUL");
-static const u8 sNatureName_Quirky[]  = _("QUIRKY");
+static const u8 sNatureName_Quirky[] = _("QUIRKY");
 
 extern const u8 gOtherText_CancelNoTerminator[];
 
 const struct MenuAction sNatureMenuActions[] = {
-    {sNatureName_Hardy, NULL},
-    {sNatureName_Lonely, NULL},
-    {sNatureName_Brave, NULL},
-    {sNatureName_Adamant, NULL},
-    {sNatureName_Naughty, NULL},
-    {sNatureName_Bold, NULL},
-    {sNatureName_Docile, NULL},
-    {sNatureName_Relaxed, NULL},
-    {sNatureName_Impish, NULL},
-    {sNatureName_Lax, NULL},
-    {sNatureName_Timid, NULL},
-    {sNatureName_Hasty, NULL},
-    {sNatureName_Serious, NULL},
-    {sNatureName_Jolly, NULL},
-    {sNatureName_Naive, NULL},
-    {sNatureName_Modest, NULL},
-    {sNatureName_Mild, NULL},
-    {sNatureName_Quiet, NULL},
-    {sNatureName_Bashful, NULL},
-    {sNatureName_Rash, NULL},
-    {sNatureName_Calm, NULL},
-    {sNatureName_Gentle, NULL},
-    {sNatureName_Sassy, NULL},
-    {sNatureName_Careful, NULL},
-    {sNatureName_Quirky, NULL},
-    {gOtherText_CancelNoTerminator, NULL}
+    {             sNatureName_Hardy, NULL },
+    {            sNatureName_Lonely, NULL },
+    {             sNatureName_Brave, NULL },
+    {           sNatureName_Adamant, NULL },
+    {           sNatureName_Naughty, NULL },
+    {              sNatureName_Bold, NULL },
+    {            sNatureName_Docile, NULL },
+    {           sNatureName_Relaxed, NULL },
+    {            sNatureName_Impish, NULL },
+    {               sNatureName_Lax, NULL },
+    {             sNatureName_Timid, NULL },
+    {             sNatureName_Hasty, NULL },
+    {           sNatureName_Serious, NULL },
+    {             sNatureName_Jolly, NULL },
+    {             sNatureName_Naive, NULL },
+    {            sNatureName_Modest, NULL },
+    {              sNatureName_Mild, NULL },
+    {             sNatureName_Quiet, NULL },
+    {           sNatureName_Bashful, NULL },
+    {              sNatureName_Rash, NULL },
+    {              sNatureName_Calm, NULL },
+    {            sNatureName_Gentle, NULL },
+    {             sNatureName_Sassy, NULL },
+    {           sNatureName_Careful, NULL },
+    {            sNatureName_Quirky, NULL },
+    { gOtherText_CancelNoTerminator, NULL }
 };
 
 void DrawNaturesWindow(void)
@@ -158,7 +158,8 @@ void DrawNaturesWindow(void)
 
 void BufferNatureName(void)
 {
-    if (gSpecialVar_Result >= 25) return;
+    if (gSpecialVar_Result >= 25)
+        return;
     StringCopy(gStringVar1, gNatureNames[gSpecialVar_Result]);
 }
 
@@ -190,5 +191,6 @@ void ChangePartyMonAbility(void)
 void BufferAlternateAbilityName(void)
 {
     struct Pokemon *mon = &gPlayerParty[gSpecialVar_0x8004];
-    StringCopy(gStringVar1, gAbilityNames[GetAbilityBySpecies(GetMonData(mon, MON_DATA_SPECIES), !GetMonData(mon, MON_DATA_ALT_ABILITY))]);
+    StringCopy(gStringVar1,
+        gAbilityNames[GetAbilityBySpecies(GetMonData(mon, MON_DATA_SPECIES), !GetMonData(mon, MON_DATA_ALT_ABILITY))]);
 }

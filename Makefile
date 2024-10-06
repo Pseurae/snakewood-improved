@@ -63,6 +63,10 @@ all: $(OUTPUT)
 
 $(OUTPUT): $(INPUT) build/linked_processed.o
 
+format:
+	@find . -not -path "./tools/*" -name *.c -o -not -path "./tools/*" -name *.h | xargs clang-format -i
+	@echo "Done."
+
 tools:
 	@$(MAKE) -C tools/elfedit
 	@$(MAKE) -C tools/preproc
