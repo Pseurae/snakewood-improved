@@ -1,5 +1,11 @@
+.macro set_learnset, _species, _learnset
+.org 0x8207bc8 + 4 * _species
+.word _learnset
+.endmacro
+
 .if NEW_MOVES
-; All offsets where generated using a script. 
+
+; All offsets were generated using a script. 
 .org 0x800ca54 :: .word gBattleMoves
 .org 0x8010cf4 :: .word gBattleMoves
 .org 0x8010f24 :: .word gBattleMoves
@@ -189,8 +195,5 @@
 
 .org 0x8120DF4
 .fill 6, 0x0
-
-.org 0x8207bc8 + SPECIES_ZIGZAGOON * 4
-.word gZigzagoonLevelUpLearnset
 
 .endif
