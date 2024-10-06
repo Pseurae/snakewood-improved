@@ -33,9 +33,9 @@
  */
 
 #include "types.h"
-#include "text.h"
 #include "mini_printf.h"
 #include "string_util.h"
+#include "text.h"
 
 #ifndef NDEBUG
 

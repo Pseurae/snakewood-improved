@@ -13,9 +13,7 @@ u32 FldEff_Shadow_(void)
     const struct ObjectEventGraphicsInfo *graphicsInfo;
     u8 spriteId;
 
-    objectEventId =
-        GetObjectEventIdByLocalIdAndMap(gFieldEffectArguments[0], gFieldEffectArguments[1], gFieldEffectArguments[2]);
-    graphicsInfo = GetObjectEventGraphicsInfo(gObjectEvents[objectEventId].graphicsId);
+    graphicsInfo = GetObjectEventGraphicsInfo(gFieldEffectArguments[3]);
     spriteId = CreateSpriteAtEnd(
         gFieldEffectObjectTemplatePointers[gShadowEffectTemplateIds[graphicsInfo->shadowSize]], 0, 0, 0x94);
 

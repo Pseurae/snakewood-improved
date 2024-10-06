@@ -31,16 +31,3 @@ void MgbaPrintf(s32 level, const char* ptr, ...)
     va_end(args);
     *REG_DEBUG_FLAGS = level | 0x100;
 }
-
-void MgbaAssert(const char *pFile, s32 nLine, const char *pExpression, bool32 nStopProgram)
-{
-    if (nStopProgram)
-    {
-        MgbaPrintf(MGBA_LOG_ERROR, "ASSERTION FAILED  FILE=[%s] LINE=[%d]  EXP=[%s]", pFile, nLine, pExpression);
-        __asm__(".hword 0xEFFF");
-    }
-    else
-    {
-        MgbaPrintf(MGBA_LOG_WARN, "WARING FILE=[%s] LINE=[%d]  EXP=[%s]", pFile, nLine, pExpression);
-    }
-}
