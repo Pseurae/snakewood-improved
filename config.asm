@@ -78,6 +78,9 @@
 ; Adds a Ability Changer NPC in New Mauville.
 .definelabel ABILITY_CHANGER, 1
 
+; Adds new moves to complement the P/S Split.
+.definelabel NEW_MOVES, 1
+
 ; Bugfixes
 ; --------
 

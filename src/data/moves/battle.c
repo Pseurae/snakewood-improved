@@ -5,7 +5,7 @@
 #include "constants/moves.h"
 #include "constants/pokemon.h"
 
-const struct BattleMove gBattleMoves[] = {
+ALIGNED(2) const struct BattleMove gBattleMoves[] = {
     [MOVE_NONE] = {
         .effect = EFFECT_HIT,
         .power = 0,
@@ -4261,6 +4261,90 @@ const struct BattleMove gBattleMoves[] = {
         .accuracy = 77,
         .pp = 1,
         .secondaryEffectChance = 0,
+        .target = TARGET_SELECTED_POKEMON,
+        .priority = 0,
+        .flags = F_AFFECTED_BY_PROTECT | F_MIRROR_MOVE_COMPATIBLE | F_AFFECTED_BY_KINGS_ROCK,
+    },
+
+    [MOVE_SHADOW_CLAW] = {
+        .effect = EFFECT_HIGH_CRITICAL,
+        .power = 70,
+        .type = TYPE_GHOST,
+        .accuracy = 100,
+        .pp = 15,
+        .secondaryEffectChance = 0,
+        .target = TARGET_SELECTED_POKEMON,
+        .priority = 0,
+        .flags = F_MAKES_CONTACT | F_AFFECTED_BY_PROTECT | F_MIRROR_MOVE_COMPATIBLE | F_AFFECTED_BY_KINGS_ROCK,
+    },
+
+    [MOVE_DARK_PULSE] = {
+        .effect = EFFECT_FLINCH_HIT,
+        .power = 80,
+        .type = TYPE_DARK,
+        .accuracy = 100,
+        .pp = 15,
+        .secondaryEffectChance = 20,
+        .target = TARGET_SELECTED_POKEMON,
+        .priority = 0,
+        .flags = F_AFFECTED_BY_PROTECT | F_MIRROR_MOVE_COMPATIBLE,
+    },
+
+    [MOVE_ZEN_HEADBUTT] = {
+        .effect = EFFECT_FLINCH_HIT,
+        .power = 80,
+        .type = TYPE_PSYCHIC,
+        .accuracy = 95,
+        .pp = 15,
+        .secondaryEffectChance = 20,
+        .target = TARGET_SELECTED_POKEMON,
+        .priority = 0,
+        .flags = F_MAKES_CONTACT | F_AFFECTED_BY_PROTECT | F_MIRROR_MOVE_COMPATIBLE,
+    },
+
+    [MOVE_POWER_GEM] = {
+        .effect = EFFECT_HIT,
+        .power = 80,
+        .type = TYPE_ROCK,
+        .accuracy = 100,
+        .pp = 20,
+        .secondaryEffectChance = 0,
+        .target = TARGET_SELECTED_POKEMON,
+        .priority = 0,
+        .flags = F_AFFECTED_BY_PROTECT | F_MIRROR_MOVE_COMPATIBLE | F_AFFECTED_BY_KINGS_ROCK,
+    },
+
+    [MOVE_AURA_SPHERE] = {
+        .effect = EFFECT_ALWAYS_HIT,
+        .power = 80,
+        .type = TYPE_FIGHTING,
+        .accuracy = 0,
+        .pp = 20,
+        .secondaryEffectChance = 0,
+        .target = TARGET_SELECTED_POKEMON,
+        .priority = 0,
+        .flags = F_AFFECTED_BY_PROTECT | F_MIRROR_MOVE_COMPATIBLE | F_AFFECTED_BY_KINGS_ROCK,
+    },
+
+    [MOVE_X_SCISSOR] = {
+        .effect = EFFECT_HIT,
+        .power = 80,
+        .type = TYPE_BUG,
+        .accuracy = 100,
+        .pp = 15,
+        .secondaryEffectChance = 0,
+        .target = TARGET_SELECTED_POKEMON,
+        .priority = 0,
+        .flags = F_MAKES_CONTACT | F_AFFECTED_BY_PROTECT | F_MIRROR_MOVE_COMPATIBLE | F_AFFECTED_BY_KINGS_ROCK,
+    },
+
+    [MOVE_BUG_BUZZ] = {
+        .effect = EFFECT_SPECIAL_ATTACK_DOWN_HIT,
+        .power = 90,
+        .type = TYPE_BUG,
+        .accuracy = 100,
+        .pp = 10,
+        .secondaryEffectChance = 10,
         .target = TARGET_SELECTED_POKEMON,
         .priority = 0,
         .flags = F_AFFECTED_BY_PROTECT | F_MIRROR_MOVE_COMPATIBLE | F_AFFECTED_BY_KINGS_ROCK,

@@ -363,3 +363,11 @@ gBattleAnims_Moves:
     .4byte 0x81d50d2
     .4byte 0x81d52cb
     .4byte 0x81d51c7
+    @ Start of custom moves
+    .4byte 0x81ccf3b @ MOVE_SHADOW_CLAW (CRUSH CLAW)
+    .4byte 0x81d52cb @ MOVE_DARK_PULSE (PULSAR)
+    .4byte 0x81caabd @ MOVE_ZEN_HEADBUTT (HEADBUTT)
+    .4byte 0x81c8bbc @ MOVE_POWER_GEM (HIDDEN POWER)
+    .4byte 0x81d3550 @ MOVE_AURA_SPHERE (HYPER VOICE)
+    .4byte 0x81cb7db @ MOVE_X_SCISSOR (SLASH)
+    .4byte 0x81cbefc @ MOVE_BUG_BUZZ (UPROAR)

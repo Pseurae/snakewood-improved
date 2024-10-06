@@ -1,6 +1,40 @@
 #include "types.h"
 #include "constants/moves.h"
 
+static const u8 sMoveDescription_ShadowClaw[] = _(
+    "Strikes with a shadow claw.\n"
+    "High critical-hit ratio.");
+
+static const u8 sMoveDescription_DarkPulse[] = _(
+    "Attacks with a horrible\n"
+    "aura. May cause flinching."
+);
+
+static const u8 sMoveDescription_ZenHeadbutt[] = _(
+    "Hits with a strong head-\n"
+    "butt. May cause flinching."
+);
+
+static const u8 sMoveDescription_PowerGem[] = _(
+    "Attacks with rays of light\n"
+    "that sparkle like diamonds."
+);
+
+static const u8 sMoveDescription_AuraSphere[] = _(
+    "Attacks with an aura blast\n"
+    "that cannot be evaded."
+);
+
+static const u8 sMoveDescription_XScissor[] = _(
+    "Slashes foe with crossed\n"
+    "scythes, claws, etc."
+);
+
+static const u8 sMoveDescription_BugBuzz[] = _(
+    "A damaging sound wave that\n"
+    "may lower Sp. Def."
+);
+
 const u8 *const gMoveDescriptions[] = {
     [MOVE_POUND - 1] = (const u8 *)0x83bc680,
     [MOVE_KARATE_CHOP - 1] = (const u8 *)0x83bc6a6,
@@ -356,4 +390,11 @@ const u8 *const gMoveDescriptions[] = {
     [MOVE_WATER_PULSE - 1] = (const u8 *)0x83c0939,
     [MOVE_PULSAR - 1] = (const u8 *)0x83c096c,
     [MOVE_CURSE_CLAW - 1] = (const u8 *)0x83c099d,
+    [MOVE_SHADOW_CLAW - 1] = sMoveDescription_ShadowClaw,
+    [MOVE_DARK_PULSE - 1] = sMoveDescription_DarkPulse,
+    [MOVE_ZEN_HEADBUTT - 1] = sMoveDescription_ZenHeadbutt,
+    [MOVE_POWER_GEM - 1] = sMoveDescription_PowerGem,
+    [MOVE_AURA_SPHERE - 1] = sMoveDescription_AuraSphere,
+    [MOVE_X_SCISSOR - 1] = sMoveDescription_XScissor,
+    [MOVE_BUG_BUZZ - 1] = sMoveDescription_BugBuzz,
 };

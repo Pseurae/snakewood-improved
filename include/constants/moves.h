@@ -355,5 +355,12 @@
 #define MOVE_WATER_PULSE   352
 #define MOVE_PULSAR        353
 #define MOVE_CURSE_CLAW    354
+#define MOVE_SHADOW_CLAW   355
+#define MOVE_DARK_PULSE    356
+#define MOVE_ZEN_HEADBUTT  357
+#define MOVE_POWER_GEM     358
+#define MOVE_AURA_SPHERE   359
+#define MOVE_X_SCISSOR     360
+#define MOVE_BUG_BUZZ      361
 
-#define NUM_MOVES          355
+#define NUM_MOVES          362

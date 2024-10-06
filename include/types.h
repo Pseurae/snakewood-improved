@@ -38,6 +38,7 @@ struct UCoords16
 #define PACKED             __attribute__((packed))
 #define LONG_CALL          __attribute__((long_call))
 #define INLINE             __attribute__((__always_inline__))
+#define ALIGNED(n)         __attribute__((aligned(n)))
 
 #define TRUE               1
 #define FALSE              0

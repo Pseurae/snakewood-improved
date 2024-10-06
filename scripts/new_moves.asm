@@ -1,3 +1,5 @@
+.if NEW_MOVES
+; All offsets where generated using a script. 
 .org 0x800ca54 :: .word gBattleMoves
 .org 0x8010cf4 :: .word gBattleMoves
 .org 0x8010f24 :: .word gBattleMoves
@@ -130,6 +132,7 @@
 .org 0x813383c :: .word gBattleMoves
 .org 0x81339a0 :: .word gBattleMoves
 .org 0x81339c4 :: .word gBattleMoves
+
 .org 0x802e18c :: .word gMoveNames
 .org 0x804a3ec :: .word gMoveNames
 .org 0x8067500 :: .word gMoveNames
@@ -172,6 +175,15 @@
 .org 0x8121b50 :: .word gMoveNames
 .org 0x8132f44 :: .word gMoveNames
 .org 0x8133600 :: .word gMoveNames
+
 .org 0x8075734 :: .word gBattleAnims_Moves
+
 .org 0x80a0494 :: .word gMoveDescriptions
 .org 0x8133c00 :: .word gMoveDescriptions
+
+.org 0x8120DF4
+.fill 6, 0x0
+
+.org 0x8207bc8 + SPECIES_ZIGZAGOON * 4
+.word gZigzagoonLevelUpLearnset
+.endif
