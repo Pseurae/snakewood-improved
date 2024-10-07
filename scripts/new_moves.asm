@@ -226,4 +226,24 @@ bx r7
 .pool
 .endautoregion
 
+@set_learnset SPECIES_BANETTE, gBanetteLevelUpLearnset
+@set_learnset SPECIES_DUSCLOPS, gDusclopsLevelUpLearnset
+@set_learnset SPECIES_DUSTOX, gDustoxLevelUpLearnset
+@set_learnset SPECIES_BEAUTIFLY, gBeautiflyLevelUpLearnset
+@set_learnset SPECIES_ALTARIA, gAltariaLevelUpLearnset
+@set_learnset SPECIES_MEDITITE, gMedititeLevelUpLearnset
+@set_learnset SPECIES_MEDICHAM, gMedichamLevelUpLearnset
+@set_learnset SPECIES_PARAS, gParasLevelUpLearnset
+@set_learnset SPECIES_PARASECT, gParasectLevelUpLearnset
+@set_learnset SPECIES_SURSKIT, gSurskitLevelUpLearnset
+@set_learnset SPECIES_MASQUERAIN, gMasquerainLevelUpLearnset
+@set_learnset SPECIES_GASTLY, gGastlyLevelUpLearnset
+@set_learnset SPECIES_HAUNTER, gHaunterLevelUpLearnset
+@set_learnset SPECIES_GENGAR, gGengarLevelUpLearnset
+@set_learnset SPECIES_NOSEPASS, gNosepassLevelUpLearnset
+@set_learnset SPECIES_SABLEYE, gSableyeLevelUpLearnset
+@set_learnset SPECIES_SHADERU, gShaderuLevelUpLearnset
+@set_learnset SPECIES_GIGAWOLF, gGigawolfLevelUpLearnset
+@set_learnset SPECIES_RAMSHAKER, gRamshakerLevelUpLearnset
+@set_learnset SPECIES_TAUROS, gTaurosLevelUpLearnset
 .endif

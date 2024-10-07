@@ -394,7 +394,6 @@ const u8 *const gMoveDescriptions[] = {
     [MOVE_DARK_PULSE - 1] = sMoveDescription_DarkPulse,
     [MOVE_ZEN_HEADBUTT - 1] = sMoveDescription_ZenHeadbutt,
     [MOVE_POWER_GEM - 1] = sMoveDescription_PowerGem,
-    [MOVE_AURA_SPHERE - 1] = sMoveDescription_AuraSphere,
     [MOVE_X_SCISSOR - 1] = sMoveDescription_XScissor,
     [MOVE_BUG_BUZZ - 1] = sMoveDescription_BugBuzz,
 };

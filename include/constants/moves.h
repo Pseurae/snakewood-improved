@@ -359,8 +359,7 @@
 #define MOVE_DARK_PULSE    356
 #define MOVE_ZEN_HEADBUTT  357
 #define MOVE_POWER_GEM     358
-#define MOVE_AURA_SPHERE   359
-#define MOVE_X_SCISSOR     360
-#define MOVE_BUG_BUZZ      361
+#define MOVE_X_SCISSOR     359
+#define MOVE_BUG_BUZZ      360
 
-#define NUM_MOVES          362
+#define NUM_MOVES          361

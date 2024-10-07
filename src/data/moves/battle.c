@@ -4314,18 +4314,6 @@ const struct BattleMove gBattleMoves[] = {
         .flags = F_AFFECTED_BY_PROTECT | F_MIRROR_MOVE_COMPATIBLE | F_AFFECTED_BY_KINGS_ROCK,
     },
 
-    [MOVE_AURA_SPHERE] = {
-        .effect = EFFECT_ALWAYS_HIT,
-        .power = 80,
-        .type = TYPE_FIGHTING,
-        .accuracy = 0,
-        .pp = 20,
-        .secondaryEffectChance = 0,
-        .target = TARGET_SELECTED_POKEMON,
-        .priority = 0,
-        .flags = F_AFFECTED_BY_PROTECT | F_MIRROR_MOVE_COMPATIBLE | F_AFFECTED_BY_KINGS_ROCK,
-    },
-
     [MOVE_X_SCISSOR] = {
         .effect = EFFECT_HIT,
         .power = 80,
