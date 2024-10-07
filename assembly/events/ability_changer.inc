@@ -11,9 +11,6 @@ EventScript_AbilityChanger:
 
     msgbox Text_AbilityChanger_WhichPokemon, MSGBOX_DEFAULT
 
-    nop
-    nop
-    nop
     callnative (0x80f9a0c | 1)
     waitstate
 
@@ -74,7 +71,7 @@ EventScript_AbilityChanger_IsEgg:
     end
 
 Text_AbilityChanger_Intro:
-    .string "Back when I used to live in the Johto\nregion, my grandma taught me how to\nchange a POKéMON's ABILITY.\p"
+    .string "Back when I used to live in the Johto\nregion, my grandma taught me how to\lchange a POKéMON's ABILITY.\p"
     .string "If you want, I could try to do the\nsame to your POKéMON.$"
 
 Text_AbilityChanger_DoYouWantToChangeAbility:

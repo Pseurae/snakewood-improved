@@ -5,7 +5,6 @@ EventScript_NatureChanger:
     faceplayer
     call_if_unset 0x68, EventScript_NatureChanger_Intro
 
-    nop
     msgbox Text_NatureChanger_DoYouWantToChangeNature, MSGBOX_YESNO
     compare VAR_RESULT, 0
     goto_if_eq EventScript_NatureChanger_Cancel
@@ -43,7 +42,7 @@ EventScript_NatureChanger_SelectNature:
     callnative ChangePartyMonNature
     release
 
-    msgbox Text_NatureChanger_Changed, MSGBOX_DEFAULT
+    msgbox Text_NatureChanger_Changed, MSGBOX_NPC
     end
 
 EventScript_NatureChanger_Intro:
@@ -79,8 +78,8 @@ EventScript_NatureChanger_ShowNatureWindow:
     return
 
 Text_NatureChanger_Intro:
-    .string "In times like these, you should take\nadvantage of every ounce of your\nPOKéMON's power.\p"
-    .string "I could change the NATURE of your\nPOKéMON so that you play to its\nstrengths.$"
+    .string "In times like these, you should take\nadvantage of every ounce of your\lPOKéMON's power.\p"
+    .string "I could change the NATURE of your\nPOKéMON so that you play to its\lstrengths.$"
 
 Text_NatureChanger_DoYouWantToChangeNature:
     .string "Would you like me to change one of your\nPOKéMON's NATURE?$"
