@@ -6,6 +6,7 @@
 
 .org 0x8e9d644
 .autoregion
+.align 4
 @PressStart:
 .import "assets/press_start.4bpp.lz"
 .endautoregion
