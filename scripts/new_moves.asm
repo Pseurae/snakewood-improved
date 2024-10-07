@@ -1,4 +1,4 @@
-.macro set_learnset, _species, _learnset
+.macro @set_learnset, _species, _learnset
 .org 0x8207bc8 + 4 * _species
 .word _learnset
 .endmacro
@@ -195,5 +195,35 @@
 
 .org 0x8120DF4
 .fill 6, 0x0
+
+; Move Contest Moves section altogether
+.org 0x809D948
+mov r0, #2
+
+.org 0x809D972
+mov r0, #2
+
+.org 0x809D9A0
+mov r2, #2
+
+.org 0x809D9C6
+mov r0, #2
+
+.org 0x809D9B0
+set_function_hook r7, @SelectMoves_HeaderFix
+
+.autoregion
+.align 4
+@SelectMoves_HeaderFix:
+mov r2, #3
+strb r2, [r0]
+add r0, #1
+strb r3, [r0]
+sub r0, #6
+
+ldr r7, =(0x809D9B8 | 1)
+bx r7
+.pool
+.endautoregion
 
 .endif

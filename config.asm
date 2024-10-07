@@ -81,6 +81,9 @@
 ; Adds new moves to complement the P/S Split.
 .definelabel NEW_MOVES, 1
 
+; Made changes to the Pokemon evolution data.
+.definelabel EVOLUTION_CHANGES, 1
+
 ; Bugfixes
 ; --------
 
