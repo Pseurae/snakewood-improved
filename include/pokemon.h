@@ -185,3 +185,4 @@ extern const u8 gMoveNames[][13];
 extern const u8 *const gMoveDescriptions[];
 extern const u8 gBattleMoveSplit[];
 extern const struct BattleMove gBattleMoves[];
+extern const u16 *gLevelUpLearnsets[];
