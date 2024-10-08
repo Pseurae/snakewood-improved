@@ -362,5 +362,5 @@ const u8 gMoveNames[][13] = {
     [MOVE_ZEN_HEADBUTT] = _("ZEN HEADBUTT"),
     [MOVE_POWER_GEM] = _("POWER GEM"),
     [MOVE_X_SCISSOR] = _("X-SCISSOR"),
-    [MOVE_BUG_BUZZ] = _("BUG BUZZ")
+    [MOVE_BUG_BUZZ] = _("BUG BUZZ"),
 };
