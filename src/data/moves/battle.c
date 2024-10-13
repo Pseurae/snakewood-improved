@@ -1484,9 +1484,9 @@ const struct BattleMove gBattleMoves[] = {
 
     [MOVE_SMOG] = {
         .effect = EFFECT_POISON_HIT,
-        .power = 20,
+        .power = 30,
         .type = TYPE_POISON,
-        .accuracy = 70,
+        .accuracy = 95,
         .pp = 20,
         .secondaryEffectChance = 40,
         .target = TARGET_SELECTED_POKEMON,
