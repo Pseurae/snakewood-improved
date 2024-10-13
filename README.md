@@ -24,3 +24,4 @@ A `output.gba` will be created as your patched file.
 - PRET for their [decompilation of Pokemon Ruby](https://github.com/pret/pokeruby).  
 - Super Versekr Dark for their Exp Points on capturing routine.  
 - merpp for pokeemerald's overworld shadow feature.
+- Andrea for their Exp. All routine.
