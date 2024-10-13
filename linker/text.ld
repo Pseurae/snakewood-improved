@@ -237,3 +237,4 @@ DestroyVerticalScrollIndicator = 0x80f97e0 | 1;
 LoadScrollIndicatorPalette = 0x80f9818 | 1;
 ClearVerticalScrollIndicatorPalettes = 0x80f944c | 1;
 GetAbilityBySpecies = 0x803db14 | 1;
+DisplayItemUseMessage = 0x80c9098 | 1;

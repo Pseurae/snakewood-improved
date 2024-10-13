@@ -1,0 +1,124 @@
+.global CountEligiblePokeForExp, SetExpAmount, GetSentInPokeForExp
+
+@
+CountEligiblePokeForExp:
+PUSH {R0,R2-R7}
+LDR R0, =(gExpAllEnabled)
+ldrb r0, [r0]
+CMP R0, #0
+BEQ RETURN1
+
+MOV R4, #0
+MOV R5, #0
+
+LOOP:
+LDR R0, = 0x03004360
+MOV R1, #0x64
+MUL R1, R4
+ADD R0, R0, R1
+MOV R1, #0x56
+LDRH R2, [R0, R1]
+CMP R2, #0
+BEQ COUNTER
+
+IS_EGG:
+MOV R1, #0x2D
+PUSH {R4,R5}
+BL GET_DATA
+POP {R4, R5}
+CMP R0, #1
+BEQ COUNTER
+
+MOV R1, #1
+LSL R1, R1, R4
+ORR R5, R1
+
+COUNTER:
+ADD R4, #1
+CMP R4, #6
+BNE LOOP
+
+MOV R1, R5
+
+POP {R0,R2-R7}
+LDR R0, = 0x08020030+1
+BX R0
+
+RETURN1:
+POP {R0,R2-R7}
+LDR R2, = 0x02024DEA
+MOV R1, #2
+LDR R3, = 0x08020026+1
+BX R3
+
+GET_DATA:
+LDR R2, = 0x0803CB60+1
+BX R2
+
+@
+SetExpAmount:
+PUSH {R0}
+LDR R0, =(gExpAllEnabled)
+ldrb r0, [r0]
+CMP R0, #0
+BEQ NOT_EXP
+
+POP {R0}
+
+LSR R0, R1, #1
+
+@ mov r0, r1
+@ push {r1, r3}
+@ mov r1, #2
+@ swi #0x6
+@ pop {r1, r3}
+
+BACK_TO:
+LDR R1, = 0x080201A8+1
+BX R1
+
+NOT_EXP:
+POP {R0}
+LDR R2, = 0x080201E0+1
+BX R2
+
+@
+GetSentInPokeForExp:
+LDRH R0, [R3]
+
+LDR R2, = 0x02016018
+LDRB R2, [R2]
+
+LDR R5, = 0x02024A6A
+LDRB R7, [R5]
+CMP R7, R2
+BEQ RETURN
+
+LDR R7, = 0x020239F8
+LDRB R7, [R7]
+MOV R3, #1
+AND R7, R3
+CMP R7, #1
+BEQ DOUBLE
+
+DIVIDE:
+PUSH {R1-R7}
+MOV R1, #3
+BL DIVISION
+POP {R1-R7}
+
+RETURN:
+STRH R0, [R1]
+MOV R8, R1
+LDR R0, = 0x08020376+1
+BX R0
+
+DOUBLE:
+LDRB R7, [R5, #4]
+CMP R7, R2
+BEQ RETURN
+B DIVIDE
+
+DIVISION:
+LDR R2, = 0x081E0868+1
+BX R2

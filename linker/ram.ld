@@ -41,6 +41,7 @@ gBattleBufferA = 0x2023a60;
 gAutorunEnabled = 0x2024f34;
 gExpandedItemPockets = 0x2025420;
 gRegisteredItems = 0x2025520;
+gExpAllEnabled = 0x202552C;
 
 gMapHeader = 0x202e828;
 gPlayerAvatar = 0x202e858;

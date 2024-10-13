@@ -84,6 +84,9 @@
 ; Made changes to the Pokemon evolution data.
 .definelabel EVOLUTION_CHANGES, 1
 
+; Gen 6 Exp. Share
+.definelabel EXP_ALL, 1
+
 ; Bugfixes
 ; --------
 

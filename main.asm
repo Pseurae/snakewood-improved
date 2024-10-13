@@ -59,6 +59,7 @@
 .include "scripts/colored_stats.asm"
 .include "scripts/emerald_save_prompt.asm"
 .include "scripts/evolution_changes.asm"
+.include "scripts/exp_all.asm"
 .include "scripts/exp_on_capture.asm"
 .include "scripts/hm_system.asm"
 .include "scripts/more_exp.asm"
