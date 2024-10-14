@@ -48,3 +48,10 @@ gStatStageRatios = 0x8208244;
 gNatureNames = 0x83c1004;
 gBaseStats = 0x81fec18;
 gAbilityNames = 0x81fa248;
+
+BattleStatText_HP = 0x84007d2;
+BattleStatText_Attack = 0x84007d5;
+BattleStatText_Defense = 0x84007dc;
+BattleStatText_Speed = 0x84007e4;
+BattleStatText_SpAtk = 0x84007ea;
+BattleStatText_SpDef = 0x84007f2;

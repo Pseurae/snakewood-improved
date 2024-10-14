@@ -72,6 +72,7 @@ gMoveSelectionCursor = 0x2024e64;
 gMartInfo = 0x3000708;
 gMain = 0x3001770;
 gPlayerParty = 0x3004360;
+gPlayerPartyCount = 0x3004350;
 gObjectEvents = 0x30048a0;
 gTasks = 0x3004b20;
 gLastFieldPokeMenuOpened = 0x3005ce0;

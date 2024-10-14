@@ -5,6 +5,7 @@
 #include "random.h"
 #include "script_menu.h"
 #include "string_util.h"
+#include "text.h"
 #include "constants/abilities.h"
 #include "constants/items.h"
 #include "constants/pokemon.h"
@@ -148,7 +149,7 @@ const struct MenuAction sNatureMenuActions[] = {
     {             sNatureName_Sassy, NULL },
     {           sNatureName_Careful, NULL },
     {            sNatureName_Quirky, NULL },
-    { gOtherText_CancelNoTerminator, NULL }
+    { gOtherText_CancelNoTerminator, NULL },
 };
 
 void DrawNaturesWindow(void)

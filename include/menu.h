@@ -2,7 +2,7 @@
 
 #include "text.h"
 
-extern void *gMenuWindowPtr;
+extern struct Window *gMenuWindowPtr;
 extern u16 gMenuTextTileOffset;
 
 void LONG_CALL InitMenuWindow(const struct WindowTemplate *);
@@ -15,6 +15,7 @@ void LONG_CALL AppendToList(u8 *list, u8 *pindex, u32 value);
 u8 LONG_CALL *AlignInt1InMenuWindow(u8 *dest, s32 value, u8 alignAmount, u8 alignType);
 void LONG_CALL Menu_GetTextColors(u8 *a1, u8 *a2, u8 *a3);
 void LONG_CALL Menu_DrawStdWindowFrame(u8, u8, u8, u8);
+void LONG_CALL Menu_EraseScreen(void);
 void LONG_CALL Menu_EraseWindowRect(u8, u8, u8, u8);
 void LONG_CALL Menu_BlankWindowRect(u8 left, u8 top, u8 right, u8 bottom);
 u8 LONG_CALL PrintStringWithNewlines(
@@ -23,6 +24,8 @@ void LONG_CALL Menu_PrintItems(u8, u8, u8, const void *);
 void LONG_CALL Menu_DestroyCursor(void);
 u8 LONG_CALL InitMenu(u8, u8, u8, u8, u8, u8);
 u8 LONG_CALL Menu_MoveCursor(s8);
+
+void LONG_CALL ClearTilemapBuffers(void);
 
 enum
 {

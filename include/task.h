@@ -22,3 +22,5 @@ bool8 LONG_CALL FuncIsActiveTask(TaskFunc func);
 u8 LONG_CALL FindTaskIdByFunc(TaskFunc func);
 u8 LONG_CALL DestroyTask(u8 taskId);
 void LONG_CALL TaskDummy(u8 taskId);
+void LONG_CALL RunTasks(void);
+void LONG_CALL ResetTasks(void);

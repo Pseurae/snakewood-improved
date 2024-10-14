@@ -118,9 +118,18 @@ struct WeatherCallbacks
     bool8 (*finish)(void);
 };
 
+enum
+{
+    FADE_FROM_BLACK,
+    FADE_TO_BLACK,
+    FADE_FROM_WHITE,
+    FADE_TO_WHITE,
+};
+
 void LONG_CALL Weather_SetBlendCoeffs(u8, u8);
 void LONG_CALL SetRainStrengthFromSoundEffect(u16 soundEffect);
 void LONG_CALL PreservePaletteInWeather(u8 preservedPalIndex);
+void LONG_CALL FadeScreen(u8, u8);
 
 extern const struct WeatherCallbacks gWeatherFuncs[];
 extern struct Weather *const gWeatherPtr;

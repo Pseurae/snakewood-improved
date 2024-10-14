@@ -6,7 +6,7 @@ typedef void (*MainCallback)(void);
 typedef void (*IntrCallback)(void);
 typedef void (*IntrFunc)(void);
 
-struct Main
+struct PACKED Main
 {
     /*0x000*/ MainCallback callback1;
     /*0x004*/ MainCallback callback2;
@@ -45,3 +45,5 @@ struct Main
 extern struct Main gMain;
 
 void LONG_CALL SetMainCallback2(MainCallback callback);
+void LONG_CALL SetVBlankHBlankCallbacksToNull(void);
+void LONG_CALL SetVBlankCallback(IntrCallback callback);

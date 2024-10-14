@@ -8,6 +8,8 @@ bool8 LONG_CALL BeginNormalPaletteFade(u32 selectedPalettes, s8 delay, u8 startY
 void LONG_CALL LoadPalette(const void *, u16, u16);
 void LONG_CALL LoadCompressedPalette(const void *, u16, u16);
 void LONG_CALL TransferPlttBuffer(void);
+u8 LONG_CALL UpdatePaletteFade(void);
+void LONG_CALL ResetPaletteFade(void);
 
 struct PaletteFadeControl
 {

@@ -213,5 +213,12 @@ u8 LONG_CALL Text_InitWindow_RightAligned(
     struct Window *win, const u8 *text, u16 tileDataStartOffset, u8 right, u8 top);
 void LONG_CALL Text_FillWindowRect(struct Window *win, u16 tilemapEntry, u8 left, u8 top, u8 right, u8 bottom);
 void LONG_CALL LoadFontDefaultPalette(const struct WindowTemplate *winTemplate);
+u16 LONG_CALL GetCursorTileNum(struct Window *win, u32 xOffset, u32 yOffset);
+u16 LONG_CALL *GetCursorTilemapPointer(struct Window *);
+void LONG_CALL SetCursorX(struct Window *, u8);
+void SetCursorY(struct Window *, u8);
+void LONG_CALL AddToCursorX(struct Window *, u8);
+void LONG_CALL AddToCursorY(struct Window *, u8);
+u16 *GetCursorTilemapPointerWithOffset(struct Window *win, u32, u32);
 
 extern const u8 gFontDefaultPalette[];

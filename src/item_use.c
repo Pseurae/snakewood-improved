@@ -10,5 +10,6 @@ static const u8 sText_DisabledExpShare[] = _("Exp. Share is disabled.{PAUSE_UNTI
 void ItemUseOutOfBattle_ExpShare(u8 taskId)
 {
     gExpAllEnabled = !gExpAllEnabled;
-    DisplayItemUseMessage(taskId, gTasks[taskId].data[2], gExpAllEnabled ? sText_EnabledExpShare : sText_DisabledExpShare);
+    DisplayItemUseMessage(
+        taskId, gTasks[taskId].data[2], gExpAllEnabled ? sText_EnabledExpShare : sText_DisabledExpShare);
 }

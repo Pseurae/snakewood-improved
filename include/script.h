@@ -25,3 +25,5 @@ void LONG_CALL ScriptContext2_Enable(void);
 void LONG_CALL ScriptContext1_Stop(void);
 bool8 LONG_CALL ScriptContext2_IsEnabled(void);
 void LONG_CALL EnableBothScriptContexts(void);
+
+void LONG_CALL CB2_ReturnToField(void);

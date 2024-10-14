@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stddef.h>
+
 void LONG_CALL CpuSet(const void *src, void *dest, u32 control);
 void LONG_CALL CpuFastSet(const void *src, void *dest, u32 control);
 void LONG_CALL LZ77UnCompVram(const void *src, void *dest);
@@ -49,3 +51,20 @@ void LONG_CALL LZ77UnCompVram(const void *src, void *dest);
 
 #define DmaFill16(dmaNum, value, dest, size) DMA_FILL(dmaNum, value, dest, size, 16)
 #define DmaFill32(dmaNum, value, dest, size) DMA_FILL(dmaNum, value, dest, size, 32)
+
+#define DmaClearLarge(dmaNum, dest, size, block, bit)                                                                  \
+    {                                                                                                                  \
+        void *_dest = dest;                                                                                            \
+        u32 _size = size;                                                                                              \
+        while (1)                                                                                                      \
+        {                                                                                                              \
+            DmaFill##bit(dmaNum, 0, _dest, (block));                                                                   \
+            _dest += (block);                                                                                          \
+            _size -= (block);                                                                                          \
+            if (_size <= (block))                                                                                      \
+            {                                                                                                          \
+                DmaFill##bit(dmaNum, 0, _dest, _size);                                                                 \
+                break;                                                                                                 \
+            }                                                                                                          \
+        }                                                                                                              \
+    }

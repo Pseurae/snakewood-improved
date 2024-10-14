@@ -1,5 +1,5 @@
-memcpy = 0x815b890 | 1;
-memset = 0x815bb08 | 1;
+memcpy_ = 0x81e26fc | 1;
+memset_ = 0x81e275c | 1;
 CpuFastSet = 0x81e07e8 | 1;
 CpuSet = 0x81e07ec | 1;
 LZ77UnCompVram = 0x81e07f0 | 1;

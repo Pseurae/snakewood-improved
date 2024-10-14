@@ -67,6 +67,7 @@ struct PACKED BaseStats
     /*0x18*/ u8 safariZoneFleeRate;
     /*0x19*/ u8 bodyColor:7;
     u8 noFlip:1;
+    u16 padding;
 };
 
 struct PACKED BoxPokemon
@@ -145,10 +146,12 @@ struct BattlePokemon
 
 extern struct Pokemon gPlayerParty[PARTY_SIZE];
 extern const struct ContestMove gContestMoves[];
+extern u8 gPlayerPartyCount;
 
 u32 LONG_CALL CanMonLearnTMHM(struct Pokemon *mon, u8 tm);
 bool8 LONG_CALL MonKnowsMove(struct Pokemon *mon, u16 move);
-u32 LONG_CALL GetMonData(struct Pokemon *mon, s32 field);
+// u32 LONG_CALL GetMonData(struct Pokemon *mon, s32 field, const void *dataArg);
+u32 LONG_CALL GetMonData();
 void LONG_CALL SetMonData(struct Pokemon *mon, s32 field, const void *dataArg);
 u8 LONG_CALL CountAliveMons(u8 a1);
 bool8 CheckIfMonCanUseHM(struct Pokemon *mon, u16 hm);
