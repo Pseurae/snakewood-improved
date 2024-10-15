@@ -9,11 +9,13 @@
 #include "pokemon_pic.h"
 #include "scanline_effect.h"
 #include "script.h"
+#include "sound.h"
+#include "string_util.h"
 #include "task.h"
 #include "constants/gba.h"
-#include "constants/species.h"
 #include "constants/pokemon.h"
-#include "string_util.h"
+#include "constants/songs.h"
+#include "constants/species.h"
 
 /*
 u16 paletteNum = (gMenuWindowPtr->paletteNum << 12);
@@ -46,14 +48,15 @@ extern const u8 BattleStatText_Speed[];
 extern const u8 BattleStatText_SpAtk[];
 extern const u8 BattleStatText_SpDef[];
 
-enum 
+enum
 {
     STAT_VIEWER_PAGE_BASE,
     STAT_VIEWER_PAGE_INDIVIDUAL,
     STAT_VIEWER_PAGE_EFFORT,
 };
 
-static EWRAM_DATA struct StatViewer {
+static EWRAM_DATA struct StatViewer
+{
     u8 monSpriteId;
     u8 selectedMon;
     u8 selectedPage;
@@ -63,16 +66,19 @@ static bool8 SetupStatViewer(void);
 static void CB2_StatsViewer(void);
 static void CB2_StatsViewerRun(void);
 static void VBlank_StatsViewerRun(void);
-static void StatViewer_InputDelay(u8 taskId);
+static void Task_StatViewer_UpdateScreen(u8 taskId);
+static void Task_StatViewer_HandleInput(u8 taskId);
+static void Task_StatViewer_ChangePokemon(u8 taskId);
+static void Task_StatViewer_ChangePage(u8 taskId);
 
-static const u8 *sText_StatLabels[] = {
-    BattleStatText_HP,
+extern const u8 gOtherText_TwoDashes[];
+
+static const u8 *sText_StatLabels[] = { BattleStatText_HP,
     BattleStatText_Attack,
     BattleStatText_Defense,
     BattleStatText_SpAtk,
     BattleStatText_SpDef,
-    BattleStatText_Speed
-};
+    BattleStatText_Speed };
 
 static void StatViewer_PrintPokemonBaseStats(struct Pokemon *mon)
 {
@@ -84,12 +90,24 @@ static void StatViewer_PrintPokemonBaseStats(struct Pokemon *mon)
 
         switch (i)
         {
-        case 0: stat = gBaseStats[species].baseHP; break;
-        case 1: stat = gBaseStats[species].baseAttack; break;
-        case 2: stat = gBaseStats[species].baseDefense; break;
-        case 3: stat = gBaseStats[species].baseSpAttack; break;
-        case 4: stat = gBaseStats[species].baseSpDefense; break;
-        case 5: stat = gBaseStats[species].baseSpeed; break;
+        case 0:
+            stat = gBaseStats[species].baseHP;
+            break;
+        case 1:
+            stat = gBaseStats[species].baseAttack;
+            break;
+        case 2:
+            stat = gBaseStats[species].baseDefense;
+            break;
+        case 3:
+            stat = gBaseStats[species].baseSpAttack;
+            break;
+        case 4:
+            stat = gBaseStats[species].baseSpDefense;
+            break;
+        case 5:
+            stat = gBaseStats[species].baseSpeed;
+            break;
         }
 
         ConvertIntToDecimalString(gStringVar4, stat);
@@ -109,19 +127,30 @@ static void StatViewer_PrintPokemonIV(struct Pokemon *mon)
 
         switch (i)
         {
-        case 0: stat = GetMonData(mon, MON_DATA_HP_IV); break;
-        case 1: stat = GetMonData(mon, MON_DATA_ATK_IV); break;
-        case 2: stat = GetMonData(mon, MON_DATA_DEF_IV); break;
-        case 3: stat = GetMonData(mon, MON_DATA_SPATK_IV); break;
-        case 4: stat = GetMonData(mon, MON_DATA_SPDEF_IV); break;
-        case 5: stat = GetMonData(mon, MON_DATA_SPEED_IV); break;
+        case 0:
+            stat = GetMonData(mon, MON_DATA_HP_IV);
+            break;
+        case 1:
+            stat = GetMonData(mon, MON_DATA_ATK_IV);
+            break;
+        case 2:
+            stat = GetMonData(mon, MON_DATA_DEF_IV);
+            break;
+        case 3:
+            stat = GetMonData(mon, MON_DATA_SPATK_IV);
+            break;
+        case 4:
+            stat = GetMonData(mon, MON_DATA_SPDEF_IV);
+            break;
+        case 5:
+            stat = GetMonData(mon, MON_DATA_SPEED_IV);
+            break;
         }
 
         ConvertIntToDecimalString(gStringVar4, stat);
         MenuPrint_RightAligned(gStringVar4, 25, 4 + i * 2);
     }
 }
-
 
 static void StatViewer_PrintPokemonEV(struct Pokemon *mon)
 {
@@ -131,58 +160,68 @@ static void StatViewer_PrintPokemonEV(struct Pokemon *mon)
 
         switch (i)
         {
-        case 0: stat = GetMonData(mon, MON_DATA_HP_EV); break;
-        case 1: stat = GetMonData(mon, MON_DATA_ATK_EV); break;
-        case 2: stat = GetMonData(mon, MON_DATA_DEF_EV); break;
-        case 3: stat = GetMonData(mon, MON_DATA_SPATK_EV); break;
-        case 4: stat = GetMonData(mon, MON_DATA_SPDEF_EV); break;
-        case 5: stat = GetMonData(mon, MON_DATA_SPEED_EV); break;
+        case 0:
+            stat = GetMonData(mon, MON_DATA_HP_EV);
+            break;
+        case 1:
+            stat = GetMonData(mon, MON_DATA_ATK_EV);
+            break;
+        case 2:
+            stat = GetMonData(mon, MON_DATA_DEF_EV);
+            break;
+        case 3:
+            stat = GetMonData(mon, MON_DATA_SPATK_EV);
+            break;
+        case 4:
+            stat = GetMonData(mon, MON_DATA_SPDEF_EV);
+            break;
+        case 5:
+            stat = GetMonData(mon, MON_DATA_SPEED_EV);
+            break;
         }
 
         ConvertIntToDecimalString(gStringVar4, stat);
-
         MenuPrint_RightAligned(gStringVar4, 25, 4 + i * 2);
     }
 }
-
-static const u8 sText_TwoDashes[] = _("--");
 
 static void StatViewer_PrintPokemonEmpty(void)
 {
     for (u8 i = 0; i < 6; ++i)
     {
-        MenuPrint_RightAligned(sText_TwoDashes, 25, 4 + i * 2);
+        MenuPrint_RightAligned(gOtherText_TwoDashes, 25, 4 + i * 2);
     }
 }
 
-static const u8 *sText_StatTypeLabels[] = {
-    sText_BaseLabel,
-    sText_IVLabel,
-    sText_EVLabel
-};
+static const u8 *sText_StatTypeLabels[] = { sText_BaseLabel, sText_IVLabel, sText_EVLabel };
 
 static void (*sStatTypeHandlers[])(struct Pokemon *) = {
     StatViewer_PrintPokemonBaseStats,
     StatViewer_PrintPokemonIV,
-    StatViewer_PrintPokemonEV
+    StatViewer_PrintPokemonEV,
 };
+
+static void StatViewer_PrintStatTypeLabel(void)
+{
+    Menu_PrintText(sText_StatTypeLabels[sStatViewer.selectedPage], 1, 1);
+}
 
 static void StatViewer_PrintPokemonInfo(void)
 {
-    u8 nickname[20];
     struct Pokemon *mon = &gPlayerParty[sStatViewer.selectedMon];
-    GetMonData(mon, MON_DATA_NICKNAME, nickname);
+    u16 length = GetMonData(mon, MON_DATA_NICKNAME, gStringVar4);
+    u8 *ptr = gStringVar4 + length;
+    *(ptr++) = EXT_CTRL_CODE_BEGIN;
+    *(ptr++) = EXT_CTRL_CODE_CLEAR_TO;
+    *(ptr++) = POKEMON_NAME_LENGTH * 6;
+    *(ptr++) = EOS;
 
-    Menu_BlankWindowRect(1, 2, 6, 3);
-    Menu_PrintText(sText_StatTypeLabels[sStatViewer.selectedPage], 1, 1);
+    Menu_PrintText(gStringVar4, 1, 3);
 
-    Menu_BlankWindowRect(1, 3, 6, 4);
-    Menu_PrintText(nickname, 1, 3);
-
-    Menu_BlankWindowRect(21, 4, 28, 18);
-
-    if (!GetMonData(mon, MON_DATA_IS_EGG)) sStatTypeHandlers[sStatViewer.selectedPage](mon);
-    else StatViewer_PrintPokemonEmpty();
+    if (!GetMonData(mon, MON_DATA_IS_EGG))
+        sStatTypeHandlers[sStatViewer.selectedPage](mon);
+    else
+        StatViewer_PrintPokemonEmpty();
 }
 
 void DrawFrameTest(void)
@@ -192,62 +231,150 @@ void DrawFrameTest(void)
 
 static void DrawMonSprite(void)
 {
-    u16 species = GetMonData(&gPlayerParty[sStatViewer.selectedMon], MON_DATA_SPECIES);
-    if (sStatViewer.monSpriteId != MAX_SPRITES) FreeResourcesAndDestroySprite(&gSprites[sStatViewer.monSpriteId]);
+    struct Pokemon *mon = &gPlayerParty[sStatViewer.selectedMon];
+    u16 species = GetMonData(mon, MON_DATA_SPECIES);
     sStatViewer.monSpriteId = CreateMonSprite_PicBox(species, 48, 108, 0);
-    gSprites[sStatViewer.monSpriteId].callback = SpriteCallbackDummy;
-    gSprites[sStatViewer.monSpriteId].oam.priority = 0;
-}
 
-static void StatViewer_DoInputDelay(u8 taskId, u8 delay)
-{
-    gTasks[taskId].data[0] = 0;
-    gTasks[taskId].data[1] = delay;
-    gTasks[taskId].func = StatViewer_InputDelay;
-}
-
-static void StatViewer_HandleInput(u8 taskId)
-{
-    if (gPaletteFade.active) return;
-    if (gMain.newKeys & DPAD_DOWN) 
+    if (sStatViewer.monSpriteId != MAX_SPRITES)
     {
-        sStatViewer.selectedMon = (sStatViewer.selectedMon + 1) > (gPlayerPartyCount - 1) ? 0 : sStatViewer.selectedMon + 1;
+        gSprites[sStatViewer.monSpriteId].callback = SpriteCallbackDummy;
+        gSprites[sStatViewer.monSpriteId].oam.priority = 0;
 
-        DrawMonSprite();
-        StatViewer_PrintPokemonInfo();
-        StatViewer_DoInputDelay(taskId, 8);
+        u8 markings = GetMonData(mon, MON_DATA_MARKINGS);
+        StartSpriteAnim(&gSprites[sStatViewer.monSpriteId], markings);
     }
-    else if (gMain.newKeys & DPAD_UP) 
-    {
-        sStatViewer.selectedMon = (sStatViewer.selectedMon - 1) < 0 ? (gPlayerPartyCount - 1) : sStatViewer.selectedMon - 1;
+}
 
+static void StatViewer_BlankStats(void)
+{
+    Menu_BlankWindowRect(21, 4, 28, 18);
+}
+
+#define tState data[0]
+#define tDelay data[1]
+
+static void StatViewer_ChangePokemon(u8 taskId)
+{
+    gTasks[taskId].tState = 0;
+    gTasks[taskId].tDelay = 3;
+    gTasks[taskId].func = Task_StatViewer_ChangePokemon;
+}
+
+static void Task_StatViewer_ChangePokemon(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+
+    switch (tState)
+    {
+    case 0:
+        if (sStatViewer.monSpriteId != MAX_SPRITES)
+            FreeResourcesAndDestroySprite(&gSprites[sStatViewer.monSpriteId]);
+        tState++;
+        break;
+    case 1:
         DrawMonSprite();
+        tState++;
+        break;
+    case 2:
+        StatViewer_BlankStats();
+        tState++;
+        break;
+    case 3:
         StatViewer_PrintPokemonInfo();
-        StatViewer_DoInputDelay(taskId, 8);
+        tState++;
+        break;
+    case 4:
+        tDelay--;
+        if (tDelay <= 0)
+            tState++;
+        break;
+    default:
+        gTasks[taskId].func = Task_StatViewer_HandleInput;
+        break;
+    }
+}
+
+static void StatViewer_ChangePage(u8 taskId)
+{
+    gTasks[taskId].tState = 0;
+    gTasks[taskId].tDelay = 11;
+    gTasks[taskId].func = Task_StatViewer_ChangePage;
+}
+
+static void Task_StatViewer_ChangePage(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+
+    switch (tState)
+    {
+    case 0:
+        StatViewer_BlankStats();
+        tState++;
+        break;
+    case 1:
+        StatViewer_PrintStatTypeLabel();
+        tState++;
+        break;
+    case 2:
+        tState++;
+        break;
+    case 3:
+        StatViewer_PrintPokemonInfo();
+        tState++;
+        break;
+    case 4:
+        tDelay--;
+        if (tDelay <= 0)
+            tState++;
+        break;
+    default:
+        gTasks[taskId].func = Task_StatViewer_HandleInput;
+        break;
+    }
+}
+
+#undef tState
+#undef tDelay
+
+static void Task_StatViewer_HandleInput(u8 taskId)
+{
+    if (gPaletteFade.active)
+        return;
+    if (gMain.newKeys & DPAD_DOWN)
+    {
+        sStatViewer.selectedMon =
+            (sStatViewer.selectedMon + 1) > (gPlayerPartyCount - 1) ? 0 : sStatViewer.selectedMon + 1;
+        StatViewer_ChangePokemon(taskId);
+        PlaySE(SE_SELECT);
+    }
+    else if (gMain.newKeys & DPAD_UP)
+    {
+        sStatViewer.selectedMon =
+            (sStatViewer.selectedMon - 1) < 0 ? (gPlayerPartyCount - 1) : sStatViewer.selectedMon - 1;
+        StatViewer_ChangePokemon(taskId);
+        PlaySE(SE_SELECT);
     }
     else if (gMain.newKeys & DPAD_LEFT)
     {
-        sStatViewer.selectedPage = sStatViewer.selectedPage - 1 < STAT_VIEWER_PAGE_BASE ? STAT_VIEWER_PAGE_EFFORT : sStatViewer.selectedPage - 1;
-        StatViewer_PrintPokemonInfo();
-        StatViewer_DoInputDelay(taskId, 16);
+        sStatViewer.selectedPage = sStatViewer.selectedPage - 1 < STAT_VIEWER_PAGE_BASE ? STAT_VIEWER_PAGE_EFFORT
+                                                                                        : sStatViewer.selectedPage - 1;
+        StatViewer_ChangePage(taskId);
+        PlaySE(SE_SELECT);
     }
     else if (gMain.newKeys & DPAD_RIGHT)
     {
-        sStatViewer.selectedPage = sStatViewer.selectedPage + 1 > STAT_VIEWER_PAGE_EFFORT ? STAT_VIEWER_PAGE_BASE : sStatViewer.selectedPage + 1;
-        StatViewer_PrintPokemonInfo();
-        StatViewer_DoInputDelay(taskId, 16);
+        sStatViewer.selectedPage = sStatViewer.selectedPage + 1 > STAT_VIEWER_PAGE_EFFORT
+                                     ? STAT_VIEWER_PAGE_BASE
+                                     : sStatViewer.selectedPage + 1;
+        StatViewer_ChangePage(taskId);
+        PlaySE(SE_SELECT);
     }
     else if (gMain.newKeys & B_BUTTON)
     {
         SetMainCallback2(CB2_ReturnToField);
+        PlaySE(SE_SELECT);
         DestroyTask(taskId);
     }
-}
-
-static void StatViewer_InputDelay(u8 taskId)
-{
-    if (gTasks[taskId].data[0] > gTasks[taskId].data[1]) gTasks[taskId].func = StatViewer_HandleInput;
-    gTasks[taskId].data[0]++;
 }
 
 static bool8 SetupStatViewer(void)
@@ -288,6 +415,7 @@ static bool8 SetupStatViewer(void)
         }
 
         DrawMonSprite();
+        StatViewer_PrintStatTypeLabel();
         StatViewer_PrintPokemonInfo();
         gMain.state++;
         break;
@@ -295,7 +423,7 @@ static bool8 SetupStatViewer(void)
         BeginNormalPaletteFade(0xffffffff, 0, 16, 0, RGB_BLACK);
         gPaletteFade.bufferTransferDisabled = FALSE;
 
-        CreateTask(StatViewer_HandleInput, 0x0);
+        CreateTask(Task_StatViewer_HandleInput, 0x0);
         SetVBlankCallback(VBlank_StatsViewerRun);
         SetMainCallback2(CB2_StatsViewerRun);
         return TRUE;
@@ -307,7 +435,8 @@ static bool8 SetupStatViewer(void)
 static void CB2_StatsViewer(void)
 {
     while (SetupStatViewer() != TRUE)
-    {}
+    {
+    }
 }
 
 static void CB2_StatsViewerRun(void)
