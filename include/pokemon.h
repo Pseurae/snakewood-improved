@@ -166,6 +166,7 @@ void LONG_CALL DecryptBoxMon(struct BoxPokemon *boxMon);
 void LONG_CALL SetBoxMonData(struct BoxPokemon *boxMon, s32 field, u32 dataArg);
 void LONG_CALL CalculateMonStats(struct Pokemon *mon);
 u8 LONG_CALL GetAbilityBySpecies(u16 species, bool8 altAbility);
+u8 LONG_CALL GetMonGender(struct Pokemon *mon);
 
 enum
 {
@@ -182,6 +183,7 @@ enum
 extern const s8 gNatureStatTable[25][5];
 extern const u8 *const gNatureNames[25];
 extern const struct BaseStats gBaseStats[];
+extern const u8 gSpeciesNames[][11];
 extern const u8 gAbilityNames[][13];
 
 extern const u8 gMoveNames[][13];

@@ -261,3 +261,4 @@ ProcessSpriteCopyRequests = 0x8001214 | 1;
 LoadOam = 0x8000f70 | 1;
 CB2_ReturnToField = 0x80545e4 | 1;
 Menu_EraseScreen = 0x8071ef4 | 1;
+GetMonGender = 0x803c4b8 | 1;
