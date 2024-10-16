@@ -201,7 +201,7 @@ static void StatsViewer_PrintPokemonInfo(void)
         ptr = StringCopy(ptr, gSpeciesNames[species]);
         *(ptr++) = EXT_CTRL_CODE_BEGIN;
         *(ptr++) = EXT_CTRL_CODE_CLEAR_TO;
-        *(ptr++) = POKEMON_NAME_LENGTH * 6;
+        *(ptr++) = (POKEMON_NAME_LENGTH + 1) * 6;
         *(ptr++) = EOS;
 
         Menu_PrintText(gStringVar4, 1, 3);
@@ -241,7 +241,7 @@ static void StatsViewer_PrintPokemonInfo(void)
     }
     else
     {
-        Menu_BlankWindowRect(1, 3, 6, 6);
+        Menu_BlankWindowRect(1, 3, 10, 6);
         StatsViewer_PrintPokemonEmpty(20);
         StatsViewer_PrintPokemonEmpty(24);
         StatsViewer_PrintPokemonEmpty(28);
@@ -358,20 +358,24 @@ static void Task_StatsViewer_Close(u8 taskId)
 
 static void Task_StatsViewer_HandleInput(u8 taskId)
 {
+    u8 lastSelectedMon = sStatsViewer.selectedMon;
+
     if (gPaletteFade.active)
         return;
     if (gMain.newKeys & DPAD_DOWN)
     {
         sStatsViewer.selectedMon =
             (sStatsViewer.selectedMon + 1) > (gPlayerPartyCount - 1) ? 0 : sStatsViewer.selectedMon + 1;
-        StatsViewer_ChangePokemon(taskId);
+        if (sStatsViewer.selectedMon != lastSelectedMon)
+            StatsViewer_ChangePokemon(taskId);
         PlaySE(SE_SELECT);
     }
     else if (gMain.newKeys & DPAD_UP)
     {
         sStatsViewer.selectedMon =
             (sStatsViewer.selectedMon - 1) < 0 ? (gPlayerPartyCount - 1) : sStatsViewer.selectedMon - 1;
-        StatsViewer_ChangePokemon(taskId);
+        if (sStatsViewer.selectedMon != lastSelectedMon)
+            StatsViewer_ChangePokemon(taskId);
         PlaySE(SE_SELECT);
     }
     else if (gMain.newKeys & B_BUTTON)

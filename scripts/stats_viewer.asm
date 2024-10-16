@@ -22,4 +22,7 @@
 .string "A device which lets\nyou see your\nPOKeMON's stats."
 .endautoregion
 
+.org 0x84062F0
+.halfword ITEM_STATS_VIEWER
+
 .endif
