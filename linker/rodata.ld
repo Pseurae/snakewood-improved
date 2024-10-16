@@ -1,7 +1,7 @@
 Event_NoRegisteredItem = 0x81a14af;
 BattleScript_SubstituteFade = 0x81d99ab;
 gFontDefaultPalette = 0x81e66b2;
-gWindowTemplate_81E6C3C = 0x81E6C3C;
+gWindowTemplate_81E6C3C = 0x81e6c3c;
 gMenuTextWindowTemplate = 0x81e6ce4;
 gMonFrontPicCoords = 0x81e7c74;
 gMonFrontPicTable = 0x81e8354;
@@ -58,3 +58,4 @@ BattleStatText_SpAtk = 0x84007ea;
 BattleStatText_SpDef = 0x84007f2;
 OtherText_MaleSymbol = 0x8410458;
 OtherText_FemaleSymbol = 0x841045a;
+gNamingScreenPtr = 0x83ce214;

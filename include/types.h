@@ -48,3 +48,14 @@ struct UCoords16
 #define ARRAY_COUNT(array) (sizeof(array) / sizeof((array)[0]))
 
 #define _(s)               (s)
+
+#define INCBIN(...)                                                                                                    \
+    {                                                                                                                  \
+        0                                                                                                              \
+    }
+#define INCBIN_U8  INCBIN
+#define INCBIN_U16 INCBIN
+#define INCBIN_U32 INCBIN
+#define INCBIN_S8  INCBIN
+#define INCBIN_S16 INCBIN
+#define INCBIN_S32 INCBIN

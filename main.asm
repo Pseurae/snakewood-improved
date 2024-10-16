@@ -52,6 +52,7 @@
 .include "scripts/bugfixes/text_colors.asm"
 
 .include "scripts/ability_changer.asm"
+.include "scripts/autocase.asm"
 .include "scripts/autorun.asm"
 .include "scripts/birch_speech.asm"
 .include "scripts/bag_expansion.asm"

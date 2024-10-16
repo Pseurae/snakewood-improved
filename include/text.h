@@ -220,5 +220,6 @@ void SetCursorY(struct Window *, u8);
 void LONG_CALL AddToCursorX(struct Window *, u8);
 void LONG_CALL AddToCursorY(struct Window *, u8);
 u16 *GetCursorTilemapPointerWithOffset(struct Window *win, u32, u32);
+void LONG_CALL SetWindowBackgroundColor(struct Window *, u8);
 
 extern const u8 gFontDefaultPalette[];

@@ -87,6 +87,9 @@
 ; Gen 6 Exp. Share
 .definelabel EXP_ALL, 1
 
+; Auto-change to lowercase after first letter in naming screen.
+.definelabel AUTOCASE, 1
+
 ; Bugfixes
 ; --------
 

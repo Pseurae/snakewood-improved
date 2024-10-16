@@ -17,30 +17,6 @@
 #include "constants/songs.h"
 #include "constants/species.h"
 
-/*
-u16 paletteNum = (gMenuWindowPtr->paletteNum << 12);
-SetCursorX(gMenuWindowPtr, 8);
-SetCursorY(gMenuWindowPtr, 8);
-
-for (u8 i = 0; i < 3; ++i)
-{
-    u16 tileNum = GetCursorTileNum(gMenuWindowPtr, 0, 0);
-    u32 *tileData = (u32 *)(gMenuWindowPtr->tileData + 32 * tileNum);
-
-    for (u8 y = 0; y < 8; ++y)
-        for (u8 x = 0; x < 8; ++x)
-        {
-            tileData[y] |= (gMenuWindowPtr->foregroundColor << (4 * x));
-        }
-
-    *GetCursorTilemapPointerWithOffset(gMenuWindowPtr, 0, 0) = tileNum | paletteNum;
-    *GetCursorTilemapPointerWithOffset(gMenuWindowPtr, 0, 1) = tileNum | paletteNum;
-    AddToCursorX(gMenuWindowPtr, 8);
-}
-
-AddToCursorY(gMenuWindowPtr, 8);
-*/
-
 const u8 sText_HP[] = _("HP");
 const u8 sText_Attack[] = _("Attack");
 const u8 sText_Defense[] = _("Defense");
@@ -198,7 +174,7 @@ static void StatViewer_PrintPokemonCount(void)
     *(ptr++) = CHAR_SLASH;
     *(ptr++) = CHAR_SPACE;
     ptr = ConvertIntToDecimalString(ptr, gPlayerPartyCount);
-    Menu_PrintText(gStringVar4, 1, 17);
+    MenuPrint_Centered(gStringVar4, 4, 17, StringLength(gStringVar4));
 }
 
 static void StatViewer_PrintPokemonInfo(void)
@@ -223,7 +199,7 @@ static void StatViewer_PrintPokemonInfo(void)
         ptr = StringCopy(ptr, gSpeciesNames[species]);
         *(ptr++) = EXT_CTRL_CODE_BEGIN;
         *(ptr++) = EXT_CTRL_CODE_CLEAR_TO;
-        *(ptr++) = (POKEMON_NAME_LENGTH + 1) * 6;
+        *(ptr++) = POKEMON_NAME_LENGTH * 6;
         *(ptr++) = EOS;
 
         Menu_PrintText(gStringVar4, 1, 3);
@@ -279,7 +255,7 @@ static void StatViewer_DrawMonSprite(void)
 {
     struct Pokemon *mon = &gPlayerParty[sStatViewer.selectedMon];
     u16 species = GetMonData(mon, MON_DATA_SPECIES);
-    sStatViewer.monSpriteId = CreateMonSprite_PicBox(species, 36, 96, 0);
+    sStatViewer.monSpriteId = CreateMonSprite_PicBox(species, 38, 96, 0);
 
     if (sStatViewer.monSpriteId != MAX_SPRITES)
     {
@@ -293,7 +269,7 @@ static void StatViewer_DrawMonSprite(void)
 
 static void StatViewer_BlankStats(void)
 {
-    Menu_BlankWindowRect(16, 4, 29, 18);
+    Menu_BlankWindowRect(16, 4, 29, 14);
 }
 
 #define tState data[0]
@@ -342,8 +318,30 @@ static void Task_StatViewer_ChangePokemon(u8 taskId)
     }
 }
 
-#undef tState
-#undef tDelay
+static void Task_StatViewer_Close(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+
+    switch (tState)
+    {
+    case 0:
+        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+        tState++;
+        break;
+    case 1:
+        if (!gPaletteFade.active)
+            tState++;
+        break;
+    case 2:
+        FreeResourcesAndDestroySprite(&gSprites[sStatViewer.monSpriteId]);
+        tState++;
+        break;
+    default:
+        SetMainCallback2(CB2_ReturnToField);
+        DestroyTask(taskId);
+        break;
+    }
+}
 
 static void Task_StatViewer_HandleInput(u8 taskId)
 {
@@ -365,11 +363,14 @@ static void Task_StatViewer_HandleInput(u8 taskId)
     }
     else if (gMain.newKeys & B_BUTTON)
     {
-        SetMainCallback2(CB2_ReturnToField);
         PlaySE(SE_SELECT);
-        DestroyTask(taskId);
+        gTasks[taskId].tState = 0;
+        gTasks[taskId].func = Task_StatViewer_Close;
     }
 }
+
+#undef tState
+#undef tDelay
 
 static void StatViewer_PrintStatTypeLabels(void)
 {
@@ -417,6 +418,30 @@ static void StatViewer_PrintStatLabels(void)
     }
 }
 
+ALIGNED(4) static const u8 sStatViewer_Tiles[] = INCBIN_U8("assets/stats_viewer.4bpp.lz");
+ALIGNED(4) static const u8 sStatViewer_Tilemap[] = INCBIN_U8("assets/stats_viewer.bin.lz");
+ALIGNED(4) static const u8 sStatViewer_Pal[] = INCBIN_U8("assets/stats_viewer.gbapal.lz");
+
+const struct WindowTemplate sWindowTemplate_StatsViewer = {
+    0,                      // BG number
+    2,                      // BG character base block
+    31,                     // BG screen base block
+    0,                      // BG priority
+    15,                     // palette number
+    TEXT_COLOR_DARK_GREY,   // foreground color
+    TEXT_COLOR_TRANSPARENT, // background color
+    TEXT_COLOR_LIGHT_GREY,  // shadow color
+    3,                      // font
+    2,                      // text mode
+    0,                      // spacing
+    0,                      // tilemap left coordinate
+    0,                      // tilemap top coordinate
+    30,                     // width
+    20,                     // height
+    BG_CHAR_ADDR(2),        // tile data
+    BG_SCREEN_ADDR(31),     // tilemap
+};
+
 static bool8 SetupStatViewer(void)
 {
     u8 spriteId;
@@ -439,26 +464,36 @@ static bool8 SetupStatViewer(void)
         break;
     case 3:
         DmaFill16(3, 0, VRAM, VRAM_SIZE);
+        DmaFill32(3, 0, OAM, OAM_SIZE);
+        DmaFill16(3, 0, PLTT, PLTT_SIZE);
         ClearTilemapBuffers();
         gMain.state++;
         break;
     case 4:
-        Text_LoadWindowTemplate(&gWindowTemplate_81E6C3C);
-        InitMenuWindow(&gMenuTextWindowTemplate);
-        Menu_BlankWindowRect(0, 0, 29, 19);
+        Text_LoadWindowTemplate(&sWindowTemplate_StatsViewer);
+        InitMenuWindow(&sWindowTemplate_StatsViewer);
+        // Menu_BlankWindowRect(0, 0, 29, 19);
+        LZDecompressVram(sStatViewer_Tiles, (void *)(BG_CHAR_ADDR(0)));
+        LZDecompressVram(sStatViewer_Tilemap, (void *)(BG_SCREEN_ADDR(8)));
+        LoadCompressedPalette(sStatViewer_Pal, 0x0, 32);
+        REG_BG1CNT = BGCNT_PRIORITY(1) | BGCNT_TXT256x256 | BGCNT_CHARBASE(0) | BGCNT_SCREENBASE(8);
         gMain.state++;
         break;
     case 5:
+        StatViewer_DrawMonSprite();
         StatViewer_PrintStatTypeLabels();
         StatViewer_PrintStatLabels();
-        StatViewer_DrawMonSprite();
-        StatViewer_PrintPokemonInfo();
         StatViewer_PrintPokemonCount();
+
+        StatViewer_PrintPokemonInfo();
         gMain.state++;
         break;
     default:
         BeginNormalPaletteFade(0xffffffff, 0, 16, 0, RGB_BLACK);
         gPaletteFade.bufferTransferDisabled = FALSE;
+
+        REG_BG1HOFS = 0;
+        REG_BG1VOFS = 0;
 
         CreateTask(Task_StatViewer_HandleInput, 0x0);
         SetVBlankCallback(VBlank_StatsViewerRun);
