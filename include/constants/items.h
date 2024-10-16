@@ -232,7 +232,7 @@
 #define ITEM_GASEOUS_ZINC   223
 #define ITEM_POKEGEAR       224
 #define ITEM_PACHI_SWORD    225
-#define ITEM_0E2            226
+#define ITEM_STATS_VIEWER   226
 #define ITEM_0E3            227
 #define ITEM_0E4            228
 #define ITEM_0E5            229

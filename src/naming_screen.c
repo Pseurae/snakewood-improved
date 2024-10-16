@@ -10,7 +10,7 @@ u8 KeyboardKeyHandler_Character(u8 event)
     {
         u8 textFull = AddTextCharacter();
 
-        if (gNamingScreenPtr ->currentPage == PAGE_UPPER && GetTextEntryPosition() == 1)
+        if (gNamingScreenPtr->currentPage == PAGE_UPPER && GetTextEntryPosition() == 1)
             MainState_StartPageSwap();
 
         SquishCursor();
