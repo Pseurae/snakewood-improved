@@ -1,4 +1,5 @@
 #include "types.h"
+#include "stats_viewer.h"
 #include "bios.h"
 #include "debug.h"
 #include "field_weather.h"
@@ -7,7 +8,6 @@
 #include "palette.h"
 #include "pokemon.h"
 #include "pokemon_pic.h"
-#include "stats_viewer.h"
 #include "scanline_effect.h"
 #include "script.h"
 #include "sound.h"
@@ -350,7 +350,8 @@ static void Task_StatsViewer_Close(u8 taskId)
         tState++;
         break;
     default:
-        if (sStatsViewer.exitCallback) SetMainCallback2(sStatsViewer.exitCallback);
+        if (sStatsViewer.exitCallback)
+            SetMainCallback2(sStatsViewer.exitCallback);
         DestroyTask(taskId);
         break;
     }
@@ -459,8 +460,6 @@ const struct WindowTemplate sWindowTemplate_StatsViewer = {
     BG_SCREEN_ADDR(31),     // tilemap
 };
 
-void LONG_CALL sub_80F9368(void);
-
 static bool8 SetupStatsViewer(void)
 {
     u8 spriteId;
@@ -469,7 +468,7 @@ static bool8 SetupStatsViewer(void)
     case 0:
         SetVBlankHBlankCallbacksToNull();
         ResetSpriteData();
-        sub_80F9368();
+        ResetGpuAndVram();
         ResetTasks();
         gMain.state++;
         break;

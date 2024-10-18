@@ -2,8 +2,10 @@ build
 .vscode
 armips
 output.*
+output-*.png
 snakewood.*
 pokeruby.map
 .D[Ss]_[Ss]tore
 [Dd]esktop.ini
 *.ips
+__pycache__

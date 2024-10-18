@@ -22,18 +22,6 @@ typedef u8 bool8;
 typedef u16 bool16;
 typedef u32 bool32;
 
-struct Coords16
-{
-    s16 x;
-    s16 y;
-};
-
-struct UCoords16
-{
-    u16 x;
-    u16 y;
-};
-
 #define EWRAM_DATA         __attribute__((section(".ewram")))
 #define PACKED             __attribute__((packed))
 #define LONG_CALL          __attribute__((long_call))
@@ -59,3 +47,15 @@ struct UCoords16
 #define INCBIN_S8  INCBIN
 #define INCBIN_S16 INCBIN
 #define INCBIN_S32 INCBIN
+
+struct PACKED Coords16
+{
+    s16 x;
+    s16 y;
+};
+
+struct PACKED UCoords16
+{
+    u16 x;
+    u16 y;
+};

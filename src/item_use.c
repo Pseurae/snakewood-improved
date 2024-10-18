@@ -31,7 +31,8 @@ void ItemUseOutOfBattle_StatsViewer(u8 taskId)
 
 void Task_HandleStatsViewerPaletteFade(u8 taskId)
 {
-    if (gPaletteFade.active) return;
+    if (gPaletteFade.active)
+        return;
 
     s16 *data = gTasks[taskId].data;
 
@@ -41,5 +42,5 @@ void Task_HandleStatsViewerPaletteFade(u8 taskId)
         GoToStatsViewerFromBag();
 
     DmaFill16(3, 0x0, VRAM, VRAM_SIZE);
-    DestroyTask(taskId);   
+    DestroyTask(taskId);
 }

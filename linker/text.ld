@@ -270,4 +270,4 @@ SquishCursor = 0x80b6914 | 1;
 SetInputState = 0x80b6210 | 1;
 MainState_StartPageSwap = 0x80b61c8 | 1;
 GetTextEntryPosition = 0x80b6f44 | 1;
-sub_80F9368 = 0x80f9368 | 1;
+ResetGpuAndVram = 0x80f9368 | 1;

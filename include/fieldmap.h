@@ -113,6 +113,23 @@ struct PACKED ObjectEventGraphicsInfo
     /*0x20*/ const union AffineAnimCmd *const *affineAnims;
 };
 
+struct PACKED ObjectEventTemplate
+{
+    /*0x00*/ u8 localId;
+    /*0x01*/ u8 graphicsId;
+    /*0x02*/ u8 kind; // Always OBJ_KIND_NORMAL in Ruby/Sapphire.
+    /*0x04*/ s16 x;
+    /*0x06*/ s16 y;
+    /*0x08*/ u8 elevation;
+    /*0x09*/ u8 movementType;
+    /*0x0A*/ u8 movementRangeX:4;
+    u8 movementRangeY:4;
+    /*0x0C*/ u16 trainerType;
+    /*0x0E*/ u16 trainerRange_berryTreeId;
+    /*0x10*/ const u8 *script;
+    /*0x14*/ u16 flagId;
+};
+
 extern struct MapHeader gMapHeader;
 
 void LONG_CALL LoadMapTilesetPalettes(struct MapLayout *mapLayout);

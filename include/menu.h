@@ -25,6 +25,7 @@ void LONG_CALL Menu_DestroyCursor(void);
 u8 LONG_CALL InitMenu(u8, u8, u8, u8, u8, u8);
 u8 LONG_CALL Menu_MoveCursor(s8);
 
+void LONG_CALL ResetGpuAndVram(void);
 void LONG_CALL ClearTilemapBuffers(void);
 
 enum
