@@ -59,3 +59,4 @@ BattleStatText_SpDef = 0x84007f2;
 OtherText_MaleSymbol = 0x8410458;
 OtherText_FemaleSymbol = 0x841045a;
 gNamingScreenPtr = 0x83ce214;
+gTrainers = 0x81f04fc;

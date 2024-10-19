@@ -15,12 +15,8 @@
 .include "scripts/include/types.asm"
 .include "scripts/include/vars_flags.asm"
 
-.org 0x8729e20
-.region 0xaca0
-.endregion
-
-.org 0x886d1f0
-.region 0x9850
+.org 0x88866c0
+.region 0x479940
 .endregion
 
 .autoregion
@@ -76,5 +72,6 @@
 .include "scripts/save_flash_failed.asm"
 .include "scripts/stats_viewer.asm"
 .include "scripts/summary_screen.asm"
+.include "scripts/trainers.asm"
 
 .close

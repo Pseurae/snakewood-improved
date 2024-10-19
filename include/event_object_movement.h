@@ -23,7 +23,8 @@ void LONG_CALL ObjectEventClearHeldMovement(struct ObjectEvent *);
 void LONG_CALL FreezeObjectEvents(void);
 u8 LONG_CALL SpawnSpecialObjectEvent(struct ObjectEventTemplate *objectEventTemplate);
 void LONG_CALL RemoveObjectEvent(struct ObjectEvent *objectEvent);
-u8 LONG_CALL SpawnSpecialObjectEventParametrized(u8 graphicsId, u8 movementType, u8 localId, s16 x, s16 y, u8 elevation);
+u8 LONG_CALL SpawnSpecialObjectEventParametrized(
+    u8 graphicsId, u8 movementType, u8 localId, s16 x, s16 y, u8 elevation);
 
 #define GROUND_EFFECT_FLAG_TALL_GRASS_ON_SPAWN   (1 << 0)
 #define GROUND_EFFECT_FLAG_TALL_GRASS_ON_MOVE    (1 << 1)

@@ -1,4 +1,4 @@
-from constants import moves
+from constants.moves import names
 
 character_map = {}
 end_char = None

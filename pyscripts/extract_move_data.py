@@ -1,10 +1,6 @@
-from constants import targets, moves, types, effects, flags
+from constants.moves import targets, names, types, effects, flags
+from helpers import fast_log
 from struct import unpack
-
-def fast_log(x):
-    result = 0
-    while x := (x >> 1): pass
-    return result
 
 def iter_movedesc_ptrs(rom):
     for i in range(355):
@@ -32,7 +28,7 @@ if __name__ == "__main__":
 
     f = open("movedata.txt", "w")
 
-    for name, data in zip(moves, iter_movedesc_ptrs(rom)):
+    for name, data in zip(names, iter_movedesc_ptrs(rom)):
         f.write(
 f"""[{name}] = {{
     .effect = {effects[data[0]]},

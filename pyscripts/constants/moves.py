@@ -1,4 +1,4 @@
-moves = [
+names = [
     "MOVE_NONE",
     "MOVE_POUND",
     "MOVE_KARATE_CHOP",

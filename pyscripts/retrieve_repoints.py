@@ -14,10 +14,11 @@ def convert_to_pointer(b):
     return int.from_bytes(b, "little")
 
 if __name__ == "__main__":
-    add_offset_to_check("gBattleMoves", 0x81fb12c, 12)
-    add_offset_to_check("gMoveNames", 0x81f8320)
-    add_offset_to_check("gBattleAnims_Moves", 0x81c7168)
-    add_offset_to_check("gMoveDescriptions", 0x83c09d8)
+    # add_offset_to_check("gBattleMoves", 0x81fb12c, 12)
+    # add_offset_to_check("gMoveNames", 0x81f8320)
+    # add_offset_to_check("gBattleAnims_Moves", 0x81c7168)
+    # add_offset_to_check("gMoveDescriptions", 0x83c09d8)
+    add_offset_to_check("gTrainers", 0x81f04fc, 40)
 
     rom = open("snakewood.gba", "rb")
     rom.seek(192)

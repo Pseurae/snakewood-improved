@@ -93,6 +93,9 @@
 ; Adds an item which allows you to see your Pokemon's base stats, IVs and EVs.
 .definelabel STATS_VIEWER, 1
 
+; Trainer battle balances.
+.definelabel TRAINER_CHANGES, 1
+
 ; Bugfixes
 ; --------
 
