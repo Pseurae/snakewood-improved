@@ -1700,7 +1700,7 @@ const struct BattleMove gBattleMoves[] = {
 
     [MOVE_LEECH_LIFE] = {
         .effect = EFFECT_ABSORB,
-        .power = 20,
+        .power = 40,
         .type = TYPE_BUG,
         .accuracy = 100,
         .pp = 15,
