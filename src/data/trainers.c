@@ -4562,12 +4562,12 @@ const struct TrainerMonNoItemDefaultMoves gTrainerParty_Tommy[1] = {
 const struct TrainerMonNoItemDefaultMoves gTrainerParty_Asmodeus[2] = {
     {
      .iv = 40,
-     .level = 16,
+     .level = 15,
      .species = SPECIES_ANORITH,
      },
     {
      .iv = 40,
-     .level = 17,
+     .level = 16,
      .species = SPECIES_ANORITH,
      },
 };
@@ -4584,12 +4584,12 @@ const struct TrainerMonNoItemCustomMoves gTrainerParty_Ben[1] = {
 const struct TrainerMonNoItemDefaultMoves gTrainerParty_Belial1[2] = {
     {
      .iv = 40,
-     .level = 16,
+     .level = 14,
      .species = SPECIES_ANORITH,
      },
     {
      .iv = 40,
-     .level = 17,
+     .level = 15,
      .species = SPECIES_ANORITH,
      },
 };
@@ -9493,7 +9493,7 @@ const struct TrainerMonNoItemDefaultMoves gTrainerParty_Leozar[1] = {
 const struct TrainerMonNoItemDefaultMoves gTrainerParty_Gleis4[1] = {
     {
      .iv = 30,
-     .level = 17,
+     .level = 14,
      .species = SPECIES_FACELEECH,
      },
 };

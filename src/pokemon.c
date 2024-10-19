@@ -3,6 +3,7 @@
 #include "battle.h"
 #include "item.h"
 #include "script_menu.h"
+#include "debug.h"
 #include "constants/items.h"
 #include "constants/pokemon.h"
 #include "constants/species.h"
@@ -36,8 +37,9 @@ bool8 CheckIfPartyCanUseHM(void)
     for (i = 0; i < PARTY_SIZE; i++)
     {
         u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2);
-        if (!species || species == SPECIES_EGG)
-            return FALSE;
+
+        if (species == SPECIES_NONE || species == SPECIES_EGG)
+            continue;
 
         if ((CanMonLearnTMHM(&gPlayerParty[i], tm - ITEM_TM01_FOCUS_PUNCH))
             || (MonKnowsMove(&gPlayerParty[i], ItemIdToBattleMoveId(tm)) == TRUE))
