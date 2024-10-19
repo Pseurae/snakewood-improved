@@ -15,6 +15,10 @@
 .include "scripts/include/types.asm"
 .include "scripts/include/vars_flags.asm"
 
+; Remove spaces from the game header
+.org 0x80000A9
+.byte 0x0, 0x0, 0x0
+
 .org 0x88866c0
 .region 0x479940
 .endregion
@@ -50,8 +54,9 @@
 .include "scripts/ability_changer.asm"
 .include "scripts/autocase.asm"
 .include "scripts/autorun.asm"
-.include "scripts/birch_speech.asm"
 .include "scripts/bag_expansion.asm"
+.include "scripts/birch_speech.asm"
+.include "scripts/center_disregard_egg.asm"
 .include "scripts/colored_field_moves.asm"
 .include "scripts/colored_stats.asm"
 .include "scripts/emerald_save_prompt.asm"

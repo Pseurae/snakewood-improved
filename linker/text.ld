@@ -271,3 +271,4 @@ SetInputState = 0x80b6210 | 1;
 MainState_StartPageSwap = 0x80b61c8 | 1;
 GetTextEntryPosition = 0x80b6f44 | 1;
 ResetGpuAndVram = 0x80f9368 | 1;
+CountPartyNonEggMons = 0x8095b6c | 1;

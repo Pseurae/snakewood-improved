@@ -96,6 +96,9 @@
 ; Trainer battle balances.
 .definelabel TRAINER_CHANGES, 1
 
+; Why would you need to heal an egg?
+.definelabel CENTER_DISREGARD_EGG, 1
+
 ; Bugfixes
 ; --------
 
