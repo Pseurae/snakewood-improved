@@ -46,6 +46,7 @@
 .include "scripts/bugfixes/meteor_portrait.asm"
 .include "scripts/bugfixes/necropolis_respawn.asm"
 .include "scripts/bugfixes/roclobster.asm"
+.include "scripts/bugfixes/seashore_house_chef.asm"
 .include "scripts/bugfixes/senex_lilycove.asm"
 .include "scripts/bugfixes/shop_frame_tiles.asm"
 .include "scripts/bugfixes/ss_cangrejo.asm"

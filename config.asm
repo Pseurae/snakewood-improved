@@ -153,3 +153,6 @@
 
 ; Change Birch chase script with the default Ruby one.
 .definelabel REPLACE_BIRCH_CHASE_SCRIPT, 1
+
+; Show Chef sprite in Seashore House.
+.definelabel FIX_SEASHORE_HOUSE_CHEF, 1
