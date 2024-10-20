@@ -89,7 +89,7 @@ const struct TrainerMonNoItemDefaultMoves gTrainerParty_Tomas[2] = {
 const struct TrainerMonNoItemDefaultMoves gTrainerParty_Vitruvio[1] = {
     {
      .iv = 200,
-     .level = 24,
+     .level = 20,
      .species = SPECIES_PERSIAN,
      },
 };
@@ -859,7 +859,7 @@ const struct TrainerMonNoItemDefaultMoves gTrainerParty_Lola[2] = {
 const struct TrainerMonNoItemCustomMoves gTrainerParty_Buccha[1] = {
     {
      .iv = 200,
-     .level = 28,
+     .level = 24,
      .species = SPECIES_LINOONE,
      .moves = { MOVE_ROAR, MOVE_SAND_ATTACK, MOVE_SUPER_FANG, MOVE_STRENGTH },
      },
@@ -2006,12 +2006,12 @@ const struct TrainerMonNoItemDefaultMoves gTrainerParty_Vegas[3] = {
 const struct TrainerMonNoItemDefaultMoves gTrainerParty_Pekabo[2] = {
     {
      .iv = 0,
-     .level = 24,
+     .level = 20,
      .species = SPECIES_QWILFISH,
      },
     {
      .iv = 0,
-     .level = 24,
+     .level = 20,
      .species = SPECIES_QWILFISH,
      },
 };
@@ -3657,6 +3657,12 @@ const struct TrainerMonNoItemCustomMoves gTrainerParty_Roxanne[2] = {
 
 const struct TrainerMonNoItemCustomMoves gTrainerParty_Haruko[6] = {
     {
+     .iv = 255,
+     .level = 16,
+     .species = SPECIES_SHINX,
+     .moves = { MOVE_BITE, MOVE_THUNDER_SHOCK, MOVE_BULK_UP, MOVE_NONE },
+     },
+    {
      .iv = 150,
      .level = 18,
      .species = SPECIES_POOCHYENA,
@@ -3682,16 +3688,10 @@ const struct TrainerMonNoItemCustomMoves gTrainerParty_Haruko[6] = {
      },
     {
      .iv = 255,
-     .level = 25,
+     .level = 23,
      .species = SPECIES_LUXRAY,
      .moves = { MOVE_BITE, MOVE_THUNDER_SHOCK, MOVE_BULK_UP, MOVE_NONE },
-     },
-    {
-     .iv = 255,
-     .level = 1,
-     .species = SPECIES_KINGMADIO,
-     .moves = { MOVE_NIGHT_SHADE, MOVE_NONE, MOVE_NONE, MOVE_NONE },
-     },
+     }
 };
 
 const struct TrainerMonNoItemCustomMoves gTrainerParty_Wattson3[3] = {
@@ -4840,17 +4840,17 @@ const struct TrainerMonNoItemDefaultMoves gTrainerParty_Footman8[4] = {
 const struct TrainerMonNoItemDefaultMoves gTrainerParty_SmashShot[3] = {
     {
      .iv = 0,
-     .level = 20,
+     .level = 18,
+     .species = SPECIES_MAKUHITA,
+     },
+    {
+     .iv = 0,
+     .level = 18,
      .species = SPECIES_MAKUHITA,
      },
     {
      .iv = 0,
      .level = 20,
-     .species = SPECIES_MAKUHITA,
-     },
-    {
-     .iv = 0,
-     .level = 24,
      .species = SPECIES_HITMONTOP,
      },
 };
@@ -5433,9 +5433,9 @@ const struct TrainerMonNoItemDefaultMoves gTrainerParty_Maxine[4] = {
 const struct TrainerMonNoItemCustomMoves gTrainerParty_Meteor3[1] = {
     {
      .iv = 200,
-     .level = 22,
+     .level = 18,
      .species = SPECIES_DRAGON,
-     .moves = { MOVE_DIG, MOVE_FIRE_PUMP, MOVE_DRAGON_BREATH, MOVE_FLY },
+     .moves = { MOVE_DIG, MOVE_EMBER, MOVE_FLY },
      },
 };
 
@@ -8575,21 +8575,21 @@ const struct TrainerMonNoItemDefaultMoves gTrainerParty_Kent[2] = {
 const struct TrainerMonItemCustomMoves gTrainerParty_Pestilence[3] = {
     {
      .iv = 50,
-     .level = 16,
+     .level = 13,
      .species = SPECIES_MOULDER,
      .heldItem = ITEM_SNAKE_EYES,
      .moves = { MOVE_HARDEN, MOVE_ACID, MOVE_POUND, MOVE_DISABLE },
      },
     {
      .iv = 50,
-     .level = 17,
+     .level = 14,
      .species = SPECIES_MOULDER,
      .heldItem = ITEM_SNAKE_EYES,
      .moves = { MOVE_ACID, MOVE_HARDEN, MOVE_POUND, MOVE_TOXIC },
      },
     {
      .iv = 100,
-     .level = 18,
+     .level = 16,
      .species = SPECIES_QWILFISH,
      .heldItem = ITEM_SNAKE_EYES,
      .moves = { MOVE_TOXIC, MOVE_POISON_STING, MOVE_PIN_MISSILE, MOVE_WATER_GUN },
