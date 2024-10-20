@@ -1536,7 +1536,7 @@ const struct TrainerMonItemDefaultMoves gTrainerParty_Tilly[1] = {
 const struct TrainerMonNoItemDefaultMoves gTrainerParty_Dani[1] = {
     {
      .iv = 100,
-     .level = 7,
+     .level = 6,
      .species = SPECIES_OOZLE,
      },
 };
@@ -1838,7 +1838,7 @@ const struct TrainerMonNoItemCustomMoves gTrainerParty_Mimi[2] = {
 const struct TrainerMonItemDefaultMoves gTrainerParty_Richie[1] = {
     {
      .iv = 0,
-     .level = 8,
+     .level = 6,
      .species = SPECIES_SURSKIT,
      .heldItem = ITEM_TAIJI_DUST,
      },
@@ -1847,7 +1847,7 @@ const struct TrainerMonItemDefaultMoves gTrainerParty_Richie[1] = {
 const struct TrainerMonNoItemDefaultMoves gTrainerParty_Orobas[1] = {
     {
      .iv = 40,
-     .level = 14,
+     .level = 12,
      .species = SPECIES_DIRTKROW,
      },
 };
@@ -6089,7 +6089,7 @@ const struct TrainerMonNoItemDefaultMoves gTrainerParty_Matteo[1] = {
 const struct TrainerMonNoItemDefaultMoves gTrainerParty_Laura[2] = {
     {
      .iv = 255,
-     .level = 16,
+     .level = 13,
      .species = SPECIES_ZANGOOSE,
      },
     {
@@ -7491,7 +7491,7 @@ const struct TrainerMonNoItemDefaultMoves gTrainerParty_Alicia1[3] = {
      },
     {
      .iv = 100,
-     .level = 15,
+     .level = 12,
      .species = SPECIES_SNEASEL,
      },
 };
@@ -8562,13 +8562,13 @@ const struct TrainerMonNoItemDefaultMoves gTrainerParty_Salaryman5[1] = {
 const struct TrainerMonNoItemDefaultMoves gTrainerParty_Kent[2] = {
     {
      .iv = 0,
-     .level = 10,
+     .level = 7,
      .species = SPECIES_EYE_EYE,
      },
     {
      .iv = 0,
-     .level = 13,
-     .species = SPECIES_EYE_EYE,
+     .level = 9,
+     .species = SPECIES_DIRTKROW,
      },
 };
 
@@ -8889,17 +8889,17 @@ const struct TrainerMonNoItemDefaultMoves gTrainerParty_Rica[2] = {
 const struct TrainerMonNoItemDefaultMoves gTrainerParty_Lyle[3] = {
     {
      .iv = 0,
-     .level = 7,
+     .level = 4,
      .species = SPECIES_SLAKOTH,
      },
     {
      .iv = 0,
-     .level = 7,
+     .level = 6,
      .species = SPECIES_WURMPLE,
      },
     {
      .iv = 0,
-     .level = 7,
+     .level = 6,
      .species = SPECIES_RALTS,
      },
 };

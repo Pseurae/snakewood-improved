@@ -12,6 +12,13 @@ extern u8 sMessageBoxMode;
 static void PrintFieldMessageInstant(const u8 *message);
 static void Task_FieldMessageBoxInstant(u8 taskId);
 
+#include "debug.h"
+
+void PrintR0(u32 r0)
+{
+    DebugPrintf("%d", r0);
+}
+
 bool8 ShowFieldMessageInstant(const u8 *message)
 {
     if (sMessageBoxMode != FIELD_MESSAGE_BOX_HIDDEN)

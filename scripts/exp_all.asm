@@ -1,19 +1,18 @@
 .if EXP_ALL
 
-.org 0x8020024
-.halfword 0x4710
+.org 0x8020164
+b 0x802016a
 
-.org 0x8020058
-.word (CountEligiblePokeForExp | 1)
+.org 0x802019a
+nop
+set_function_hook r4, ExpAllHook1
 
-.org 0x802019A
-.halfword 0x0
-.word 0x47004800
-.word (SetExpAmount | 1)
+.org 0x8020276
+nop
+set_function_hook r3, ExpAllHook2
 
-.org 0x8020344 
-.word 0x47004800
-.word (GetSentInPokeForExp | 1)
+.org 0x802033c
+set_function_hook r3, ExpAllHook3
 
 .org 0x83c5564 + 44 * ITEM_BRAIN_LINK + 24
 .byte 0x1, 0x1

@@ -64,7 +64,7 @@
 .definelabel AUTORUN, 1
 
 ; Doubles Exp. Points gained after battles.
-.definelabel MORE_EXP, 1
+.definelabel MORE_EXP, 0
 
 ; New "Snakewood" logo
 .definelabel NEW_TITLE_SCREEN, 1

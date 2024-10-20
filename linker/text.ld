@@ -272,3 +272,4 @@ MainState_StartPageSwap = 0x80b61c8 | 1;
 GetTextEntryPosition = 0x80b6f44 | 1;
 ResetGpuAndVram = 0x80f9368 | 1;
 CountPartyNonEggMons = 0x8095b6c | 1;
+HandleLowHpMusicChange = 0x80324f8 | 1;

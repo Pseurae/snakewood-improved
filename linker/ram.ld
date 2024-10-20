@@ -41,7 +41,7 @@ gBattleBufferA = 0x2023a60;
 gAutorunEnabled = 0x2024f34;
 gExpandedItemPockets = 0x2025420;
 gRegisteredItems = 0x2025520;
-gExpAllEnabled = 0x202552C;
+gExpAllEnabled = 0x2025530;
 
 gMapHeader = 0x202e828;
 gPlayerAvatar = 0x202e858;
@@ -65,6 +65,9 @@ sCurrentBagPocket = 0x2038559;
 gSpecialVar_ItemId = 0x203855e;
 gWeather = 0x202f7e8;
 gMoveSelectionCursor = 0x2024e64;
+gBank1 = 0x2024c09;
+gBattlerPartyIndexes = 0x2024a6a;
+gSentPokesToOpponent = 0x2024dea;
 
 /* gRepelMenuChoices = 0x203a400; */
 /* gLastUsedRegisteredItem = 0x203a404; */
@@ -81,3 +84,4 @@ gCurrentBagPocketItemSlots = 0x3005d24;
 gScriptContext1 = 0x3007440;
 sMessageBoxMode = 0x30074b8;
 gWindowTemplate_Contest_MoveDescription = 0x3004210;
+gBattleTextBuff1 = 0x30041c0;

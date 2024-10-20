@@ -1,124 +1,163 @@
-.global CountEligiblePokeForExp, SetExpAmount, GetSentInPokeForExp
+.global ExpAllHook1, ExpAllHook2, ExpAllHook3
 
-@
-CountEligiblePokeForExp:
-PUSH {R0,R2-R7}
-LDR R0, =(gExpAllEnabled)
+@ 0x802019a - hook via r4
+@ 0x80201fa - return
+@ 0x80201e0 - else branch
+@ r5 - viaSentIn
+ExpAllHook1:
+ldr r4, =(gExpAllEnabled)
+ldrb r4, [r4]
+
+cmp r4, #0
+beq ExpAllHook1_GoToMainElseBranch
+
+mov r4, r1
+
+mov r0, r4
+mov r1, r5
+swi #6
+
+mov r1, sl
+
+cmp r0, #0
+bne ExpAllHook1_NormalExpSet
+mov r0, #1
+
+ExpAllHook1_NormalExpSet:
+strh r0, [r1]
+
+ldr r5, =(0x2024dee)
+lsr r0, r4, #1
+
+cmp r0, #0
+bne ExpAllHook1_SharedExpSet
+mov r0, #1
+
+ExpAllHook1_SharedExpSet:
+strh r0, [r5]
+
+ldr r1, =(0x80201fa | 1)
+bx r1
+
+ExpAllHook1_GoToMainElseBranch:
+ldr r0, =(0x80201e0 | 1)
+bx r0
+
+@ 0x8020276 - hook via r3
+@ 0x80202a0 - next condition
+@ 0x80202c8 - end condition
+ExpAllHook2:
+push {r0-r7}
+@ Check if Pokemon is an egg
+ldr r0, =(0x2016018)
 ldrb r0, [r0]
-CMP R0, #0
-BEQ RETURN1
 
-MOV R4, #0
-MOV R5, #0
+mov r1, #100
+mul r1, r0, r1
 
-LOOP:
-LDR R0, = 0x03004360
-MOV R1, #0x64
-MUL R1, R4
-ADD R0, R0, R1
-MOV R1, #0x56
-LDRH R2, [R0, R1]
-CMP R2, #0
-BEQ COUNTER
+ldr r0, =(gPlayerParty)
+add r0, r1, r0
 
-IS_EGG:
-MOV R1, #0x2D
-PUSH {R4,R5}
-BL GET_DATA
-POP {R4, R5}
-CMP R0, #1
-BEQ COUNTER
+mov r1, #45
 
-MOV R1, #1
-LSL R1, R1, R4
-ORR R5, R1
+bl ExpAllHook2_GetMonData
 
-COUNTER:
-ADD R4, #1
-CMP R4, #6
-BNE LOOP
+cmp r0, #1
+beq ExpAllHook2_ConditionBlock
 
-MOV R1, R5
+push {r0-r7}
+bl PrintR0
+pop {r0-r7}
 
-POP {R0,R2-R7}
-LDR R0, = 0x08020030+1
-BX R0
+@ Check if Exp All is enabled
+ldr r3, =(gExpAllEnabled)
+ldrb r3, [r3]
 
-RETURN1:
-POP {R0,R2-R7}
-LDR R2, = 0x02024DEA
-MOV R1, #2
-LDR R3, = 0x08020026+1
-BX R3
+cmp r3, #0
+bne ExpAllHook2_NextCondition
 
-GET_DATA:
-LDR R2, = 0x0803CB60+1
-BX R2
+@ Check if Pokemon was sent out
+ldr r1, =(0x201605F)
+ldrb r0, [r1]
 
-@
-SetExpAmount:
-PUSH {R0}
-LDR R0, =(gExpAllEnabled)
-ldrb r0, [r0]
-CMP R0, #0
-BEQ NOT_EXP
+mov r2, #1
+and r2, r0
 
-POP {R0}
+cmp r2, #0
+bne ExpAllHook2_NextCondition
 
-LSR R0, R1, #1
+ExpAllHook2_ConditionBlock:
+@ set sent in pokes
+ldr r1, =(0x201605F)
+ldrb r0, [r1]
 
-@ mov r0, r1
-@ push {r1, r3}
-@ mov r1, #2
-@ swi #0x6
-@ pop {r1, r3}
+lsr r0, r0, #1
+strb r0, [r1]
 
-BACK_TO:
-LDR R1, = 0x080201A8+1
-BX R1
+@ Get exp tracker state
+ldr r1, =(0x201600F)
+mov r0, #5
+strb r0, [r1]
 
-NOT_EXP:
-POP {R0}
-LDR R2, = 0x080201E0+1
-BX R2
+@ Set total exp to zero
+ldr r1, =(0x2024bec)
+mov r0, #0
+str r0, [r1]
 
-@
-GetSentInPokeForExp:
-LDRH R0, [R3]
+ExpAllHook2_ConditionEnd:
+pop {r0-r7}
+ldr r0, =(0x8020996 | 1)
+bx r0
 
-LDR R2, = 0x02016018
-LDRB R2, [R2]
+ExpAllHook2_NextCondition:
+pop {r0-r7}
+ldr r3, =(0x80202a0 | 1)
+bx r3
 
-LDR R5, = 0x02024A6A
-LDRB R7, [R5]
-CMP R7, R2
-BEQ RETURN
+ExpAllHook2_GetMonData:
+ldr r7, =(GetMonData)
+bx r7
 
-LDR R7, = 0x020239F8
-LDRB R7, [R7]
-MOV R3, #1
-AND R7, R3
-CMP R7, #1
-BEQ DOUBLE
+@ 0x802033c - hook via r1
+@ 0x8020386 - return
+ExpAllHook3:
+push {r0-r7}
 
-DIVIDE:
-PUSH {R1-R7}
-MOV R1, #3
-BL DIVISION
-POP {R1-R7}
+@ Check if Pokemon was sent out
+ldr r1, =(0x201605F)
+ldrb r0, [r1]
 
-RETURN:
-STRH R0, [R1]
-MOV R8, R1
-LDR R0, = 0x08020376+1
-BX R0
+mov r1, #1
+and r1, r0
 
-DOUBLE:
-LDRB R7, [R5, #4]
-CMP R7, R2
-BEQ RETURN
-B DIVIDE
+cmp r1, #0
+beq ExpAllHook3_CheckIfShareActive
+mov r7, sl
+ldrh r7, [r7]
 
-DIVISION:
-LDR R2, = 0x081E0868+1
-BX R2
+b ExpAllHook3_ConditionEnd
+
+ExpAllHook3_CheckIfShareActive:
+ldr r1, =(gExpAllEnabled)
+ldrb r1, [r1]
+
+cmp r1, #0
+beq ExpAllHook3_SetExpToZero
+
+ldr r7, =(0x2024dee)
+ldrh r7, [r7]
+
+b ExpAllHook3_ConditionEnd
+
+ExpAllHook3_SetExpToZero:
+mov r7, #0
+
+ExpAllHook3_ConditionEnd:
+ldr r1, =(0x2024bec)
+str r7, [r1]
+
+pop {r0-r7}
+
+ldr r3, =(0x8020386 | 1)
+bx r3
+

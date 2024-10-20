@@ -60,3 +60,6 @@ OtherText_MaleSymbol = 0x8410458;
 OtherText_FemaleSymbol = 0x841045a;
 gNamingScreenPtr = 0x83ce214;
 gTrainers = 0x81f04fc;
+gBitTable = 0x820872c;
+BattleScript_LevelUp = 0x81d8ef3;
+
