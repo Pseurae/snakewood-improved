@@ -28,9 +28,9 @@ repoint_item_desc ITEM_NECRO_BALL, @NecroBall_Desc
 
 .autoregion
 @MagicStars_Desc:
-.string "Chocolate stars\nwith faces. Raise\nSPEED."
+.string "Chocolate stars\nwith faces. Raise\nSpeed."
 
 @NecroBall_Desc:
-.string "An ancient BALL\nforged in hellfire\n1000 years ago."
+.string "An ancient Ball\nforged in hellfire\n1000 years ago."
 .endautoregion
 .endif

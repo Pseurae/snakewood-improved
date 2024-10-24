@@ -233,22 +233,22 @@ const struct TrainerMonNoItemDefaultMoves gTrainerParty_Wattson2[6] = {
      },
     {
      .iv = 110,
-     .level = 27,
+     .level = 25,
      .species = SPECIES_PIKACHU,
      },
     {
      .iv = 110,
-     .level = 27,
+     .level = 25,
      .species = SPECIES_JOLTEON,
      },
     {
      .iv = 110,
-     .level = 28,
+     .level = 26,
      .species = SPECIES_LUXIO,
      },
     {
      .iv = 110,
-     .level = 33,
+     .level = 27,
      .species = SPECIES_RAIKOU,
      },
 };

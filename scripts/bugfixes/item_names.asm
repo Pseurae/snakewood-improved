@@ -7,14 +7,14 @@
 .endmacro
 
 .if ITEM_NAMES
-fix_item_name ITEM_AFRO_BALL, "AFRO BALL"
-fix_item_name ITEM_RIESEN, "RIESEN"
-fix_item_name ITEM_POKEPHONE, "POKéPHONE"
-fix_item_name ITEM_GATEAU, "GATEAU"
-fix_item_name ITEM_SPANNER, "SPANNER"
-fix_item_name ITEM_SOMA, "SOMA"
-fix_item_name ITEM_COLOGNE, "COLOGNE"
-fix_item_name ITEM_SPARK_TOKEN, "SPARK TOKEN"
-fix_item_name ITEM_ELECTRICHONEY, "ELECTRIHONEY"
-fix_item_name ITEM_PLUS_BAND, "PLUS BAND"
+fix_item_name ITEM_AFRO_BALL, "Afro Ball"
+fix_item_name ITEM_RIESEN, "Riesen"
+fix_item_name ITEM_POKEPHONE, "PokéPhone"
+fix_item_name ITEM_GATEAU, "Gateau"
+fix_item_name ITEM_SPANNER, "Spanner"
+fix_item_name ITEM_SOMA, "Soma"
+fix_item_name ITEM_COLOGNE, "Cologne"
+fix_item_name ITEM_SPARK_TOKEN, "Spark Token"
+fix_item_name ITEM_ELECTRICHONEY, "Electrichoney"
+fix_item_name ITEM_PLUS_BAND, "Plus Band"
 .endif

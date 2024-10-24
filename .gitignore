@@ -4,6 +4,7 @@ armips
 output.*
 output-*.png
 snakewood.*
+snakewood_decapped.*
 pokeruby.map
 .D[Ss]_[Ss]tore
 [Dd]esktop.ini

@@ -1,7 +1,8 @@
 #!/usr/bin/env make
 
-INPUT := snakewood.gba
-OUTPUT := output.gba
+INPUT          := snakewood.gba
+INPUT_DECAPPED := snakewood_decapped.gba
+OUTPUT         := output.gba
 
 ifeq ($(strip $(DEVKITARM)),)
 $(error "Please set DEVKITARM in your environment. export DEVKITARM=<path to>devkitARM")
@@ -32,9 +33,10 @@ LD = $(PREFIX)ld
 LDFLAGS = -i rom.ld -T linker.ld
 
 ARMIPS := ./armips
-ARMIPSFLAGS := -strequ INPUT_FILE $(INPUT) -strequ OUTPUT_FILE $(OUTPUT)
+ARMIPSFLAGS := -strequ INPUT_FILE $(INPUT_DECAPPED) -strequ OUTPUT_FILE $(OUTPUT)
 
 ELFEDIT := tools/elfedit/elfedit$(EXE)
+DECAP   := tools/decap/decap$(EXE)
 PREPROC := tools/preproc/preproc$(EXE)
 SCANINC := tools/scaninc/scaninc$(EXE)
 
@@ -57,11 +59,15 @@ $(shell $(MAKE) tools > /dev/null)
 include $(OBJ_FILES:%.o=%.d)
 endif
 
-all: $(OUTPUT)
+all: $(INPUT_DECAPPED) $(OUTPUT)
 	@$(ARMIPS) $(ARMIPSFLAGS) main.asm -sym2 output.map
 	@echo "$(ARMIPS) <flags> main.asm -sym2 output.map"
 
-$(OUTPUT): $(INPUT) build/linked_processed.o
+$(INPUT_DECAPPED) : $(INPUT)
+	@$(DECAP) $(INPUT) $(INPUT_DECAPPED)
+	@echo "$(DECAP) $(INPUT) $(INPUT_DECAPPED)"
+
+$(OUTPUT): $(INPUT_DECAPPED) build/linked_processed.o
 
 format:
 	@find . -not -path "./tools/*" -name *.c -o -not -path "./tools/*" -name *.h | xargs clang-format -i
@@ -71,11 +77,13 @@ tools:
 	@$(MAKE) -C tools/elfedit
 	@$(MAKE) -C tools/preproc
 	@$(MAKE) -C tools/scaninc
+	@$(MAKE) -C tools/decap
 
 clean_tools:
 	@$(MAKE) -C tools/elfedit clean
 	@$(MAKE) -C tools/preproc clean
 	@$(MAKE) -C tools/scaninc clean
+	@$(MAKE) -C tools/decap clean
 
 clean: clean_tools
 	rm -rf build
@@ -104,4 +112,4 @@ build/linked.o: $(OBJ_FILES) linker.ld rom.ld linker/**.ld
 	@$(LD) $(LDFLAGS) -Map build/linked.map -o $@ $(OBJ_FILES)
 
 build/linked_processed.o: build/linked.o
-	@$(ELFEDIT) $< $@ savemap.txt
+	@$(ELFEDIT) $< $@
