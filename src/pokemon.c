@@ -3,7 +3,6 @@
 #include "battle.h"
 #include "item.h"
 #include "script_menu.h"
-#include "debug.h"
 #include "constants/items.h"
 #include "constants/pokemon.h"
 #include "constants/species.h"

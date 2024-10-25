@@ -59,13 +59,11 @@ $(shell $(MAKE) tools > /dev/null)
 include $(OBJ_FILES:%.o=%.d)
 endif
 
-all: $(INPUT_DECAPPED) $(OUTPUT)
-	@$(ARMIPS) $(ARMIPSFLAGS) main.asm -sym2 output.map
-	@echo "$(ARMIPS) <flags> main.asm -sym2 output.map"
-
-$(INPUT_DECAPPED) : $(INPUT)
+all: $(OUTPUT)
 	@$(DECAP) $(INPUT) $(INPUT_DECAPPED)
 	@echo "$(DECAP) $(INPUT) $(INPUT_DECAPPED)"
+	@$(ARMIPS) $(ARMIPSFLAGS) main.asm -sym2 output.map
+	@echo "$(ARMIPS) <flags> main.asm -sym2 output.map"
 
 $(OUTPUT): $(INPUT_DECAPPED) build/linked_processed.o
 

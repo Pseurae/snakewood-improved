@@ -41,9 +41,16 @@ void File::Save(const std::string &filename)
 void File::ProcessString(int location, int max_size)
 {
     bool shouldCapLetter = true;
+    bool skipNextChar = false;
 
     for (int j = 0; j < max_size; ++j)
     {
+        if (skipNextChar)
+        {
+            skipNextChar = false;
+            continue;
+        }
+
         int idx = location + j;
         if (idx > m_Size) FATAL_ERROR("Index %d is greater than file size (%ld)\n", idx, m_Size);
 
@@ -52,6 +59,10 @@ void File::ProcessString(int location, int max_size)
         if (c == 0x0) 
         {
             shouldCapLetter = true;
+        }
+        else if (c == 0xFD)
+        {
+            skipNextChar = true;
         }
         else if ((c >= 0xBB && c <= 0xD4) && !shouldCapLetter) 
         {
@@ -77,16 +88,23 @@ void File::ProcessStringArray(int location, int size, int count)
     for (int i = 0; i < count; ++i) ProcessString(location + i * size, size);
 }
 
+void File::ProcessStringArray(int location, int size, int count, int stride)
+{
+    for (int i = 0; i < count; ++i) ProcessString(location + i * stride, size);
+}
+
 void File::ProcessStringPointerArray(int location, int count, int stride)
 {
-    if (location + 4 * count > m_Size) FATAL_ERROR("Pointer array end %d greater than file size (%ld)\n", location + 4 * count, m_Size);
+    if (location + 4 * count > m_Size) 
+        FATAL_ERROR("Pointer array end %d greater than file size (%ld)\n", location + 4 * count, m_Size);
 
     for (int i = 0; i < count; ++i)
     {
         unsigned int ptr = (m_Buffer[location] | m_Buffer[location + 1] << 8 | m_Buffer[location + 2] << 16 | m_Buffer[location + 3] << 24);
         ptr -= 0x8000000;
 
-        if (ptr > m_Size) FATAL_ERROR("Pointer %d greater than file size (%ld)\n", ptr, m_Size);
+        if (ptr > m_Size) 
+            FATAL_ERROR("Pointer %d greater than file size (%ld)\n", ptr, m_Size);
         ProcessString(ptr, __INT32_MAX__);
         location += stride;
     }

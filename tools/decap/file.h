@@ -12,6 +12,7 @@ public:
 
     void ProcessString(int location, int max_size);
     void ProcessStringArray(int location, int size, int count);
+    void ProcessStringArray(int location, int size, int count, int stride);
     void ProcessStringPointerArray(int location, int count, int stride = 4);
 private:
     unsigned char *m_Buffer;
