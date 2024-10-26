@@ -1,5 +1,6 @@
 #include "file.h"
 #include "decap.h"
+#include "string.h"
 
 File::File(const std::string &filename)
 {
@@ -35,6 +36,32 @@ void File::Save(const std::string &filename)
     fclose(fp);
 }
 
+struct Word
+{
+    unsigned char text[10];
+    unsigned int len;
+};
+
+static const Word sWhitelistEntries[] = {
+    { {0xC2, 0xC7}, 2 }, // HM
+    { {0xCE, 0xC7}, 2 }, // TM
+    { {0xC2, 0xCA}, 2 }, // HP
+    { {0xCA, 0xCA}, 2 }, // PP
+};
+
+bool CheckIfWhitelisted(unsigned char *buffer, unsigned int idx)
+{
+    for (int i = 0; i < (int)(sizeof(sWhitelistEntries) / sizeof(*sWhitelistEntries)); ++i)
+    {
+        if (memcmp(&buffer[idx], sWhitelistEntries[i].text, sWhitelistEntries[i].len) == 0)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 // 0x0 is space
 // 0xBB - 0xD4 -> A - Z
 // 0xD5 - 0xEE -> a - z
@@ -54,9 +81,12 @@ void File::ProcessString(int location, int max_size)
         int idx = location + j;
         if (idx > m_Size) FATAL_ERROR("Index %d is greater than file size (%ld)\n", idx, m_Size);
 
+        if (CheckIfWhitelisted(m_Buffer, idx)) 
+            continue;
+
         unsigned char c = m_Buffer[idx];
 
-        if (c == 0x0) 
+        if (c == 0x0 || c == 0xFE)
         {
             shouldCapLetter = true;
         }
@@ -95,6 +125,8 @@ void File::ProcessStringArray(int location, int size, int count, int stride)
 
 void File::ProcessStringPointerArray(int location, int count, int stride)
 {
+    if (stride < 4) FATAL_ERROR("Given stride (%d) less than size of a pointer\n", stride);
+
     if (location + 4 * count > m_Size) 
         FATAL_ERROR("Pointer array end %d greater than file size (%ld)\n", location + 4 * count, m_Size);
 
