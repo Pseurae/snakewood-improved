@@ -88,7 +88,7 @@
 .definelabel EXP_ALL, 1
 
 ; Auto-change to lowercase after first letter in naming screen.
-.definelabel AUTOCASE, 0
+.definelabel AUTOCASE, 1
 
 ; Adds an item which allows you to see your Pokemon's base stats, IVs and EVs.
 .definelabel STATS_VIEWER, 1
