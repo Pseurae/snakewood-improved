@@ -36,30 +36,22 @@ void File::Save(const std::string &filename)
     fclose(fp);
 }
 
-struct Word
-{
-    unsigned char text[10];
-    unsigned int len;
-};
-
-static const Word sWhitelistEntries[] = {
+const std::vector<Word> WhitelistEntries = {
     { {0xC2, 0xC7}, 2 }, // HM
     { {0xCE, 0xC7}, 2 }, // TM
     { {0xC2, 0xCA}, 2 }, // HP
     { {0xCA, 0xCA}, 2 }, // PP
 };
 
-bool CheckIfWhitelisted(unsigned char *buffer, unsigned int idx)
+unsigned int CheckIfWhitelisted(const std::vector<Word>& whitelist, unsigned char *buffer, unsigned int idx)
 {
-    for (int i = 0; i < (int)(sizeof(sWhitelistEntries) / sizeof(*sWhitelistEntries)); ++i)
+    for (const auto &word : WhitelistEntries)
     {
-        if (memcmp(&buffer[idx], sWhitelistEntries[i].text, sWhitelistEntries[i].len) == 0)
-        {
-            return true;
-        }
+        if (memcmp(&buffer[idx], word.text, word.len) == 0)
+            return word.len;
     }
 
-    return false;
+    return 0;
 }
 
 // 0x0 is space
@@ -81,8 +73,12 @@ void File::ProcessString(int location, int max_size)
         int idx = location + j;
         if (idx > m_Size) FATAL_ERROR("Index %d is greater than file size (%ld)\n", idx, m_Size);
 
-        if (CheckIfWhitelisted(m_Buffer, idx)) 
+        unsigned int whitelistLength;
+        if (m_Whitelist != nullptr && (whitelistLength = CheckIfWhitelisted(*m_Whitelist, m_Buffer, idx)) > 0) 
+        {
+            j += whitelistLength - 1;
             continue;
+        }
 
         unsigned char c = m_Buffer[idx];
 

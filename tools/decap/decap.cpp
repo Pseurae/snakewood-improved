@@ -36,14 +36,16 @@ int main(int argc, char *argv[])
     f.ProcessStringPointerArray(0x1e79b0, 2, 8); // Boy/Girl
     f.ProcessStringPointerArray(0x1e79c0, 5, 8); // Male preset names
     f.ProcessStringPointerArray(0x1e79e8, 5, 8); // Female preset names
-    f.ProcessStringPointerArray(0x376d04, 6); // Stat labels
-    f.ProcessStringPointerArray(0x3c5564 + 20, 349, 44); // Item descriptions
     f.ProcessStringPointerArray(0x3c1004, 25); // Nature names
     f.ProcessStringPointerArray(0x3c1068, 8); // Summary Screen headers
     f.ProcessStringPointerArray(0x39f494, 10, 8); // Party menu options
     f.ProcessStringPointerArray(0x376d24, 10, 8); // Start menu options
-    f.ProcessStringPointerArray(0x1fa110, 78); // Ability descriptions
     f.ProcessStringPointerArray(0x3e73c4 + 4, 88, 8); // Map names
+
+    f.SetWhitelist(&WhitelistEntries);
+    f.ProcessStringPointerArray(0x376d04, 6); // Stat labels
+    f.ProcessStringPointerArray(0x3c5564 + 20, 349, 44); // Item descriptions
+    f.ProcessStringPointerArray(0x1fa110, 78); // Ability descriptions
     f.ProcessStringPointerArray(0x3c09d8, 354); // Move descriptions
 
     f.Save(argv[2]);
