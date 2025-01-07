@@ -32,7 +32,7 @@ ASFLAGS  := -mthumb -I assembly -I include
 LD = $(PREFIX)ld
 LDFLAGS = -i rom.ld -T linker.ld
 
-ARMIPS := ./armips
+ARMIPS := armips
 ARMIPSFLAGS := -strequ INPUT_FILE $(INPUT_DECAPPED) -strequ OUTPUT_FILE $(OUTPUT)
 
 ELFEDIT := tools/elfedit/elfedit$(EXE)
@@ -65,7 +65,7 @@ all: $(OUTPUT)
 	@$(ARMIPS) $(ARMIPSFLAGS) main.asm -sym2 output.map
 	@echo "$(ARMIPS) <flags> main.asm -sym2 output.map"
 
-$(OUTPUT): $(INPUT_DECAPPED) build/linked_processed.o
+$(OUTPUT): build/linked_processed.o
 
 format:
 	@find . -not -path "./tools/*" -name *.c -o -not -path "./tools/*" -name *.h | xargs clang-format -i
