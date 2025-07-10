@@ -52,6 +52,7 @@ PlayerRideWaterCurrent = 0x80593dc | 1;
 PlayerGoSpeed4 = 0x80593f4 | 1;
 PlayerOnBikeCollide = 0x8059424 | 1;
 PlayerTurnInPlace = 0x805946c | 1;
+FindObjectEventPaletteIndexByTag = 0x805bee4 | 1;
 IsRunningDisallowed = 0x80e5dec | 1;
 PlayerJumpLedge = 0x805949c | 1;
 PlayerNotOnBikeCollide = 0x8059448 | 1;
@@ -275,3 +276,4 @@ GetTextEntryPosition = 0x80b6f44 | 1;
 ResetGpuAndVram = 0x80f9368 | 1;
 CountPartyNonEggMons = 0x8095b6c | 1;
 HandleLowHpMusicChange = 0x80324f8 | 1;
+

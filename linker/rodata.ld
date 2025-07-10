@@ -26,6 +26,8 @@ gItems = 0x83c5564;
 gContestMoves = 0x83cf594;
 gDecorations = 0x83eb6c4;
 
+gObjectEventSpritePalettes = 0x837377c;
+
 BattleText_PP = 0x8400d38;
 BattleText_Format = 0x8400d49;
 BattleText_ForgetMove = 0x8400d52;
@@ -62,4 +64,5 @@ gNamingScreenPtr = 0x83ce214;
 gTrainers = 0x81f04fc;
 gBitTable = 0x820872c;
 BattleScript_LevelUp = 0x81d8ef3;
+
 

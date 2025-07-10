@@ -85,6 +85,12 @@ struct PACKED Sprite
     /*0x43*/ u8 subpriority;
 };
 
+struct SpritePalette
+{
+    const u16 *data;
+    u16 tag;
+};
+
 extern struct Sprite gSprites[MAX_SPRITES];
 extern struct SpriteTemplate gCreatingSpriteTemplate;
 

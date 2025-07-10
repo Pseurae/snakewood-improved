@@ -2,16 +2,16 @@
 #include "day_night.h"
 #include "bios.h"
 #include "decompress.h"
+#include "overworld.h"
 #include "fieldmap.h"
 #include "palette.h"
 #include "save_time_util.h"
+#include "sprite.h"
 #include "constants/gba.h"
 #include "constants/rgb.h"
 #include "data/day_night/tints.h"
 
 static EWRAM_DATA u8 sCurrentTintIndex = 0;
-
-void LoadDayNightTilesetPalette(const struct Tileset *tileset, int destOffset, int size);
 
 static u16 ApplyBlend(u32 argb, u16 rgb)
 {
@@ -86,4 +86,13 @@ void LoadDayNightTilesetPalette(const struct Tileset *tileset, int destOffset, i
             LoadDayNightPalette((void *)EWRAM, destOffset, size);
         }
     }
+}
+
+extern const struct SpritePalette gObjectEventSpritePalettes[];
+u8 LONG_CALL FindObjectEventPaletteIndexByTag(u16 tag);
+
+void PatchObjectDayNightPalette(u16 paletteTag, u8 paletteSlot)
+{
+    u8 paletteIndex = FindObjectEventPaletteIndexByTag(paletteTag);
+    LoadDayNightPalette(gObjectEventSpritePalettes[paletteIndex].data, 16 * paletteSlot + 0x100, 0x20);
 }
