@@ -131,6 +131,7 @@ void LONG_CALL SetRainStrengthFromSoundEffect(u16 soundEffect);
 void LONG_CALL PreservePaletteInWeather(u8 preservedPalIndex);
 void LONG_CALL FadeScreen(u8, u8);
 void LONG_CALL UpdateSpritePaletteWithWeather(u8 tag);
+void LONG_CALL ApplyWeatherColorMapIfIdle(s8 colorMapIndex);
 
 extern const struct WeatherCallbacks gWeatherFuncs[];
 extern struct Weather *const gWeatherPtr;

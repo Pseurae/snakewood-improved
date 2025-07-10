@@ -11,7 +11,7 @@ void CB2_Overworld(void)
     if (fading)
         SetVBlankCallback(NULL);
     OverworldBasic();
-    UpdateDayNightTint();
+    RetintForDayNight();
     if (fading)
         SetFieldVBlankCallback();
 }

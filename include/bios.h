@@ -5,6 +5,7 @@
 void LONG_CALL CpuSet(const void *src, void *dest, u32 control);
 void LONG_CALL CpuFastSet(const void *src, void *dest, u32 control);
 void LONG_CALL LZ77UnCompVram(const void *src, void *dest);
+void LONG_CALL LZ77UnCompWram(const void *src, void *dest);
 
 #define CPU_SET_SRC_FIXED 0x01000000
 #define CPU_SET_16BIT     0x00000000

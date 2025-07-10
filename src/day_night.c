@@ -8,69 +8,141 @@
 #include "palette.h"
 #include "save_time_util.h"
 #include "sprite.h"
+#include "field_weather.h"
+#include "fixed_math.h"
 #include "constants/gba.h"
 #include "constants/rgb.h"
+#include "constants/field_weather.h"
 #include "data/day_night/tints.h"
 
-static EWRAM_DATA u8 sCurrentTintIndex = 0;
+#define TINT_PERIODS_PER_HOUR 60
+#define MINUTES_PER_TINT_PERIOD (60 / TINT_PERIODS_PER_HOUR)
+#define TINT_PERIODS_COUNT (24 * TINT_PERIODS_PER_HOUR)
 
-static u16 ApplyBlend(u32 argb, u16 rgb)
+EWRAM_DATA u16 gPlttPreDN[0x200] = { 0 };
+
+static EWRAM_DATA struct {
+    u16 initialized:1;
+    u16 phase:1;
+    u16 prevPeriod;
+    u16 currPeriod;
+} sDayNightControl = { 0 };
+
+static void GetLocalHoursAndMinutes(s8 *hours, s8 *minutes)
 {
-    u32 mA = (argb & 0xFF000000) >> (24 + 3);
-    u32 mR = (argb & 0x00FF0000) >> (16 + 3);
-    u32 mG = (argb & 0x0000FF00) >> (8 + 3);
-    u32 mB = (argb & 0x000000FF) >> (0 + 3);
-
-    u8 rem = 31 - mA;
-
-    u16 r = (GET_R(rgb) * rem + mR * mA) / 31;
-    u16 g = (GET_G(rgb) * rem + mG * mA) / 31;
-    u16 b = (GET_B(rgb) * rem + mB * mA) / 31;
-
-    return RGB(r, g, b);
+    u16 totalVBlanks = gPlayTimeVBlanks + 60 * (gPlayTimeSeconds + gPlayTimeMinutes * 60);
+    *hours = (totalVBlanks / 60) % 24;
+    *minutes = totalVBlanks % 60;
 }
 
-static inline u8 GetCurrentTintIndex(void)
+static bool8 ShouldTintOverworld(void)
 {
-    return ((gPlayTimeHours * 60 + gPlayTimeMinutes) * 60 + gPlayTimeSeconds) % 144;
+    // if (IsMapTypeOutdoors(gMapHeader.mapType))
+    //     return TRUE;
+
+    return TRUE;
 }
 
-static inline u32 GetTintColor(void)
+static void TintPalette_DayNight(const u16 *src, u16 *dst, u16 count, const u16 filter1[3], const u16 filter2[3], u8 coeff, bool8 excludeBlack)
 {
-    sCurrentTintIndex = GetCurrentTintIndex();
-    return sTimeBlendColors[sCurrentTintIndex];
+    u32 i;
+    u16 r1, g1, b1, r2, g2, b2, r, g, b;
+    for (i = 0; i < count; ++i, ++src, ++dst)
+    {
+        if (*src == RGB_BLACK && excludeBlack) continue;
+
+        r1 = Q_8_8_TO_INT(GET_R(*src) * filter1[0]);
+        g1 = Q_8_8_TO_INT(GET_G(*src) * filter1[1]);
+        b1 = Q_8_8_TO_INT(GET_B(*src) * filter1[2]);
+
+        r2 = Q_8_8_TO_INT(GET_R(*src) * filter2[0]);
+        g2 = Q_8_8_TO_INT(GET_G(*src) * filter2[1]);
+        b2 = Q_8_8_TO_INT(GET_B(*src) * filter2[2]);
+
+        r = r1 + (((r2 - r1) * coeff * 547) >> 15);
+        g = g1 + (((g2 - g1) * coeff * 547) >> 15);
+        b = b1 + (((b2 - b1) * coeff * 547) >> 15);
+
+        r = min(r, 31);
+        g = min(g, 31);
+        b = min(b, 31);
+
+        *dst = RGB(r, g, b);
+    }
 }
 
-static void WriteBlendedPalette(const u16 *src, u16 *dst, u16 size)
+void RetintForDayNight(void)
 {
-    u32 tintColor = GetTintColor();
-    for (u32 i = 0; i < size; ++i)
-        dst[i] = ApplyBlend(tintColor, src[i]);
-}
+    s8 hour, minutes, nextHour, hourPhase;
+    u16 period;
 
-void UpdateDayNightTint(void)
-{
-    if (sCurrentTintIndex == GetCurrentTintIndex())
+    if (!ShouldTintOverworld())
         return;
 
-    LoadDayNightTilesetPalette(
-        gMapHeader.mapLayout->primaryTileset, BG_PLTT_ID(0), NUM_PALS_IN_PRIMARY * PLTT_SIZE_4BPP);
-    LoadDayNightTilesetPalette(gMapHeader.mapLayout->secondaryTileset,
-        BG_PLTT_ID(NUM_PALS_IN_PRIMARY),
-        (NUM_PALS_TOTAL - NUM_PALS_IN_PRIMARY) * PLTT_SIZE_4BPP);
+    GetLocalHoursAndMinutes(&hour, &minutes);
 
-    for (u32 i = 0; i < 12; ++i)
+    nextHour = (hour + 1) % 24;
+    hourPhase = minutes / MINUTES_PER_TINT_PERIOD;
+
+    period = hour * TINT_PERIODS_PER_HOUR + hourPhase;
+
+    if (!sDayNightControl.phase)
     {
-        u16 tag = GetObjectPaletteTag(i);
-        if (tag != 0x11FF)
-            PatchObjectDayNightPalette(tag, i);
+        if (!sDayNightControl.initialized || sDayNightControl.prevPeriod != period)
+        {
+            sDayNightControl.initialized = TRUE;
+            sDayNightControl.prevPeriod = sDayNightControl.currPeriod = period;
+            TintPalette_DayNight(gPlttPreDN, gPlttBufferUnfaded, BG_PLTT_SIZE >> 1, sTimeOfDayTints[hour], sTimeOfDayTints[nextHour], hourPhase, TRUE);
+            sDayNightControl.phase = 1;
+        }
+    }
+    else
+    {
+        TintPalette_DayNight(gPlttPreDN + (BG_PLTT_SIZE >> 1), gPlttBufferUnfaded + (BG_PLTT_SIZE >> 1), OBJ_PLTT_SIZE >> 1, sTimeOfDayTints[hour], sTimeOfDayTints[nextHour], hourPhase, TRUE);
+        if (gWeatherPtr->palProcessingState != WEATHER_PAL_STATE_SCREEN_FADING_IN &&
+            gWeatherPtr->palProcessingState != WEATHER_PAL_STATE_SCREEN_FADING_OUT)
+        {
+            CpuCopy16(gPlttBufferUnfaded, gPlttBufferFaded, PLTT_SIZE);
+            ApplyWeatherColorMapIfIdle(gWeatherPtr->gammaIndex);
+        }
+
+        sDayNightControl.phase = 0;
+    }
+}
+
+static void WriteBlendedPalette(u16 offset, u16 size)
+{
+    s8 hour, minutes, nextHour, hourPhase;
+    u16 period;
+    u8 tintType = ShouldTintOverworld();
+
+    if (ShouldTintOverworld())
+    {
+        GetLocalHoursAndMinutes(&hour, &minutes);
+    
+        nextHour = (hour + 1) % 24;
+        hourPhase = minutes / MINUTES_PER_TINT_PERIOD;
+    
+        period = hour * TINT_PERIODS_PER_HOUR + hourPhase;
+    
+        if (!sDayNightControl.initialized || sDayNightControl.currPeriod != period)
+        {
+            sDayNightControl.initialized = TRUE;
+            sDayNightControl.currPeriod = period;
+        }
+    
+        TintPalette_DayNight(&gPlttPreDN[offset], &gPlttBufferUnfaded[offset], size >> 1, sTimeOfDayTints[hour], sTimeOfDayTints[nextHour], hourPhase, FALSE);
+    }
+    else
+    {
+        CpuCopy16(&gPlttPreDN[offset], &gPlttBufferUnfaded[offset], size);
     }
 }
 
 static void LoadDayNightPalette(const void *src, u16 offset, u16 size)
 {
-    WriteBlendedPalette(src, gPlttBufferUnfaded + offset, size / 2);
-    // CpuCopy16(src, gPlttBufferUnfaded + offset, size);
+    CpuCopy16(src, gPlttPreDN + offset, size);
+    WriteBlendedPalette(offset, size);
     CpuCopy16(gPlttBufferUnfaded + offset, gPlttBufferFaded + offset, size);
 }
 

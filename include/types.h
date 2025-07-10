@@ -56,3 +56,6 @@ struct PACKED UCoords16
     u16 x;
     u16 y;
 };
+
+#define min(a, b) ((a) < (b) ? (a) : (b))
+#define max(a, b) ((a) >= (b) ? (a) : (b))

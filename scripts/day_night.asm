@@ -15,3 +15,12 @@ set_function_hook r3, PatchObjectDayNightPalette
 
 .org 0x80857bc
 set_function_hook r1, FieldEffectScript_LoadFadedPalette
+
+.org 0x8073a14
+set_function_hook r3, LoadCompressedPalette
+
+.org 0x8073a58
+set_function_hook r3, LoadPalette
+
+.org 0x8073a90
+set_function_hook r3, FillPalette

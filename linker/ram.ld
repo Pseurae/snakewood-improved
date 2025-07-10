@@ -35,6 +35,7 @@ gPlayerName = 0x2024ea4;
 gPlayTimeHours = 0x2024eb2;
 gPlayTimeMinutes = 0x2024eb4;
 gPlayTimeSeconds = 0x2024eb5;
+gPlayTimeVBlanks = 0x2024eb6;
 gDisplayedStringBattle = 0x20238cc;
 gBattleBufferA = 0x2023a60;
 
@@ -56,6 +57,7 @@ gMenuTextTileOffset = 0x202e9ce;
 gPlttBufferUnfaded = 0x202eac8;
 gPlttBufferFaded = 0x202eec8;
 gPaletteFade = 0x202f388;
+gPaletteDecompressionBuffer = 0x202f39c;
 gTrainerBattleOpponent = 0x202ff5e;
 gFieldEffectArguments = 0x202ff84;
 sPokeMenuCursorPos = 0x202ffa8;
@@ -88,3 +90,4 @@ gScriptContext1 = 0x3007440;
 sMessageBoxMode = 0x30074b8;
 gWindowTemplate_Contest_MoveDescription = 0x3004210;
 gBattleTextBuff1 = 0x30041c0;
+

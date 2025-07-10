@@ -3,6 +3,7 @@ memset_ = 0x81e275c | 1;
 CpuFastSet = 0x81e07e8 | 1;
 CpuSet = 0x81e07ec | 1;
 LZ77UnCompVram = 0x81e07f0 | 1;
+LZ77UnCompWram = 0x81e07f4 | 1;
 
 __divsi3 = 0x81e0868 | 1;
 __modsi3 = 0x81e0978 | 1;
