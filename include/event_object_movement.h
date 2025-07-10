@@ -25,6 +25,8 @@ u8 LONG_CALL SpawnSpecialObjectEvent(struct ObjectEventTemplate *objectEventTemp
 void LONG_CALL RemoveObjectEvent(struct ObjectEvent *objectEvent);
 u8 LONG_CALL SpawnSpecialObjectEventParametrized(
     u8 graphicsId, u8 movementType, u8 localId, s16 x, s16 y, u8 elevation);
+u8 LONG_CALL FindObjectEventPaletteIndexByTag(u16 tag);
+void LONG_CALL PatchObjectPalettes(const u16 *paletteTags, u8 minSlot, u8 maxSlot);
 
 #define GROUND_EFFECT_FLAG_TALL_GRASS_ON_SPAWN   (1 << 0)
 #define GROUND_EFFECT_FLAG_TALL_GRASS_ON_MOVE    (1 << 1)
@@ -52,3 +54,9 @@ u8 LONG_CALL SpawnSpecialObjectEventParametrized(
 
 extern struct ObjectEvent gObjectEvents[OBJECT_EVENTS_COUNT];
 extern void (*const gGroundEffectFuncs[20])(struct ObjectEvent *objEvent, struct Sprite *sprite);
+
+extern const u16 *const gObjectPaletteTagSets[];
+extern const struct SpritePalette gObjectEventSpritePalettes[];
+
+extern u8 gCurrentReflectionType;
+extern u16 gCurrentSpecialObjectPaletteTag;

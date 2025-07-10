@@ -2,8 +2,9 @@
 #include "day_night.h"
 #include "bios.h"
 #include "decompress.h"
-#include "overworld.h"
+#include "event_object_movement.h"
 #include "fieldmap.h"
+#include "overworld.h"
 #include "palette.h"
 #include "save_time_util.h"
 #include "sprite.h"
@@ -57,6 +58,7 @@ void UpdateDayNightTint(void)
     LoadDayNightTilesetPalette(gMapHeader.mapLayout->secondaryTileset,
         BG_PLTT_ID(NUM_PALS_IN_PRIMARY),
         (NUM_PALS_TOTAL - NUM_PALS_IN_PRIMARY) * PLTT_SIZE_4BPP);
+    PatchObjectPalettes(gObjectPaletteTagSets[gCurrentReflectionType], 0, 10);
 }
 
 static void LoadDayNightPalette(const void *src, u16 offset, u16 size)
@@ -87,9 +89,6 @@ void LoadDayNightTilesetPalette(const struct Tileset *tileset, int destOffset, i
         }
     }
 }
-
-extern const struct SpritePalette gObjectEventSpritePalettes[];
-u8 LONG_CALL FindObjectEventPaletteIndexByTag(u16 tag);
 
 void PatchObjectDayNightPalette(u16 paletteTag, u8 paletteSlot)
 {

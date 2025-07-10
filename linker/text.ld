@@ -52,6 +52,7 @@ PlayerRideWaterCurrent = 0x80593dc | 1;
 PlayerGoSpeed4 = 0x80593f4 | 1;
 PlayerOnBikeCollide = 0x8059424 | 1;
 PlayerTurnInPlace = 0x805946c | 1;
+PatchObjectPalettes = 0x805beb8 | 1;
 FindObjectEventPaletteIndexByTag = 0x805bee4 | 1;
 IsRunningDisallowed = 0x80e5dec | 1;
 PlayerJumpLedge = 0x805949c | 1;

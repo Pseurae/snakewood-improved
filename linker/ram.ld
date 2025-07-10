@@ -73,6 +73,8 @@ gSentPokesToOpponent = 0x2024dea;
 /* gRepelMenuChoices = 0x203a400; */
 /* gLastUsedRegisteredItem = 0x203a404; */
 
+gCurrentReflectionType = 0x30005a4;
+gCurrentSpecialObjectPaletteTag = 0x30005a6;
 gMartInfo = 0x3000708;
 gMain = 0x3001770;
 gPlayerParty = 0x3004360;
