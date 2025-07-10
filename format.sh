@@ -1,0 +1,1 @@
+find . -type d -name tools -prune -o  -name *.c -o -name *.h -print | xargs clang-format -i
