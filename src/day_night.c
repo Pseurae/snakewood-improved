@@ -58,7 +58,13 @@ void UpdateDayNightTint(void)
     LoadDayNightTilesetPalette(gMapHeader.mapLayout->secondaryTileset,
         BG_PLTT_ID(NUM_PALS_IN_PRIMARY),
         (NUM_PALS_TOTAL - NUM_PALS_IN_PRIMARY) * PLTT_SIZE_4BPP);
-    PatchObjectPalettes(gObjectPaletteTagSets[gCurrentReflectionType], 0, 10);
+
+    for (u32 i = 0; i < 12; ++i)
+    {
+        u16 tag = GetObjectPaletteTag(i);
+        if (tag != 0x11FF)
+            PatchObjectDayNightPalette(tag, i);
+    }
 }
 
 static void LoadDayNightPalette(const void *src, u16 offset, u16 size)

@@ -27,6 +27,7 @@ u8 LONG_CALL SpawnSpecialObjectEventParametrized(
     u8 graphicsId, u8 movementType, u8 localId, s16 x, s16 y, u8 elevation);
 u8 LONG_CALL FindObjectEventPaletteIndexByTag(u16 tag);
 void LONG_CALL PatchObjectPalettes(const u16 *paletteTags, u8 minSlot, u8 maxSlot);
+u16 LONG_CALL GetObjectPaletteTag(u8 paletteIndex);
 
 #define GROUND_EFFECT_FLAG_TALL_GRASS_ON_SPAWN   (1 << 0)
 #define GROUND_EFFECT_FLAG_TALL_GRASS_ON_MOVE    (1 << 1)
