@@ -1,8 +1,27 @@
 #pragma once
 
+#define NUM_PALS_IN_PRIMARY 6
+#define NUM_PALS_TOTAL      12
+
+struct Tileset
+{
+    bool8 isCompressed;
+    bool8 isSecondary;
+    const u32 *tiles;
+    const u16 (*palettes)[16];
+    const u16 *metatiles;
+    const u16 *metatileAttributes;
+    void (*callback)(void);
+};
+
 struct MapLayout
 {
-    u8 data[0x14];
+    s32 width;
+    s32 height;
+    const u16 *border;
+    const u16 *map;
+    const struct Tileset *primaryTileset;
+    const struct Tileset *secondaryTileset;
 };
 
 struct MapEvents

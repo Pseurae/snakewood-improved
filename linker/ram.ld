@@ -34,6 +34,7 @@ gCreatingSpriteTemplate = 0x2024e8c;
 gPlayerName = 0x2024ea4;
 gPlayTimeHours = 0x2024eb2;
 gPlayTimeMinutes = 0x2024eb4;
+gPlayTimeSeconds = 0x2024eb5;
 gDisplayedStringBattle = 0x20238cc;
 gBattleBufferA = 0x2023a60;
 

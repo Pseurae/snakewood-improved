@@ -14,13 +14,9 @@ void Shop_PrintItemDescText(void)
     if (gMartInfo.choicesAbove + gMartInfo.cursor != gMartInfo.itemCount)
     {
         if (gMartInfo.martType == 0)
-        {
             text = ItemId_GetDescription(gMartInfo.itemList[gMartInfo.choicesAbove + gMartInfo.cursor]);
-        }
         else
-        {
             text = gDecorations[gMartInfo.itemList[gMartInfo.choicesAbove + gMartInfo.cursor]].description;
-        }
     }
     else
     {

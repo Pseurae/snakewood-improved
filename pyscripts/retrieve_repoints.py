@@ -18,7 +18,8 @@ if __name__ == "__main__":
     # add_offset_to_check("gMoveNames", 0x81f8320)
     # add_offset_to_check("gBattleAnims_Moves", 0x81c7168)
     # add_offset_to_check("gMoveDescriptions", 0x83c09d8)
-    add_offset_to_check("gTrainers", 0x81f04fc, 40)
+    # add_offset_to_check("gTrainers", 0x81f04fc, 40)
+    # add_offset_to_check("CB2_Overworld", 0x80543a5)
 
     rom = open("snakewood.gba", "rb")
     rom.seek(192)

@@ -26,6 +26,8 @@ IncludeCategories:
     Priority: -1
   - Regex: '^"constants/'
     Priority: 3
+  - Regex: '^"data/'
+    Priority: 4
   - Regex: '^".+'
     Priority: 2
 SortIncludes: true

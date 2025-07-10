@@ -5,6 +5,7 @@
 #include "palette.h"
 #include "text.h"
 #include "constants/gba.h"
+#include "constants/rgb.h"
 
 static const u8 sText_ErrorText[] = _("{COLOR RED}ERROR\n{COLOR DARK_GREY}Flash memory not detected.\n\nSet your "
                                       "emulator's save type\nsetting to Flash 1MB / 128K\nand reload the rom.");

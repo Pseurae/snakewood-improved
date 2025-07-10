@@ -15,6 +15,7 @@
 #include "task.h"
 #include "constants/gba.h"
 #include "constants/pokemon.h"
+#include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/species.h"
 

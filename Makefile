@@ -24,7 +24,7 @@ ASM_OBJS := $(ASM_FILES:assembly/%.s=build/assembly/%.o)
 
 OBJ_FILES ?= $(SRC_OBJS) $(ASM_OBJS)
 
-CFLAGS = -Wall -std=c99 -O2 -Iinclude -g -mthumb -mthumb-interwork -specs=gba.specs -x c -c -Wparentheses -Wno-unused -Werror
+CFLAGS = -Wall -std=c99 -O2 -Iinclude -Isrc -g -mthumb -mthumb-interwork -specs=gba.specs -x c -c -Wparentheses -Wno-unused -Werror
 
 AS := $(PREFIX)as
 ASFLAGS  := -mthumb -I assembly -I include

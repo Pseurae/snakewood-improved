@@ -6,6 +6,10 @@ void LONG_CALL CpuSet(const void *src, void *dest, u32 control);
 void LONG_CALL CpuFastSet(const void *src, void *dest, u32 control);
 void LONG_CALL LZ77UnCompVram(const void *src, void *dest);
 
+#define CPU_SET_SRC_FIXED 0x01000000
+#define CPU_SET_16BIT     0x00000000
+#define CPU_SET_32BIT     0x04000000
+
 #define CPU_FILL(value, dest, size, bit)                                                                               \
     {                                                                                                                  \
         vu##bit tmp = (vu##bit)(value);                                                                                \
