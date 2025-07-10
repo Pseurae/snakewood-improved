@@ -5,6 +5,8 @@
 #include "main.h"
 #include "palette.h"
 
+#if 0
+
 void CB2_Overworld(void)
 {
     bool8 fading = (gPaletteFade.active != 0);
@@ -15,3 +17,5 @@ void CB2_Overworld(void)
     if (fading)
         SetFieldVBlankCallback();
 }
+
+#endif

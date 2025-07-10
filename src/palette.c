@@ -1,10 +1,11 @@
 #include "types.h"
-#include "bios.h"
 #include "palette.h"
+#include "bios.h"
 #include "day_night.h"
 
 extern u8 gPaletteDecompressionBuffer[0x400];
 
+#if 0
 void LoadCompressedPalette(const void *src, u16 offset, u16 size)
 {
     LZ77UnCompWram(src, gPaletteDecompressionBuffer);
@@ -26,3 +27,5 @@ void FillPalette(u16 value, u16 offset, u16 size)
     CpuFill16(value, gPlttBufferUnfaded + offset, size);
     CpuFill16(value, gPlttBufferFaded + offset, size);
 }
+
+#endif

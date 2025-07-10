@@ -3,8 +3,8 @@
 extern u16 gPlttBufferUnfaded[];
 extern u16 gPlttBufferFaded[];
 
-void LoadCompressedPalette(const void *src, u16 offset, u16 size);
-void LoadPalette(const void *src, u16 offset, u16 size);
+void LONG_CALL LoadCompressedPalette(const void *src, u16 offset, u16 size);
+void LONG_CALL LoadPalette(const void *src, u16 offset, u16 size);
 void FillPalette(u16 value, u16 offset, u16 size);
 
 void LONG_CALL LoadCompressedObjectPalette(const void *src);

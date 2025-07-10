@@ -1,23 +1,25 @@
+#if 0
+
 #include "types.h"
 #include "day_night.h"
 #include "bios.h"
 #include "decompress.h"
 #include "event_object_movement.h"
+#include "field_weather.h"
 #include "fieldmap.h"
+#include "fixed_math.h"
 #include "overworld.h"
 #include "palette.h"
 #include "save_time_util.h"
 #include "sprite.h"
-#include "field_weather.h"
-#include "fixed_math.h"
+#include "constants/field_weather.h"
 #include "constants/gba.h"
 #include "constants/rgb.h"
-#include "constants/field_weather.h"
 #include "data/day_night/tints.h"
 
-#define TINT_PERIODS_PER_HOUR 60
+#define TINT_PERIODS_PER_HOUR   60
 #define MINUTES_PER_TINT_PERIOD (60 / TINT_PERIODS_PER_HOUR)
-#define TINT_PERIODS_COUNT (24 * TINT_PERIODS_PER_HOUR)
+#define TINT_PERIODS_COUNT      (24 * TINT_PERIODS_PER_HOUR)
 
 EWRAM_DATA u16 gPlttPreDN[0x200] = { 0 };
 
@@ -188,3 +190,5 @@ u8 LoadDayNightSpritePalette(const struct SpritePalette *palette)
 
     return index;
 }
+
+#endif

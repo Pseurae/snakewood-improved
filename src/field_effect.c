@@ -34,6 +34,8 @@ void FlyInFieldEffect_BirdSwoopDown(struct Task *task)
     }
 }
 
+#if 0
+
 void FieldEffectScript_LoadFadedPalette(u8 **script)
 {
     struct SpritePalette *palette = (struct SpritePalette *)FieldEffectScript_ReadWord(script);
@@ -41,3 +43,5 @@ void FieldEffectScript_LoadFadedPalette(u8 **script)
     UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(palette->tag));
     (*script) += 4;
 }
+
+#endif
