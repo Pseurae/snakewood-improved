@@ -1,7 +1,10 @@
 #include "types.h"
 #include "field_effect.h"
+#include "day_night.h"
 #include "event_object_movement.h"
 #include "field_player_avatar.h"
+#include "field_weather.h"
+#include "sprite.h"
 #include "task.h"
 
 void FlyInFieldEffect_BirdSwoopDown(struct Task *task)
@@ -29,4 +32,12 @@ void FlyInFieldEffect_BirdSwoopDown(struct Task *task)
         StartFlyBirdSwoopDown(task->data[1]);
         SetFlyBirdPlayerSpriteId(task->data[1], objectEvent->spriteId);
     }
+}
+
+void FieldEffectScript_LoadFadedPalette(u8 **script)
+{
+    struct SpritePalette *palette = (struct SpritePalette *)FieldEffectScript_ReadWord(script);
+    LoadDayNightSpritePalette(palette);
+    UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(palette->tag));
+    (*script) += 4;
 }

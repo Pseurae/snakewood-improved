@@ -12,3 +12,6 @@ set_function_hook r3, LoadDayNightTilesetPalette
 
 .org 0x805be80
 set_function_hook r3, PatchObjectDayNightPalette
+
+.org 0x80857bc
+set_function_hook r1, FieldEffectScript_LoadFadedPalette

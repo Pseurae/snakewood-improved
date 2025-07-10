@@ -101,3 +101,18 @@ void PatchObjectDayNightPalette(u16 paletteTag, u8 paletteSlot)
     u8 paletteIndex = FindObjectEventPaletteIndexByTag(paletteTag);
     LoadDayNightPalette(gObjectEventSpritePalettes[paletteIndex].data, 16 * paletteSlot + 0x100, 0x20);
 }
+
+u8 LoadDayNightSpritePalette(const struct SpritePalette *palette)
+{
+    u8 index = IndexOfSpritePaletteTag(palette->tag);
+
+    if (index != 0xFF)
+        return index;
+
+    index = AllocSpritePalette(palette->tag);
+
+    if (index != 0xFF)
+        LoadDayNightPalette(palette->data, index * 16 + 0x100, 32);
+
+    return index;
+}
