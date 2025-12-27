@@ -1,4 +1,6 @@
-.global HandleItemRemoval
+.global HandleItemRemoval, NewGameInitDataHook
+
+.align 2
 HandleItemRemoval:
 push {r0-r7}
 mov r0, r3
@@ -9,7 +11,7 @@ ldr r2, =(0x80a3db4 | 1)
 bx r2
 
 @ NewGameInitData already zeroes out the free space section
-.global NewGameInitDataHook
+.align 2
 NewGameInitDataHook:
 ldr r4, =(0x80a3714 | 1) @ ClearBag
 bl bx_r4

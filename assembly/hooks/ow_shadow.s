@@ -1,4 +1,6 @@
 .global UpdateShadowFieldEffect_Hook
+
+.align 2
 UpdateShadowFieldEffect_Hook:
 ldrh r3, [r1, #0x22]
 add r0, r0, r3

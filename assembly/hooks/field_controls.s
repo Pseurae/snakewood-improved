@@ -1,4 +1,6 @@
 .global ProcessPlayerFieldInput_Hook
+
+.align 2
 ProcessPlayerFieldInput_Hook:
 mov r0, r5
 bl ProcessPlayerFieldInput_Rest

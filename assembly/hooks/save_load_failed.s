@@ -1,4 +1,6 @@
 .global NoFlashMemoryCallback
+
+.align 2
 NoFlashMemoryCallback:
 push {r0}
 bl MgbaOpen

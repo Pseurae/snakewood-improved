@@ -1,4 +1,6 @@
 .global PS_Split_Hook
+
+.align 2
 PS_Split_Hook:
 ldr r1, =(gCurrentMove)
 ldrh r1, [r1]

@@ -1,5 +1,7 @@
 .global __aeabi_idivmod, __aeabi_uidivmod, __aeabi_idiv, __aeabi_uidiv, memset, memcpy
 
+.align 2
+
 .force_thumb
 .thumb_func
 __aeabi_idivmod:

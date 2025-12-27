@@ -1,4 +1,6 @@
 .global Autorun_Hook
+
+.align 2
 Autorun_Hook:
 mov r0, #2
 and r4, r0

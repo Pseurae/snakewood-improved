@@ -1,4 +1,6 @@
 .global FadeScreenFix_Hook
+
+.align 2
 FadeScreenFix_Hook:
     push {r0-r7}
     bl ReloadMapPalettes

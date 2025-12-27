@@ -4,6 +4,7 @@
 @ 0x80201fa - return
 @ 0x80201e0 - else branch
 @ r5 - viaSentIn
+.align 2
 ExpAllHook1:
 ldr r4, =(gExpAllEnabled)
 ldrb r4, [r4]
@@ -46,6 +47,7 @@ bx r0
 @ 0x8020276 - hook via r3
 @ 0x80202a0 - next condition
 @ 0x80202c8 - end condition
+.align 2
 ExpAllHook2:
 push {r0-r7}
 @ Check if Pokemon is an egg
@@ -120,6 +122,7 @@ bx r7
 
 @ 0x802033c - hook via r1
 @ 0x8020386 - return
+.align 2
 ExpAllHook3:
 push {r0-r7}
 
