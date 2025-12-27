@@ -17,8 +17,15 @@ mov r2, #0x60
 .endarea
 
 ; Nop out all branches for 2-digit scrollers (Force 3-digits)
-set_nop 0x80a64d2
-set_nop 0x80a5f40
-set_nop 0x80a5386
-set_nop 0x80a6ccc
+set_nop 0x80a64d2 ; Selling
+set_nop 0x80a5f40 ; Tossing
+set_nop 0x80a5386 ; Sell Roller
+set_nop 0x80a6ccc ; PC Store
+
+; Limit selling to 99 items
+.org 0x80a536e
+.area 2, 0x0
+mov r1, #99
+.endarea
+
 .endif

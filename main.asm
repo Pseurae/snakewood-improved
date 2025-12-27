@@ -60,7 +60,6 @@
 .include "scripts/center_disregard_egg.asm"
 .include "scripts/colored_field_moves.asm"
 .include "scripts/colored_stats.asm"
-.include "scripts/day_night.asm"
 .include "scripts/emerald_save_prompt.asm"
 .include "scripts/evolution_changes.asm"
 .include "scripts/exp_all.asm"
