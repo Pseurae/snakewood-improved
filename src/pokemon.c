@@ -6,6 +6,9 @@
 #include "constants/items.h"
 #include "constants/pokemon.h"
 #include "constants/species.h"
+#include "data/battle_moves.h"
+#include "data/battle_moves_split.h"
+#include "data/pokemon/level_up_learnsets.h"
 
 bool8 CheckIfMonCanUseHM(struct Pokemon *mon, u16 hm)
 {

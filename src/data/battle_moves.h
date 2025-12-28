@@ -1,6 +1,6 @@
 #include "types.h"
-#include "constants/battle.h"
 #include "pokemon.h"
+#include "constants/battle.h"
 #include "constants/move_effects.h"
 #include "constants/moves.h"
 #include "constants/pokemon.h"
