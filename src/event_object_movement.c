@@ -85,8 +85,6 @@ void GetGroundEffectFlags_Shadow(struct ObjectEvent *objEvent, u32 *flags)
     }
 }
 
-#include "debug.h"
-
 void GroundEffect_Shadow(struct ObjectEvent *objEvent, struct Sprite *sprite)
 {
     (void)sprite;

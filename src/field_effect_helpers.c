@@ -1,6 +1,5 @@
 #include "types.h"
 #include "field_effect_helpers.h"
-#include "debug.h"
 #include "event_object_movement.h"
 #include "fieldmap.h"
 #include "metatile_behavior.h"

@@ -1,7 +1,6 @@
 #include "types.h"
 #include "stats_viewer.h"
 #include "bios.h"
-#include "debug.h"
 #include "field_weather.h"
 #include "main.h"
 #include "menu.h"
