@@ -6,6 +6,7 @@
 #include "flags.h"
 #include "item_menu.h"
 #include "main.h"
+#include "save_time_util.h"
 #include "script.h"
 #include "sound.h"
 #include "constants/flags.h"
@@ -25,8 +26,6 @@ int ProcessPlayerFieldInput_Rest(struct FieldInput *input)
 
     return FALSE;
 }
-
-#include "save_time_util.h"
 
 static const u8 sText_DisabledAutorun[] = _("Autorun {COLOR RED}disabled{COLOR DARK_GREY}.");
 static const u8 sText_EnabledAutorun[] = _("Autorun {COLOR GREEN}enabled{COLOR DARK_GREY}.");

@@ -67,10 +67,6 @@ bl ExpAllHook2_GetMonData
 cmp r0, #1
 beq ExpAllHook2_ConditionBlock
 
-push {r0-r7}
-bl PrintR0
-pop {r0-r7}
-
 @ Check if Exp All is enabled
 ldr r3, =(gExpAllEnabled)
 ldrb r3, [r3]

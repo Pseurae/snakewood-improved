@@ -42,50 +42,29 @@ static int check_file(t_elf *const elf)
     return (1);
 }
 
-int parse_file(char const *const src_file, char const *const dst_file, t_elf *const elf)
+int parse_file(char const *const src_file, t_elf *const elf)
 {
     int fd;
     unsigned int len;
     void *buf;
 
-    if ((fd = open(src_file, O_RDONLY)) == -1)
-    {
+    if ((fd = open(src_file, O_RDWR)) == -1)
         return (fprintf(stderr, "open %s\n", src_file), 0);
-    }
 
     if ((len = lseek(fd, 0, SEEK_END)) == (unsigned int)-1)
-    {
-        return (fprintf(stderr, "lseek\n"), 0);
-    }
+        return (fprintf(stderr, "lseek SEEK_END\n"), 0);
 
-    if (!(buf = mmap(NULL, len, PROT_READ, MAP_SHARED, fd, 0)))
-    {
+    if (lseek(fd, 0, SEEK_SET) == -1)
+        return (fprintf(stderr, "lseek SEEK_SET 0\n"), 0);
+
+    if (!(buf = mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0)))
         return (fprintf(stderr, "mmap source\n"), 0);
-    }
 
-    close(fd);
-
-    if ((fd = open(dst_file, O_RDWR | O_TRUNC | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)) == -1)
-    {
-        return (fprintf(stderr, "open %s\n", dst_file), 0);
-    }
-
-    if (ftruncate(fd, len) == -1)
-    {
-        return (fprintf(stderr, "ftruncate %s\n", dst_file), 0);
-    }
-
-    if (!(elf->ehdr = mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0)))
-    {
-        return (fprintf(stderr, "mmap dest\n"), 0);
-    }
-
-    memcpy(elf->ehdr, buf, len);
-
+    elf->ehdr = buf;
     elf->len = len;
     elf->end = (void *)elf->ehdr + elf->len;
 
-    return (check_file(elf));
+    return check_file(elf);
 }
 
 int modify_ewram_symbols(t_elf *const elf)
@@ -168,10 +147,10 @@ int main(int argc, char *argv[])
 {
     t_elf elf;
 
-    if (argc < 3)
-        return (fprintf(stderr, "%s INPUT OUTPUT", argv[0]), 1);
+    if (argc < 2)
+        return (fprintf(stderr, "%s ELF_FILE\n", argv[0]), 1);
 
-    if (!parse_file(argv[1], argv[2], &elf) || !modify_elf(&elf))
+    if (!parse_file(argv[1], &elf) || !modify_elf(&elf))
         return 1;
 
     return 0;

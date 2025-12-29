@@ -24,7 +24,7 @@
 .endregion
 
 .autoregion
-.importobj "build/linked_processed.o"
+.importobj "build/linked.o"
 .endautoregion
 
 .include "scripts/predefs/common.asm"

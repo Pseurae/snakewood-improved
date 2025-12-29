@@ -1,7 +1,6 @@
 #!/usr/bin/env make
 
 INPUT          := snakewood.gba
-INPUT_DECAPPED := snakewood_decapped.gba
 OUTPUT         := output.gba
 
 ifeq ($(strip $(DEVKITARM)),)
@@ -33,10 +32,9 @@ LD = $(PREFIX)ld
 LDFLAGS = -i rom.ld -T linker.ld
 
 ARMIPS := armips
-ARMIPSFLAGS := -strequ INPUT_FILE $(INPUT_DECAPPED) -strequ OUTPUT_FILE $(OUTPUT)
+ARMIPSFLAGS := -strequ INPUT_FILE $(INPUT) -strequ OUTPUT_FILE $(OUTPUT)
 
 ELFEDIT := tools/elfedit/elfedit$(EXE)
-DECAP   := tools/decap/decap$(EXE)
 PREPROC := tools/preproc/preproc$(EXE)
 SCANINC := tools/scaninc/scaninc$(EXE)
 
@@ -60,12 +58,10 @@ include $(OBJ_FILES:%.o=%.d)
 endif
 
 all: $(OUTPUT)
-	@$(DECAP) $(INPUT) $(INPUT_DECAPPED)
-	@echo "$(DECAP) $(INPUT) $(INPUT_DECAPPED)"
 	@$(ARMIPS) $(ARMIPSFLAGS) main.asm -sym2 output.map
 	@echo "$(ARMIPS) <flags> main.asm -sym2 output.map"
 
-$(OUTPUT): build/linked_processed.o
+$(OUTPUT): build/linked.o
 
 format:
 	@find . -not -path "./tools/*" -name *.c -o -not -path "./tools/*" -name *.h | xargs clang-format -i
@@ -75,16 +71,15 @@ tools:
 	@$(MAKE) -C tools/elfedit
 	@$(MAKE) -C tools/preproc
 	@$(MAKE) -C tools/scaninc
-	@$(MAKE) -C tools/decap
 
 clean_tools:
 	@$(MAKE) -C tools/elfedit clean
 	@$(MAKE) -C tools/preproc clean
 	@$(MAKE) -C tools/scaninc clean
-	@$(MAKE) -C tools/decap clean
 
 clean: clean_tools
 	rm -rf build
+	rm -f output.gba
 
 build/assembly/%.d: assembly/%.s
 	@mkdir -p $(dir $@)
@@ -108,6 +103,4 @@ build/linked.o: $(OBJ_FILES) linker.ld rom.ld linker/**.ld
 	@mkdir -p build
 	@echo "$(LD) $(LDFLAGS) -Map build/linked.map -o $@ <objects> <libs>"
 	@$(LD) $(LDFLAGS) -Map build/linked.map -o $@ $(OBJ_FILES)
-
-build/linked_processed.o: build/linked.o
-	@$(ELFEDIT) $< $@
+	@$(ELFEDIT) $@
