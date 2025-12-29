@@ -1,0 +1,4 @@
+.include "scripts/decap/ability_names.asm"
+.include "scripts/decap/item_names.asm"
+.include "scripts/decap/species.asm"
+.include "scripts/decap/trainer_class_names.asm"
