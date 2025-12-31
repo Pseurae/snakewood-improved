@@ -1,8 +1,5 @@
 .macro @decap_item_name, i, name
-.org 0x83c5564 + i * 44
-.area 14, 0x0
-.string name
-.endarea
+@decap_table 0x83c5564, 14, 44, i, name
 .endmacro
 
 @decap_item_name ITEM_NONE, "????????"

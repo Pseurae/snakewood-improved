@@ -7,11 +7,13 @@
 
 .include "config.asm"
 
+.include "scripts/include/abilities.asm"
 .include "scripts/include/fldeff.asm"
 .include "scripts/include/items.asm"
 .include "scripts/include/moves.asm"
 .include "scripts/include/scripts.asm"
 .include "scripts/include/species.asm"
+.include "scripts/include/trainer_classes.asm"
 .include "scripts/include/types.asm"
 .include "scripts/include/vars_flags.asm"
 
