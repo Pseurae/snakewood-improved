@@ -52,6 +52,7 @@ if __name__ == "__main__":
     trainer_data_file = open('trainer_data.txt', 'w')
     trainer_repoints_file = open('trainer_repoints.txt', 'w')
     trainer_defines_file = open('trainer_defines.txt', 'w')
+    trainer_names_file = open('trainer_names.txt', 'w')
 
     for _ in range(694):
         raw_data = rom.read(40)
@@ -69,6 +70,9 @@ if __name__ == "__main__":
             continue
 
         rom.seek(party_ptr - 0x8000000, 0)
+
+        trainer_names_file.write(name)
+        trainer_names_file.write("\n")
 
         varname = name_to_varname(name, count + 1)
 

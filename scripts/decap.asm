@@ -22,3 +22,4 @@
 .include "scripts/decap/nature_names.asm"
 .include "scripts/decap/species.asm"
 .include "scripts/decap/trainer_class_names.asm"
+.include "scripts/decap/trainer_names.asm"
