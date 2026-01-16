@@ -11,7 +11,7 @@ EventScript_AbilityChanger:
 
     msgbox Text_AbilityChanger_WhichPokemon, MSGBOX_DEFAULT
 
-    callnative (0x80f9a0c | 1)
+    special SelectMonForNPCTrade
     waitstate
 
     lock
@@ -38,7 +38,7 @@ EventScript_AbilityChanger:
     end
 
 EventScript_AbilityChanger_CheckIfEgg:
-    specialvar_ VAR_RESULT, 0x147
+    specialvar VAR_RESULT, ScriptGetPartyMonSpecies
     compare VAR_RESULT, SPECIES_EGG
 
     goto_if_eq EventScript_AbilityChanger_IsEgg

@@ -61,12 +61,12 @@ EventScript_NatureChanger_IsEgg:
     end
 
 EventScript_NatureChanger_ChoosePokemon:
-    callnative (0x80f9a0c | 1)
+    special SelectMonForNPCTrade
     waitstate
     return
 
 EventScript_NatureChanger_CheckIfEgg:
-    specialvar_ VAR_RESULT, 0x147
+    specialvar VAR_RESULT, ScriptGetPartyMonSpecies
     compare VAR_RESULT, SPECIES_EGG
 
     goto_if_eq EventScript_NatureChanger_IsEgg

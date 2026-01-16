@@ -3,7 +3,7 @@
 EventScript_OpenMapFromLButton:
 	lockall
 	fadescreen FADE_TO_BLACK
-	callnative FieldShowRegionMap
+	special FieldShowRegionMap
 	waitstate
 	releaseall
 	end
