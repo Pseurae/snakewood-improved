@@ -1,19 +1,19 @@
 @decap 0x83e6ff4, "Littleroot Town"    // Littleroot Town
-@decap 0x83e7006, "Oldale  Town"       // Oldale  Town
-@decap 0x83e7014, "Dewford  Town"      // Dewford  Town
+@decap 0x83e7006, "Oldale Town"       // Oldale  Town
+@decap 0x83e7014, "Dewford Town"      // Dewford  Town
 @decap 0x86b0ec0, "Shakya Monastery"   // Shakya Monastery
-@decap 0x83e7034, "Fallarbor  Town"    // Fallarbor  Town
+@decap 0x83e7034, "Fallarbor Town"    // Fallarbor  Town
 @decap 0x83e7045, "Verdanturf Ruins"   // Verdanturf Ruins
-@decap 0x83e7057, "Pacifidlog  Town"   // Pacifidlog  Town
-@decap 0x83e7069, "Petalburg  City"    // Petalburg  City
-@decap 0x83e707a, "Slateport  City"    // Slateport  City
-@decap 0x83e708b, "Mauville  City"     // Mauville  City
-@decap 0x83e709b, "Rustboro  City"     // Rustboro  City
-@decap 0x83e70ab, "Fortree  City"      // Fortree  City
-@decap 0x83e70ba, "Lilycove  City"     // Lilycove  City
+@decap 0x83e7057, "Pacifidlog Town"   // Pacifidlog  Town
+@decap 0x83e7069, "Petalburg City"    // Petalburg  City
+@decap 0x83e707a, "Slateport City"    // Slateport  City
+@decap 0x83e708b, "Mauville City"     // Mauville  City
+@decap 0x83e709b, "Rustboro City"     // Rustboro  City
+@decap 0x83e70ab, "Fortree City"      // Fortree  City
+@decap 0x83e70ba, "Lilycove City"     // Lilycove  City
 @decap 0x86b1984, "Fort Draco"         // Fort Draco
-@decap 0x83e70da, "Sootopolis  City"   // Sootopolis  City
-@decap 0x83e70ec, "Ever Grande  City"  // Ever Grande  City
+@decap 0x83e70da, "Sootopolis City"   // Sootopolis  City
+@decap 0x83e70ec, "Ever Grande City"  // Ever Grande  City
 @decap 0x83e70ff, "Route 101"          // Route 101
 @decap 0x83e7109, "Route 102"          // Route 102
 @decap 0x83e7113, "Route 103"          // Route 103

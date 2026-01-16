@@ -1,8 +1,5 @@
 .macro @decap_species_name, i, name
-.org 0x81f716c + i * 11
-.area 11, 0x0
-.string name
-.endarea
+@decap_table 0x81f716c, 11, 11, i, name
 .endmacro
 
 @decap_species_name SPECIES_NONE, "??????????"

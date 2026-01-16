@@ -281,3 +281,4 @@ HandleLowHpMusicChange = 0x80324f8 | 1;
 FieldEffectScript_ReadWord = 0x8085774 | 1;
 UpdateSpritePaletteWithWeather = 0x807d78c | 1;
 ApplyWeatherColorMapIfIdle = 0x807d5bc | 1;
+FieldShowRegionMap = 0x810e414 | 1;

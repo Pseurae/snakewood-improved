@@ -13,12 +13,17 @@
 #include "constants/gba.h"
 #include "constants/songs.h"
 
+extern u8 EventScript_OpenMapFromLButton[];
+
 static bool8 EnableAutoRun(void);
+static bool8 OpenTownMap(void);
 
 int ProcessPlayerFieldInput_Rest(struct FieldInput *input)
 {
-
     if (input->pressedSelectButton && UseRegisteredKeyItemFromField())
+        return TRUE;
+
+    if ((gMain.newKeys & L_BUTTON) == L_BUTTON && OpenTownMap())
         return TRUE;
 
     if ((gMain.newKeys & R_BUTTON) == R_BUTTON && EnableAutoRun())
@@ -47,5 +52,11 @@ static bool8 EnableAutoRun(void)
     ShowFieldMessageInstant(gAutorunEnabled ? sText_EnabledAutorun : sText_DisabledAutorun);
     ScriptContext1_SetupScript(EventScript_CloseAutorunMessage);
 
+    return TRUE;
+}
+
+static bool8 OpenTownMap(void)
+{
+    ScriptContext1_SetupScript(EventScript_OpenMapFromLButton);
     return TRUE;
 }
