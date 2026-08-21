@@ -22,10 +22,29 @@ set_nop 0x80a5f40 ; Tossing
 set_nop 0x80a5386 ; Sell Roller
 set_nop 0x80a6ccc ; PC Store
 
-; Limit selling to 99 items
-.org 0x80a536e
-.area 2, 0x0
-mov r1, #99
-.endarea
+; Buy limit
+.org 0xb3dd8
+ldrh r1, [r7, #0xe]
+
+.org 0xb3f5c
+b 0xb3f62
+
+.org 0xb3f62
+strh r0, [r6, #0xe]
+
+; Display correct digits on Buy
+.org 0xb3858
+mov r3, #3
+
+.org 0xb3e7a
+mov r3, #3
+
+; Sell Money functions
+.org 0xa6878
+lsl r4, r4, #0x10
+lsr r4, r4, #0x10
+
+.org 0xa6590
+ldrh r1, [r4, #0xa]
 
 .endif
